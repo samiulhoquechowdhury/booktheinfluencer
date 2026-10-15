@@ -1,0 +1,847 @@
+[
+  {
+    "ref": "BK-24017",
+    "leadRef": "LD-1092",
+    "stage": "NEW",
+    "availability": "NOT_CHECKED",
+    "talent": {
+      "slug": "aanya-barua",
+      "name": "Aanya Barua",
+      "primaryCategory": "singers",
+      "image": {
+        "src": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Aanya Barua, singer (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      }
+    },
+    "event": {
+      "type": "CORPORATE",
+      "title": "Annual Day 2027",
+      "date": "2027-01-23",
+      "startTime": "19:00",
+      "city": "guwahati",
+      "venue": "Radisson Blu, Guwahati",
+      "audienceSize": 600,
+      "durationMins": 75
+    },
+    "createdAt": "2026-10-15T11:20:00Z",
+    "quotes": [],
+    "contract": {
+      "status": "NOT_SENT",
+      "sentAt": null,
+      "signedAt": null
+    },
+    "advancePaid": false,
+    "milestones": [],
+    "documents": [],
+    "activity": [
+      {
+        "at": "2026-10-15T11:20:00Z",
+        "label": "Brief received"
+      }
+    ],
+    "notes": "Prefer a 60–75 min set with Assamese and Hindi songs.",
+    "manager": {
+      "name": "Priyanka Das",
+      "phone": "+91 98640 12345",
+      "whatsapp": "+919864012345"
+    },
+    "internal": {
+      "owner": "sales_02",
+      "leadScore": 72
+    }
+  },
+  {
+    "ref": "BK-24011",
+    "leadRef": "LD-1088",
+    "stage": "AVAILABILITY_CHECK",
+    "availability": "AWAITING_MANAGER",
+    "talent": {
+      "slug": "varun-iyer",
+      "name": "Varun Iyer",
+      "primaryCategory": "comedians",
+      "image": {
+        "src": "https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Varun Iyer, comedian (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      }
+    },
+    "event": {
+      "type": "AWARD_NIGHT",
+      "title": "Partner Excellence Awards",
+      "date": "2026-12-12",
+      "startTime": "20:00",
+      "city": "bengaluru",
+      "venue": "ITC Gardenia, Bengaluru",
+      "audienceSize": 350,
+      "durationMins": 45
+    },
+    "createdAt": "2026-10-11T06:40:00Z",
+    "quotes": [],
+    "contract": {
+      "status": "NOT_SENT",
+      "sentAt": null,
+      "signedAt": null
+    },
+    "advancePaid": false,
+    "milestones": [],
+    "documents": [],
+    "activity": [
+      {
+        "at": "2026-10-11T06:40:00Z",
+        "label": "Brief received"
+      },
+      {
+        "at": "2026-10-11T09:05:00Z",
+        "label": "Request sent to Varun’s manager"
+      }
+    ],
+    "notes": "Clean set; mixed audience of partners and families.",
+    "manager": {
+      "name": "Priyanka Das",
+      "phone": "+91 98640 12345",
+      "whatsapp": "+919864012345"
+    },
+    "internal": {
+      "owner": "sales_01",
+      "leadScore": 81
+    }
+  },
+  {
+    "ref": "BK-24009",
+    "leadRef": "LD-1085",
+    "stage": "AVAILABILITY_CHECK",
+    "availability": "HOLD_REQUESTED",
+    "talent": {
+      "slug": "kabir-malhotra",
+      "name": "Kabir Malhotra",
+      "primaryCategory": "singers",
+      "image": {
+        "src": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Kabir Malhotra, singer (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      }
+    },
+    "event": {
+      "type": "WEDDING",
+      "title": "Sangeet — Sharma & Kapoor",
+      "date": "2027-02-14",
+      "startTime": "20:30",
+      "city": "delhi",
+      "venue": "Private farmhouse, Chattarpur",
+      "audienceSize": 400,
+      "durationMins": 90
+    },
+    "createdAt": "2026-10-08T13:00:00Z",
+    "quotes": [],
+    "contract": {
+      "status": "NOT_SENT",
+      "sentAt": null,
+      "signedAt": null
+    },
+    "advancePaid": false,
+    "milestones": [],
+    "documents": [],
+    "activity": [
+      {
+        "at": "2026-10-08T13:00:00Z",
+        "label": "Brief received"
+      },
+      {
+        "at": "2026-10-09T05:30:00Z",
+        "label": "Availability check started"
+      },
+      {
+        "at": "2026-10-12T10:10:00Z",
+        "label": "Soft hold requested on 14 Feb"
+      }
+    ],
+    "notes": null,
+    "manager": {
+      "name": "Priyanka Das",
+      "phone": "+91 98640 12345",
+      "whatsapp": "+919864012345"
+    },
+    "internal": {
+      "owner": "sales_02",
+      "leadScore": 90
+    }
+  },
+  {
+    "ref": "BK-24005",
+    "leadRef": "LD-1079",
+    "stage": "QUOTE_SENT",
+    "availability": "AVAILABLE",
+    "talent": {
+      "slug": "dj-nyx",
+      "name": "DJ Nyx",
+      "primaryCategory": "djs",
+      "image": {
+        "src": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of DJ Nyx, DJ (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      }
+    },
+    "event": {
+      "type": "PRODUCT_LAUNCH",
+      "title": "Launch night — Aurora EV",
+      "date": "2026-11-28",
+      "startTime": "21:00",
+      "city": "mumbai",
+      "venue": "Jio World Garden, BKC",
+      "audienceSize": 800,
+      "durationMins": 180
+    },
+    "createdAt": "2026-10-02T08:15:00Z",
+    "quotes": [
+      {
+        "id": "Q-24005-1",
+        "version": 1,
+        "status": "SUPERSEDED",
+        "issuedAt": "2026-10-06T10:00:00Z",
+        "validUntil": "2026-10-13T18:29:59Z",
+        "lineItems": [
+          {
+            "id": "Q-24005-1_li1",
+            "type": "TALENT_FEE",
+            "description": "DJ Nyx — 3-hour open-format set",
+            "amountPaise": "65000000",
+            "internalCostPaise": "52000000",
+            "payoutPaise": "52000000"
+          },
+          {
+            "id": "Q-24005-1_li2",
+            "type": "TRAVEL",
+            "description": "Return flights (2 pax)",
+            "amountPaise": "3800000",
+            "internalCostPaise": "3420000",
+            "payoutPaise": null
+          },
+          {
+            "id": "Q-24005-1_li3",
+            "type": "ACCOMMODATION",
+            "description": "1 night, 2 rooms",
+            "amountPaise": "2400000",
+            "internalCostPaise": "2160000",
+            "payoutPaise": null
+          },
+          {
+            "id": "Q-24005-1_li4",
+            "type": "PRODUCTION",
+            "description": "DJ booth + booth monitors",
+            "amountPaise": "5500000",
+            "internalCostPaise": "4950000",
+            "payoutPaise": null
+          },
+          {
+            "id": "Q-24005-1_li5",
+            "type": "SERVICE_FEE",
+            "description": "Platform service fee",
+            "amountPaise": "5200000",
+            "internalCostPaise": "0",
+            "payoutPaise": null
+          }
+        ],
+        "subtotalPaise": "81900000",
+        "gstBps": 1800,
+        "taxPaise": "14742000",
+        "totalPaise": "96642000",
+        "milestones": [
+          {
+            "id": "Q-24005-1_ms1",
+            "label": "Advance",
+            "percentBps": 5000,
+            "amountPaise": "48321000",
+            "dueDate": "2026-10-20"
+          },
+          {
+            "id": "Q-24005-1_ms2",
+            "label": "Balance",
+            "percentBps": 5000,
+            "amountPaise": "48321000",
+            "dueDate": "2026-11-21"
+          }
+        ],
+        "inclusions": [
+          "Performance as per brief",
+          "Representative coordination",
+          "Dedicated booking manager",
+          "Contract and GST-ready proforma"
+        ],
+        "notes": null,
+        "acceptedAt": null,
+        "changeRequest": "Can we drop the production line? Venue provides the booth.",
+        "marginPaise": "19370000",
+        "approvedBy": "super_admin_01"
+      },
+      {
+        "id": "Q-24005-2",
+        "version": 2,
+        "status": "SENT",
+        "issuedAt": "2026-10-14T09:30:00Z",
+        "validUntil": "2026-11-15T18:29:59Z",
+        "lineItems": [
+          {
+            "id": "Q-24005-2_li1",
+            "type": "TALENT_FEE",
+            "description": "DJ Nyx — 3-hour open-format set",
+            "amountPaise": "65000000",
+            "internalCostPaise": "52000000",
+            "payoutPaise": "52000000"
+          },
+          {
+            "id": "Q-24005-2_li2",
+            "type": "TRAVEL",
+            "description": "Return flights (2 pax)",
+            "amountPaise": "3800000",
+            "internalCostPaise": "3420000",
+            "payoutPaise": null
+          },
+          {
+            "id": "Q-24005-2_li3",
+            "type": "ACCOMMODATION",
+            "description": "1 night, 2 rooms",
+            "amountPaise": "2400000",
+            "internalCostPaise": "2160000",
+            "payoutPaise": null
+          },
+          {
+            "id": "Q-24005-2_li4",
+            "type": "LOCAL_TRANSPORT",
+            "description": "Airport + venue transfers",
+            "amountPaise": "950000",
+            "internalCostPaise": "855000",
+            "payoutPaise": null
+          },
+          {
+            "id": "Q-24005-2_li5",
+            "type": "SERVICE_FEE",
+            "description": "Platform service fee",
+            "amountPaise": "5200000",
+            "internalCostPaise": "0",
+            "payoutPaise": null
+          }
+        ],
+        "subtotalPaise": "77350000",
+        "gstBps": 1800,
+        "taxPaise": "13923000",
+        "totalPaise": "91273000",
+        "milestones": [
+          {
+            "id": "Q-24005-2_ms1",
+            "label": "Advance",
+            "percentBps": 5000,
+            "amountPaise": "45636500",
+            "dueDate": "2026-10-27"
+          },
+          {
+            "id": "Q-24005-2_ms2",
+            "label": "Balance",
+            "percentBps": 5000,
+            "amountPaise": "45636500",
+            "dueDate": "2026-11-21"
+          }
+        ],
+        "inclusions": [
+          "Performance as per brief",
+          "Representative coordination",
+          "Dedicated booking manager",
+          "Contract and GST-ready proforma"
+        ],
+        "notes": "Production removed — venue provides booth and monitors as discussed.",
+        "acceptedAt": null,
+        "changeRequest": null,
+        "marginPaise": "18915000",
+        "approvedBy": "super_admin_01"
+      }
+    ],
+    "contract": {
+      "status": "NOT_SENT",
+      "sentAt": null,
+      "signedAt": null
+    },
+    "advancePaid": false,
+    "milestones": [],
+    "documents": [
+      {
+        "id": "doc_1",
+        "name": "Quote Q-24005 v2.pdf",
+        "kind": "QUOTE_PDF",
+        "uploadedAt": "2026-10-14T09:31:00Z",
+        "sizeKb": 142
+      }
+    ],
+    "activity": [
+      {
+        "at": "2026-10-02T08:15:00Z",
+        "label": "Brief received"
+      },
+      {
+        "at": "2026-10-04T12:00:00Z",
+        "label": "DJ Nyx confirmed available"
+      },
+      {
+        "at": "2026-10-06T10:00:00Z",
+        "label": "Quote v1 sent"
+      },
+      {
+        "at": "2026-10-07T07:45:00Z",
+        "label": "You requested changes"
+      },
+      {
+        "at": "2026-10-14T09:30:00Z",
+        "label": "Quote v2 sent"
+      }
+    ],
+    "notes": "Launch reveal at 22:15 — needs a build-up track.",
+    "manager": {
+      "name": "Priyanka Das",
+      "phone": "+91 98640 12345",
+      "whatsapp": "+919864012345"
+    },
+    "internal": {
+      "owner": "sales_01",
+      "leadScore": 88
+    }
+  },
+  {
+    "ref": "BK-24003",
+    "leadRef": "LD-1074",
+    "stage": "ADVANCE_PENDING",
+    "availability": "TENTATIVE",
+    "talent": {
+      "slug": "kavita-menon",
+      "name": "Dr. Kavita Menon",
+      "primaryCategory": "speakers",
+      "image": {
+        "src": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Dr. Kavita Menon, speaker (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      }
+    },
+    "event": {
+      "type": "CONFERENCE",
+      "title": "Future of Work Summit",
+      "date": "2026-12-05",
+      "startTime": "10:00",
+      "city": "bengaluru",
+      "venue": "Bangalore International Centre",
+      "audienceSize": 450,
+      "durationMins": 60
+    },
+    "createdAt": "2026-09-24T05:00:00Z",
+    "quotes": [
+      {
+        "id": "Q-24003-1",
+        "version": 1,
+        "status": "ACCEPTED",
+        "issuedAt": "2026-09-30T06:00:00Z",
+        "validUntil": "2026-10-10T18:29:59Z",
+        "lineItems": [
+          {
+            "id": "Q-24003-1_li1",
+            "type": "TALENT_FEE",
+            "description": "Keynote (45 min) + Q&A (15 min)",
+            "amountPaise": "85000000",
+            "internalCostPaise": "70000000",
+            "payoutPaise": "70000000"
+          },
+          {
+            "id": "Q-24003-1_li2",
+            "type": "TRAVEL",
+            "description": "Local — no travel",
+            "amountPaise": "0",
+            "internalCostPaise": "0",
+            "payoutPaise": null
+          },
+          {
+            "id": "Q-24003-1_li3",
+            "type": "LOCAL_TRANSPORT",
+            "description": "Car on event day",
+            "amountPaise": "450000",
+            "internalCostPaise": "405000",
+            "payoutPaise": null
+          },
+          {
+            "id": "Q-24003-1_li4",
+            "type": "SERVICE_FEE",
+            "description": "Platform service fee",
+            "amountPaise": "6800000",
+            "internalCostPaise": "0",
+            "payoutPaise": null
+          }
+        ],
+        "subtotalPaise": "92250000",
+        "gstBps": 1800,
+        "taxPaise": "16605000",
+        "totalPaise": "108855000",
+        "milestones": [
+          {
+            "id": "Q-24003-1_ms1",
+            "label": "Advance",
+            "percentBps": 5000,
+            "amountPaise": "54427500",
+            "dueDate": "2026-10-22"
+          },
+          {
+            "id": "Q-24003-1_ms2",
+            "label": "Balance",
+            "percentBps": 5000,
+            "amountPaise": "54427500",
+            "dueDate": "2026-11-28"
+          }
+        ],
+        "inclusions": [
+          "Performance as per brief",
+          "Representative coordination",
+          "Dedicated booking manager",
+          "Contract and GST-ready proforma"
+        ],
+        "notes": null,
+        "acceptedAt": "2026-10-03T04:12:00Z",
+        "changeRequest": null,
+        "marginPaise": "21845000",
+        "approvedBy": "super_admin_01"
+      }
+    ],
+    "contract": {
+      "status": "SENT",
+      "sentAt": "2026-10-05T07:00:00Z",
+      "signedAt": null
+    },
+    "advancePaid": false,
+    "milestones": [
+      {
+        "id": "m_24003_1",
+        "label": "Advance (50%)",
+        "dueDate": "2026-10-22",
+        "status": "DUE",
+        "paidAt": null,
+        "receiptNo": null,
+        "amountPaise": "54427500"
+      },
+      {
+        "id": "m_24003_2",
+        "label": "Balance (50%)",
+        "dueDate": "2026-11-28",
+        "status": "UPCOMING",
+        "paidAt": null,
+        "receiptNo": null,
+        "amountPaise": "54427500"
+      }
+    ],
+    "documents": [
+      {
+        "id": "doc_2",
+        "name": "Quote Q-24003 v1.pdf",
+        "kind": "QUOTE_PDF",
+        "uploadedAt": "2026-09-30T06:01:00Z",
+        "sizeKb": 131
+      },
+      {
+        "id": "doc_3",
+        "name": "Booking contract — unsigned.pdf",
+        "kind": "CONTRACT",
+        "uploadedAt": "2026-10-05T07:00:00Z",
+        "sizeKb": 388
+      }
+    ],
+    "activity": [
+      {
+        "at": "2026-09-24T05:00:00Z",
+        "label": "Brief received"
+      },
+      {
+        "at": "2026-09-27T10:00:00Z",
+        "label": "Tentatively available — pending travel plans"
+      },
+      {
+        "at": "2026-09-30T06:00:00Z",
+        "label": "Quote sent"
+      },
+      {
+        "at": "2026-10-03T04:12:00Z",
+        "label": "You accepted the quote"
+      },
+      {
+        "at": "2026-10-05T07:00:00Z",
+        "label": "Contract sent for e-sign"
+      }
+    ],
+    "notes": "Theme: “Teams that learn faster”.",
+    "manager": {
+      "name": "Priyanka Das",
+      "phone": "+91 98640 12345",
+      "whatsapp": "+919864012345"
+    },
+    "internal": {
+      "owner": "sales_03",
+      "leadScore": 93
+    }
+  },
+  {
+    "ref": "BK-23998",
+    "leadRef": "LD-1066",
+    "stage": "AVAILABILITY_CHECK",
+    "availability": "UNAVAILABLE",
+    "talent": {
+      "slug": "tanvi-desai",
+      "name": "Tanvi Desai",
+      "primaryCategory": "singers",
+      "image": {
+        "src": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Tanvi Desai, singer (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      }
+    },
+    "event": {
+      "type": "WEDDING",
+      "title": "Reception — Mehta family",
+      "date": "2026-12-19",
+      "startTime": "19:30",
+      "city": "mumbai",
+      "venue": "The St. Regis, Lower Parel",
+      "audienceSize": 700,
+      "durationMins": 90
+    },
+    "createdAt": "2026-09-18T09:00:00Z",
+    "quotes": [],
+    "contract": {
+      "status": "NOT_SENT",
+      "sentAt": null,
+      "signedAt": null
+    },
+    "advancePaid": false,
+    "milestones": [],
+    "documents": [],
+    "activity": [
+      {
+        "at": "2026-09-18T09:00:00Z",
+        "label": "Brief received"
+      },
+      {
+        "at": "2026-09-20T11:30:00Z",
+        "label": "Tanvi is touring on 19 Dec — not available"
+      },
+      {
+        "at": "2026-09-20T11:45:00Z",
+        "label": "Alternatives shared by your manager"
+      }
+    ],
+    "notes": null,
+    "manager": {
+      "name": "Priyanka Das",
+      "phone": "+91 98640 12345",
+      "whatsapp": "+919864012345"
+    },
+    "internal": {
+      "owner": "sales_02",
+      "leadScore": 64
+    }
+  },
+  {
+    "ref": "BK-23987",
+    "leadRef": "LD-1051",
+    "stage": "CONFIRMED",
+    "availability": "CONFIRMED",
+    "talent": {
+      "slug": "bass-monk",
+      "name": "Bass Monk",
+      "primaryCategory": "djs",
+      "image": {
+        "src": "https://images.unsplash.com/photo-1545996124-0501ebae84d0?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Bass Monk, DJ (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      }
+    },
+    "event": {
+      "type": "COLLEGE_FEST",
+      "title": "Techfest closing night",
+      "date": "2026-11-08",
+      "startTime": "20:00",
+      "city": "guwahati",
+      "venue": "Main ground, engineering college campus",
+      "audienceSize": 3000,
+      "durationMins": 120
+    },
+    "createdAt": "2026-09-05T10:00:00Z",
+    "quotes": [
+      {
+        "id": "Q-23987-1",
+        "version": 1,
+        "status": "ACCEPTED",
+        "issuedAt": "2026-09-09T08:00:00Z",
+        "validUntil": "2026-09-19T18:29:59Z",
+        "lineItems": [
+          {
+            "id": "Q-23987-1_li1",
+            "type": "TALENT_FEE",
+            "description": "Bass Monk — 2-hour headline set",
+            "amountPaise": "12000000",
+            "internalCostPaise": "9500000",
+            "payoutPaise": "9500000"
+          },
+          {
+            "id": "Q-23987-1_li2",
+            "type": "PRODUCTION",
+            "description": "CDJ setup + booth monitors",
+            "amountPaise": "3500000",
+            "internalCostPaise": "3150000",
+            "payoutPaise": null
+          },
+          {
+            "id": "Q-23987-1_li3",
+            "type": "SECURITY",
+            "description": "Stage security (4 guards)",
+            "amountPaise": "1200000",
+            "internalCostPaise": "1080000",
+            "payoutPaise": null
+          },
+          {
+            "id": "Q-23987-1_li4",
+            "type": "SERVICE_FEE",
+            "description": "Platform service fee",
+            "amountPaise": "1000000",
+            "internalCostPaise": "0",
+            "payoutPaise": null
+          }
+        ],
+        "subtotalPaise": "17700000",
+        "gstBps": 1800,
+        "taxPaise": "3186000",
+        "totalPaise": "20886000",
+        "milestones": [
+          {
+            "id": "Q-23987-1_ms1",
+            "label": "Advance",
+            "percentBps": 5000,
+            "amountPaise": "10443000",
+            "dueDate": "2026-09-15"
+          },
+          {
+            "id": "Q-23987-1_ms2",
+            "label": "Balance",
+            "percentBps": 5000,
+            "amountPaise": "10443000",
+            "dueDate": "2026-11-01"
+          }
+        ],
+        "inclusions": [
+          "Performance as per brief",
+          "Representative coordination",
+          "Dedicated booking manager",
+          "Contract and GST-ready proforma"
+        ],
+        "notes": null,
+        "acceptedAt": "2026-09-11T10:20:00Z",
+        "changeRequest": null,
+        "marginPaise": "3970000",
+        "approvedBy": "super_admin_01"
+      }
+    ],
+    "contract": {
+      "status": "SIGNED",
+      "sentAt": "2026-09-11T12:00:00Z",
+      "signedAt": "2026-09-12T06:30:00Z"
+    },
+    "advancePaid": true,
+    "milestones": [
+      {
+        "id": "m_23987_1",
+        "label": "Advance (50%)",
+        "dueDate": "2026-09-15",
+        "status": "PAID",
+        "paidAt": "2026-09-13T09:41:00Z",
+        "receiptNo": "RCPT-50821",
+        "amountPaise": "10443000"
+      },
+      {
+        "id": "m_23987_2",
+        "label": "Balance (50%)",
+        "dueDate": "2026-11-01",
+        "status": "UPCOMING",
+        "paidAt": null,
+        "receiptNo": null,
+        "amountPaise": "10443000"
+      }
+    ],
+    "documents": [
+      {
+        "id": "doc_4",
+        "name": "Quote Q-23987 v1.pdf",
+        "kind": "QUOTE_PDF",
+        "uploadedAt": "2026-09-09T08:01:00Z",
+        "sizeKb": 120
+      },
+      {
+        "id": "doc_5",
+        "name": "Booking contract — signed.pdf",
+        "kind": "CONTRACT",
+        "uploadedAt": "2026-09-12T06:30:00Z",
+        "sizeKb": 402
+      },
+      {
+        "id": "doc_6",
+        "name": "Receipt RCPT-50821.pdf",
+        "kind": "RECEIPT",
+        "uploadedAt": "2026-09-13T09:42:00Z",
+        "sizeKb": 64
+      },
+      {
+        "id": "doc_7",
+        "name": "Technical rider.pdf",
+        "kind": "RIDER",
+        "uploadedAt": "2026-09-12T08:00:00Z",
+        "sizeKb": 210
+      }
+    ],
+    "activity": [
+      {
+        "at": "2026-09-05T10:00:00Z",
+        "label": "Brief received"
+      },
+      {
+        "at": "2026-09-06T08:00:00Z",
+        "label": "Available"
+      },
+      {
+        "at": "2026-09-09T08:00:00Z",
+        "label": "Quote sent"
+      },
+      {
+        "at": "2026-09-11T10:20:00Z",
+        "label": "You accepted the quote"
+      },
+      {
+        "at": "2026-09-12T06:30:00Z",
+        "label": "Contract signed"
+      },
+      {
+        "at": "2026-09-13T09:41:00Z",
+        "label": "Advance received"
+      },
+      {
+        "at": "2026-09-13T11:00:00Z",
+        "label": "Representative accepted — booking confirmed"
+      }
+    ],
+    "notes": null,
+    "manager": {
+      "name": "Priyanka Das",
+      "phone": "+91 98640 12345",
+      "whatsapp": "+919864012345"
+    },
+    "internal": {
+      "owner": "sales_01",
+      "leadScore": 95,
+      "repAcceptedAt": "2026-09-13T11:00:00Z"
+    }
+  }
+]

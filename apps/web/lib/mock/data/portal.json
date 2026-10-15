@@ -1,0 +1,136 @@
+{
+  "talentSlug": "bass-monk",
+  "name": "Bass Monk (Pranjal Gogoi)",
+  "blackoutEditable": true,
+  "bookings": [
+    {
+      "ref": "BK-23987",
+      "event": {
+        "type": "COLLEGE_FEST",
+        "title": "Techfest closing night",
+        "date": "2026-11-08",
+        "startTime": "20:00",
+        "city": "guwahati",
+        "venue": "Main ground, engineering college campus",
+        "audienceSize": 3000,
+        "durationMins": 120
+      },
+      "availability": "CONFIRMED",
+      "contract": "SIGNED",
+      "payoutPaise": "9500000",
+      "sellingPaise": "12000000",
+      "reportingTime": "18:30",
+      "pointOfContact": "Priyanka Das · +91 98640 12345"
+    },
+    {
+      "ref": "BK-24021",
+      "event": {
+        "type": "WEDDING",
+        "title": "Wedding after-party",
+        "date": "2026-11-22",
+        "startTime": "22:00",
+        "city": "shillong",
+        "venue": "Private resort, Umiam",
+        "audienceSize": 250,
+        "durationMins": 150
+      },
+      "availability": "AVAILABLE",
+      "contract": "NOT_SENT",
+      "payoutPaise": null,
+      "sellingPaise": null,
+      "reportingTime": null,
+      "pointOfContact": "Priyanka Das · +91 98640 12345"
+    },
+    {
+      "ref": "BK-23950",
+      "event": {
+        "type": "CLUB_NIGHT",
+        "title": "Saturday residency",
+        "date": "2026-10-03",
+        "startTime": "22:00",
+        "city": "guwahati",
+        "venue": "Rooftop lounge, GS Road",
+        "audienceSize": 300,
+        "durationMins": 180
+      },
+      "availability": "CONFIRMED",
+      "contract": "SIGNED",
+      "payoutPaise": "6000000",
+      "sellingPaise": "7800000",
+      "reportingTime": "21:00",
+      "pointOfContact": "Rahul Nath · +91 98540 22110"
+    },
+    {
+      "ref": "BK-23911",
+      "event": {
+        "type": "COLLEGE_FEST",
+        "title": "Freshers’ night",
+        "date": "2026-08-29",
+        "startTime": "19:00",
+        "city": "guwahati",
+        "venue": "University auditorium",
+        "audienceSize": 1200,
+        "durationMins": 90
+      },
+      "availability": "CONFIRMED",
+      "contract": "SIGNED",
+      "payoutPaise": "5500000",
+      "sellingPaise": "7200000",
+      "reportingTime": "17:30",
+      "pointOfContact": "Rahul Nath · +91 98540 22110"
+    }
+  ],
+  "payouts": [
+    {
+      "id": "po_1",
+      "bookingRef": "BK-23911",
+      "eventTitle": "Freshers’ night",
+      "eventDate": "2026-08-29",
+      "amountPaise": "5500000",
+      "status": "PAID",
+      "paidAt": "2026-09-04T10:00:00Z",
+      "reference": "UTR 4412 8890 1123",
+      "marginPaise": "1700000"
+    },
+    {
+      "id": "po_2",
+      "bookingRef": "BK-23950",
+      "eventTitle": "Saturday residency",
+      "eventDate": "2026-10-03",
+      "amountPaise": "6000000",
+      "status": "PENDING",
+      "paidAt": null,
+      "reference": null,
+      "marginPaise": "1800000"
+    },
+    {
+      "id": "po_3",
+      "bookingRef": "BK-23987",
+      "eventTitle": "Techfest closing night",
+      "eventDate": "2026-11-08",
+      "amountPaise": "9500000",
+      "status": "SCHEDULED",
+      "paidAt": null,
+      "reference": null,
+      "marginPaise": "2500000"
+    }
+  ],
+  "blackouts": [
+    {
+      "date": "2026-10-24",
+      "reason": "Studio session"
+    },
+    {
+      "date": "2026-10-25",
+      "reason": "Studio session"
+    },
+    {
+      "date": "2026-11-14",
+      "reason": "Family function"
+    },
+    {
+      "date": "2026-12-31",
+      "reason": null
+    }
+  ]
+}

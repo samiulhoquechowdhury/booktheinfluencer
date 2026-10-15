@@ -1,0 +1,4358 @@
+[
+  {
+    "id": "tal_001",
+    "slug": "aanya-barua",
+    "name": "Aanya Barua",
+    "categories": [
+      "singers"
+    ],
+    "primaryCategory": "singers",
+    "tagline": "Soulful live sets from ghazal to Bollywood",
+    "bio": "Aanya Barua is a singer based in Guwahati, performing in Assamese and Hindi. Known for reading the room and adapting every set to the audience, Aanya has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "guwahati",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "Assamese",
+      "Hindi",
+      "English"
+    ],
+    "eventTypes": [
+      "WEDDING",
+      "CORPORATE",
+      "CONCERT"
+    ],
+    "tier": "PREMIUM",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": true,
+    "feeBand": {
+      "minPaise": "80000000",
+      "maxPaise": "150000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Aanya Barua, singer (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&ar=4:5",
+        "alt": "Singer performing in stage haze — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&ar=4:5",
+        "alt": "Vintage stage microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd making heart shapes at a concert — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Annual Day — global IT services firm",
+        "city": "Guwahati",
+        "year": 2026
+      },
+      {
+        "title": "Bihu Utsav main stage",
+        "city": "Shillong",
+        "year": 2025
+      },
+      {
+        "title": "Destination wedding sangeet",
+        "city": "Kolkata",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "2 vocal mics, IEM monitors, 4-piece band backline on request, green room with water and fruit.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "singer",
+      "assamese",
+      "hindi",
+      "english",
+      "guwahati"
+    ]
+  },
+  {
+    "id": "tal_002",
+    "slug": "kabir-malhotra",
+    "name": "Kabir Malhotra",
+    "categories": [
+      "singers"
+    ],
+    "primaryCategory": "singers",
+    "tagline": "Folk roots, festival energy",
+    "bio": "Kabir Malhotra is a singer based in Delhi, performing in Hindi and Punjabi. Known for reading the room and adapting every set to the audience, Kabir has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "delhi",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "Hindi",
+      "Punjabi",
+      "English"
+    ],
+    "eventTypes": [
+      "WEDDING",
+      "CORPORATE",
+      "CONCERT",
+      "COLLEGE_FEST"
+    ],
+    "tier": "PREMIUM",
+    "representation": "AGENCY_MANAGED",
+    "verified": true,
+    "featured": true,
+    "feeBand": null,
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Kabir Malhotra, singer (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&ar=4:5",
+        "alt": "Concert stage with warm lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1598387993441-a364f854c3e1?auto=format&fit=crop&ar=4:5",
+        "alt": "Guitarist under blue stage lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&ar=4:5",
+        "alt": "Acoustic guitar set — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&ar=4:5",
+        "alt": "Studio microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Annual Day — global IT services firm",
+        "city": "Shillong",
+        "year": 2026
+      },
+      {
+        "title": "Bihu Utsav main stage",
+        "city": "Kolkata",
+        "year": 2025
+      },
+      {
+        "title": "Destination wedding sangeet",
+        "city": "Delhi",
+        "year": 2024
+      },
+      {
+        "title": "University cultural fest headline",
+        "city": "Mumbai",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "2 vocal mics, IEM monitors, 4-piece band backline on request, green room with water and fruit.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "singer",
+      "hindi",
+      "punjabi",
+      "english",
+      "delhi"
+    ]
+  },
+  {
+    "id": "tal_003",
+    "slug": "ishita-sen",
+    "name": "Ishita Sen",
+    "categories": [
+      "singers"
+    ],
+    "primaryCategory": "singers",
+    "tagline": "Wedding sangeets that turn into concerts",
+    "bio": "Ishita Sen is a singer based in Kolkata, performing in Bengali and Hindi. Known for reading the room and adapting every set to the audience, Ishita has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "kolkata",
+    "travelsTo": [
+      "shillong",
+      "bengaluru"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Bengali",
+      "Hindi",
+      "English"
+    ],
+    "eventTypes": [
+      "WEDDING",
+      "CORPORATE",
+      "CONCERT",
+      "COLLEGE_FEST",
+      "PRIVATE_PARTY"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "15000000",
+      "maxPaise": "30000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Ishita Sen, singer (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&ar=4:5",
+        "alt": "Vintage stage microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd making heart shapes at a concert — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&ar=4:5",
+        "alt": "Brass section on stage — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&ar=4:5",
+        "alt": "Stage lights over a crowd — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&ar=4:5",
+        "alt": "Singer performing in stage haze — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Annual Day — global IT services firm",
+        "city": "Kolkata",
+        "year": 2026
+      },
+      {
+        "title": "Bihu Utsav main stage",
+        "city": "Delhi",
+        "year": 2025
+      },
+      {
+        "title": "Destination wedding sangeet",
+        "city": "Mumbai",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "2 vocal mics, IEM monitors, 4-piece band backline on request, green room with water and fruit.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "singer",
+      "bengali",
+      "hindi",
+      "english",
+      "kolkata"
+    ]
+  },
+  {
+    "id": "tal_004",
+    "slug": "lapdiang-syiem",
+    "name": "Lapdiang Syiem",
+    "categories": [
+      "singers",
+      "creators"
+    ],
+    "primaryCategory": "singers",
+    "tagline": "Indie-pop with a full live band",
+    "bio": "Lapdiang Syiem is a singer based in Shillong, performing in Khasi and English. Known for reading the room and adapting every set to the audience, Lapdiang has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "shillong",
+    "travelsTo": [
+      "guwahati",
+      "mumbai",
+      "pune"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Khasi",
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "WEDDING",
+      "CORPORATE",
+      "CONCERT"
+    ],
+    "tier": "STANDARD",
+    "representation": "PLATFORM_COORDINATED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "8000000",
+      "maxPaise": "18000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Lapdiang Syiem, singer (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1598387993441-a364f854c3e1?auto=format&fit=crop&ar=4:5",
+        "alt": "Guitarist under blue stage lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&ar=4:5",
+        "alt": "Acoustic guitar set — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&ar=4:5",
+        "alt": "Studio microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Annual Day — global IT services firm",
+        "city": "Delhi",
+        "year": 2026
+      },
+      {
+        "title": "Bihu Utsav main stage",
+        "city": "Mumbai",
+        "year": 2025
+      },
+      {
+        "title": "Destination wedding sangeet",
+        "city": "Bengaluru",
+        "year": 2024
+      },
+      {
+        "title": "University cultural fest headline",
+        "city": "Hyderabad",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "2 vocal mics, IEM monitors, 4-piece band backline on request, green room with water and fruit.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "singer",
+      "khasi",
+      "english",
+      "hindi",
+      "shillong"
+    ]
+  },
+  {
+    "id": "tal_005",
+    "slug": "neel-kulkarni",
+    "name": "Neel Kulkarni",
+    "categories": [
+      "singers"
+    ],
+    "primaryCategory": "singers",
+    "tagline": "Classical training, crowd-pleasing setlists",
+    "bio": "Neel Kulkarni is a singer based in Pune, performing in Marathi and Hindi. Known for reading the room and adapting every set to the audience, Neel has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "pune",
+    "travelsTo": [
+      "kolkata",
+      "bengaluru"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Marathi",
+      "Hindi",
+      "English"
+    ],
+    "eventTypes": [
+      "WEDDING",
+      "CORPORATE",
+      "CONCERT",
+      "COLLEGE_FEST"
+    ],
+    "tier": "STANDARD",
+    "representation": "AGENCY_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "12000000",
+      "maxPaise": "25000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Neel Kulkarni, singer (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd making heart shapes at a concert — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&ar=4:5",
+        "alt": "Brass section on stage — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&ar=4:5",
+        "alt": "Stage lights over a crowd — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&ar=4:5",
+        "alt": "Singer performing in stage haze — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Annual Day — global IT services firm",
+        "city": "Mumbai",
+        "year": 2026
+      },
+      {
+        "title": "Bihu Utsav main stage",
+        "city": "Bengaluru",
+        "year": 2025
+      },
+      {
+        "title": "Destination wedding sangeet",
+        "city": "Hyderabad",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "2 vocal mics, IEM monitors, 4-piece band backline on request, green room with water and fruit.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "singer",
+      "marathi",
+      "hindi",
+      "english",
+      "pune"
+    ]
+  },
+  {
+    "id": "tal_006",
+    "slug": "meera-raghavan",
+    "name": "Meera Raghavan",
+    "categories": [
+      "singers"
+    ],
+    "primaryCategory": "singers",
+    "tagline": "Soulful live sets from ghazal to Bollywood",
+    "bio": "Meera Raghavan is a singer based in Bengaluru, performing in Kannada and Tamil. Known for reading the room and adapting every set to the audience, Meera has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "bengaluru",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "Kannada",
+      "Tamil",
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "WEDDING",
+      "CORPORATE",
+      "CONCERT",
+      "COLLEGE_FEST",
+      "PRIVATE_PARTY"
+    ],
+    "tier": "PREMIUM",
+    "representation": "AGENCY_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "60000000",
+      "maxPaise": "120000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Meera Raghavan, singer (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&ar=4:5",
+        "alt": "Acoustic guitar set — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&ar=4:5",
+        "alt": "Studio microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd silhouettes at a gig — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&ar=4:5",
+        "alt": "Concert stage with warm lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1598387993441-a364f854c3e1?auto=format&fit=crop&ar=4:5",
+        "alt": "Guitarist under blue stage lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Annual Day — global IT services firm",
+        "city": "Bengaluru",
+        "year": 2026
+      },
+      {
+        "title": "Bihu Utsav main stage",
+        "city": "Hyderabad",
+        "year": 2025
+      },
+      {
+        "title": "Destination wedding sangeet",
+        "city": "Pune",
+        "year": 2024
+      },
+      {
+        "title": "University cultural fest headline",
+        "city": "Guwahati",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "2 vocal mics, IEM monitors, 4-piece band backline on request, green room with water and fruit.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "singer",
+      "kannada",
+      "tamil",
+      "english",
+      "hindi",
+      "bengaluru"
+    ]
+  },
+  {
+    "id": "tal_007",
+    "slug": "arjun-varma",
+    "name": "Arjun Varma",
+    "categories": [
+      "singers"
+    ],
+    "primaryCategory": "singers",
+    "tagline": "Folk roots, festival energy",
+    "bio": "Arjun Varma is a singer based in Hyderabad, performing in Telugu and Hindi. Known for reading the room and adapting every set to the audience, Arjun has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "hyderabad",
+    "travelsTo": [
+      "guwahati",
+      "delhi",
+      "pune"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Telugu",
+      "Hindi",
+      "English"
+    ],
+    "eventTypes": [
+      "WEDDING",
+      "CORPORATE",
+      "CONCERT"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": false,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "10000000",
+      "maxPaise": "20000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Arjun Varma, singer (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&ar=4:5",
+        "alt": "Brass section on stage — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&ar=4:5",
+        "alt": "Stage lights over a crowd — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&ar=4:5",
+        "alt": "Singer performing in stage haze — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Annual Day — global IT services firm",
+        "city": "Hyderabad",
+        "year": 2026
+      },
+      {
+        "title": "Bihu Utsav main stage",
+        "city": "Pune",
+        "year": 2025
+      },
+      {
+        "title": "Destination wedding sangeet",
+        "city": "Guwahati",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "2 vocal mics, IEM monitors, 4-piece band backline on request, green room with water and fruit.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "singer",
+      "telugu",
+      "hindi",
+      "english",
+      "hyderabad"
+    ]
+  },
+  {
+    "id": "tal_008",
+    "slug": "tanvi-desai",
+    "name": "Tanvi Desai",
+    "categories": [
+      "singers"
+    ],
+    "primaryCategory": "singers",
+    "tagline": "Wedding sangeets that turn into concerts",
+    "bio": "Tanvi Desai is a singer based in Mumbai, performing in Hindi and Marathi. Known for reading the room and adapting every set to the audience, Tanvi has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "mumbai",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "Hindi",
+      "Marathi",
+      "English"
+    ],
+    "eventTypes": [
+      "WEDDING",
+      "CORPORATE",
+      "CONCERT",
+      "COLLEGE_FEST"
+    ],
+    "tier": "PREMIUM",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": true,
+    "feeBand": {
+      "minPaise": "100000000",
+      "maxPaise": "200000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Tanvi Desai, singer (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&ar=4:5",
+        "alt": "Studio microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd silhouettes at a gig — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&ar=4:5",
+        "alt": "Concert stage with warm lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1598387993441-a364f854c3e1?auto=format&fit=crop&ar=4:5",
+        "alt": "Guitarist under blue stage lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Annual Day — global IT services firm",
+        "city": "Pune",
+        "year": 2026
+      },
+      {
+        "title": "Bihu Utsav main stage",
+        "city": "Guwahati",
+        "year": 2025
+      },
+      {
+        "title": "Destination wedding sangeet",
+        "city": "Shillong",
+        "year": 2024
+      },
+      {
+        "title": "University cultural fest headline",
+        "city": "Kolkata",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "2 vocal mics, IEM monitors, 4-piece band backline on request, green room with water and fruit.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "singer",
+      "hindi",
+      "marathi",
+      "english",
+      "mumbai"
+    ]
+  },
+  {
+    "id": "tal_009",
+    "slug": "dj-nyx",
+    "name": "DJ Nyx",
+    "categories": [
+      "djs"
+    ],
+    "primaryCategory": "djs",
+    "tagline": "Bollywood-house that fills dance floors",
+    "bio": "DJ Nyx is a DJ based in Mumbai, performing in English and Hindi. Known for reading the room and adapting every set to the audience, Nyx has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "mumbai",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "CLUB_NIGHT",
+      "WEDDING",
+      "PRIVATE_PARTY",
+      "COLLEGE_FEST",
+      "PRODUCT_LAUNCH"
+    ],
+    "tier": "PREMIUM",
+    "representation": "AGENCY_MANAGED",
+    "verified": true,
+    "featured": true,
+    "feeBand": {
+      "minPaise": "40000000",
+      "maxPaise": "80000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of DJ Nyx, DJ (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd cheering at a set — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&ar=4:5",
+        "alt": "Club lights and confetti — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&ar=4:5",
+        "alt": "Confetti over a crowd — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1468164016595-6108e4c60c8b?auto=format&fit=crop&ar=4:5",
+        "alt": "Vinyl record on a turntable — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1504704911898-68304a7d2807?auto=format&fit=crop&ar=4:5",
+        "alt": "Neon installation at a party — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Rooftop launch party — fashion label",
+        "city": "Guwahati",
+        "year": 2026
+      },
+      {
+        "title": "New Year’s Eve — five-star hotel",
+        "city": "Shillong",
+        "year": 2025
+      },
+      {
+        "title": "Wedding after-party",
+        "city": "Kolkata",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "2× CDJ-3000 + DJM-900NXS2 (or equivalent), booth monitors, 1 m² clear booth space.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "dj",
+      "english",
+      "hindi",
+      "mumbai"
+    ]
+  },
+  {
+    "id": "tal_010",
+    "slug": "dj-saffron",
+    "name": "DJ Saffron",
+    "categories": [
+      "djs"
+    ],
+    "primaryCategory": "djs",
+    "tagline": "Deep, melodic sets for late nights",
+    "bio": "DJ Saffron is a DJ based in Delhi, performing in Hindi and English. Known for reading the room and adapting every set to the audience, Saffron has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "delhi",
+    "travelsTo": [
+      "guwahati",
+      "mumbai",
+      "pune"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Hindi",
+      "English",
+      "Punjabi"
+    ],
+    "eventTypes": [
+      "CLUB_NIGHT",
+      "WEDDING",
+      "PRIVATE_PARTY"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "10000000",
+      "maxPaise": "25000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1485893086445-ed75865251e0?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of DJ Saffron, DJ (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1516873240891-4bf014598ab4?auto=format&fit=crop&ar=4:5",
+        "alt": "DJ mixing at the decks — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?auto=format&fit=crop&ar=4:5",
+        "alt": "Neon-lit warehouse party — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1496024840928-4c417adf211d?auto=format&fit=crop&ar=4:5",
+        "alt": "Colour powder festival crowd — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Rooftop launch party — fashion label",
+        "city": "Shillong",
+        "year": 2026
+      },
+      {
+        "title": "New Year’s Eve — five-star hotel",
+        "city": "Kolkata",
+        "year": 2025
+      },
+      {
+        "title": "Wedding after-party",
+        "city": "Delhi",
+        "year": 2024
+      },
+      {
+        "title": "Campus fest closing night",
+        "city": "Mumbai",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "2× CDJ-3000 + DJM-900NXS2 (or equivalent), booth monitors, 1 m² clear booth space.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "dj",
+      "hindi",
+      "english",
+      "punjabi",
+      "delhi"
+    ]
+  },
+  {
+    "id": "tal_011",
+    "slug": "bass-monk",
+    "name": "Bass Monk",
+    "categories": [
+      "djs"
+    ],
+    "primaryCategory": "djs",
+    "tagline": "Open-format DJ for weddings and launches",
+    "bio": "Bass Monk is a DJ based in Guwahati, performing in Assamese and English. Known for reading the room and adapting every set to the audience, Bass has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "guwahati",
+    "travelsTo": [
+      "delhi",
+      "hyderabad"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Assamese",
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "CLUB_NIGHT",
+      "WEDDING",
+      "PRIVATE_PARTY",
+      "COLLEGE_FEST"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "6000000",
+      "maxPaise": "15000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1545996124-0501ebae84d0?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Bass Monk, DJ (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&ar=4:5",
+        "alt": "Club lights and confetti — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&ar=4:5",
+        "alt": "Confetti over a crowd — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1468164016595-6108e4c60c8b?auto=format&fit=crop&ar=4:5",
+        "alt": "Vinyl record on a turntable — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1504704911898-68304a7d2807?auto=format&fit=crop&ar=4:5",
+        "alt": "Neon installation at a party — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Rooftop launch party — fashion label",
+        "city": "Kolkata",
+        "year": 2026
+      },
+      {
+        "title": "New Year’s Eve — five-star hotel",
+        "city": "Delhi",
+        "year": 2025
+      },
+      {
+        "title": "Wedding after-party",
+        "city": "Mumbai",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "2× CDJ-3000 + DJM-900NXS2 (or equivalent), booth monitors, 1 m² clear booth space.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "dj",
+      "assamese",
+      "english",
+      "hindi",
+      "guwahati"
+    ]
+  },
+  {
+    "id": "tal_012",
+    "slug": "dj-kiara",
+    "name": "DJ Kiara",
+    "categories": [
+      "djs"
+    ],
+    "primaryCategory": "djs",
+    "tagline": "Techno and progressive for big rooms",
+    "bio": "DJ Kiara is a DJ based in Pune, performing in English and Hindi. Known for reading the room and adapting every set to the audience, Kiara has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "pune",
+    "travelsTo": [
+      "shillong",
+      "mumbai"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "English",
+      "Hindi",
+      "Marathi"
+    ],
+    "eventTypes": [
+      "CLUB_NIGHT",
+      "WEDDING",
+      "PRIVATE_PARTY",
+      "COLLEGE_FEST",
+      "PRODUCT_LAUNCH"
+    ],
+    "tier": "STANDARD",
+    "representation": "PLATFORM_COORDINATED",
+    "verified": false,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "7500000",
+      "maxPaise": "16000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of DJ Kiara, DJ (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?auto=format&fit=crop&ar=4:5",
+        "alt": "Neon-lit warehouse party — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1496024840928-4c417adf211d?auto=format&fit=crop&ar=4:5",
+        "alt": "Colour powder festival crowd — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1619983081563-430f63602796?auto=format&fit=crop&ar=4:5",
+        "alt": "Coloured vinyl records — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd cheering at a set — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&ar=4:5",
+        "alt": "Club lights and confetti — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Rooftop launch party — fashion label",
+        "city": "Delhi",
+        "year": 2026
+      },
+      {
+        "title": "New Year’s Eve — five-star hotel",
+        "city": "Mumbai",
+        "year": 2025
+      },
+      {
+        "title": "Wedding after-party",
+        "city": "Bengaluru",
+        "year": 2024
+      },
+      {
+        "title": "Campus fest closing night",
+        "city": "Hyderabad",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "2× CDJ-3000 + DJM-900NXS2 (or equivalent), booth monitors, 1 m² clear booth space.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "dj",
+      "english",
+      "hindi",
+      "marathi",
+      "pune"
+    ]
+  },
+  {
+    "id": "tal_013",
+    "slug": "dj-vik",
+    "name": "DJ Vik",
+    "categories": [
+      "djs"
+    ],
+    "primaryCategory": "djs",
+    "tagline": "Bollywood-house that fills dance floors",
+    "bio": "DJ Vik is a DJ based in Bengaluru, performing in English and Kannada. Known for reading the room and adapting every set to the audience, Vik has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "bengaluru",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "English",
+      "Kannada",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "CLUB_NIGHT",
+      "WEDDING",
+      "PRIVATE_PARTY"
+    ],
+    "tier": "PREMIUM",
+    "representation": "AGENCY_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "30000000",
+      "maxPaise": "60000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of DJ Vik, DJ (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&ar=4:5",
+        "alt": "Confetti over a crowd — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1468164016595-6108e4c60c8b?auto=format&fit=crop&ar=4:5",
+        "alt": "Vinyl record on a turntable — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1504704911898-68304a7d2807?auto=format&fit=crop&ar=4:5",
+        "alt": "Neon installation at a party — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Rooftop launch party — fashion label",
+        "city": "Mumbai",
+        "year": 2026
+      },
+      {
+        "title": "New Year’s Eve — five-star hotel",
+        "city": "Bengaluru",
+        "year": 2025
+      },
+      {
+        "title": "Wedding after-party",
+        "city": "Hyderabad",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "2× CDJ-3000 + DJM-900NXS2 (or equivalent), booth monitors, 1 m² clear booth space.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "dj",
+      "english",
+      "kannada",
+      "hindi",
+      "bengaluru"
+    ]
+  },
+  {
+    "id": "tal_014",
+    "slug": "dj-mehr",
+    "name": "DJ Mehr",
+    "categories": [
+      "djs"
+    ],
+    "primaryCategory": "djs",
+    "tagline": "Deep, melodic sets for late nights",
+    "bio": "DJ Mehr is a DJ based in Hyderabad, performing in Hindi and Telugu. Known for reading the room and adapting every set to the audience, Mehr has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "hyderabad",
+    "travelsTo": [
+      "kolkata",
+      "bengaluru"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Hindi",
+      "Telugu",
+      "English"
+    ],
+    "eventTypes": [
+      "CLUB_NIGHT",
+      "WEDDING",
+      "PRIVATE_PARTY",
+      "COLLEGE_FEST"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "8000000",
+      "maxPaise": "20000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of DJ Mehr, DJ (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1496024840928-4c417adf211d?auto=format&fit=crop&ar=4:5",
+        "alt": "Colour powder festival crowd — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1619983081563-430f63602796?auto=format&fit=crop&ar=4:5",
+        "alt": "Coloured vinyl records — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd cheering at a set — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&ar=4:5",
+        "alt": "Club lights and confetti — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Rooftop launch party — fashion label",
+        "city": "Bengaluru",
+        "year": 2026
+      },
+      {
+        "title": "New Year’s Eve — five-star hotel",
+        "city": "Hyderabad",
+        "year": 2025
+      },
+      {
+        "title": "Wedding after-party",
+        "city": "Pune",
+        "year": 2024
+      },
+      {
+        "title": "Campus fest closing night",
+        "city": "Guwahati",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "2× CDJ-3000 + DJM-900NXS2 (or equivalent), booth monitors, 1 m² clear booth space.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "dj",
+      "hindi",
+      "telugu",
+      "english",
+      "hyderabad"
+    ]
+  },
+  {
+    "id": "tal_015",
+    "slug": "ribhu",
+    "name": "Ribhu",
+    "categories": [
+      "djs"
+    ],
+    "primaryCategory": "djs",
+    "tagline": "Open-format DJ for weddings and launches",
+    "bio": "Ribhu is a DJ based in Kolkata, performing in Bengali and English. Known for reading the room and adapting every set to the audience, Ribhu has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "kolkata",
+    "travelsTo": [
+      "shillong",
+      "bengaluru"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Bengali",
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "CLUB_NIGHT",
+      "WEDDING",
+      "PRIVATE_PARTY",
+      "COLLEGE_FEST",
+      "PRODUCT_LAUNCH"
+    ],
+    "tier": "STANDARD",
+    "representation": "AGENCY_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "9000000",
+      "maxPaise": "20000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1508341591423-4347099e1f19?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Ribhu, DJ (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1468164016595-6108e4c60c8b?auto=format&fit=crop&ar=4:5",
+        "alt": "Vinyl record on a turntable — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1504704911898-68304a7d2807?auto=format&fit=crop&ar=4:5",
+        "alt": "Neon installation at a party — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1516873240891-4bf014598ab4?auto=format&fit=crop&ar=4:5",
+        "alt": "DJ mixing at the decks — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?auto=format&fit=crop&ar=4:5",
+        "alt": "Neon-lit warehouse party — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1496024840928-4c417adf211d?auto=format&fit=crop&ar=4:5",
+        "alt": "Colour powder festival crowd — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Rooftop launch party — fashion label",
+        "city": "Hyderabad",
+        "year": 2026
+      },
+      {
+        "title": "New Year’s Eve — five-star hotel",
+        "city": "Pune",
+        "year": 2025
+      },
+      {
+        "title": "Wedding after-party",
+        "city": "Guwahati",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "2× CDJ-3000 + DJM-900NXS2 (or equivalent), booth monitors, 1 m² clear booth space.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "dj",
+      "bengali",
+      "english",
+      "hindi",
+      "kolkata"
+    ]
+  },
+  {
+    "id": "tal_016",
+    "slug": "kyn",
+    "name": "Kyn",
+    "categories": [
+      "djs"
+    ],
+    "primaryCategory": "djs",
+    "tagline": "Techno and progressive for big rooms",
+    "bio": "Kyn is a DJ based in Shillong, performing in Khasi and English. Known for reading the room and adapting every set to the audience, Kyn has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "shillong",
+    "travelsTo": [
+      "guwahati",
+      "mumbai",
+      "pune"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Khasi",
+      "English"
+    ],
+    "eventTypes": [
+      "CLUB_NIGHT",
+      "WEDDING",
+      "PRIVATE_PARTY"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "5000000",
+      "maxPaise": "12000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Kyn, DJ (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1619983081563-430f63602796?auto=format&fit=crop&ar=4:5",
+        "alt": "Coloured vinyl records — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd cheering at a set — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&ar=4:5",
+        "alt": "Club lights and confetti — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Rooftop launch party — fashion label",
+        "city": "Pune",
+        "year": 2026
+      },
+      {
+        "title": "New Year’s Eve — five-star hotel",
+        "city": "Guwahati",
+        "year": 2025
+      },
+      {
+        "title": "Wedding after-party",
+        "city": "Shillong",
+        "year": 2024
+      },
+      {
+        "title": "Campus fest closing night",
+        "city": "Kolkata",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "2× CDJ-3000 + DJM-900NXS2 (or equivalent), booth monitors, 1 m² clear booth space.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "dj",
+      "khasi",
+      "english",
+      "shillong"
+    ]
+  },
+  {
+    "id": "tal_017",
+    "slug": "varun-iyer",
+    "name": "Varun Iyer",
+    "categories": [
+      "comedians"
+    ],
+    "primaryCategory": "comedians",
+    "tagline": "Clean observational comedy for corporate rooms",
+    "bio": "Varun Iyer is a comedian based in Bengaluru, performing in English and Hindi. Known for reading the room and adapting every set to the audience, Varun has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "bengaluru",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "English",
+      "Hindi",
+      "Tamil"
+    ],
+    "eventTypes": [
+      "CORPORATE",
+      "COLLEGE_FEST",
+      "PRIVATE_PARTY",
+      "AWARD_NIGHT"
+    ],
+    "tier": "PREMIUM",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": true,
+    "feeBand": {
+      "minPaise": "50000000",
+      "maxPaise": "100000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Varun Iyer, comedian (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&ar=4:5",
+        "alt": "Audience laughing — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd dancing at an event — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
+        "alt": "Packed auditorium — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&ar=4:5",
+        "alt": "Close-up of a microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Offsite — fintech company",
+        "city": "Guwahati",
+        "year": 2026
+      },
+      {
+        "title": "College fest comedy night",
+        "city": "Shillong",
+        "year": 2025
+      },
+      {
+        "title": "Diwali party — consulting firm",
+        "city": "Kolkata",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "One handheld wireless mic, stool, bottle of water. No visuals or background music during the set.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "comedian",
+      "english",
+      "hindi",
+      "tamil",
+      "bengaluru"
+    ]
+  },
+  {
+    "id": "tal_018",
+    "slug": "sneha-pillai",
+    "name": "Sneha Pillai",
+    "categories": [
+      "comedians"
+    ],
+    "primaryCategory": "comedians",
+    "tagline": "Bilingual stand-up that lands with every age",
+    "bio": "Sneha Pillai is a comedian based in Mumbai, performing in English and Hindi. Known for reading the room and adapting every set to the audience, Sneha has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "mumbai",
+    "travelsTo": [
+      "shillong",
+      "bengaluru"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "CORPORATE",
+      "COLLEGE_FEST",
+      "PRIVATE_PARTY",
+      "AWARD_NIGHT",
+      "CONFERENCE"
+    ],
+    "tier": "STANDARD",
+    "representation": "AGENCY_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "15000000",
+      "maxPaise": "35000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Sneha Pillai, comedian (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&ar=4:5",
+        "alt": "Microphone on stage — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1621112904887-419379ce6824?auto=format&fit=crop&ar=4:5",
+        "alt": "Evening gathering with music — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&ar=4:5",
+        "alt": "Small theatre stage with a lone performer — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&ar=4:5",
+        "alt": "Audience laughing — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd dancing at an event — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Offsite — fintech company",
+        "city": "Shillong",
+        "year": 2026
+      },
+      {
+        "title": "College fest comedy night",
+        "city": "Kolkata",
+        "year": 2025
+      },
+      {
+        "title": "Diwali party — consulting firm",
+        "city": "Delhi",
+        "year": 2024
+      },
+      {
+        "title": "Corporate town hall emcee + set",
+        "city": "Mumbai",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "One handheld wireless mic, stool, bottle of water. No visuals or background music during the set.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "comedian",
+      "english",
+      "hindi",
+      "mumbai"
+    ]
+  },
+  {
+    "id": "tal_019",
+    "slug": "manas-choudhury",
+    "name": "Manas Choudhury",
+    "categories": [
+      "comedians"
+    ],
+    "primaryCategory": "comedians",
+    "tagline": "Crowd work that makes the room feel small",
+    "bio": "Manas Choudhury is a comedian based in Guwahati, performing in Assamese and Hindi. Known for reading the room and adapting every set to the audience, Manas has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "guwahati",
+    "travelsTo": [
+      "shillong",
+      "mumbai",
+      "pune"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Assamese",
+      "Hindi",
+      "English"
+    ],
+    "eventTypes": [
+      "CORPORATE",
+      "COLLEGE_FEST",
+      "PRIVATE_PARTY"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "6000000",
+      "maxPaise": "15000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Manas Choudhury, comedian (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd dancing at an event — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
+        "alt": "Packed auditorium — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&ar=4:5",
+        "alt": "Close-up of a microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Offsite — fintech company",
+        "city": "Kolkata",
+        "year": 2026
+      },
+      {
+        "title": "College fest comedy night",
+        "city": "Delhi",
+        "year": 2025
+      },
+      {
+        "title": "Diwali party — consulting firm",
+        "city": "Mumbai",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "One handheld wireless mic, stool, bottle of water. No visuals or background music during the set.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "comedian",
+      "assamese",
+      "hindi",
+      "english",
+      "guwahati"
+    ]
+  },
+  {
+    "id": "tal_020",
+    "slug": "ritwik-basu",
+    "name": "Ritwik Basu",
+    "categories": [
+      "comedians"
+    ],
+    "primaryCategory": "comedians",
+    "tagline": "Story-led comedy about family, work and food",
+    "bio": "Ritwik Basu is a comedian based in Kolkata, performing in Bengali and English. Known for reading the room and adapting every set to the audience, Ritwik has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "kolkata",
+    "travelsTo": [
+      "delhi",
+      "hyderabad"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Bengali",
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "CORPORATE",
+      "COLLEGE_FEST",
+      "PRIVATE_PARTY",
+      "AWARD_NIGHT"
+    ],
+    "tier": "STANDARD",
+    "representation": "PLATFORM_COORDINATED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "8000000",
+      "maxPaise": "18000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1618077360395-f3068be8e001?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Ritwik Basu, comedian (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1621112904887-419379ce6824?auto=format&fit=crop&ar=4:5",
+        "alt": "Evening gathering with music — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&ar=4:5",
+        "alt": "Small theatre stage with a lone performer — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&ar=4:5",
+        "alt": "Audience laughing — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd dancing at an event — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Offsite — fintech company",
+        "city": "Delhi",
+        "year": 2026
+      },
+      {
+        "title": "College fest comedy night",
+        "city": "Mumbai",
+        "year": 2025
+      },
+      {
+        "title": "Diwali party — consulting firm",
+        "city": "Bengaluru",
+        "year": 2024
+      },
+      {
+        "title": "Corporate town hall emcee + set",
+        "city": "Hyderabad",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "One handheld wireless mic, stool, bottle of water. No visuals or background music during the set.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "comedian",
+      "bengali",
+      "english",
+      "hindi",
+      "kolkata"
+    ]
+  },
+  {
+    "id": "tal_021",
+    "slug": "harpreet-gill",
+    "name": "Harpreet Gill",
+    "categories": [
+      "comedians"
+    ],
+    "primaryCategory": "comedians",
+    "tagline": "Clean observational comedy for corporate rooms",
+    "bio": "Harpreet Gill is a comedian based in Delhi, performing in Hindi and Punjabi. Known for reading the room and adapting every set to the audience, Harpreet has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "delhi",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "Hindi",
+      "Punjabi",
+      "English"
+    ],
+    "eventTypes": [
+      "CORPORATE",
+      "COLLEGE_FEST",
+      "PRIVATE_PARTY",
+      "AWARD_NIGHT",
+      "CONFERENCE"
+    ],
+    "tier": "PREMIUM",
+    "representation": "AGENCY_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "40000000",
+      "maxPaise": "90000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Harpreet Gill, comedian (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
+        "alt": "Packed auditorium — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&ar=4:5",
+        "alt": "Close-up of a microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&ar=4:5",
+        "alt": "Microphone on stage — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1621112904887-419379ce6824?auto=format&fit=crop&ar=4:5",
+        "alt": "Evening gathering with music — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&ar=4:5",
+        "alt": "Small theatre stage with a lone performer — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Offsite — fintech company",
+        "city": "Mumbai",
+        "year": 2026
+      },
+      {
+        "title": "College fest comedy night",
+        "city": "Bengaluru",
+        "year": 2025
+      },
+      {
+        "title": "Diwali party — consulting firm",
+        "city": "Hyderabad",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "One handheld wireless mic, stool, bottle of water. No visuals or background music during the set.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "comedian",
+      "hindi",
+      "punjabi",
+      "english",
+      "delhi"
+    ]
+  },
+  {
+    "id": "tal_022",
+    "slug": "aditi-joshi",
+    "name": "Aditi Joshi",
+    "categories": [
+      "comedians"
+    ],
+    "primaryCategory": "comedians",
+    "tagline": "Bilingual stand-up that lands with every age",
+    "bio": "Aditi Joshi is a comedian based in Pune, performing in Marathi and Hindi. Known for reading the room and adapting every set to the audience, Aditi has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "pune",
+    "travelsTo": [
+      "guwahati",
+      "delhi",
+      "hyderabad"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Marathi",
+      "Hindi",
+      "English"
+    ],
+    "eventTypes": [
+      "CORPORATE",
+      "COLLEGE_FEST",
+      "PRIVATE_PARTY"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": false,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "7000000",
+      "maxPaise": "15000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Aditi Joshi, comedian (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&ar=4:5",
+        "alt": "Small theatre stage with a lone performer — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&ar=4:5",
+        "alt": "Audience laughing — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd dancing at an event — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Offsite — fintech company",
+        "city": "Bengaluru",
+        "year": 2026
+      },
+      {
+        "title": "College fest comedy night",
+        "city": "Hyderabad",
+        "year": 2025
+      },
+      {
+        "title": "Diwali party — consulting firm",
+        "city": "Pune",
+        "year": 2024
+      },
+      {
+        "title": "Corporate town hall emcee + set",
+        "city": "Guwahati",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "One handheld wireless mic, stool, bottle of water. No visuals or background music during the set.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "comedian",
+      "marathi",
+      "hindi",
+      "english",
+      "pune"
+    ]
+  },
+  {
+    "id": "tal_023",
+    "slug": "sai-kiran-reddy",
+    "name": "Sai Kiran Reddy",
+    "categories": [
+      "comedians"
+    ],
+    "primaryCategory": "comedians",
+    "tagline": "Crowd work that makes the room feel small",
+    "bio": "Sai Kiran Reddy is a comedian based in Hyderabad, performing in Telugu and English. Known for reading the room and adapting every set to the audience, Sai has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "hyderabad",
+    "travelsTo": [
+      "kolkata",
+      "bengaluru"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Telugu",
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "CORPORATE",
+      "COLLEGE_FEST",
+      "PRIVATE_PARTY",
+      "AWARD_NIGHT"
+    ],
+    "tier": "STANDARD",
+    "representation": "AGENCY_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "9000000",
+      "maxPaise": "22000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1610216705422-caa3fcb6d158?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Sai Kiran Reddy, comedian (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&ar=4:5",
+        "alt": "Close-up of a microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&ar=4:5",
+        "alt": "Microphone on stage — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1621112904887-419379ce6824?auto=format&fit=crop&ar=4:5",
+        "alt": "Evening gathering with music — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&ar=4:5",
+        "alt": "Small theatre stage with a lone performer — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Offsite — fintech company",
+        "city": "Hyderabad",
+        "year": 2026
+      },
+      {
+        "title": "College fest comedy night",
+        "city": "Pune",
+        "year": 2025
+      },
+      {
+        "title": "Diwali party — consulting firm",
+        "city": "Guwahati",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "One handheld wireless mic, stool, bottle of water. No visuals or background music during the set.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "comedian",
+      "telugu",
+      "english",
+      "hindi",
+      "hyderabad"
+    ]
+  },
+  {
+    "id": "tal_024",
+    "slug": "wanbha-marbaniang",
+    "name": "Wanbha Marbaniang",
+    "categories": [
+      "comedians"
+    ],
+    "primaryCategory": "comedians",
+    "tagline": "Story-led comedy about family, work and food",
+    "bio": "Wanbha Marbaniang is a comedian based in Shillong, performing in Khasi and English. Known for reading the room and adapting every set to the audience, Wanbha has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "shillong",
+    "travelsTo": [
+      "kolkata",
+      "bengaluru"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Khasi",
+      "English"
+    ],
+    "eventTypes": [
+      "CORPORATE",
+      "COLLEGE_FEST",
+      "PRIVATE_PARTY",
+      "AWARD_NIGHT",
+      "CONFERENCE"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "4000000",
+      "maxPaise": "10000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1528892952291-009c663ce843?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Wanbha Marbaniang, comedian (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&ar=4:5",
+        "alt": "Audience laughing — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd dancing at an event — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
+        "alt": "Packed auditorium — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&ar=4:5",
+        "alt": "Close-up of a microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&ar=4:5",
+        "alt": "Microphone on stage — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Offsite — fintech company",
+        "city": "Pune",
+        "year": 2026
+      },
+      {
+        "title": "College fest comedy night",
+        "city": "Guwahati",
+        "year": 2025
+      },
+      {
+        "title": "Diwali party — consulting firm",
+        "city": "Shillong",
+        "year": 2024
+      },
+      {
+        "title": "Corporate town hall emcee + set",
+        "city": "Kolkata",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "One handheld wireless mic, stool, bottle of water. No visuals or background music during the set.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "comedian",
+      "khasi",
+      "english",
+      "shillong"
+    ]
+  },
+  {
+    "id": "tal_025",
+    "slug": "kavita-menon",
+    "name": "Dr. Kavita Menon",
+    "categories": [
+      "speakers"
+    ],
+    "primaryCategory": "speakers",
+    "tagline": "Keynotes on leadership and resilience",
+    "bio": "Dr. Kavita Menon is a speaker based in Bengaluru, performing in English and Hindi. Known for reading the room and adapting every set to the audience, Kavita has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "bengaluru",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "CONFERENCE",
+      "CORPORATE",
+      "AWARD_NIGHT"
+    ],
+    "tier": "PREMIUM",
+    "representation": "AGENCY_MANAGED",
+    "verified": true,
+    "featured": true,
+    "feeBand": {
+      "minPaise": "60000000",
+      "maxPaise": "120000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Dr. Kavita Menon, speaker (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&ar=4:5",
+        "alt": "Workshop discussion — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&ar=4:5",
+        "alt": "Stage set for a keynote — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&ar=4:5",
+        "alt": "Speaker presenting on a large screen — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Leadership summit keynote",
+        "city": "Guwahati",
+        "year": 2026
+      },
+      {
+        "title": "Startup conference — fireside chat",
+        "city": "Shillong",
+        "year": 2025
+      },
+      {
+        "title": "Sales kick-off — pharma company",
+        "city": "Kolkata",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "Lapel mic + handheld backup, HDMI clicker, confidence monitor, 30-min tech check.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "speaker",
+      "english",
+      "hindi",
+      "bengaluru"
+    ]
+  },
+  {
+    "id": "tal_026",
+    "slug": "rajat-agarwal",
+    "name": "Rajat Agarwal",
+    "categories": [
+      "speakers"
+    ],
+    "primaryCategory": "speakers",
+    "tagline": "High-energy anchor for award nights",
+    "bio": "Rajat Agarwal is a speaker based in Delhi, performing in English and Hindi. Known for reading the room and adapting every set to the audience, Rajat has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "delhi",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "CONFERENCE",
+      "CORPORATE",
+      "AWARD_NIGHT",
+      "PRODUCT_LAUNCH"
+    ],
+    "tier": "PREMIUM",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": null,
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Rajat Agarwal, speaker (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&ar=4:5",
+        "alt": "Talk in a startup office — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&ar=4:5",
+        "alt": "Event crowd under lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
+        "alt": "Conference audience — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&ar=4:5",
+        "alt": "Workshop discussion — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Leadership summit keynote",
+        "city": "Shillong",
+        "year": 2026
+      },
+      {
+        "title": "Startup conference — fireside chat",
+        "city": "Kolkata",
+        "year": 2025
+      },
+      {
+        "title": "Sales kick-off — pharma company",
+        "city": "Delhi",
+        "year": 2024
+      },
+      {
+        "title": "TEDx-style talk — engineering college",
+        "city": "Mumbai",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "Lapel mic + handheld backup, HDMI clicker, confidence monitor, 30-min tech check.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "speaker",
+      "english",
+      "hindi",
+      "delhi"
+    ]
+  },
+  {
+    "id": "tal_027",
+    "slug": "farah-siddiqui",
+    "name": "Farah Siddiqui",
+    "categories": [
+      "speakers"
+    ],
+    "primaryCategory": "speakers",
+    "tagline": "Talks on product, growth and teams",
+    "bio": "Farah Siddiqui is a speaker based in Mumbai, performing in English and Hindi. Known for reading the room and adapting every set to the audience, Farah has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "mumbai",
+    "travelsTo": [
+      "shillong",
+      "bengaluru"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "CONFERENCE",
+      "CORPORATE",
+      "AWARD_NIGHT",
+      "PRODUCT_LAUNCH",
+      "COLLEGE_FEST"
+    ],
+    "tier": "STANDARD",
+    "representation": "AGENCY_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "15000000",
+      "maxPaise": "30000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Farah Siddiqui, speaker (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&ar=4:5",
+        "alt": "Stage set for a keynote — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&ar=4:5",
+        "alt": "Speaker presenting on a large screen — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&ar=4:5",
+        "alt": "Hall with an engaged audience — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&ar=4:5",
+        "alt": "Talk in a startup office — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&ar=4:5",
+        "alt": "Event crowd under lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Leadership summit keynote",
+        "city": "Kolkata",
+        "year": 2026
+      },
+      {
+        "title": "Startup conference — fireside chat",
+        "city": "Delhi",
+        "year": 2025
+      },
+      {
+        "title": "Sales kick-off — pharma company",
+        "city": "Mumbai",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "Lapel mic + handheld backup, HDMI clicker, confidence monitor, 30-min tech check.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "speaker",
+      "english",
+      "hindi",
+      "mumbai"
+    ]
+  },
+  {
+    "id": "tal_028",
+    "slug": "debojit-saikia",
+    "name": "Debojit Saikia",
+    "categories": [
+      "speakers"
+    ],
+    "primaryCategory": "speakers",
+    "tagline": "Bilingual emcee who keeps schedules on time",
+    "bio": "Debojit Saikia is a speaker based in Guwahati, performing in Assamese and English. Known for reading the room and adapting every set to the audience, Debojit has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "guwahati",
+    "travelsTo": [
+      "shillong",
+      "mumbai",
+      "pune"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Assamese",
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "CONFERENCE",
+      "CORPORATE",
+      "AWARD_NIGHT"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "5000000",
+      "maxPaise": "12000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Debojit Saikia, speaker (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&ar=4:5",
+        "alt": "Event crowd under lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
+        "alt": "Conference audience — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&ar=4:5",
+        "alt": "Workshop discussion — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Leadership summit keynote",
+        "city": "Delhi",
+        "year": 2026
+      },
+      {
+        "title": "Startup conference — fireside chat",
+        "city": "Mumbai",
+        "year": 2025
+      },
+      {
+        "title": "Sales kick-off — pharma company",
+        "city": "Bengaluru",
+        "year": 2024
+      },
+      {
+        "title": "TEDx-style talk — engineering college",
+        "city": "Hyderabad",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "Lapel mic + handheld backup, HDMI clicker, confidence monitor, 30-min tech check.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "speaker",
+      "assamese",
+      "english",
+      "hindi",
+      "guwahati"
+    ]
+  },
+  {
+    "id": "tal_029",
+    "slug": "ananya-mukherjee",
+    "name": "Ananya Mukherjee",
+    "categories": [
+      "speakers"
+    ],
+    "primaryCategory": "speakers",
+    "tagline": "Keynotes on leadership and resilience",
+    "bio": "Ananya Mukherjee is a speaker based in Kolkata, performing in Bengali and English. Known for reading the room and adapting every set to the audience, Ananya has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "kolkata",
+    "travelsTo": [
+      "delhi",
+      "hyderabad"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Bengali",
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "CONFERENCE",
+      "CORPORATE",
+      "AWARD_NIGHT",
+      "PRODUCT_LAUNCH"
+    ],
+    "tier": "STANDARD",
+    "representation": "PLATFORM_COORDINATED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "10000000",
+      "maxPaise": "25000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Ananya Mukherjee, speaker (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&ar=4:5",
+        "alt": "Speaker presenting on a large screen — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&ar=4:5",
+        "alt": "Hall with an engaged audience — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&ar=4:5",
+        "alt": "Talk in a startup office — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&ar=4:5",
+        "alt": "Event crowd under lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Leadership summit keynote",
+        "city": "Mumbai",
+        "year": 2026
+      },
+      {
+        "title": "Startup conference — fireside chat",
+        "city": "Bengaluru",
+        "year": 2025
+      },
+      {
+        "title": "Sales kick-off — pharma company",
+        "city": "Hyderabad",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "Lapel mic + handheld backup, HDMI clicker, confidence monitor, 30-min tech check.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "speaker",
+      "bengali",
+      "english",
+      "hindi",
+      "kolkata"
+    ]
+  },
+  {
+    "id": "tal_030",
+    "slug": "nikhil-patwardhan",
+    "name": "Nikhil Patwardhan",
+    "categories": [
+      "speakers"
+    ],
+    "primaryCategory": "speakers",
+    "tagline": "High-energy anchor for award nights",
+    "bio": "Nikhil Patwardhan is a speaker based in Pune, performing in Marathi and English. Known for reading the room and adapting every set to the audience, Nikhil has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "pune",
+    "travelsTo": [
+      "shillong",
+      "mumbai"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Marathi",
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "CONFERENCE",
+      "CORPORATE",
+      "AWARD_NIGHT",
+      "PRODUCT_LAUNCH",
+      "COLLEGE_FEST"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "12000000",
+      "maxPaise": "28000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Nikhil Patwardhan, speaker (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
+        "alt": "Conference audience — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&ar=4:5",
+        "alt": "Workshop discussion — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&ar=4:5",
+        "alt": "Stage set for a keynote — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&ar=4:5",
+        "alt": "Speaker presenting on a large screen — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&ar=4:5",
+        "alt": "Hall with an engaged audience — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Leadership summit keynote",
+        "city": "Bengaluru",
+        "year": 2026
+      },
+      {
+        "title": "Startup conference — fireside chat",
+        "city": "Hyderabad",
+        "year": 2025
+      },
+      {
+        "title": "Sales kick-off — pharma company",
+        "city": "Pune",
+        "year": 2024
+      },
+      {
+        "title": "TEDx-style talk — engineering college",
+        "city": "Guwahati",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "Lapel mic + handheld backup, HDMI clicker, confidence monitor, 30-min tech check.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "speaker",
+      "marathi",
+      "english",
+      "hindi",
+      "pune"
+    ]
+  },
+  {
+    "id": "tal_031",
+    "slug": "lakshmi-narayanan",
+    "name": "Lakshmi Narayanan",
+    "categories": [
+      "speakers"
+    ],
+    "primaryCategory": "speakers",
+    "tagline": "Talks on product, growth and teams",
+    "bio": "Lakshmi Narayanan is a speaker based in Hyderabad, performing in English and Telugu. Known for reading the room and adapting every set to the audience, Lakshmi has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "hyderabad",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "English",
+      "Telugu",
+      "Tamil"
+    ],
+    "eventTypes": [
+      "CONFERENCE",
+      "CORPORATE",
+      "AWARD_NIGHT"
+    ],
+    "tier": "PREMIUM",
+    "representation": "AGENCY_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "40000000",
+      "maxPaise": "80000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1614289371518-722f2615943d?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Lakshmi Narayanan, speaker (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&ar=4:5",
+        "alt": "Hall with an engaged audience — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&ar=4:5",
+        "alt": "Talk in a startup office — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&ar=4:5",
+        "alt": "Event crowd under lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Leadership summit keynote",
+        "city": "Hyderabad",
+        "year": 2026
+      },
+      {
+        "title": "Startup conference — fireside chat",
+        "city": "Pune",
+        "year": 2025
+      },
+      {
+        "title": "Sales kick-off — pharma company",
+        "city": "Guwahati",
+        "year": 2024
+      }
+    ],
+    "riderSummary": "Lapel mic + handheld backup, HDMI clicker, confidence monitor, 30-min tech check.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "speaker",
+      "english",
+      "telugu",
+      "tamil",
+      "hyderabad"
+    ]
+  },
+  {
+    "id": "tal_032",
+    "slug": "daphira-kharkongor",
+    "name": "Daphira Kharkongor",
+    "categories": [
+      "speakers"
+    ],
+    "primaryCategory": "speakers",
+    "tagline": "Bilingual emcee who keeps schedules on time",
+    "bio": "Daphira Kharkongor is a speaker based in Shillong, performing in Khasi and English. Known for reading the room and adapting every set to the audience, Daphira has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "shillong",
+    "travelsTo": [
+      "delhi",
+      "hyderabad"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Khasi",
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "CONFERENCE",
+      "CORPORATE",
+      "AWARD_NIGHT",
+      "PRODUCT_LAUNCH"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": false,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "4000000",
+      "maxPaise": "9000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Daphira Kharkongor, speaker (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&ar=4:5",
+        "alt": "Workshop discussion — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&ar=4:5",
+        "alt": "Stage set for a keynote — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&ar=4:5",
+        "alt": "Speaker presenting on a large screen — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&ar=4:5",
+        "alt": "Hall with an engaged audience — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Leadership summit keynote",
+        "city": "Pune",
+        "year": 2026
+      },
+      {
+        "title": "Startup conference — fireside chat",
+        "city": "Guwahati",
+        "year": 2025
+      },
+      {
+        "title": "Sales kick-off — pharma company",
+        "city": "Shillong",
+        "year": 2024
+      },
+      {
+        "title": "TEDx-style talk — engineering college",
+        "city": "Kolkata",
+        "year": 2026
+      }
+    ],
+    "riderSummary": "Lapel mic + handheld backup, HDMI clicker, confidence monitor, 30-min tech check.",
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "speaker",
+      "khasi",
+      "english",
+      "hindi",
+      "shillong"
+    ]
+  },
+  {
+    "id": "tal_033",
+    "slug": "zoya-merchant",
+    "name": "Zoya Merchant",
+    "categories": [
+      "creators"
+    ],
+    "primaryCategory": "creators",
+    "tagline": "Lifestyle creator with a loyal Gen-Z audience",
+    "bio": "Zoya Merchant is a creator based in Mumbai, performing in English and Hindi. Known for reading the room and adapting every set to the audience, Zoya has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "mumbai",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "BRAND_CAMPAIGN",
+      "PRODUCT_LAUNCH",
+      "COLLEGE_FEST",
+      "CORPORATE"
+    ],
+    "tier": "PREMIUM",
+    "representation": "AGENCY_MANAGED",
+    "verified": true,
+    "featured": true,
+    "feeBand": {
+      "minPaise": "50000000",
+      "maxPaise": "150000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Zoya Merchant, creator (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator posing on a terrace — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1496024840928-4c417adf211d?auto=format&fit=crop&ar=4:5",
+        "alt": "Festival crowd in colour — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&ar=4:5",
+        "alt": "Podcast microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&ar=4:5",
+        "alt": "Recording microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1603575448878-868a20723f5d?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator editing on a laptop — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Product launch livestream",
+        "city": "Guwahati",
+        "year": 2026
+      },
+      {
+        "title": "Campus ambassador campaign",
+        "city": "Shillong",
+        "year": 2025
+      },
+      {
+        "title": "Festive brand series — retail chain",
+        "city": "Kolkata",
+        "year": 2024
+      }
+    ],
+    "riderSummary": null,
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "creator",
+      "english",
+      "hindi",
+      "mumbai"
+    ]
+  },
+  {
+    "id": "tal_034",
+    "slug": "ankit-bora",
+    "name": "Ankit Bora",
+    "categories": [
+      "creators"
+    ],
+    "primaryCategory": "creators",
+    "tagline": "Food and travel stories from the North-East",
+    "bio": "Ankit Bora is a creator based in Guwahati, performing in Assamese and Hindi. Known for reading the room and adapting every set to the audience, Ankit has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "guwahati",
+    "travelsTo": [
+      "shillong",
+      "mumbai",
+      "pune"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Assamese",
+      "Hindi",
+      "English"
+    ],
+    "eventTypes": [
+      "BRAND_CAMPAIGN",
+      "PRODUCT_LAUNCH",
+      "COLLEGE_FEST"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "5000000",
+      "maxPaise": "15000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Ankit Bora, creator (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1603575448878-868a20723f5d?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator editing on a laptop — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator desk with dual screens — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&ar=4:5",
+        "alt": "Phone filming a live show — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Product launch livestream",
+        "city": "Shillong",
+        "year": 2026
+      },
+      {
+        "title": "Campus ambassador campaign",
+        "city": "Kolkata",
+        "year": 2025
+      },
+      {
+        "title": "Festive brand series — retail chain",
+        "city": "Delhi",
+        "year": 2024
+      },
+      {
+        "title": "City food walk collaboration",
+        "city": "Mumbai",
+        "year": 2026
+      }
+    ],
+    "riderSummary": null,
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "creator",
+      "assamese",
+      "hindi",
+      "english",
+      "guwahati"
+    ]
+  },
+  {
+    "id": "tal_035",
+    "slug": "trisha-dutta",
+    "name": "Trisha Dutta",
+    "categories": [
+      "creators"
+    ],
+    "primaryCategory": "creators",
+    "tagline": "Tech explainers that convert",
+    "bio": "Trisha Dutta is a creator based in Kolkata, performing in Bengali and English. Known for reading the room and adapting every set to the audience, Trisha has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "kolkata",
+    "travelsTo": [
+      "delhi",
+      "hyderabad"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Bengali",
+      "English"
+    ],
+    "eventTypes": [
+      "BRAND_CAMPAIGN",
+      "PRODUCT_LAUNCH",
+      "COLLEGE_FEST",
+      "CORPORATE"
+    ],
+    "tier": "STANDARD",
+    "representation": "AGENCY_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "10000000",
+      "maxPaise": "30000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Trisha Dutta, creator (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1496024840928-4c417adf211d?auto=format&fit=crop&ar=4:5",
+        "alt": "Festival crowd in colour — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&ar=4:5",
+        "alt": "Podcast microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&ar=4:5",
+        "alt": "Recording microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1603575448878-868a20723f5d?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator editing on a laptop — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Product launch livestream",
+        "city": "Kolkata",
+        "year": 2026
+      },
+      {
+        "title": "Campus ambassador campaign",
+        "city": "Delhi",
+        "year": 2025
+      },
+      {
+        "title": "Festive brand series — retail chain",
+        "city": "Mumbai",
+        "year": 2024
+      }
+    ],
+    "riderSummary": null,
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "creator",
+      "bengali",
+      "english",
+      "kolkata"
+    ]
+  },
+  {
+    "id": "tal_036",
+    "slug": "yash-khanna",
+    "name": "Yash Khanna",
+    "categories": [
+      "creators",
+      "comedians"
+    ],
+    "primaryCategory": "creators",
+    "tagline": "Short-form comedy sketches with brand integrations",
+    "bio": "Yash Khanna is a creator based in Delhi, performing in Hindi and English. Known for reading the room and adapting every set to the audience, Yash has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "delhi",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "Hindi",
+      "English"
+    ],
+    "eventTypes": [
+      "BRAND_CAMPAIGN",
+      "PRODUCT_LAUNCH",
+      "COLLEGE_FEST",
+      "CORPORATE"
+    ],
+    "tier": "PREMIUM",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": true,
+    "feeBand": {
+      "minPaise": "40000000",
+      "maxPaise": "100000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1615109398623-88346a601842?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Yash Khanna, creator (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator desk with dual screens — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&ar=4:5",
+        "alt": "Phone filming a live show — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator posing on a terrace — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1496024840928-4c417adf211d?auto=format&fit=crop&ar=4:5",
+        "alt": "Festival crowd in colour — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&ar=4:5",
+        "alt": "Podcast microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Product launch livestream",
+        "city": "Delhi",
+        "year": 2026
+      },
+      {
+        "title": "Campus ambassador campaign",
+        "city": "Mumbai",
+        "year": 2025
+      },
+      {
+        "title": "Festive brand series — retail chain",
+        "city": "Bengaluru",
+        "year": 2024
+      },
+      {
+        "title": "City food walk collaboration",
+        "city": "Hyderabad",
+        "year": 2026
+      }
+    ],
+    "riderSummary": null,
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "creator",
+      "hindi",
+      "english",
+      "delhi"
+    ]
+  },
+  {
+    "id": "tal_037",
+    "slug": "priya-hegde",
+    "name": "Priya Hegde",
+    "categories": [
+      "creators"
+    ],
+    "primaryCategory": "creators",
+    "tagline": "Lifestyle creator with a loyal Gen-Z audience",
+    "bio": "Priya Hegde is a creator based in Bengaluru, performing in Kannada and English. Known for reading the room and adapting every set to the audience, Priya has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "bengaluru",
+    "travelsTo": [
+      "guwahati",
+      "delhi",
+      "pune"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Kannada",
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "BRAND_CAMPAIGN",
+      "PRODUCT_LAUNCH",
+      "COLLEGE_FEST"
+    ],
+    "tier": "STANDARD",
+    "representation": "PLATFORM_COORDINATED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "8000000",
+      "maxPaise": "20000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Priya Hegde, creator (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&ar=4:5",
+        "alt": "Podcast microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&ar=4:5",
+        "alt": "Recording microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1603575448878-868a20723f5d?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator editing on a laptop — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Product launch livestream",
+        "city": "Mumbai",
+        "year": 2026
+      },
+      {
+        "title": "Campus ambassador campaign",
+        "city": "Bengaluru",
+        "year": 2025
+      },
+      {
+        "title": "Festive brand series — retail chain",
+        "city": "Hyderabad",
+        "year": 2024
+      }
+    ],
+    "riderSummary": null,
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "creator",
+      "kannada",
+      "english",
+      "hindi",
+      "bengaluru"
+    ]
+  },
+  {
+    "id": "tal_038",
+    "slug": "rohit-naidu",
+    "name": "Rohit Naidu",
+    "categories": [
+      "creators"
+    ],
+    "primaryCategory": "creators",
+    "tagline": "Food and travel stories from the North-East",
+    "bio": "Rohit Naidu is a creator based in Hyderabad, performing in Telugu and English. Known for reading the room and adapting every set to the audience, Rohit has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "hyderabad",
+    "travelsTo": [
+      "kolkata",
+      "bengaluru"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Telugu",
+      "English"
+    ],
+    "eventTypes": [
+      "BRAND_CAMPAIGN",
+      "PRODUCT_LAUNCH",
+      "COLLEGE_FEST",
+      "CORPORATE"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "7000000",
+      "maxPaise": "18000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1600486913747-55e5470d6f40?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Rohit Naidu, creator (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&ar=4:5",
+        "alt": "Phone filming a live show — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator posing on a terrace — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1496024840928-4c417adf211d?auto=format&fit=crop&ar=4:5",
+        "alt": "Festival crowd in colour — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&ar=4:5",
+        "alt": "Podcast microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Product launch livestream",
+        "city": "Bengaluru",
+        "year": 2026
+      },
+      {
+        "title": "Campus ambassador campaign",
+        "city": "Hyderabad",
+        "year": 2025
+      },
+      {
+        "title": "Festive brand series — retail chain",
+        "city": "Pune",
+        "year": 2024
+      },
+      {
+        "title": "City food walk collaboration",
+        "city": "Guwahati",
+        "year": 2026
+      }
+    ],
+    "riderSummary": null,
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "creator",
+      "telugu",
+      "english",
+      "hyderabad"
+    ]
+  },
+  {
+    "id": "tal_039",
+    "slug": "saanvi-kale",
+    "name": "Saanvi Kale",
+    "categories": [
+      "creators"
+    ],
+    "primaryCategory": "creators",
+    "tagline": "Tech explainers that convert",
+    "bio": "Saanvi Kale is a creator based in Pune, performing in Marathi and English. Known for reading the room and adapting every set to the audience, Saanvi has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "pune",
+    "travelsTo": [
+      "shillong",
+      "mumbai"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Marathi",
+      "English",
+      "Hindi"
+    ],
+    "eventTypes": [
+      "BRAND_CAMPAIGN",
+      "PRODUCT_LAUNCH",
+      "COLLEGE_FEST",
+      "CORPORATE"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "6000000",
+      "maxPaise": "15000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Saanvi Kale, creator (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&ar=4:5",
+        "alt": "Recording microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1603575448878-868a20723f5d?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator editing on a laptop — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator desk with dual screens — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&ar=4:5",
+        "alt": "Phone filming a live show — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator posing on a terrace — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Product launch livestream",
+        "city": "Hyderabad",
+        "year": 2026
+      },
+      {
+        "title": "Campus ambassador campaign",
+        "city": "Pune",
+        "year": 2025
+      },
+      {
+        "title": "Festive brand series — retail chain",
+        "city": "Guwahati",
+        "year": 2024
+      }
+    ],
+    "riderSummary": null,
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "creator",
+      "marathi",
+      "english",
+      "hindi",
+      "pune"
+    ]
+  },
+  {
+    "id": "tal_040",
+    "slug": "ezra-nongrum",
+    "name": "Ezra Nongrum",
+    "categories": [
+      "creators",
+      "singers"
+    ],
+    "primaryCategory": "creators",
+    "tagline": "Short-form comedy sketches with brand integrations",
+    "bio": "Ezra Nongrum is a creator based in Shillong, performing in Khasi and English. Known for reading the room and adapting every set to the audience, Ezra has worked across corporate stages, weddings and campus festivals. Every booking is coordinated by our team with the authorised representative — from the brief to the final bow.",
+    "baseCity": "shillong",
+    "travelsTo": [
+      "guwahati",
+      "mumbai",
+      "pune"
+    ],
+    "travelsPanIndia": false,
+    "languages": [
+      "Khasi",
+      "English"
+    ],
+    "eventTypes": [
+      "BRAND_CAMPAIGN",
+      "PRODUCT_LAUNCH",
+      "COLLEGE_FEST"
+    ],
+    "tier": "STANDARD",
+    "representation": "TALENT_MANAGED",
+    "verified": true,
+    "featured": false,
+    "feeBand": {
+      "minPaise": "4000000",
+      "maxPaise": "10000000"
+    },
+    "images": [
+      {
+        "src": "https://images.unsplash.com/photo-1605462863863-10d9e47e15ee?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
+        "alt": "Portrait of Ezra Nongrum, creator (placeholder photo)",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator posing on a terrace — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1496024840928-4c417adf211d?auto=format&fit=crop&ar=4:5",
+        "alt": "Festival crowd in colour — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&ar=4:5",
+        "alt": "Podcast microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [
+      {
+        "title": "Product launch livestream",
+        "city": "Pune",
+        "year": 2026
+      },
+      {
+        "title": "Campus ambassador campaign",
+        "city": "Guwahati",
+        "year": 2025
+      },
+      {
+        "title": "Festive brand series — retail chain",
+        "city": "Shillong",
+        "year": 2024
+      },
+      {
+        "title": "City food walk collaboration",
+        "city": "Kolkata",
+        "year": 2026
+      }
+    ],
+    "riderSummary": null,
+    "faqs": [
+      {
+        "q": "Is the fee shown the final price?",
+        "a": "No. The band is indicative. Your final quote depends on date, city, duration, travel and production needs, and is confirmed with the authorised representative."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team verifies availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Can the performance be customised?",
+        "a": "Yes — share setlist, language or theme preferences in your brief and we’ll confirm what’s possible."
+      }
+    ],
+    "tags": [
+      "creator",
+      "khasi",
+      "english",
+      "shillong"
+    ]
+  }
+]
