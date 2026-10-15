@@ -1,0 +1,21 @@
+{
+  "name": "talent-platform",
+  "private": true,
+  "packageManager": "pnpm@9.15.9",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test",
+    "mock:generate": "node scripts/generate-mock.mjs"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "turbo": "^2.5.0",
+    "typescript": "~5.9.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
