@@ -1,0 +1,178 @@
+/*
+ * Design tokens — single source of colour, type, radius and motion.
+ * Light values follow design.md §3; dark (default) is pushed per the frontend brief.
+ * Components reference semantic tokens only; never hex values.
+ */
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg-elevated: #ffffff;
+  --surface: #f7f7f8;
+  --surface-2: #eeeef1;
+  --surface-3: #e5e5ea;
+  --border: #e3e3e8;
+  --border-strong: #c9c9d1;
+  --fg: #111114;
+  --fg-muted: #5c5c66;
+  --fg-subtle: #6e6e78;
+  --primary: #6d28d9;
+  --primary-text: #6d28d9;
+  --primary-fg: #ffffff;
+  --accent: #c026d3;
+  --gold: #b8860b;
+  --gold-text: #8a6400;
+  --gold-soft: color-mix(in oklab, #b8860b 14%, transparent);
+  --success: #15803d;
+  --warning: #b45309;
+  --danger: #b91c1c;
+  --info: #1d4ed8;
+  --neutral: #5c5c66;
+  --ring: #7c3aed;
+  --glass: color-mix(in oklab, #ffffff 72%, transparent);
+  --glass-border: color-mix(in oklab, #111114 10%, transparent);
+  --glow-1: color-mix(in oklab, #8b5cf6 22%, transparent);
+  --glow-2: color-mix(in oklab, #d946ef 16%, transparent);
+  --grain-opacity: 0.035;
+  --shadow-card: 0 1px 2px rgb(17 17 20 / 0.06), 0 1px 1px rgb(17 17 20 / 0.04);
+  --shadow-float: 0 24px 60px -20px rgb(17 17 20 / 0.25);
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #0a0a0b;
+  --bg-elevated: #111114;
+  --surface: #121215;
+  --surface-2: #1a1a1f;
+  --surface-3: #232329;
+  --border: #25252c;
+  --border-strong: #3a3a44;
+  --fg: #f4f4f6;
+  --fg-muted: #a1a1ac;
+  --fg-subtle: #80808b;
+  --primary: #7c3aed;
+  --primary-text: #b69cff;
+  --primary-fg: #ffffff;
+  --accent: #d946ef;
+  --gold: #e3b341;
+  --gold-text: #e3b341;
+  --gold-soft: color-mix(in oklab, #e3b341 14%, transparent);
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #f87171;
+  --info: #60a5fa;
+  --neutral: #a1a1ac;
+  --ring: #a78bfa;
+  --glass: color-mix(in oklab, #16161b 62%, transparent);
+  --glass-border: color-mix(in oklab, #ffffff 10%, transparent);
+  --glow-1: color-mix(in oklab, #7c3aed 38%, transparent);
+  --glow-2: color-mix(in oklab, #d946ef 24%, transparent);
+  --grain-opacity: 0.06;
+  --shadow-card: none;
+  --shadow-float: 0 30px 80px -24px rgb(0 0 0 / 0.7);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-primary: var(--primary);
+  --color-primary-text: var(--primary-text);
+  --color-primary-fg: var(--primary-fg);
+  --color-accent: var(--accent);
+  --color-gold: var(--gold);
+  --color-gold-text: var(--gold-text);
+  --color-gold-soft: var(--gold-soft);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --color-neutral: var(--neutral);
+  --color-ring: var(--ring);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-cabinet), var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+
+  --shadow-card: var(--shadow-card);
+  --shadow-float: var(--shadow-float);
+
+  /* Fluid display scale (desktop hero 96–160px) */
+  --text-hero: clamp(3.25rem, 1.2rem + 8.4vw, 10rem);
+  --text-hero--line-height: 0.9;
+  --text-hero--letter-spacing: -0.045em;
+  --text-mega: clamp(3rem, 0.5rem + 13vw, 15rem);
+  --text-mega--line-height: 0.82;
+  --text-mega--letter-spacing: -0.05em;
+  --text-display: clamp(2.5rem, 1.4rem + 4.6vw, 6rem);
+  --text-display--line-height: 0.93;
+  --text-display--letter-spacing: -0.035em;
+  --text-h1: clamp(2.125rem, 1.6rem + 2.2vw, 3.5rem);
+  --text-h1--line-height: 1;
+  --text-h1--letter-spacing: -0.03em;
+  --text-h2: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.025em;
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.75rem;
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--line-height: 1rem;
+  --text-eyebrow--letter-spacing: 0.16em;
+
+  /* Motion tokens (mirrored in apps/web/lib/motion/tokens.ts) */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --duration-slower: 700ms;
+
+  --breakpoint-xs: 22.5rem;
+  --breakpoint-3xl: 120rem;
+
+  --animate-shimmer: shimmer 1.6s var(--ease-in-out-quad) infinite;
+  --animate-pulse-soft: pulse-soft 2s var(--ease-in-out-quad) infinite;
+  --animate-shake: shake 0.42s var(--ease-out-expo) 1;
+  --animate-float: float 6s var(--ease-in-out-quad) infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+  --animate-scroll-cue: scroll-cue 1.8s var(--ease-in-out-quad) infinite;
+
+  @keyframes shimmer {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(1.6); }
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(5px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(2px); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes scroll-cue {
+    0% { transform: translateY(-100%); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translateY(220%); opacity: 0; }
+  }
+}

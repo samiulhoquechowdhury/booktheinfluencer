@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+@import '@repo/ui/styles.css';
+
+@source '../../../packages/ui/src';
+
+/* View-transition morph timing (card image → profile hero). */
+::view-transition-group(*) {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
