@@ -10,7 +10,7 @@
 - **Who books:** corporates, event/wedding planners, brands/agencies, colleges/hotels/malls, private customers.
 - **Model:** Request to Book / Check Availability → verify with rep → quote → contract → advance → confirmed → event → settlement.
 - **Revenue:** margin/commission 10–25%, service fee 5–10%, campaign mgmt, retainers, featured profiles.
-- **Current phase:** Phase 0 — Discovery & UX.
+- **Current phase:** Phase 0/1 — clickable frontend (`apps/web`) on mock data; backend not started.
 - **Docs:** `prd.md` · `srs.md` · `trd.md` · `architecture.md` · `design.md` · `rules.md` · `task.md`
 
 ## 2. Stack (locked unless a decision below changes it)
@@ -34,7 +34,7 @@ Turborepo + pnpm · Next.js 15 (web, admin) · NestJS 11 (api, worker) · Prisma
 | 2026-10-16 | Add libs outside trd §1: `motion`, `gsap` (+ScrollTrigger), `lenis`, `lucide-react`, `next-themes`, `react-day-picker`, `canvas-confetti`, `sonner`, `vaul`, `@date-fns/tz` | Motion/scroll system + UI primitives requested in brief; all MIT, maintained | Frontend brief |
 | 2026-10-16 | No Lottie — empty-state loops in CSS/SVG | Smaller bundle, no extra dep | Frontend brief |
 | 2026-10-16 | Tailwind v4 (CSS-first `@theme`); tokens shipped as CSS from `packages/ui` | shadcn/ui current default; no JS preset needed | Frontend brief |
-| 2026-10-16 | Display font Clash Display (Fontshare, self-hosted), fallback Inter Tight 800; body Inter | Free for commercial use; Neue Montreal is paid | Frontend brief |
+| 2026-10-16 | Display font Cabinet Grotesk variable (Fontshare FFL, self-hosted), fallback Inter Tight 800; body Inter; accent italic serif Instrument Serif | Brief needs 800–900 weights; Clash Display tops out at 700; Neue Montreal is paid | Frontend brief |
 | 2026-10-16 | Hero H1 "BOOK THE TALENT. / WE HANDLE THE REST."; design.md headline used as sub-copy | Brief overrides design.md §6.1 headline (accepted at "go") | Frontend brief |
 | 2026-10-16 | Availability labels follow design.md §4 table (covers all 7 statuses) | srs AVL-2 lacks TENTATIVE and differs on NOT_CHECKED | Frontend brief |
 | 2026-10-16 | Mock "Pay" opens a gateway hand-off only; never mutates payment state client-side. CONFIRMED appears only in seeded data | Golden rules 1 & 4 | Frontend brief |
@@ -52,14 +52,20 @@ Turborepo + pnpm · Next.js 15 (web, admin) · NestJS 11 (api, worker) · Prisma
 - [ ] Legal/tax: GST on commission vs pass-through, TDS, intermediary status, DPDP compliance
 - [ ] Availability label wording: design.md §4 vs srs AVL-2 disagree (NOT_CHECKED "Request received" vs "Checking availability"; AVL-2 has no TENTATIVE). Using design.md for now — confirm.
 - [ ] Hero headline: design.md §6.1 vs frontend brief. Using brief's line as H1 — confirm with brand work.
-- [ ] Final display font licence check once brand is locked (Clash Display placeholder).
+- [ ] Final display font licence check once brand is locked (Cabinet Grotesk placeholder).
+- [ ] CAT-11 says only verified-rep talent appear publicly, yet CAT-2 has a "verified only" filter (implies unverified ones are listed). Mock shows 4 unverified talents (no badge) — confirm which rule wins.
+- [ ] Brief asked for 6 sample bookings covering every availability status; there are 7 statuses, so the mock has 7 bookings (one per status) — confirm OK.
+- [ ] Showreels: no licensed video yet; profiles show "Showreel shared on request" — confirm approach.
+- [ ] Demo OTP is fixed `123456`; real OTP provider still undecided (see vendor question).
 
 ## 6. Status
 | Area | State | Notes |
 |---|---|---|
 | Planning docs | Done (v1.0) | 16 Oct 2026 |
-| Design | Not started | T-010..T-013 |
-| Repo / foundation | Not started | T-100.. |
+| Design | In code (no Figma) | Tokens + components in `packages/ui`; motion system in `apps/web/lib/motion` |
+| Repo / foundation | Partial | Turborepo + pnpm; `apps/web`, `packages/{schemas,ui,utils,config}` |
+| Web frontend | Clickable on mock API | Home, listing, category, city/category SEO, profile, enquiry, account, booking detail, favourites, talent portal, content/legal, 404/error |
+| Backend | Not started | `lib/api` transports swap to NestJS later (`NEXT_PUBLIC_API_BASE`) |
 | Integrations | Not started | Blocked on vendor choice |
 
 ## 7. Glossary
@@ -68,8 +74,20 @@ Lead = enquiry pipeline record · Booking = one talent at one event · Rep = aut
 ## 8. Gotchas / learnings
 _(add as they happen — e.g. gateway webhook quirks, DLT template rejections, Prisma BigInt JSON serialisation)_
 - Prisma `BigInt` doesn't serialise to JSON by default → convert in DTO layer (string or number-safe).
+- Money on the wire = paise as decimal **strings**; `PaiseSchema` parses to `bigint`. `toWire()` in the mock router mirrors this.
+- Customer/talent DTO schemas are `z.strictObject` — a leaked internal field makes parsing throw (caught by `apps/web/lib/mock/serializers.test.ts`).
+- Mock data lives server-side only (`lib/mock/*` is `server-only`); the browser talks to `/api/mock/*`, so raw margin/payout never ships in a JS bundle. Regenerate with `pnpm mock:generate`.
+- Mock state is in-memory on `globalThis` — resets on server restart.
+- Card → profile morph uses the View Transitions API: the clicked card's image gets `view-transition-name: talent-hero` only at click time (names must be unique per page). Falls back to the curtain wipe.
+- Curtain wipe never runs on first load (would cover SSR HTML before hydration).
+- `.text-outline` needs `--stroke-color` (text colour is transparent, so `currentColor` can't be used).
+- Local machine: repo sits on an NTFS/FUSE mount → `pnpm install` ~30 min and builds are I/O-bound; git needed `safe.directory`. pnpm ignored `${HOME}`-based `store-dir`/`virtual-store-dir` in `.npmrc`, so those were removed.
+- npm registry is slow from this network (~450 KB/s); pinned known majors instead of newest (TS 5.9, ESLint 9, Motion 12, react-day-picker 9, Next 15.5).
+- Playwright's old `chrome-headless-shell` never fires `requestAnimationFrame` over CDP, so Motion/Lenis animations look frozen there. Use `--virtual-time-budget=20000 --screenshot` for visual checks, or a full Chrome for e2e.
+- Unsplash placeholder IDs were checked to resolve (HTTP 200) and reviewed visually; one with a recognisable celebrity DJ helmet and one brand logo were excluded.
 
 ## 9. Session log
 | Date | Who | What changed |
 |---|---|---|
 | 2026-10-16 | Planning | Created all docs v1.0 |
+| 2026-10-16 | Claude (frontend) | Built `apps/web` on mock data: tokens/fonts, motion library, shell, all customer + portal pages; mock API with serializer tests; ticked T-1xx/T-2xx UI items as `[~]` |

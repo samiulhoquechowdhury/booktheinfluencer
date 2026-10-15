@@ -30,16 +30,16 @@
 ## Phase 1 — MVP (8–12 weeks build)
 
 ### M1.1 Foundation (week 1–2)
-- [ ] T-100 Turborepo + pnpm monorepo, apps `web`, `admin`, `api`, `worker`, packages `db`, `schemas`, `ui`, `config`, `utils` (1d)
+- [~] T-100 Turborepo + pnpm monorepo, apps `web`, `admin`, `api`, `worker`, packages `db`, `schemas`, `ui`, `config`, `utils` (1d)  — _done: `web`, `schemas`, `ui`, `config`, `utils`; pending: `admin`, `api`, `worker`, `db`_
 - [ ] T-101 Shared ESLint/Prettier/tsconfig, Husky + lint-staged, commitlint (0.5d)
 - [ ] T-102 Docker Compose: Postgres 16 + Redis (0.5d)
 - [ ] T-103 GitHub Actions: lint, typecheck, test, build (0.5d)
 - [ ] T-104 Prisma schema v1 from `trd.md §4` + first migration + seed (2d)
 - [ ] T-105 Zod env validation per app; `.env.example` (0.5d)
 - [ ] T-106 NestJS core: config, Prisma service, pino logger, global error filter, Zod pipe, request id (1d)
-- [ ] T-107 `packages/utils`: money (paise, bps, formatINR, tax rounding) + tests (1d)
+- [x] T-107 `packages/utils`: money (paise, bps, formatINR, tax rounding) + tests (1d)
 - [ ] T-108 `packages/utils`: lead/booking state machine + tests (1d)
-- [ ] T-109 `packages/ui`: tokens, Tailwind preset, shadcn setup, base components (2d)
+- [x] T-109 `packages/ui`: tokens, Tailwind preset, shadcn setup, base components (2d)  — _Tailwind v4 CSS tokens instead of a JS preset_
 - [ ] T-110 Staging environments (web, admin, api, worker, DB, Redis, buckets) (1d)
 
 ### M1.2 Auth & users (week 2–3) — AUTH-1..5
@@ -59,17 +59,17 @@
 - [ ] T-144 Representatives CRUD, link to talents, KYC upload, verification status (1.5d)
 - [ ] T-145 Blackout dates (admin) (0.5d)
 - [ ] T-146 Public catalogue API: list, filters, full-text search, pagination (2d)
-- [ ] T-147 Serializer tests: public talent DTO has no rate card fields (0.5d)
-- [ ] T-148 Web: listing page with filters (desktop rail, mobile sheet) (2d)
-- [ ] T-149 Web: talent profile page with sticky CTA, fee band, disclaimer (2d)
-- [ ] T-150 Web: home page (1.5d)
-- [ ] T-151 Web: SEO city/category landing pages, metadata, JSON-LD, sitemap (1.5d)
-- [ ] T-152 Favourites (0.5d)
+- [~] T-147 Serializer tests: public talent DTO has no rate card fields (0.5d)  — _mock serializer tests pass; NestJS serializer tests pending_
+- [~] T-148 Web: listing page with filters (desktop rail, mobile sheet) (2d)  — _UI done on mock API (`apps/web`); API part pending_
+- [~] T-149 Web: talent profile page with sticky CTA, fee band, disclaimer (2d)  — _UI done on mock API (`apps/web`); API part pending_
+- [~] T-150 Web: home page (1.5d)  — _UI done on mock API (`apps/web`); API part pending_
+- [~] T-151 Web: SEO city/category landing pages, metadata, JSON-LD, sitemap (1.5d)  — _UI done on mock API (`apps/web`); API part pending_
+- [~] T-152 Favourites (0.5d)  — _UI done on mock API (`apps/web`); API part pending_
 - [ ] T-153 CSV bulk import of talents (SHOULD) (1d)
 
 ### M1.4 Enquiry & pipeline (week 5–7) — ENQ, PIPE, AVL
 - [ ] T-160 Enquiry API: create lead + draft bookings, ref number, Turnstile (1.5d)
-- [ ] T-161 Web: enquiry stepper with OTP, success page (2d)
+- [~] T-161 Web: enquiry stepper with OTP, success page (2d)  — _UI done on mock API (`apps/web`); API part pending_
 - [ ] T-162 Acknowledgement notifications (worker + templates) (1d)
 - [ ] T-163 Admin: pipeline Kanban + table views, filters (2.5d)
 - [ ] T-164 Stage transition endpoint using state machine; lost reason; activity log (1d)
@@ -84,8 +84,8 @@
 - [ ] T-182 Approval rule (below minimum / margin floor) + approval action (1d)
 - [ ] T-183 Quote PDF render in worker (1d)
 - [ ] T-184 Send quote: email/WA with secure link (0.5d)
-- [ ] T-185 Web: quote view, accept (IP + timestamp), request changes, expiry (1.5d)
-- [ ] T-186 Serializer tests: customer quote DTO has no internal cost (0.5d)
+- [~] T-185 Web: quote view, accept (IP + timestamp), request changes, expiry (1.5d)  — _UI done on mock API (`apps/web`); API part pending_
+- [~] T-186 Serializer tests: customer quote DTO has no internal cost (0.5d)  — _mock serializer tests pass; NestJS serializer tests pending_
 
 ### M1.6 Contracts & payments (week 8–10) — CON, PAY
 - [ ] T-200 Documents module: private bucket, presigned GET (0.5d)
@@ -100,10 +100,10 @@
 - [ ] T-209 Webhook replay/duplicate tests; full-lifecycle e2e test (1.5d)
 
 ### M1.7 Customer dashboard & talent portal (week 10–11) — CUS, TAL
-- [ ] T-220 Web: account bookings list (1d)
-- [ ] T-221 Web: booking detail with status timeline, action card, tabs (2d)
-- [ ] T-222 Talent portal: my bookings, my payouts, blackout dates (1.5d)
-- [ ] T-223 Serializer tests: talent DTO has payout only, no selling price/margin (0.5d)
+- [~] T-220 Web: account bookings list (1d)  — _UI done on mock API (`apps/web`); API part pending_
+- [~] T-221 Web: booking detail with status timeline, action card, tabs (2d)  — _UI done on mock API (`apps/web`); API part pending_
+- [~] T-222 Talent portal: my bookings, my payouts, blackout dates (1.5d)  — _UI done on mock API (`apps/web`); API part pending_
+- [~] T-223 Serializer tests: talent DTO has payout only, no selling price/margin (0.5d)  — _mock serializer tests pass; NestJS serializer tests pending_
 
 ### M1.8 Ops, settlement, analytics (week 11–12) — OPS, SET, ANA
 - [ ] T-240 Ops checklist on booking (SHOULD) (1d)
@@ -120,7 +120,7 @@
 - [ ] T-262 Performance pass: LCP, image optimisation, ISR (1d)
 - [ ] T-263 Backups + restore drill (0.5d)
 - [ ] T-264 Sentry, uptime monitoring, alerting (0.5d)
-- [ ] T-265 Legal pages live; consent capture on forms (0.5d)
+- [~] T-265 Legal pages live; consent capture on forms (0.5d)  — _placeholder legal copy + consent checkbox; awaiting T-007 lawyer text_
 
 ---
 
