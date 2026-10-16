@@ -1,7 +1,7 @@
 import { CategoryWall } from '@/components/home/category-wall';
 import { CorporateBand } from '@/components/home/corporate-band';
 import { FaqSection } from '@/components/home/faq-section';
-import { FeaturedSpotlight } from '@/components/home/featured-spotlight';
+import { FeaturedCarousel } from '@/components/home/featured-carousel';
 import { Hero } from '@/components/home/hero';
 import { HowItWorks } from '@/components/home/how-it-works';
 import { TrustNumbers } from '@/components/home/trust-numbers';
@@ -32,7 +32,7 @@ export default async function HomePage() {
       <Hero mosaic={mosaic} />
       <CategoryWall items={wall} />
       <HowItWorks />
-      <FeaturedSpotlight talents={featured} />
+      <FeaturedCarousel talents={featured} />
       <TrustNumbers talentCount={all.total} cityCount={CITIES.length} />
       <CorporateBand images={corporateImages} />
       <FaqSection />
