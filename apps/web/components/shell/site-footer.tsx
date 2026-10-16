@@ -49,11 +49,11 @@ export function SiteFooter() {
           </nav>
         </div>
         <div className="mt-16 flex flex-col gap-3 border-t border-border pt-6 text-xs text-fg-subtle md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} {BRAND.name} (placeholder brand). Fees and availability are confirmed with the authorised representative before booking.</p>
-          <p>Prices in INR · Times in IST · Talent images are illustrative placeholders.</p>
+          <p>© {new Date().getFullYear()} {BRAND.name}. Fees and availability are confirmed with the authorised representative before booking.</p>
+          <p>Prices in INR · Times in IST · Talent photos via Wikimedia Commons, credited on each profile.</p>
         </div>
       </div>
-      <p aria-hidden className="relative mt-8 flex justify-center overflow-hidden px-2 font-display text-mega leading-[0.8] font-black select-none">
+      <p aria-hidden className="relative mt-8 flex justify-center overflow-hidden px-2 font-display text-mega leading-[0.8] font-black select-none" style={{ fontSize: `min(var(--text-mega), ${(150 / letters.length).toFixed(2)}vw)` }}>
         {letters.map((ch, i) => (
           <Letter key={i} ch={ch} i={i} n={letters.length} progress={scrollYProgress} reduce={!!reduce} />
         ))}

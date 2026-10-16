@@ -112,7 +112,7 @@ function searchTalents(query: TalentQueryParsed) {
 const requireRole = (role: SessionRole, need: SessionRole) =>
   role === need ? null : role === 'GUEST' ? err(401, 'UNAUTHENTICATED', 'Please log in to continue.') : err(403, 'FORBIDDEN', 'This area is not available for your account.');
 
-const SESSION_NAMES: Record<SessionRole, string | null> = { GUEST: null, CUSTOMER: 'Riya Sharma', TALENT: 'Bass Monk' };
+const SESSION_NAMES: Record<SessionRole, string | null> = { GUEST: null, CUSTOMER: 'Riya Sharma', TALENT: 'Papon' };
 
 function nextRef(prefix: string) {
   const d = db();

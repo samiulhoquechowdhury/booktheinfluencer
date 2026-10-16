@@ -10,7 +10,7 @@ import { SearchBar } from '@/components/search/search-bar';
 import { SplitText } from '@/lib/motion';
 
 /**
- * Hero: line-by-line split headline over a slow drifting mosaic of talent photos,
+ * Hero: line-by-line split headline over a slow drifting mosaic of featured talent photos,
  * soft radial glows, glass search bar and an animated scroll cue.
  */
 export function Hero({ mosaic }: { mosaic: PublicTalent[] }) {
@@ -20,7 +20,9 @@ export function Hero({ mosaic }: { mosaic: PublicTalent[] }) {
   const mosaicY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
   const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
-  const columns = [0, 1, 2, 3, 4, 5].map((c) => mosaic.filter((_, i) => i % 6 === c));
+  // Repeat the featured set until every column has enough tiles to drift without gaps.
+  const tiles = mosaic.length ? Array.from({ length: Math.max(18, mosaic.length) }, (_, i) => mosaic[i % mosaic.length]!) : [];
+  const columns = [0, 1, 2, 3, 4, 5].map((c) => tiles.filter((_, i) => i % 6 === c));
 
   return (
     <section ref={ref} className="relative isolate flex min-h-[100svh] flex-col overflow-hidden pt-28 pb-10 md:pt-36">
@@ -34,7 +36,7 @@ export function Hero({ mosaic }: { mosaic: PublicTalent[] }) {
             >
               {[...col, ...col].map((t, i) => (
                 <div key={`${t.slug}-${i}`} className="relative aspect-[4/5] overflow-hidden rounded-xl">
-                  <Image src={`${t.images[0]!.src}&sat=-100`} alt="" fill sizes="(min-width: 768px) 20vw, 30vw" quality={35} loading="lazy" fetchPriority="low" className="object-cover" />
+                  <Image src={t.images[0]!.src} alt="" fill sizes="(min-width: 768px) 20vw, 30vw" quality={35} loading="lazy" fetchPriority="low" className="object-cover grayscale" />
                 </div>
               ))}
             </div>
@@ -53,7 +55,7 @@ export function Hero({ mosaic }: { mosaic: PublicTalent[] }) {
           initial={reduce ? false : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="glass mb-8 inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium text-fg-muted"
+          className="glass mx-auto mb-8 md:mx-0 inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium text-fg-muted"
         >
           <span className="relative flex size-2">
             <span className="absolute inset-0 rounded-full bg-success motion-safe:animate-ping" />
@@ -67,7 +69,7 @@ export function Hero({ mosaic }: { mosaic: PublicTalent[] }) {
           by="line"
           trigger="mount"
           delay={0.15}
-          className="font-display text-hero font-black uppercase"
+          className="text-center font-display text-hero font-black uppercase md:text-left"
           lines={[
             { text: 'Book the talent.', node: <>Book the <span className="text-outline">talent.</span></> },
             {
@@ -86,12 +88,12 @@ export function Hero({ mosaic }: { mosaic: PublicTalent[] }) {
           initial={reduce ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.75 }}
-          className="mt-8 grid gap-8 lg:mt-12 xl:grid-cols-12 xl:items-end"
+          className="mt-8 grid gap-8 text-center md:text-left lg:mt-12 xl:grid-cols-12 xl:items-end"
         >
-          <div className="max-w-xl xl:col-span-5">
+          <div className="mx-auto max-w-xl md:mx-0 xl:col-span-5">
             <h2 className="text-lg font-semibold text-fg md:text-xl">Book verified talent for any event.</h2>
-            <p className="mt-2 max-w-md text-fg-muted md:text-lg">
-              Singers, DJs, comedians, speakers and creators — with contracts, secure payments and a dedicated manager.
+            <p className="mx-auto mt-2 max-w-md text-fg-muted md:mx-0 md:text-lg">
+              Actors, singers, DJs, comedians, anchors and creators — with contracts, secure payments and a dedicated manager.
             </p>
             <Link href="/enquire" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary-text underline-offset-4 hover:underline">
               Or plan with an expert →
@@ -102,7 +104,7 @@ export function Hero({ mosaic }: { mosaic: PublicTalent[] }) {
           </div>
         </motion.div>
 
-        <div className="mt-auto flex items-end justify-between pt-12">
+        <div className="mt-auto flex items-end justify-center pt-12 md:justify-between">
           <a href="#categories" className="group flex items-center gap-3 text-xs font-medium tracking-[0.2em] text-fg-muted uppercase hover:text-fg">
             <span className="relative block h-12 w-px overflow-hidden bg-border">
               <span className="absolute inset-x-0 top-0 h-1/2 bg-fg motion-safe:animate-scroll-cue" />
@@ -110,7 +112,7 @@ export function Hero({ mosaic }: { mosaic: PublicTalent[] }) {
             Scroll to explore
           </a>
           <p className="hidden text-right text-xs text-fg-subtle md:block">
-            Fees shown as indicative bands.
+            Fees on request.
             <br />
             Confirmed with the authorised representative.
           </p>

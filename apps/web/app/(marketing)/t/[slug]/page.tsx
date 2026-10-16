@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description: `${t.tagline}. ${t.languages.join(', ')}. Check availability and get an itemised quote.`,
     alternates: { canonical: `/t/${t.slug}` },
-    openGraph: { title, description: t.tagline, images: [{ url: `${t.images[0]!.src}&w=1200&h=630&fit=crop`, width: 1200, height: 630, alt: t.images[0]!.alt }] },
+    openGraph: { title, description: t.tagline, images: [{ url: t.images[0]!.src.split('#')[0]!, width: t.images[0]!.width, height: t.images[0]!.height, alt: t.images[0]!.alt }] },
   };
 }
 

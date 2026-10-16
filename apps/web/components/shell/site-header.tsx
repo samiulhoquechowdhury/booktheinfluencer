@@ -120,8 +120,11 @@ export function SiteHeader({ variant = 'full', nav }: { variant?: 'full' | 'mini
             </NavigationMenu.Root>
           )}
 
-          <div className="relative ml-auto flex items-center gap-0.5 sm:gap-1">
-            <SearchButton />
+          <div className="relative ml-auto flex shrink-0 items-center gap-0.5 sm:gap-1">
+            {/* Below 400px the mobile menu carries search, leaving room for the full wordmark. */}
+            <span className={variant === 'full' ? 'hidden min-[400px]:contents' : 'contents'}>
+              <SearchButton />
+            </span>
             <span className="hidden sm:contents">
               <ThemeToggle />
             </span>

@@ -40,7 +40,7 @@ export function SearchBar({ className }: { className?: string }) {
       onSubmit={submit}
       role="search"
       aria-label="Find talent"
-      className={cn('glass flex flex-col gap-1 rounded-3xl p-2 shadow-float md:flex-row md:items-center md:rounded-full', className)}
+      className={cn('glass flex flex-col gap-1 rounded-3xl p-2 text-left shadow-float md:flex-row md:items-center md:rounded-full', className)}
     >
       <Cell icon={<Sparkles className="size-4" />} label="Category" htmlFor="sb-category">
         <Select
@@ -50,7 +50,7 @@ export function SearchBar({ className }: { className?: string }) {
           onValueChange={setCategory}
           emptyLabel="All talent"
           options={CATEGORIES.map((c) => ({ value: c.slug, label: c.name, description: c.description.split(' — ')[0] }))}
-          contentClassName="md:min-w-[18rem]"
+          contentClassName="md:min-w-[18rem] md:max-w-[24rem]"
         />
       </Cell>
       <span aria-hidden className="hidden h-8 w-px bg-border md:block" />

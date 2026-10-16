@@ -5,15 +5,16 @@
     "stage": "NEW",
     "availability": "NOT_CHECKED",
     "talent": {
-      "slug": "aanya-barua",
-      "name": "Aanya Barua",
+      "slug": "joi-barua",
+      "name": "Joi Barua",
       "primaryCategory": "singers",
       "image": {
-        "src": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
-        "alt": "Portrait of Aanya Barua, singer (placeholder photo)",
-        "width": 1200,
-        "height": 1500,
-        "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoIAAoAA4BaJagCdAD0ZiARXADLSPOG1IXaDXwfQASn8AYGPQCe2BeAHenQXtzyYXWw8ikYlXLCtjbsJ85AAA=="
+        "src": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Joi_Barua-1_copy.jpg#w=1841",
+        "width": 1841,
+        "height": 2592,
+        "credit": "Photo: Bids199 (CC BY-SA 3.0), via Wikimedia Commons",
+        "alt": "Joi Barua, singer",
+        "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADwAQCdASoIAAoAA4BaJaQAAp2NrvLjQAAA/sJtyo5eTzr+uHLz9do+IVSL3R/UkJRSYlt5x5s4mAAA"
       }
     },
     "event": {
@@ -59,15 +60,16 @@
     "stage": "AVAILABILITY_CHECK",
     "availability": "AWAITING_MANAGER",
     "talent": {
-      "slug": "varun-iyer",
-      "name": "Varun Iyer",
+      "slug": "kenny-sebastian",
+      "name": "Kenny Sebastian",
       "primaryCategory": "comedians",
       "image": {
-        "src": "https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
-        "alt": "Portrait of Varun Iyer, comedian (placeholder photo)",
-        "width": 1200,
-        "height": 1500,
-        "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADQAQCdASoIAAoAA4BaJZQAAudu3IQM4AD+6qfdv3kP5QqP/xt/978qIVDFLy64RpOYFf6AG/DyAAAA"
+        "src": "https://upload.wikimedia.org/wikipedia/commons/5/58/Kenny_2016_%28cropped%29.jpg#w=397",
+        "width": 397,
+        "height": 560,
+        "credit": "Photo: Vidhishah121 (CC BY-SA 4.0), via Wikimedia Commons",
+        "alt": "Kenny Sebastian, comedian",
+        "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADwAQCdASoIAAoAA4BaJYgCdAEUoBM5Z8AA/veWWX7moXdnTNgZ+tAFsit+TyLNz56iIxRlN6UJ9qrnfBriAAAA"
       }
     },
     "event": {
@@ -97,7 +99,7 @@
       },
       {
         "at": "2026-10-11T09:05:00Z",
-        "label": "Request sent to Varun’s manager"
+        "label": "Request sent to Kenny’s representative"
       }
     ],
     "notes": "Clean set; mixed audience of partners and families.",
@@ -117,15 +119,16 @@
     "stage": "AVAILABILITY_CHECK",
     "availability": "HOLD_REQUESTED",
     "talent": {
-      "slug": "kabir-malhotra",
-      "name": "Kabir Malhotra",
+      "slug": "badshah",
+      "name": "Badshah",
       "primaryCategory": "singers",
       "image": {
-        "src": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
-        "alt": "Portrait of Kabir Malhotra, singer (placeholder photo)",
-        "width": 1200,
-        "height": 1500,
-        "blurDataURL": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADwAQCdASoIAAoAA4BaJZQCw7D0ZjRi6gAA/qayljiKZhedRIgrkPTYJc+2XSivdeTiZxAA"
+        "src": "https://upload.wikimedia.org/wikipedia/commons/d/db/Badshah_in_2017_at_Mirchi_Music_Awards.png#w=1236",
+        "width": 1236,
+        "height": 1608,
+        "credit": "Photo: Mirchi Plus (CC BY 3.0), via Wikimedia Commons",
+        "alt": "Badshah, singer",
+        "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADQAQCdASoIAAoAA4BaJQBOgB5wXWASAAD+76L2DbCVaV8hZNwu7JbUtJrPTLQRvLl4G0CCPiNbDHRCRAA="
       }
     },
     "event": {
@@ -179,15 +182,16 @@
     "stage": "QUOTE_SENT",
     "availability": "AVAILABLE",
     "talent": {
-      "slug": "dj-nyx",
-      "name": "DJ Nyx",
+      "slug": "nucleya",
+      "name": "Nucleya",
       "primaryCategory": "djs",
       "image": {
-        "src": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
-        "alt": "Portrait of DJ Nyx, DJ (placeholder photo)",
-        "width": 1200,
-        "height": 1500,
-        "blurDataURL": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADwAQCdASoIAAoAA4BaJZwCdAD0mKwFaAAA/vG+FcyWPw/UF7WN8zgIg3SE3jVBF9foLAAA"
+        "src": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Nucleya_Zoom_Holi_2020.png#w=1819",
+        "width": 1819,
+        "height": 1355,
+        "credit": "Photo: Crazy Bollywood (CC BY 3.0), via Wikimedia Commons",
+        "alt": "Nucleya, DJ",
+        "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoIAAoAA4BaJYgC7AD0uUJZOEAA/vCzcmlwnVkE/QNIA/jhm5boGCIqp0YiB9MqedrTRoiKKg2XKv1Ru6gAAA=="
       }
     },
     "event": {
@@ -212,7 +216,7 @@
           {
             "id": "Q-24005-1_li1",
             "type": "TALENT_FEE",
-            "description": "DJ Nyx — 3-hour open-format set",
+            "description": "Nucleya — 3-hour headline set",
             "amountPaise": "65000000",
             "internalCostPaise": "52000000",
             "payoutPaise": "52000000"
@@ -292,7 +296,7 @@
           {
             "id": "Q-24005-2_li1",
             "type": "TALENT_FEE",
-            "description": "DJ Nyx — 3-hour open-format set",
+            "description": "Nucleya — 3-hour headline set",
             "amountPaise": "65000000",
             "internalCostPaise": "52000000",
             "payoutPaise": "52000000"
@@ -386,7 +390,7 @@
       },
       {
         "at": "2026-10-04T12:00:00Z",
-        "label": "DJ Nyx confirmed available"
+        "label": "Nucleya confirmed available"
       },
       {
         "at": "2026-10-06T10:00:00Z",
@@ -418,15 +422,16 @@
     "stage": "ADVANCE_PENDING",
     "availability": "TENTATIVE",
     "talent": {
-      "slug": "kavita-menon",
-      "name": "Dr. Kavita Menon",
+      "slug": "maniesh-paul",
+      "name": "Maniesh Paul",
       "primaryCategory": "speakers",
       "image": {
-        "src": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
-        "alt": "Portrait of Dr. Kavita Menon, speaker (placeholder photo)",
-        "width": 1200,
-        "height": 1500,
-        "blurDataURL": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADwAQCdASoIAAoAA4BaJZACdAD0eSEEvAAA/Iv/ruKfE9I6bXVFd5AjtPbPvSHq99au53kJ47AAAA=="
+        "src": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Manish_Paul_at_ITA_2012.jpg#w=500",
+        "width": 500,
+        "height": 713,
+        "credit": "Photo: TeamManishPaul (CC BY-SA 3.0), via Wikimedia Commons",
+        "alt": "Maniesh Paul, anchor",
+        "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoIAAoAA4BaJQBOgB6TP6TM84AA/upZdz/nPgbu8yOTHV4uU3Lu3YIP4df4MUDoK0aNUtYkM6YaQqRpgigAAA=="
       }
     },
     "event": {
@@ -451,7 +456,7 @@
           {
             "id": "Q-24003-1_li1",
             "type": "TALENT_FEE",
-            "description": "Keynote (45 min) + Q&A (15 min)",
+            "description": "Hosting — opening and closing segments (60 min)",
             "amountPaise": "85000000",
             "internalCostPaise": "70000000",
             "payoutPaise": "70000000"
@@ -595,15 +600,16 @@
     "stage": "AVAILABILITY_CHECK",
     "availability": "UNAVAILABLE",
     "talent": {
-      "slug": "tanvi-desai",
-      "name": "Tanvi Desai",
+      "slug": "neeti-mohan",
+      "name": "Neeti Mohan",
       "primaryCategory": "singers",
       "image": {
-        "src": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
-        "alt": "Portrait of Tanvi Desai, singer (placeholder photo)",
-        "width": 1200,
-        "height": 1500,
-        "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoIAAoAA4BaJYwCdAD0Y6lgQAD+1Gwx8Q7o2QDpP6xNkWHgSg2nntLwhmtdXr1HHU86JtCSCMcAAA=="
+        "src": "https://upload.wikimedia.org/wikipedia/commons/1/13/Neeti_Mohan_attends_Shakti_Mohan%E2%80%99s_Nritya_Shakti_celebrations_for_World_Dance_Day_%2804%29_%28cropped%29.jpg#w=210",
+        "width": 210,
+        "height": 280,
+        "credit": "Photo: Bollywood Hungama (CC BY 3.0), via Wikimedia Commons",
+        "alt": "Neeti Mohan, singer",
+        "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoIAAoAA4BaJYwCdAEDpJ96rqJgAP5sUf3NThW1olfGHwdOdqxkkLV+01PaoGf9fZ1TUF4fsqite5Q2nI7Og5Mg2MHkC2+fc/dw+JGAw9y8AA=="
       }
     },
     "event": {
@@ -633,7 +639,7 @@
       },
       {
         "at": "2026-09-20T11:30:00Z",
-        "label": "Tanvi is touring on 19 Dec — not available"
+        "label": "Not available on 19 Dec"
       },
       {
         "at": "2026-09-20T11:45:00Z",
@@ -657,15 +663,16 @@
     "stage": "CONFIRMED",
     "availability": "CONFIRMED",
     "talent": {
-      "slug": "bass-monk",
-      "name": "Bass Monk",
-      "primaryCategory": "djs",
+      "slug": "papon",
+      "name": "Papon",
+      "primaryCategory": "singers",
       "image": {
-        "src": "https://images.unsplash.com/photo-1545996124-0501ebae84d0?auto=format&fit=crop&ar=4:5&crop=faces,entropy",
-        "alt": "Portrait of Bass Monk, DJ (placeholder photo)",
-        "width": 1200,
-        "height": 1500,
-        "blurDataURL": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADQAQCdASoIAAoAA4BaJYwCdAD0iCIZgAD+9pVMzWacHW8A4lKBLx79WQsbXs5md4Qa1YAAAAA="
+        "src": "https://upload.wikimedia.org/wikipedia/commons/3/38/Papon_at_Coke_Studio_Season_3_launch.jpg#w=585",
+        "width": 585,
+        "height": 881,
+        "credit": "Photo: Bollywood Hungama (CC BY 3.0), via Wikimedia Commons",
+        "alt": "Papon, singer",
+        "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoIAAoAA4BaJbACdAD0cLhbwAD+ghfH/GmtZ89MD8tdHyZjFpGdUTDOSc/9zAbn4Pef7jORmYp2kpWD7rx8AAAA"
       }
     },
     "event": {
@@ -690,7 +697,7 @@
           {
             "id": "Q-23987-1_li1",
             "type": "TALENT_FEE",
-            "description": "Bass Monk — 2-hour headline set",
+            "description": "Papon — 2-hour headline set",
             "amountPaise": "12000000",
             "internalCostPaise": "9500000",
             "payoutPaise": "9500000"
@@ -698,7 +705,7 @@
           {
             "id": "Q-23987-1_li2",
             "type": "PRODUCTION",
-            "description": "CDJ setup + booth monitors",
+            "description": "Sound and stage setup",
             "amountPaise": "3500000",
             "internalCostPaise": "3150000",
             "payoutPaise": null

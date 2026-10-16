@@ -9,7 +9,8 @@ import blackoutsJson from './data/blackouts.json';
  * (cost, payout, margin) — serializers.ts is the only way data leaves. State lives on globalThis
  * so it survives dev HMR; it resets on server restart.
  */
-export type RawTalent = (typeof talentsJson)[number];
+/** `feeBand` is widened: the current roster is all "on request", so JSON inference alone gives `null`. */
+export type RawTalent = Omit<(typeof talentsJson)[number], 'feeBand'> & { feeBand: { minPaise: string; maxPaise: string } | null };
 export type RawBooking = (typeof bookingsJson)[number] & { quotes: RawQuote[] };
 export type RawQuote = {
   id: string;
@@ -53,7 +54,7 @@ export function db(): Db {
       briefs: [],
       portal: structuredClone(portalJson),
       blackouts: structuredClone(blackoutsJson) as Record<string, string[]>,
-      favourites: new Set(['aanya-barua', 'dj-nyx', 'kavita-menon']),
+      favourites: new Set(['joi-barua', 'nucleya', 'maniesh-paul']),
       seq: 24030,
     };
   }

@@ -50,7 +50,7 @@ export function FeaturedCarousel({ talents }: { talents: PublicTalent[] }) {
         <SectionHeading
           index="03"
           eyebrow="Featured talent"
-          title={<span id="featured-title">Headliners, <span className="font-serif font-normal italic">verified.</span></span>}
+          title={<span id="featured-title">Featured, <span className="font-serif font-normal italic">handpicked.</span></span>}
           description="Featured profiles are paid placements and always marked. Every act is bookable through the same managed process."
         />
         <div className="flex shrink-0 gap-2">

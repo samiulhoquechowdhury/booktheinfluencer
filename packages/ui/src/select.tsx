@@ -100,7 +100,7 @@ export function Select({
           collisionPadding={12}
           data-lenis-prevent
           className={cn(
-            'pop z-[98] max-h-[min(22rem,var(--radix-select-content-available-height))] min-w-[max(var(--radix-select-trigger-width),12rem)] overflow-hidden rounded-2xl border border-border bg-bg-elevated p-1.5 shadow-float',
+            'pop z-[98] max-h-[min(22rem,var(--radix-select-content-available-height))] max-w-[calc(100vw-1.5rem)] min-w-[min(max(var(--radix-select-trigger-width),12rem),calc(100vw-1.5rem))] overflow-hidden rounded-2xl border border-border bg-bg-elevated p-1.5 shadow-float',
             contentClassName,
           )}
         >

@@ -77,7 +77,7 @@ export function TalentMegaMenu({ nav }: { nav: NavData }) {
       <div className="col-span-2 flex items-center justify-between gap-4 rounded-2xl bg-surface px-5 py-3.5">
         <NavigationMenu.Link asChild>
           <Link href="/talent" className="group/all inline-flex items-center gap-2 text-sm font-semibold outline-none hover:text-primary-text focus-visible:underline">
-            All {nav.total} verified acts <ArrowRight className="size-4 transition-transform group-hover/all:translate-x-0.5" aria-hidden />
+            All {nav.total} artists <ArrowRight className="size-4 transition-transform group-hover/all:translate-x-0.5" aria-hidden />
           </Link>
         </NavigationMenu.Link>
         <p className="text-sm text-fg-muted">

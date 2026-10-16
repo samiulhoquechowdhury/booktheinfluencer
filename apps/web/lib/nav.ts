@@ -5,6 +5,7 @@ import { publicApi } from '@/lib/api/server';
 import { CATEGORIES, categorySingular, cityName } from '@/lib/reference';
 
 const BLURBS: Record<string, string> = {
+  actors: 'Appearances, launches & campaigns',
   singers: 'Live vocals for weddings & annual days',
   djs: 'Dance floors, launches & after-parties',
   comedians: 'Clean, bilingual stand-up',

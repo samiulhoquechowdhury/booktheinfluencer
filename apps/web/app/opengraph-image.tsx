@@ -14,7 +14,7 @@ export default function OgImage() {
           <span>BOOK THE TALENT.</span>
           <span style={{ color: '#d946ef' }}>WE HANDLE THE REST.</span>
         </div>
-        <div style={{ display: 'flex', fontSize: 28, color: '#a1a1ac' }}>Verified singers, DJs, comedians, speakers & creators across India</div>
+        <div style={{ display: 'flex', fontSize: 28, color: '#a1a1ac' }}>Actors, singers, DJs, comedians & creators from Assam and across India</div>
       </div>
     ),
     size,

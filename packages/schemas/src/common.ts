@@ -19,6 +19,8 @@ export const ImageSchema = z.object({
   alt: z.string().min(1),
   width: z.number().int().positive(),
   height: z.number().int().positive(),
+  /** Attribution required by the photo's licence (e.g. CC BY-SA). */
+  credit: z.string().max(200).optional(),
   /** Tiny inline preview shown while the real image loads (covers only). */
   blurDataURL: z.string().startsWith('data:image/').max(2000).optional(),
 });

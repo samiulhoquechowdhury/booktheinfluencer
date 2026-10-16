@@ -2,6 +2,7 @@ import type { Category, CategorySlug, City, CitySlug } from '@repo/schemas';
 
 /** Static reference data (would come from /v1/categories later). */
 export const CATEGORIES: readonly Category[] = [
+  { slug: 'actors', name: 'Actors & celebrities', singular: 'Actor', description: 'Film and television stars for brand campaigns, launches, award nights and appearances.' },
   { slug: 'singers', name: 'Singers', singular: 'Singer', description: 'Live vocalists for weddings, annual days and concerts — from ghazal to Bollywood to regional folk.' },
   { slug: 'djs', name: 'DJs', singular: 'DJ', description: 'Open-format, Bollywood-house and club DJs who read the room and keep floors full.' },
   { slug: 'comedians', name: 'Comedians', singular: 'Comedian', description: 'Clean, bilingual stand-up for corporate rooms, campuses and private celebrations.' },

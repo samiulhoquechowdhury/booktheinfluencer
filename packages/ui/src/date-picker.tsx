@@ -106,7 +106,7 @@ export function DatePicker({
             (e.target as HTMLElement | null)?.querySelector<HTMLButtonElement>('td[aria-selected="true"] button, td button:not([disabled])')?.focus(),
           );
         }}
-        className="pop z-[98] w-max max-w-[calc(100vw-1.5rem)] rounded-2xl border border-border bg-bg-elevated p-3 shadow-float sm:p-4"
+        className="pop z-[98] max-h-(--radix-popover-content-available-height) w-max max-w-[calc(100vw-1.5rem)] overflow-y-auto overscroll-contain rounded-2xl border border-border bg-bg-elevated p-3 shadow-float sm:p-4"
       >
         <Calendar
           mode="single"

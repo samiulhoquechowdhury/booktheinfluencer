@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { ImageSchema, IsoDateSchema, PageSchema, PaiseSchema } from './common';
 
-export const CATEGORY_SLUGS = ['singers', 'djs', 'comedians', 'speakers', 'creators'] as const;
+export const CATEGORY_SLUGS = ['actors', 'singers', 'djs', 'comedians', 'speakers', 'creators'] as const;
 export const CategorySlugSchema = z.enum(CATEGORY_SLUGS);
 export type CategorySlug = z.infer<typeof CategorySlugSchema>;
 

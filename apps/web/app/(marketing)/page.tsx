@@ -14,22 +14,17 @@ export const revalidate = 3600;
 export default async function HomePage() {
   const [featured, all] = await Promise.all([publicApi.talents.featured(), publicApi.talents.list({ pageSize: 48 })]);
 
-  const mosaic = all.items.filter((_, i) => i % 3 === 0).slice(0, 12);
-  const wall = CATEGORIES.map((c) => {
+  const wall = CATEGORIES.flatMap((c) => {
     const inCat = all.items.filter((t) => t.categories.includes(c.slug));
-    return {
-      slug: c.slug,
-      label: c.slug === 'speakers' ? 'Speakers' : c.name,
-      count: inCat.length,
-      image: inCat[0]!.images[0]!,
-    };
+    if (!inCat.length) return [];
+    return [{ slug: c.slug, label: c.slug === 'speakers' ? 'Anchors' : c.slug === 'actors' ? 'Actors' : c.name, count: inCat.length, image: inCat[0]!.images[0]! }];
   });
-  const corporateImages = all.items.filter((t) => t.primaryCategory === 'speakers').flatMap((t) => t.images.slice(1, 2)).slice(0, 3);
+  const corporateImages = all.items.filter((t) => t.primaryCategory === 'speakers' || t.primaryCategory === 'comedians').flatMap((t) => t.images.slice(1, 2)).slice(0, 3);
 
   return (
     <>
       <JsonLd data={organizationLd()} />
-      <Hero mosaic={mosaic} />
+      <Hero mosaic={featured} />
       <CategoryWall items={wall} />
       <HowItWorks />
       <FeaturedCarousel talents={featured} />

@@ -8,7 +8,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'Browse verified talent',
-  description: 'Singers, DJs, comedians, speakers and creators across India. Filter by city, date, budget, language and event type.',
+  description: 'Actors, singers, DJs, comedians, anchors and creators from Assam and across India. Filter by city, date, budget, language and event type.',
   alternates: { canonical: '/talent' },
 };
 
@@ -17,9 +17,9 @@ export default async function TalentIndexPage() {
   return (
     <>
       <ListingHero
-        eyebrow={`${initial.total} verified acts · 8 cities`}
+        eyebrow={`${initial.total} artists · 8 cities`}
         title={<>All <span className="font-serif font-normal normal-case italic">talent</span></>}
-        description="Every profile shows an indicative fee band and who represents the artist. Shortlist a few — your manager confirms availability and sends one itemised quote."
+        description="Every profile shows who represents the artist. Shortlist a few — your manager confirms availability and sends one itemised quote."
         crumbs={[{ href: '/', label: 'Home' }, { href: '/talent', label: 'Talent' }]}
       />
       <Suspense>

@@ -30,7 +30,7 @@ export function CategoryWall({ items }: { items: Item[] }) {
         <SectionHeading
           index="01"
           eyebrow="Launch categories"
-          title={<>Five stages. <span className="font-serif font-normal italic">One</span> booking desk.</>}
+          title={<>Six stages. <span className="font-serif font-normal italic">One</span> booking desk.</>}
           className="mb-14 md:mb-20"
         />
         <div
@@ -75,7 +75,7 @@ export function CategoryWall({ items }: { items: Item[] }) {
                   </span>
                   <span className="hidden shrink-0 text-right md:block">
                     <span className="tabular block font-display text-2xl font-bold">{it.count}</span>
-                    <span className="text-xs text-fg-muted">verified acts</span>
+                    <span className="text-xs text-fg-muted">artists</span>
                   </span>
                   <ArrowUpRight className="size-6 shrink-0 text-fg-muted transition-transform duration-(--duration-slow) ease-(--ease-out-expo) group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-fg md:size-10" aria-hidden />
                 </Link>

@@ -9,6 +9,7 @@ export const FOOTER_LINKS = [
   {
     title: 'Discover',
     links: [
+      { href: '/talent/actors', label: 'Actors & celebrities' },
       { href: '/talent/singers', label: 'Singers' },
       { href: '/talent/djs', label: 'DJs' },
       { href: '/talent/comedians', label: 'Comedians' },
@@ -19,7 +20,7 @@ export const FOOTER_LINKS = [
   {
     title: 'Cities',
     links: [
-      { href: '/guwahati/singers', label: 'Guwahati' },
+      { href: '/guwahati/actors', label: 'Guwahati' },
       { href: '/kolkata/djs', label: 'Kolkata' },
       { href: '/mumbai/comedians', label: 'Mumbai' },
       { href: '/bengaluru/speakers', label: 'Bengaluru' },

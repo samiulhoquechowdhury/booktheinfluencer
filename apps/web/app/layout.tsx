@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(BRAND.url),
   title: { default: `${BRAND.name} — Book verified talent for any event`, template: `%s · ${BRAND.name}` },
   description:
-    'Singers, DJs, comedians, speakers and creators across India — with verified representation, contracts, secure payments and a dedicated manager.',
+    'Actors, singers, DJs, comedians, anchors and creators from Assam and across India — with verified representation, contracts, secure payments and a dedicated manager.',
   openGraph: { type: 'website', siteName: BRAND.name, locale: 'en_IN' },
   twitter: { card: 'summary_large_image' },
   alternates: { canonical: '/' },
@@ -28,6 +28,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   // Talent imagery comes from the image CDN — open the connection before the first <img>.
   preconnect('https://images.unsplash.com');
+  preconnect('https://upload.wikimedia.org');
   return (
     <html
       lang="en-IN"

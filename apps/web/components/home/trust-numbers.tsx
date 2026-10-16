@@ -7,7 +7,7 @@ const EVENTS = ['Annual Days', 'Weddings', 'Launches', 'College Fests', 'Award N
 
 export function TrustNumbers({ talentCount, cityCount }: { talentCount: number; cityCount: number }) {
   const stats = [
-    { value: talentCount, suffix: '', label: 'Verified acts at launch' },
+    { value: talentCount, suffix: '', label: 'Artists on the roster' },
     { value: cityCount, suffix: '', label: 'Cities across India' },
     { value: 24, suffix: 'h', label: 'Typical first response' },
     { value: 4, suffix: '', label: 'Checks before “Confirmed”' },

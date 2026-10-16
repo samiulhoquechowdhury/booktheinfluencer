@@ -53,7 +53,7 @@ export function AccountMenu() {
         <button
           type="button"
           onClick={() => setLoginOpen(true)}
-          className="h-10 rounded-full px-3 text-sm font-medium whitespace-nowrap text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg sm:px-4"
+          className="h-10 rounded-full px-2.5 text-sm font-medium whitespace-nowrap min-[400px]:px-3 text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg sm:px-4"
         >
           Log in
         </button>
@@ -91,7 +91,7 @@ export function AccountMenu() {
               <span className="grid size-11 place-items-center rounded-full bg-brand-gradient text-sm font-bold text-primary-fg">{initials}</span>
               <span className="min-w-0">
                 <span className="block truncate font-semibold">{session.name}</span>
-                <span className="block text-xs text-fg-muted">{session.role === 'TALENT' ? 'Talent · Bass Monk' : 'Customer account'}</span>
+                <span className="block text-xs text-fg-muted">{session.role === 'TALENT' ? 'Talent · Papon' : 'Customer account'}</span>
               </span>
             </div>
           </div>

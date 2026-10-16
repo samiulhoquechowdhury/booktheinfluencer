@@ -35,6 +35,7 @@ export function ProfileHero({ talent }: { talent: PublicTalent }) {
             </div>
             <FavouriteButton talent={talent} size="lg" className="absolute top-4 right-4" />
           </div>
+          {cover.credit && <p className="mt-2 text-xs text-fg-subtle">{cover.credit}</p>}
         </div>
         <div className="flex min-w-0 flex-col justify-end md:col-span-7 lg:pb-6">
           <p className="eyebrow mb-4">{talent.categories.map(categorySingular).join(' · ')}</p>
