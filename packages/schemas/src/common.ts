@@ -19,6 +19,8 @@ export const ImageSchema = z.object({
   alt: z.string().min(1),
   width: z.number().int().positive(),
   height: z.number().int().positive(),
+  /** Tiny inline preview shown while the real image loads (covers only). */
+  blurDataURL: z.string().startsWith('data:image/').max(2000).optional(),
 });
 export type Image = z.infer<typeof ImageSchema>;
 

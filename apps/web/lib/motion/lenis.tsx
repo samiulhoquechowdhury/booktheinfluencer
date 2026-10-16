@@ -3,7 +3,7 @@
 import Lenis from 'lenis';
 import { usePathname } from 'next/navigation';
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
-import { useReducedMotion } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 
 /**
  * Global smooth scroll. Runs on its own rAF until GSAP loads, then hands its clock to

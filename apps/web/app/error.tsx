@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { RotateCcw } from 'lucide-react';
-import { motion, useReducedMotion } from 'motion/react';
+import { motion } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 import { Button } from '@repo/ui/button';
 
 export default function ErrorPage({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {

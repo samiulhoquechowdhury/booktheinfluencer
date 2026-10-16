@@ -84,6 +84,9 @@ _(add as they happen — e.g. gateway webhook quirks, DLT template rejections, P
 - Local machine: repo sits on an NTFS/FUSE mount → `pnpm install` ~30 min and builds are I/O-bound; git needed `safe.directory`. pnpm ignored `${HOME}`-based `store-dir`/`virtual-store-dir` in `.npmrc`, so those were removed.
 - npm registry is slow from this network (~450 KB/s); pinned known majors instead of newest (TS 5.9, ESLint 9, Motion 12, react-day-picker 9, Next 15.5).
 - Playwright's old `chrome-headless-shell` never fires `requestAnimationFrame` over CDP, so Motion/Lenis animations look frozen there. Use `--virtual-time-budget=20000 --screenshot` for visual checks, or a full Chrome for e2e.
+- Never branch markup on `useReducedMotion` from `motion/react` directly — use `@repo/ui/lib/use-reduced-motion` (false until mounted). The raw hook caused React hydration error #418 for reduced-motion users.
+- Above-the-fold headlines (`SplitText trigger="mount"`) animate with CSS (`.split-rise`), not Motion, so they paint before hydration (LCP).
+- Images: Unsplash/imgix does resizing + AVIF/WebP (`auto=format`) through `lib/image-loader.ts`; `deviceSizes` capped at 1920. Every `<Image>` needs a `sizes` that matches its real layout width. Cover images carry an ~90-byte WebP `blurDataURL` made by `pnpm mock:generate` (needs ImageMagick `magick`; skipped if missing). Hero mosaic is greyscaled server-side (`sat=-100`), not with a CSS filter.
 - Unsplash placeholder IDs were checked to resolve (HTTP 200) and reviewed visually; one with a recognisable celebrity DJ helmet and one brand logo were excluded.
 
 ## 9. Session log

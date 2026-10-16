@@ -24,7 +24,7 @@ export function SearchBar({ className }: { className?: string }) {
     router.push(sp.size ? `${base}?${sp}` : base);
   };
 
-  const cell = 'group relative flex min-w-0 flex-1 items-center gap-3 rounded-2xl px-4 py-3 transition-colors focus-within:bg-surface-2/70 hover:bg-surface-2/50 md:rounded-full md:px-5';
+  const cell = 'group relative flex min-w-0 flex-1 items-center gap-3 md:min-w-[9.5rem] rounded-2xl px-4 py-3 transition-colors focus-within:bg-surface-2/70 hover:bg-surface-2/50 md:rounded-full md:px-5';
   const fieldCls = 'w-full min-w-0 cursor-pointer appearance-none bg-transparent text-[0.9375rem] font-medium text-fg outline-none';
 
   return (

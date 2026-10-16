@@ -1,6 +1,7 @@
 'use client';
 
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
+import { useReducedMotion } from './lib/use-reduced-motion';
 import { Check } from 'lucide-react';
 import { AVAILABILITY_LABELS, PENDING_AVAILABILITY, type StatusTone } from '@repo/utils';
 import type { AvailabilityStatus } from '@repo/schemas';

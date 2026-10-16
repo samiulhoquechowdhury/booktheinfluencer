@@ -1,6 +1,7 @@
 'use client';
 
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 import { Heart } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';

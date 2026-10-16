@@ -1,6 +1,7 @@
 'use client';
 
-import { motion, useMotionValueEvent, useReducedMotion, useScroll } from 'motion/react';
+import { motion, useMotionValueEvent, useScroll } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';

@@ -1,6 +1,7 @@
 'use client';
 
-import { motion, useReducedMotion, type Variants } from 'motion/react';
+import { motion, type Variants } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 import type { ReactNode } from 'react';
 import { DURATION, EASE, STAGGER } from './tokens';
 

@@ -83,7 +83,7 @@ export function Dashboard() {
                   <RevealItem as="li" key={b.ref}>
                     <Link href={`/account/bookings/${b.ref}`} className="group flex gap-4 rounded-2xl border border-border bg-surface p-3 transition-[border-color,transform] hover:border-border-strong active:scale-[0.995] sm:gap-6 sm:p-4">
                       <span className="relative aspect-[4/5] w-20 shrink-0 overflow-hidden rounded-xl sm:w-28">
-                        <Image src={b.talent.image.src} alt={b.talent.image.alt} fill sizes="112px" className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <Image src={b.talent.image.src} alt={b.talent.image.alt} fill sizes="(min-width: 640px) 112px, 80px" placeholder={b.talent.image.blurDataURL ? 'blur' : 'empty'} blurDataURL={b.talent.image.blurDataURL} className="object-cover transition-transform duration-700 group-hover:scale-105" />
                       </span>
                       <span className="flex min-w-0 flex-1 flex-col justify-between gap-2 py-1">
                         <span>

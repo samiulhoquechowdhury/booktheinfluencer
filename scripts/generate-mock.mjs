@@ -327,6 +327,34 @@ const blackouts = Object.fromEntries(
 );
 blackouts['bass-monk'] = portal.blackouts.map((b) => b.date);
 
+// Tiny blurred previews (8×10 WebP, ~90 bytes) for cover images → next/image placeholder="blur".
+// Re-encoded with ImageMagick to strip the ICC profile Unsplash embeds (~4 KB otherwise).
+// Skipped gracefully if `magick` isn't installed.
+import { spawnSync } from 'node:child_process';
+async function blurFor(src) {
+  const url = new URL(src);
+  for (const [k, v] of Object.entries({ w: '8', h: '10', q: '30', fm: 'jpg' })) url.searchParams.set(k, v);
+  url.searchParams.delete('auto');
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const res = await fetch(url, { signal: AbortSignal.timeout(20000) });
+      if (!res.ok) continue;
+      const out = spawnSync('magick', ['-', '-strip', '-quality', '40', 'webp:-'], { input: Buffer.from(await res.arrayBuffer()) });
+      if (out.status !== 0 || !out.stdout.length || out.stdout.length > 1000) return undefined;
+      return `data:image/webp;base64,${out.stdout.toString('base64')}`;
+    } catch {
+      /* retry */
+    }
+  }
+  return undefined;
+}
+const blurs = await Promise.all(talents.map((t) => blurFor(t.images[0].src)));
+talents.forEach((t, i) => {
+  if (blurs[i]) t.images[0].blurDataURL = blurs[i];
+});
+for (const b of bookings) b.talent.image = talents.find((t) => t.slug === b.talent.slug).images[0];
+console.log(`Blur previews: ${blurs.filter(Boolean).length}/${talents.length}`);
+
 const write = (name, data) => writeFileSync(join(OUT, name), JSON.stringify(data, null, 2) + '\n');
 write('talents.json', talents);
 write('bookings.json', bookings);

@@ -1,6 +1,7 @@
 'use client';
 
-import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, LayoutGroup, motion } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 import { X } from 'lucide-react';
 import { EVENT_TYPE_LABELS, formatDate } from '@repo/utils';
 import { BUDGET_OPTIONS, categoryName, cityName } from '@/lib/reference';

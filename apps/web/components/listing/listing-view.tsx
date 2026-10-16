@@ -1,7 +1,8 @@
 'use client';
 
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { AnimatePresence, LayoutGroup, motion, useMotionValueEvent, useReducedMotion, useScroll } from 'motion/react';
+import { AnimatePresence, LayoutGroup, motion, useMotionValueEvent, useScroll } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -84,7 +85,7 @@ export function ListingView({ initial, locked = {} }: { initial: TalentPage; loc
         <section aria-labelledby="results-heading" aria-busy={query.isFetching}>
           {/* Toolbar */}
           <motion.div
-            className="glass sticky top-[4.5rem] z-30 -mx-4 mb-6 flex items-center justify-between gap-3 px-4 py-3 lg:static lg:mx-0 lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none"
+            className="glass sticky top-16 z-30 -mx-4 mb-6 flex items-center justify-between gap-3 border-x-0 px-4 py-3 md:top-[4.5rem] md:-mx-8 md:px-8 lg:static lg:mx-0 lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none"
             animate={{ y: barHidden && !reduce ? '-140%' : '0%' }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           >
@@ -121,7 +122,7 @@ export function ListingView({ initial, locked = {} }: { initial: TalentPage; loc
               action={<Button onClick={() => void query.refetch()}>Try again</Button>}
             />
           ) : !query.data ? (
-            <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 2xl:grid-cols-4 md:gap-x-6">
+            <div className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-4 md:grid-cols-3 md:gap-x-6 md:gap-y-10 2xl:grid-cols-4">
               {Array.from({ length: 6 }, (_, i) => <TalentCardSkeleton key={i} />)}
             </div>
           ) : items.length === 0 ? (
@@ -139,7 +140,7 @@ export function ListingView({ initial, locked = {} }: { initial: TalentPage; loc
           ) : (
             <LayoutGroup>
               <motion.ul
-                className={cn('grid grid-cols-2 gap-x-4 gap-y-10 transition-opacity md:grid-cols-3 md:gap-x-6 2xl:grid-cols-4', query.isPlaceholderData && 'opacity-60')}
+                className={cn('grid grid-cols-2 gap-x-3 gap-y-8 transition-opacity sm:gap-x-4 md:grid-cols-3 md:gap-x-6 md:gap-y-10 2xl:grid-cols-4', query.isPlaceholderData && 'opacity-60')}
               >
                 <AnimatePresence mode="popLayout" initial={false}>
                   {items.map((t, i) => (
@@ -151,7 +152,7 @@ export function ListingView({ initial, locked = {} }: { initial: TalentPage; loc
                       exit={{ opacity: 0, scale: 0.94 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 30, delay: reduce ? 0 : Math.min(i % PAGE_SIZE, 8) * 0.03 }}
                     >
-                      <TalentCard talent={t} priority={i < 3} sizes="(min-width: 1536px) 18vw, (min-width: 768px) 26vw, 46vw" />
+                      <TalentCard talent={t} priority={i < 2} sizes="(min-width: 1440px) 240px, (min-width: 1024px) 22vw, (min-width: 768px) 30vw, 47vw" />
                     </motion.li>
                   ))}
                 </AnimatePresence>

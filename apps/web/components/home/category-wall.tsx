@@ -59,8 +59,8 @@ export function CategoryWall({ items }: { items: Item[] }) {
                   <span className="tabular w-8 shrink-0 font-display text-sm font-bold text-fg-subtle md:w-12">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="relative block flex-1 overflow-hidden font-display text-[clamp(2.75rem,10vw,9rem)] leading-[0.9] font-black tracking-[-0.05em] uppercase">
-                    <span className="text-outline block [--stroke-color:var(--fg-muted)] transition-opacity duration-(--duration-slow) group-hover:opacity-0 group-focus-visible:opacity-0">
+                  <span className="relative block flex-1 overflow-hidden font-display text-[clamp(2.25rem,10vw,9rem)] leading-[0.9] font-black tracking-[-0.05em] uppercase">
+                    <span className="block text-fg-muted transition-opacity md:text-outline md:[--stroke-color:var(--fg-muted)] duration-(--duration-slow) group-hover:opacity-0 group-focus-visible:opacity-0">
                       {it.label}
                     </span>
                     <span
@@ -97,7 +97,7 @@ export function CategoryWall({ items }: { items: Item[] }) {
                   >
                     {items.map((it, i) => (
                       <motion.div key={it.slug} className="absolute inset-0" animate={{ opacity: active === i ? 1 : 0, scale: active === i ? 1 : 1.15 }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}>
-                        <Image src={it.image.src} alt="" fill sizes="256px" className="object-cover" />
+                        <Image src={it.image.src} alt="" fill sizes="256px" quality={60} className="object-cover" />
                       </motion.div>
                     ))}
                   </motion.div>

@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 import { useRef } from 'react';
 import type { PublicTalent } from '@repo/schemas';
 import { SearchBar } from '@/components/search/search-bar';
@@ -33,7 +34,7 @@ export function Hero({ mosaic }: { mosaic: PublicTalent[] }) {
             >
               {[...col, ...col].map((t, i) => (
                 <div key={`${t.slug}-${i}`} className="relative aspect-[4/5] overflow-hidden rounded-xl">
-                  <Image src={t.images[0]!.src} alt="" fill sizes="(min-width: 768px) 16vw, 25vw" quality={40} className="object-cover grayscale" />
+                  <Image src={`${t.images[0]!.src}&sat=-100`} alt="" fill sizes="(min-width: 768px) 20vw, 30vw" quality={35} loading="lazy" fetchPriority="low" className="object-cover" />
                 </div>
               ))}
             </div>
@@ -85,9 +86,9 @@ export function Hero({ mosaic }: { mosaic: PublicTalent[] }) {
           initial={reduce ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.75 }}
-          className="mt-8 grid gap-8 lg:mt-12 lg:grid-cols-12 lg:items-end"
+          className="mt-8 grid gap-8 lg:mt-12 xl:grid-cols-12 xl:items-end"
         >
-          <div className="lg:col-span-5">
+          <div className="max-w-xl xl:col-span-5">
             <h2 className="text-lg font-semibold text-fg md:text-xl">Book verified talent for any event.</h2>
             <p className="mt-2 max-w-md text-fg-muted md:text-lg">
               Singers, DJs, comedians, speakers and creators — with contracts, secure payments and a dedicated manager.
@@ -96,7 +97,7 @@ export function Hero({ mosaic }: { mosaic: PublicTalent[] }) {
               Or plan with an expert →
             </Link>
           </div>
-          <div className="lg:col-span-7">
+          <div className="max-w-4xl xl:col-span-7 xl:max-w-none">
             <SearchBar />
           </div>
         </motion.div>

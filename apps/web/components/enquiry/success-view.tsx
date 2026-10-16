@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'motion/react';
+import { motion } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Copy, MessageCircle } from 'lucide-react';

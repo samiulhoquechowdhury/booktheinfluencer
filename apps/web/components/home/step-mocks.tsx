@@ -1,6 +1,7 @@
 'use client';
 
-import { AnimatePresence, animate, motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, animate, motion } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 import { useEffect, useRef, useState } from 'react';
 import { CalendarDays, FileSignature, MapPin, ShieldCheck, Users } from 'lucide-react';
 import type { AvailabilityStatus } from '@repo/schemas';
@@ -87,8 +88,8 @@ export function VerifyMock({ active }: { active: boolean }) {
         ['Aanya B.', s1],
         ['Ishita S.', s2],
       ].map(([name, s]) => (
-        <div key={name} className="flex items-center justify-between border-b border-border py-3 last:border-0">
-          <span className="text-sm font-semibold">{name}</span>
+        <div key={name} className="flex flex-wrap items-center justify-between gap-2 border-b border-border py-3 last:border-0">
+          <span className="text-sm font-semibold whitespace-nowrap">{name}</span>
           <AvailabilityPill status={s as AvailabilityStatus} size="sm" />
         </div>
       ))}

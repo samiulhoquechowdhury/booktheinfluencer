@@ -1,6 +1,7 @@
 'use client';
 
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 import { useRef, type ReactNode } from 'react';
 
 /** Vertical parallax. speed > 0 moves slower than scroll; < 0 moves against it. */

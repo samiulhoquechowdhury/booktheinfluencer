@@ -112,3 +112,7 @@ html.lenis, html.lenis body { height: auto; }
 
 @keyframes drift-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
 @keyframes drift-down { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+
+/* Headline entrance that runs on first paint — no hydration needed (LCP-safe). */
+@keyframes split-rise { from { transform: translateY(110%) rotate(4deg); } to { transform: none; } }
+.split-rise { display: inline-block; animation: split-rise 0.9s var(--ease-out-expo) both; }

@@ -1,6 +1,7 @@
 'use client';
 
-import { motion, useReducedMotion } from 'motion/react';
+import { motion } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 import { Check } from 'lucide-react';
 import { cn } from '@repo/ui/lib/cn';
 
@@ -27,7 +28,7 @@ export function StepperProgress({ steps, current }: { steps: readonly string[]; 
             >
               {i < current ? <Check className="size-3.5" strokeWidth={3} aria-hidden /> : i + 1}
             </motion.span>
-            <span className="truncate">{s}</span>
+            <span className={cn('truncate', i !== current && 'max-sm:sr-only')}>{s}</span>
           </li>
         ))}
       </ol>

@@ -1,7 +1,8 @@
 'use client';
 
 import { Tabs as T } from 'radix-ui';
-import { motion, useReducedMotion } from 'motion/react';
+import { motion } from 'motion/react';
+import { useReducedMotion } from './lib/use-reduced-motion';
 import { cn } from './lib/cn';
 
 /** Tabs with a shared-layout active indicator. */

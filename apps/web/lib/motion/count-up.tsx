@@ -1,6 +1,7 @@
 'use client';
 
-import { animate, useInView, useReducedMotion } from 'motion/react';
+import { animate, useInView } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 import { useEffect, useRef, useState } from 'react';
 import { formatINR } from '@repo/utils';
 

@@ -25,7 +25,7 @@ export function TalentCard({
   talent,
   tilt = true,
   priority = false,
-  sizes = '(min-width: 1280px) 22vw, (min-width: 768px) 30vw, 50vw',
+  sizes = '(min-width: 1440px) 300px, (min-width: 1024px) 24vw, (min-width: 768px) 32vw, 48vw',
   className,
 }: {
   talent: PublicTalent;
@@ -57,24 +57,26 @@ export function TalentCard({
             fill
             sizes={sizes}
             priority={priority}
+            placeholder={cover.blurDataURL ? 'blur' : 'empty'}
+            blurDataURL={cover.blurDataURL}
             className="object-cover grayscale-[15%] transition-transform duration-[900ms] ease-(--ease-out-expo) group-hover:scale-[1.06]"
           />
           <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent" />
         </div>
-        <span className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+        <span className="absolute top-3 right-15 left-3 flex flex-wrap gap-1.5">
           <TierTag tier={talent.tier} featured={talent.featured} />
         </span>
-        <span className="absolute bottom-3 left-3 flex items-center gap-1 text-xs font-medium text-white/90">
+        <span className="absolute right-3 bottom-3 left-3 flex min-w-0 items-center gap-1 text-xs font-medium text-white/90">
           <MapPin className="size-3.5" aria-hidden />
-          {cityName(talent.baseCity)}
-          {talent.travelsPanIndia && <span className="text-white/60">· Pan-India</span>}
+          <span className="truncate">{cityName(talent.baseCity)}</span>
+          {talent.travelsPanIndia && <span className="hidden shrink-0 text-white/60 sm:inline">· Pan-India</span>}
         </span>
         <span className="sr-only">View {talent.name}’s profile</span>
       </Link>
       <FavouriteButton talent={talent} className="absolute top-3 right-3 z-30" />
       <div className="flex flex-1 flex-col pt-4">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="flex items-center gap-1.5 font-display text-xl leading-tight font-extrabold tracking-tight">
+          <h3 className="flex items-start gap-1.5 font-display text-lg leading-tight font-extrabold tracking-tight sm:items-center sm:text-xl">
             <Link href={href} onClick={onClick} className="hover:underline hover:decoration-1 hover:underline-offset-4" tabIndex={-1}>
               {talent.name}
             </Link>

@@ -1,7 +1,8 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { AnimatePresence, animate, motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, animate, motion } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { CheckCircle2, ChevronDown, Clock, Loader2, MessageSquareText } from 'lucide-react';

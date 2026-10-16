@@ -1,15 +1,7 @@
 'use client';
 
-import {
-  motion,
-  useAnimationFrame,
-  useMotionValue,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-  useVelocity,
-} from 'motion/react';
+import { motion, useAnimationFrame, useMotionValue, useScroll, useSpring, useTransform, useVelocity } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { cn } from '@repo/ui/lib/cn';
 
@@ -65,8 +57,8 @@ export function Marquee({
 
   if (reduce) {
     return (
-      <div className={cn('overflow-hidden', className)} aria-label={label}>
-        <div className="flex flex-wrap justify-center gap-x-8 gap-y-2">{children}</div>
+      <div className={cn('no-scrollbar overflow-x-auto overscroll-x-contain', className)} aria-label={label} tabIndex={0}>
+        <div className="flex w-max items-center">{children}</div>
       </div>
     );
   }

@@ -1,6 +1,7 @@
 'use client';
 
-import { motion, useReducedMotion, useScroll, useSpring } from 'motion/react';
+import { motion, useScroll, useSpring } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 
 /** Thin accent bar showing page scroll progress. */
 export function ScrollProgress() {

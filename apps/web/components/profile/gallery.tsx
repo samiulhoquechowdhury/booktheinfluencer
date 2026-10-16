@@ -16,7 +16,7 @@ export function Gallery({ images, showreelUrl, name }: { images: Img[]; showreel
           <iframe src={showreelUrl} title={`${name} showreel`} className="absolute inset-0 size-full" allow="encrypted-media; picture-in-picture" loading="lazy" />
         ) : (
           <>
-            {rest[0] && <Image src={rest[0].src} alt="" fill sizes="(min-width: 1024px) 60vw, 100vw" className="object-cover opacity-40 blur-sm" />}
+            {rest[0] && <Image src={rest[0].src} alt="" fill sizes="480px" quality={30} className="object-cover opacity-40 blur-sm" />}
             <div className="relative text-center">
               <PlayCircle className="mx-auto size-14 text-fg" strokeWidth={1.25} aria-hidden />
               <p className="mt-3 font-semibold">Showreel shared on request</p>
@@ -27,7 +27,7 @@ export function Gallery({ images, showreelUrl, name }: { images: Img[]; showreel
       </RevealItem>
       {rest.map((img, i) => (
         <RevealItem key={img.src} className={cn('group relative overflow-hidden rounded-xl bg-surface-2', i % 3 === 0 ? 'col-span-2 aspect-[4/5] md:col-span-3' : 'aspect-[4/5] md:col-span-3 lg:col-span-3')}>
-          <Image src={img.src} alt={img.alt} fill sizes="(min-width: 768px) 30vw, 50vw" className="object-cover transition-transform duration-[900ms] ease-(--ease-out-expo) group-hover:scale-105" />
+          <Image src={img.src} alt={img.alt} fill sizes={`(min-width: 1440px) 420px, (min-width: 1024px) 29vw, (min-width: 768px) 48vw, ${i % 3 === 0 ? '100vw' : '50vw'}`} className="object-cover transition-transform duration-[900ms] ease-(--ease-out-expo) group-hover:scale-105" />
         </RevealItem>
       ))}
     </Reveal>

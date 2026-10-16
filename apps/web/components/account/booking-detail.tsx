@@ -51,7 +51,7 @@ export function BookingDetail({ bookingRef }: { bookingRef: string }) {
 
       <header className="flex flex-col gap-6 border-b border-border pb-8 md:flex-row md:items-end">
         <div className="relative aspect-[4/5] w-24 shrink-0 overflow-hidden rounded-xl md:w-32">
-          <Image src={b.talent.image.src} alt={b.talent.image.alt} fill sizes="128px" className="object-cover" priority />
+          <Image src={b.talent.image.src} alt={b.talent.image.alt} fill sizes="(min-width: 768px) 128px, 96px" className="object-cover" priority placeholder={b.talent.image.blurDataURL ? 'blur' : 'empty'} blurDataURL={b.talent.image.blurDataURL} />
         </div>
         <div className="min-w-0 flex-1">
           <p className="tabular text-sm text-fg-muted">{b.ref} · Brief {b.leadRef}</p>

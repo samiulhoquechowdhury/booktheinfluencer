@@ -1,6 +1,7 @@
 'use client';
 
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
+import { useReducedMotion } from './lib/use-reduced-motion';
 import { Check } from 'lucide-react';
 import { forwardRef, useId, type ReactNode } from 'react';
 import { cn } from './lib/cn';

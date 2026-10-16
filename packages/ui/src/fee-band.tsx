@@ -20,10 +20,10 @@ export function FeeBand({
 }) {
   const { range, qualifier } = formatFeeBand(band);
   return (
-    <span className={cn('inline-flex items-baseline gap-1.5', className)}>
+    <span className={cn('inline-flex flex-wrap items-baseline gap-x-1.5', className)}>
       <span
         className={cn(
-          'tabular font-semibold text-fg',
+          'tabular font-semibold whitespace-nowrap text-fg',
           size === 'sm' && 'text-sm',
           size === 'md' && 'text-base',
           size === 'lg' && 'font-display text-2xl font-extrabold tracking-tight',
@@ -31,7 +31,7 @@ export function FeeBand({
       >
         {range}
       </span>
-      {qualifier && <span className="text-xs text-fg-muted">· {qualifier}</span>}
+      {qualifier && <span className="text-xs whitespace-nowrap text-fg-muted">· {qualifier}</span>}
       {withInfo && (
         <Tooltip.Provider delayDuration={150}>
           <Tooltip.Root>

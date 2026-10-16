@@ -50,7 +50,7 @@ export function CorporateBand({ images }: { images: { src: string; alt: string }
           )}
           {c && (
             <Parallax speed={0.3} className="absolute right-[8%] bottom-[6%] h-[26%] w-[30%] overflow-hidden rounded-xl border-4 border-bg">
-              <Image src={c.src} alt="" fill sizes="15vw" className="object-cover" />
+              <Image src={c.src} alt="" fill sizes="(min-width: 1024px) 160px, 30vw" quality={60} className="object-cover" />
             </Parallax>
           )}
         </div>

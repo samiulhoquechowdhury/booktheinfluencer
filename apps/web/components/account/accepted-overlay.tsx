@@ -1,7 +1,8 @@
 'use client';
 
 import { Dialog } from 'radix-ui';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
+import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
 import { useEffect } from 'react';
 import { Button } from '@repo/ui/button';
 import { formatINR } from '@repo/utils';

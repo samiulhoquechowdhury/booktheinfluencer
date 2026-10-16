@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
+import { preconnect } from 'react-dom';
 import { BRAND } from '@/lib/brand';
 import { cabinet, instrument, inter, interTight } from './fonts';
 import { Providers } from './providers';
@@ -25,6 +26,8 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  // Talent imagery comes from the image CDN — open the connection before the first <img>.
+  preconnect('https://images.unsplash.com');
   return (
     <html
       lang="en-IN"
