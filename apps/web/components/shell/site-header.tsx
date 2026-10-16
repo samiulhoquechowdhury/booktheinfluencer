@@ -59,7 +59,7 @@ export function SiteHeader({ variant = 'full', nav }: { variant?: 'full' | 'mini
           {/* Capsule surface */}
           <motion.div
             aria-hidden
-            className="glass pointer-events-none absolute inset-0 rounded-full shadow-[0_18px_50px_-24px_rgb(0_0_0/0.55)]"
+            className="pointer-events-none absolute inset-0 rounded-full border border-glass-border bg-[color-mix(in_oklab,var(--bg)_52%,transparent)] shadow-[0_18px_50px_-24px_rgb(0_0_0/0.55)] backdrop-blur-[36px] backdrop-saturate-[1.8]"
             initial={false}
             animate={{ opacity: scrolled || menu ? 1 : 0, scale: scrolled || menu ? 1 : 0.985 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
