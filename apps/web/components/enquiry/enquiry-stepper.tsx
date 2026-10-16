@@ -12,7 +12,9 @@ import { toast } from 'sonner';
 import { EVENT_TYPES, EnquirySchema, LANGUAGES, type Enquiry, type EnquiryInput } from '@repo/schemas';
 import { EVENT_TYPE_LABELS, todayIST } from '@repo/utils';
 import { Button } from '@repo/ui/button';
-import { CheckboxField, Input, Select, Textarea } from '@repo/ui/field';
+import { DatePicker } from '@repo/ui/date-picker';
+import { CheckboxField, Input, Textarea } from '@repo/ui/field';
+import { Select } from '@repo/ui/select';
 import { OtpInput } from '@repo/ui/otp-input';
 import { ApiError } from '@/lib/api/client';
 import { useRequestOtp, useSetSession, useSubmitEnquiry } from '@/lib/api/hooks';
@@ -186,22 +188,55 @@ export function EnquiryStepper() {
 
             {step === 0 && (
               <>
-                <Select label="Event type" options={EVENT_TYPES.map((t) => ({ value: t, label: EVENT_TYPE_LABELS[t] }))} defaultValue="" error={errAt(errors, 'event.eventType')} valid={valid('event.eventType')} {...register('event.eventType')} />
+                <Controller
+                  control={control}
+                  name="event.eventType"
+                  render={({ field }) => (
+                    <Select variant="field" label="Event type" placeholder="What’s the occasion?" value={field.value} onValueChange={field.onChange} onBlur={field.onBlur} options={EVENT_TYPES.map((t) => ({ value: t, label: EVENT_TYPE_LABELS[t] }))} error={errAt(errors, 'event.eventType')} valid={valid('event.eventType')} />
+                  )}
+                />
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Input type="date" label="Event date" min={todayIST()} data-filled="true" error={errAt(errors, 'event.date')} valid={valid('event.date')} {...register('event.date')} />
-                  <Input type="date" label="Alternate date (optional)" min={todayIST()} data-filled="true" error={errAt(errors, 'event.altDate')} {...register('event.altDate')} />
+                  <Controller
+                    control={control}
+                    name="event.date"
+                    render={({ field }) => (
+                      <DatePicker variant="field" label="Event date" min={todayIST()} value={field.value} onChange={(v) => { field.onChange(v); field.onBlur(); }} onBlur={field.onBlur} clearable={false} error={errAt(errors, 'event.date')} valid={valid('event.date')} />
+                    )}
+                  />
+                  <Controller
+                    control={control}
+                    name="event.altDate"
+                    render={({ field }) => (
+                      <DatePicker variant="field" label="Alternate date (optional)" placeholder="Optional" min={todayIST()} value={field.value} onChange={field.onChange} onBlur={field.onBlur} error={errAt(errors, 'event.altDate')} />
+                    )}
+                  />
                 </div>
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Select label="City" options={CITIES.map((c) => ({ value: c.slug, label: c.name }))} defaultValue="" error={errAt(errors, 'event.city')} valid={valid('event.city')} {...register('event.city')} />
+                  <Controller
+                    control={control}
+                    name="event.city"
+                    render={({ field }) => (
+                      <Select variant="field" label="City" placeholder="Choose a city" value={field.value} onValueChange={field.onChange} onBlur={field.onBlur} options={CITIES.map((c) => ({ value: c.slug, label: c.name, description: c.state }))} error={errAt(errors, 'event.city')} valid={valid('event.city')} />
+                    )}
+                  />
                   <Input label="Venue or area" autoComplete="off" error={errAt(errors, 'event.venue')} valid={valid('event.venue')} {...register('event.venue')} />
                 </div>
                 <div className="grid gap-5 sm:grid-cols-2">
                   <Input type="number" inputMode="numeric" label="Audience size" min={10} error={errAt(errors, 'event.audienceSize')} valid={valid('event.audienceSize')} {...register('event.audienceSize')} />
-                  <Select
-                    label="Performance duration"
-                    options={[30, 45, 60, 90, 120, 180, 240].map((m) => ({ value: String(m), label: m < 60 ? `${m} min` : `${m / 60} hr${m > 60 ? 's' : ''}` }))}
-                    error={errAt(errors, 'event.durationMins')}
-                    {...register('event.durationMins')}
+                  <Controller
+                    control={control}
+                    name="event.durationMins"
+                    render={({ field }) => (
+                      <Select
+                        variant="field"
+                        label="Performance duration"
+                        value={field.value == null ? '' : String(field.value)}
+                        onValueChange={(v) => field.onChange(Number(v))}
+                        onBlur={field.onBlur}
+                        options={[30, 45, 60, 90, 120, 180, 240].map((m) => ({ value: String(m), label: m < 60 ? `${m} min` : `${m / 60} hr${m > 60 ? 's' : ''}` }))}
+                        error={errAt(errors, 'event.durationMins')}
+                      />
+                    )}
                   />
                 </div>
               </>
@@ -221,7 +256,13 @@ export function EnquiryStepper() {
                   {errAt(errors, 'talent.budgetMaxRupees') && <p role="alert" className="mt-2 text-xs text-danger">{errAt(errors, 'talent.budgetMaxRupees')}</p>}
                   <p className="mt-3 text-xs text-fg-subtle">Covers the talent fee. Travel, production and GST are itemised separately in your quote.</p>
                 </div>
-                <Select label="Preferred language (optional)" options={LANGUAGES.map((l) => ({ value: l, label: l }))} defaultValue="" placeholder="No preference" {...register('talent.language', { setValueAs: (v: string) => v || undefined })} />
+                <Controller
+                  control={control}
+                  name="talent.language"
+                  render={({ field }) => (
+                    <Select variant="field" label="Preferred language (optional)" value={field.value ?? ''} onValueChange={(v) => field.onChange(v || undefined)} emptyLabel="No preference" options={LANGUAGES.map((l) => ({ value: l, label: l }))} />
+                  )}
+                />
                 <Textarea label="Anything else? (setlist, theme, dress code…)" error={errAt(errors, 'talent.notes')} {...register('talent.notes')} />
               </>
             )}

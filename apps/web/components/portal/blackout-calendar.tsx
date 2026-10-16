@@ -1,23 +1,16 @@
 'use client';
 
-import { DayPicker } from 'react-day-picker';
 import { useState } from 'react';
 import { CalendarOff, Loader2, X } from 'lucide-react';
 import type { Blackout, TalentBooking } from '@repo/schemas';
 import { EmptyState } from '@repo/ui/empty-state';
 import { Skeleton } from '@repo/ui/skeleton';
 import { Button } from '@repo/ui/button';
+import { Calendar, dateToIso as toIso, isoToDate as fromIso } from '@repo/ui/calendar';
 import { formatDate, todayIST } from '@repo/utils';
 import { ApiError } from '@/lib/api/client';
 import { useBlackouts, useToggleBlackout } from '@/lib/api/hooks';
 import { useMediaQuery } from '@/lib/motion';
-
-/** Calendar date as the user picked it (local components) → YYYY-MM-DD. */
-const toIso = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-const fromIso = (s: string) => {
-  const [y, m, d] = s.split('-').map(Number);
-  return new Date(y!, m! - 1, d!);
-};
 
 /** Blackout dates (TAL-3). Confirmed booking dates are locked; past dates can't change. */
 export function BlackoutCalendar({ bookings, editable }: { bookings: TalentBooking[]; editable: boolean }) {
@@ -39,42 +32,26 @@ export function BlackoutCalendar({ bookings, editable }: { bookings: TalentBooki
   return (
     <div className="grid gap-8 xl:grid-cols-[1fr_320px]">
       <div className="overflow-x-auto rounded-2xl border border-border bg-surface p-4 sm:p-6">
-        <DayPicker
+        <Calendar
           mode="multiple"
           month={month}
           onMonthChange={setMonth}
           numberOfMonths={twoMonths ? 2 : 1}
-          weekStartsOn={1}
+          showOutsideDays={false}
           selected={blackoutDates}
           disabled={editable ? [{ before: today }, ...booked] : true}
           modifiers={{ booked, pending }}
           onDayClick={(day, mods) => {
             if (!editable || mods.disabled) return;
-            const iso = toIso(day);
-            toggle.mutate({ date: iso, on: !mods.selected });
+            toggle.mutate({ date: toIso(day), on: !mods.selected });
           }}
           classNames={{
-            root: 'relative',
-            months: 'flex flex-col gap-8 md:flex-row',
-            month: 'space-y-4',
-            month_caption: 'flex h-10 items-center font-display text-lg font-extrabold',
-            nav: 'absolute top-0 right-0 flex gap-1',
-            button_previous: 'grid size-10 place-items-center rounded-full border border-border hover:bg-surface-2 disabled:opacity-40',
-            button_next: 'grid size-10 place-items-center rounded-full border border-border hover:bg-surface-2 disabled:opacity-40',
-            chevron: 'size-4 fill-fg',
-            weekdays: 'flex',
-            weekday: 'w-11 text-center text-xs font-medium text-fg-subtle',
-            week: 'flex',
-            day: 'size-11 p-0.5 text-center text-sm',
-            day_button: 'tabular size-full rounded-lg font-medium transition-[background-color,transform] hover:bg-surface-3 active:scale-95 disabled:cursor-not-allowed disabled:hover:bg-transparent',
-            selected: '[&>button]:bg-fg [&>button]:text-bg [&>button]:line-through [&>button]:hover:bg-fg',
-            today: '[&>button]:ring-1 [&>button]:ring-primary-text',
-            disabled: 'text-fg-subtle/60',
-            outside: 'opacity-30',
+            // Blackout = struck-through ink chip (distinct from the gradient "selected" used by pickers).
+            selected: '[&>button]:bg-fg [&>button]:text-bg [&>button]:line-through [&>button]:decoration-2 [&>button]:hover:bg-fg',
           }}
           modifiersClassNames={{
-            booked: '[&>button]:!bg-[color-mix(in_oklab,var(--success)_22%,transparent)] [&>button]:!text-success [&>button]:!no-underline',
-            pending: '[&>button]:ring-1 [&>button]:ring-warning',
+            booked: '!opacity-100 [&>button]:!bg-[color-mix(in_oklab,var(--success)_22%,transparent)] [&>button]:!text-success [&>button]:!no-underline',
+            pending: '[&>button]:ring-1 [&>button]:ring-warning [&>button]:ring-inset',
           }}
         />
         <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs text-fg-muted" aria-label="Legend">

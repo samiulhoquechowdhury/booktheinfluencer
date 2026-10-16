@@ -20,9 +20,11 @@ type FieldShellProps = {
   children: ReactNode;
   className?: string;
   multiline?: boolean;
+  /** Keep the label floated (custom triggers like Select/DatePicker always show a value or placeholder). */
+  floated?: boolean;
 };
 
-export function FieldShell({ id, label, error, hint, valid, prefix, children, className, multiline }: FieldShellProps) {
+export function FieldShell({ id, label, error, hint, valid, prefix, children, className, multiline, floated }: FieldShellProps) {
   const reduce = useReducedMotion();
   return (
     <div className={cn('group/field', className)}>
@@ -46,6 +48,7 @@ export function FieldShell({ id, label, error, hint, valid, prefix, children, cl
             'peer-focus:-translate-y-2.5 peer-focus:scale-[0.78] peer-[:not(:placeholder-shown)]:-translate-y-2.5 peer-[:not(:placeholder-shown)]:scale-[0.78]',
             'peer-data-[filled=true]:-translate-y-2.5 peer-data-[filled=true]:scale-[0.78]',
             multiline && 'top-3.5',
+            floated && '-translate-y-2.5 scale-[0.78]',
           )}
         >
           {label}
@@ -145,49 +148,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
         className={cn(inputBase, 'resize-none pt-7', className)}
         {...props}
       />
-    </FieldShell>
-  );
-});
-
-type SelectProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
-  label: string;
-  error?: string;
-  hint?: ReactNode;
-  valid?: boolean;
-  options: readonly { value: string; label: string }[];
-  placeholder?: string;
-  shellClassName?: string;
-};
-
-/** Native select (best mobile UX + a11y) styled as a floating field. */
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
-  { label, error, hint, valid, options, placeholder = 'Select…', shellClassName, className, id: idProp, value, defaultValue, ...props },
-  ref,
-) {
-  const auto = useId();
-  const id = idProp ?? auto;
-  return (
-    <FieldShell id={id} label={label} error={error} hint={hint} valid={valid} className={shellClassName}>
-      <select
-        ref={ref}
-        id={id}
-        value={value}
-        defaultValue={defaultValue}
-        data-filled="true"
-        aria-invalid={error ? true : undefined}
-        aria-describedby={error ? `${id}-error` : hint ? `${id}-hint` : undefined}
-        className={cn(inputBase, 'cursor-pointer bg-[url("data:image/svg+xml,%3Csvg_xmlns=%27http://www.w3.org/2000/svg%27_viewBox=%270_0_24_24%27_fill=%27none%27_stroke=%27%23888%27_stroke-width=%272%27%3E%3Cpath_d=%27m6_9_6_6_6-6%27/%3E%3C/svg%3E")] bg-[length:16px] bg-[right_0.875rem_center] bg-no-repeat pr-10 [&>option]:bg-bg-elevated', className)}
-        {...props}
-      >
-        <option value="" disabled>
-          {placeholder}
-        </option>
-        {options.map((o) => (
-          <option key={o.value} value={o.value}>
-            {o.label}
-          </option>
-        ))}
-      </select>
     </FieldShell>
   );
 });

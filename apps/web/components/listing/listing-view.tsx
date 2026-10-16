@@ -10,6 +10,7 @@ import { Loader2 } from 'lucide-react';
 import type { TalentPage } from '@repo/schemas';
 import { Button } from '@repo/ui/button';
 import { EmptyState } from '@repo/ui/empty-state';
+import { Select } from '@repo/ui/select';
 import { cn } from '@repo/ui/lib/cn';
 import { api, ApiError } from '@/lib/api/client';
 import { TalentCard } from '@/components/talent/talent-card';
@@ -96,18 +97,21 @@ export function ListingView({ initial, locked = {} }: { initial: TalentPage; loc
               {total === undefined ? 'Loading talent…' : `${total} ${total === 1 ? 'act' : 'acts'} match`}
               {query.isFetching && !query.isFetchingNextPage && <Loader2 className="ml-2 inline size-3.5 animate-spin" aria-hidden />}
             </p>
-            <label className="flex items-center gap-2 text-sm">
-              <span className="text-fg-muted max-sm:sr-only">Sort</span>
-              <select
+            <div className="flex items-center gap-2 text-sm">
+              <label htmlFor="sort" className="text-fg-muted max-sm:sr-only">Sort</label>
+              <Select
+                id="sort"
+                variant="pill"
                 value={filters.sort ?? 'relevance'}
-                onChange={(e) => set({ sort: e.target.value === 'relevance' ? undefined : (e.target.value as Filters['sort']) })}
-                className="h-11 cursor-pointer appearance-none rounded-full border border-border bg-surface px-4 text-sm font-medium outline-none focus-visible:border-primary-text"
-              >
-                <option value="relevance">Relevance</option>
-                <option value="fee_asc">Fee: low to high</option>
-                <option value="fee_desc">Fee: high to low</option>
-              </select>
-            </label>
+                onValueChange={(v) => set({ sort: v === 'relevance' ? undefined : (v as Filters['sort']) })}
+                options={[
+                  { value: 'relevance', label: 'Relevance', description: 'Featured and premium first' },
+                  { value: 'fee_asc', label: 'Fee: low to high' },
+                  { value: 'fee_desc', label: 'Fee: high to low' },
+                ]}
+                contentClassName="min-w-[15rem]"
+              />
+            </div>
           </motion.div>
 
           <div className="mb-6 min-h-0">

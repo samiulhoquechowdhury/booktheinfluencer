@@ -116,3 +116,30 @@ html.lenis, html.lenis body { height: auto; }
 /* Headline entrance that runs on first paint — no hydration needed (LCP-safe). */
 @keyframes split-rise { from { transform: translateY(110%) rotate(4deg); } to { transform: none; } }
 .split-rise { display: inline-block; animation: split-rise 0.9s var(--ease-out-expo) both; }
+
+/* ── Floating surfaces (select, popover, dropdown): scale/fade from their trigger ── */
+@keyframes pop-in { from { opacity: 0; transform: translateY(-6px) scale(0.96); } to { opacity: 1; transform: none; } }
+@keyframes pop-in-up { from { opacity: 0; transform: translateY(6px) scale(0.96); } to { opacity: 1; transform: none; } }
+@keyframes pop-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: scale(0.97); } }
+.pop {
+  transform-origin: var(--radix-select-content-transform-origin, var(--radix-popover-content-transform-origin, var(--radix-dropdown-menu-content-transform-origin, top)));
+  will-change: transform, opacity;
+}
+.pop[data-state='open'] { animation: pop-in 220ms var(--ease-out-expo); }
+.pop[data-state='open'][data-side='top'] { animation-name: pop-in-up; }
+.pop[data-state='closed'] { animation: pop-out 140ms ease-in forwards; }
+
+/* ── Calendar month transitions (react-day-picker `animate`) ── */
+.rdp-root { --rdp-animation_duration: 0.38s; --rdp-animation_timing: var(--ease-out-expo); }
+@keyframes rdp-in-left { from { transform: translateX(-100%); } to { transform: none; } }
+@keyframes rdp-in-right { from { transform: translateX(100%); } to { transform: none; } }
+@keyframes rdp-out-left { to { transform: translateX(-100%); } }
+@keyframes rdp-out-right { to { transform: translateX(100%); } }
+@keyframes rdp-fade-in { from { opacity: 0; } }
+@keyframes rdp-fade-out { to { opacity: 0; } }
+.rdp-weeks_before_enter { animation: rdp-in-left var(--rdp-animation_duration) var(--rdp-animation_timing) forwards; }
+.rdp-weeks_before_exit { animation: rdp-out-left var(--rdp-animation_duration) var(--rdp-animation_timing) forwards; }
+.rdp-weeks_after_enter { animation: rdp-in-right var(--rdp-animation_duration) var(--rdp-animation_timing) forwards; }
+.rdp-weeks_after_exit { animation: rdp-out-right var(--rdp-animation_duration) var(--rdp-animation_timing) forwards; }
+.rdp-caption_after_enter, .rdp-caption_before_enter { animation: rdp-fade-in var(--rdp-animation_duration) var(--rdp-animation_timing) forwards; }
+.rdp-caption_after_exit, .rdp-caption_before_exit { animation: rdp-fade-out var(--rdp-animation_duration) var(--rdp-animation_timing) forwards; }

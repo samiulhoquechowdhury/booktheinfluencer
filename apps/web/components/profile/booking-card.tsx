@@ -3,10 +3,11 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { ArrowRight, CalendarDays, Check, ShieldCheck } from 'lucide-react';
+import { DatePicker } from '@repo/ui/date-picker';
 import type { PublicTalent } from '@repo/schemas';
 import { Button } from '@repo/ui/button';
 import { FeeBand } from '@repo/ui/fee-band';
-import { ctaLabelForTier, todayIST } from '@repo/utils';
+import { ctaLabelForTier } from '@repo/utils';
 import { Magnetic } from '@/lib/motion';
 
 export const QUOTE_INCLUDES = ['Talent fee for the agreed set', 'Travel, stay and local transport (if needed)', 'Production and rider requirements', 'Service fee and GST — itemised'];
@@ -34,12 +35,12 @@ export function BookingCard({ talent }: { talent: PublicTalent }) {
           </li>
         ))}
       </ul>
-      <label className="mt-5 block">
-        <span className="mb-2 flex items-center gap-2 text-xs font-semibold tracking-wide text-fg-muted uppercase">
+      <div className="mt-5">
+        <label htmlFor="bc-date" className="mb-2 flex items-center gap-2 text-xs font-semibold tracking-wide text-fg-muted uppercase">
           <CalendarDays className="size-3.5" aria-hidden /> Event date
-        </span>
-        <input type="date" min={todayIST()} value={date} onChange={(e) => setDate(e.target.value)} className="h-12 w-full rounded-lg border border-border bg-surface px-3 text-sm outline-none focus:border-primary-text" />
-      </label>
+        </label>
+        <DatePicker id="bc-date" value={date} onChange={setDate} placeholder="When’s the event?" />
+      </div>
       <Magnetic className="mt-5 flex">
         <Button asChild size="lg" className="w-full">
           <Link href={enquireHref(talent, date || undefined)}>

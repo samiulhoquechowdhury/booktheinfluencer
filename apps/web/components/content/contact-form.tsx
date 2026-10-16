@@ -2,13 +2,14 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AnimatePresence, motion } from 'motion/react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import { CheckCircle2, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { ContactMessageSchema, type ContactMessage } from '@repo/schemas';
 import { Button } from '@repo/ui/button';
-import { Input, Select, Textarea } from '@repo/ui/field';
+import { Input, Textarea } from '@repo/ui/field';
+import { Select } from '@repo/ui/select';
 import { api, ApiError } from '@/lib/api/client';
 
 export function ContactForm() {
@@ -39,7 +40,24 @@ export function ContactForm() {
           </div>
           <div className="grid gap-5 sm:grid-cols-2">
             <Input type="tel" label="Mobile (optional)" prefix="+91" error={errors.phone?.message} {...form.register('phone')} />
-            <Select label="Topic" options={[{ value: 'booking', label: 'A booking' }, { value: 'corporate', label: 'Corporate / planner account' }, { value: 'talent', label: 'I’m talent or a manager' }, { value: 'other', label: 'Something else' }]} {...form.register('topic')} />
+            <Controller
+              control={form.control}
+              name="topic"
+              render={({ field }) => (
+                <Select
+                  variant="field"
+                  label="Topic"
+                  value={field.value}
+                  onValueChange={field.onChange}
+                  options={[
+                    { value: 'booking', label: 'A booking', description: 'New brief or an existing booking' },
+                    { value: 'corporate', label: 'Corporate / planner account', description: 'Repeat events, GST billing' },
+                    { value: 'talent', label: 'I’m talent or a manager', description: 'Join the roster' },
+                    { value: 'other', label: 'Something else' },
+                  ]}
+                />
+              )}
+            />
           </div>
           <Textarea label="How can we help?" error={errors.message?.message} {...form.register('message')} />
           <Button type="submit" size="lg" disabled={send.isPending}>

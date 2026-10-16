@@ -1,8 +1,10 @@
 'use client';
 
-import { Search, X } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { EVENT_TYPES, LANGUAGES } from '@repo/schemas';
-import { EVENT_TYPE_LABELS, todayIST } from '@repo/utils';
+import { EVENT_TYPE_LABELS } from '@repo/utils';
+import { DatePicker } from '@repo/ui/date-picker';
+import { Select } from '@repo/ui/select';
 import { cn } from '@repo/ui/lib/cn';
 import { BUDGET_OPTIONS, CATEGORIES, CITIES } from '@/lib/reference';
 import type { Filters } from './query';
@@ -68,25 +70,19 @@ export function FilterPanel({
       {!locked.city && (
         <div>
           <label htmlFor="f-city" className={label}>City (base or travels to)</label>
-          <select id="f-city" value={filters.city ?? ''} onChange={(e) => set({ city: (e.target.value || undefined) as Filters['city'] })} className={control}>
-            <option value="">Any city</option>
-            {CITIES.map((c) => (
-              <option key={c.slug} value={c.slug}>{c.name}</option>
-            ))}
-          </select>
+          <Select
+            id="f-city"
+            value={filters.city}
+            onValueChange={(v) => set({ city: (v || undefined) as Filters['city'] })}
+            emptyLabel="Any city"
+            options={CITIES.map((c) => ({ value: c.slug, label: c.name, description: c.state }))}
+          />
         </div>
       )}
 
       <div>
         <label htmlFor="f-date" className={label}>Event date</label>
-        <div className="relative">
-          <input id="f-date" type="date" min={todayIST()} value={filters.date ?? ''} onChange={(e) => set({ date: e.target.value || undefined })} className={control} aria-describedby="f-date-hint" />
-          {filters.date && (
-            <button type="button" onClick={() => set({ date: undefined })} aria-label="Clear date" className="absolute top-1/2 right-9 -translate-y-1/2 rounded-full p-1 text-fg-subtle hover:text-fg">
-              <X className="size-3.5" />
-            </button>
-          )}
-        </div>
+        <DatePicker id="f-date" value={filters.date} onChange={(v) => set({ date: v || undefined })} placeholder="Any date" />
         <p id="f-date-hint" className="mt-1.5 text-xs text-fg-subtle">Hides talent with a known blackout. Availability is always confirmed by your manager.</p>
       </div>
 
@@ -115,22 +111,24 @@ export function FilterPanel({
 
       <div>
         <label htmlFor="f-event" className={label}>Event type</label>
-        <select id="f-event" value={filters.eventType ?? ''} onChange={(e) => set({ eventType: (e.target.value || undefined) as Filters['eventType'] })} className={control}>
-          <option value="">Any event</option>
-          {EVENT_TYPES.map((t) => (
-            <option key={t} value={t}>{EVENT_TYPE_LABELS[t]}</option>
-          ))}
-        </select>
+        <Select
+          id="f-event"
+          value={filters.eventType}
+          onValueChange={(v) => set({ eventType: (v || undefined) as Filters['eventType'] })}
+          emptyLabel="Any event"
+          options={EVENT_TYPES.map((t) => ({ value: t, label: EVENT_TYPE_LABELS[t] }))}
+        />
       </div>
 
       <div>
         <label htmlFor="f-lang" className={label}>Language</label>
-        <select id="f-lang" value={filters.language ?? ''} onChange={(e) => set({ language: (e.target.value || undefined) as Filters['language'] })} className={control}>
-          <option value="">Any language</option>
-          {LANGUAGES.map((l) => (
-            <option key={l} value={l}>{l}</option>
-          ))}
-        </select>
+        <Select
+          id="f-lang"
+          value={filters.language}
+          onValueChange={(v) => set({ language: (v || undefined) as Filters['language'] })}
+          emptyLabel="Any language"
+          options={LANGUAGES.map((l) => ({ value: l, label: l }))}
+        />
       </div>
 
       <label className="flex cursor-pointer items-center justify-between gap-4 rounded-lg border border-border bg-surface px-3 py-3">
