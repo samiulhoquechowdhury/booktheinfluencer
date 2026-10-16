@@ -86,7 +86,7 @@ export function ListingView({ initial, locked = {} }: { initial: TalentPage; loc
         <section aria-labelledby="results-heading" aria-busy={query.isFetching}>
           {/* Toolbar */}
           <motion.div
-            className="glass sticky top-16 z-30 -mx-4 mb-6 flex items-center justify-between gap-3 border-x-0 px-4 py-3 md:top-[4.5rem] md:-mx-8 md:px-8 lg:static lg:mx-0 lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none"
+            className="glass sticky top-[4.25rem] z-30 -mx-4 mb-6 flex items-center justify-between gap-3 border-x-0 px-4 py-3 md:top-[5rem] md:-mx-8 md:px-8 lg:static lg:mx-0 lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none"
             animate={{ y: barHidden && !reduce ? '-140%' : '0%' }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           >

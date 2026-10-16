@@ -88,6 +88,9 @@ _(add as they happen — e.g. gateway webhook quirks, DLT template rejections, P
 - Above-the-fold headlines (`SplitText trigger="mount"`) animate with CSS (`.split-rise`), not Motion, so they paint before hydration (LCP).
 - Images: Unsplash/imgix does resizing + AVIF/WebP (`auto=format`) through `lib/image-loader.ts`; `deviceSizes` capped at 1920. Every `<Image>` needs a `sizes` that matches its real layout width. Cover images carry an ~90-byte WebP `blurDataURL` made by `pnpm mock:generate` (needs ImageMagick `magick`; skipped if missing). Hero mosaic is greyscaled server-side (`sat=-100`), not with a CSS filter.
 - No native `<select>`/`<input type=date>` in the UI: use `@repo/ui/select` (Radix; `emptyLabel` maps an "Any …" option to `''` via an internal sentinel, since Radix items can't have empty values) and `@repo/ui/date-picker` / `@repo/ui/calendar` (values are `YYYY-MM-DD`, built from local date parts). In RHF forms wire them through `Controller`.
+- Calendar: don't enable react-day-picker's built-in `animate` — it overlays a cloned old month (month names/numbers overlap). `@repo/ui/calendar` animates the new caption/grid in place instead.
+- Full-screen overlays (mobile menu) must render their own close button: the header's toggle sits inside the header's z-50 stacking context, under the overlay. Keep decorative glows inside a clipped layer or the overlay scrolls sideways on phones.
+- Header data (category images/counts, featured act) comes from `lib/nav.ts` (server, static-safe) and is passed to `<SiteHeader nav>` by layouts.
 - Unsplash placeholder IDs were checked to resolve (HTTP 200) and reviewed visually; one with a recognisable celebrity DJ helmet and one brand logo were excluded.
 
 ## 9. Session log

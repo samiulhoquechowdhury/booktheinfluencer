@@ -6,6 +6,7 @@ import { useState, type ReactNode } from 'react';
 import { Toaster } from 'sonner';
 import { ApiError } from '@/lib/api/client';
 import { CursorFollower, LenisProvider, TransitionProvider } from '@/lib/motion';
+import { SearchPaletteProvider } from '@/components/shell/search-palette';
 
 export function Providers({ children }: { children: ReactNode }) {
   const [qc] = useState(
@@ -25,7 +26,7 @@ export function Providers({ children }: { children: ReactNode }) {
       <QueryClientProvider client={qc}>
         <LenisProvider>
           <TransitionProvider>
-            {children}
+            <SearchPaletteProvider>{children}</SearchPaletteProvider>
             <CursorFollower />
             <Toaster
               position="bottom-center"

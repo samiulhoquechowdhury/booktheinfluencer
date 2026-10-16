@@ -129,17 +129,8 @@ html.lenis, html.lenis body { height: auto; }
 .pop[data-state='open'][data-side='top'] { animation-name: pop-in-up; }
 .pop[data-state='closed'] { animation: pop-out 140ms ease-in forwards; }
 
-/* ── Calendar month transitions (react-day-picker `animate`) ── */
-.rdp-root { --rdp-animation_duration: 0.38s; --rdp-animation_timing: var(--ease-out-expo); }
-@keyframes rdp-in-left { from { transform: translateX(-100%); } to { transform: none; } }
-@keyframes rdp-in-right { from { transform: translateX(100%); } to { transform: none; } }
-@keyframes rdp-out-left { to { transform: translateX(-100%); } }
-@keyframes rdp-out-right { to { transform: translateX(100%); } }
-@keyframes rdp-fade-in { from { opacity: 0; } }
-@keyframes rdp-fade-out { to { opacity: 0; } }
-.rdp-weeks_before_enter { animation: rdp-in-left var(--rdp-animation_duration) var(--rdp-animation_timing) forwards; }
-.rdp-weeks_before_exit { animation: rdp-out-left var(--rdp-animation_duration) var(--rdp-animation_timing) forwards; }
-.rdp-weeks_after_enter { animation: rdp-in-right var(--rdp-animation_duration) var(--rdp-animation_timing) forwards; }
-.rdp-weeks_after_exit { animation: rdp-out-right var(--rdp-animation_duration) var(--rdp-animation_timing) forwards; }
-.rdp-caption_after_enter, .rdp-caption_before_enter { animation: rdp-fade-in var(--rdp-animation_duration) var(--rdp-animation_timing) forwards; }
-.rdp-caption_after_exit, .rdp-caption_before_exit { animation: rdp-fade-out var(--rdp-animation_duration) var(--rdp-animation_timing) forwards; }
+/* Menu entrances that don't depend on JS frames (content can never get stuck hidden). */
+@keyframes rise-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.rise-in { animation: rise-in 0.6s var(--ease-out-expo) both; }
+@keyframes menu-reveal { from { clip-path: circle(0% at calc(100% - 2.5rem) 2rem); } to { clip-path: circle(150% at calc(100% - 2.5rem) 2rem); } }
+.menu-reveal { animation: menu-reveal 0.7s var(--ease-out-expo) both; }

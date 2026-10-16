@@ -3,11 +3,13 @@ import { ArrowLeft, Search } from 'lucide-react';
 import { Button } from '@repo/ui/button';
 import { SiteHeader } from '@/components/shell/site-header';
 import { NotFoundArt } from '@/components/shell/not-found-art';
+import { getNavData } from '@/lib/nav';
 
-export default function NotFound() {
+export default async function NotFound() {
+  const nav = await getNavData();
   return (
     <>
-      <SiteHeader />
+      <SiteHeader nav={nav} />
       <main id="main" className="relative grid min-h-dvh place-items-center overflow-hidden px-4 pt-20">
         <div aria-hidden className="pointer-events-none absolute top-1/2 left-1/2 size-[48rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,var(--glow-1),transparent_60%)]" />
         <div className="relative text-center">
