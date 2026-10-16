@@ -53,7 +53,7 @@ export function AccountMenu() {
         <button
           type="button"
           onClick={() => setLoginOpen(true)}
-          className="h-10 rounded-full px-4 text-sm font-medium text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg"
+          className="h-10 rounded-full px-3 text-sm font-medium whitespace-nowrap text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg sm:px-4"
         >
           Log in
         </button>

@@ -134,3 +134,9 @@ html.lenis, html.lenis body { height: auto; }
 .rise-in { animation: rise-in 0.6s var(--ease-out-expo) both; }
 @keyframes menu-reveal { from { clip-path: circle(0% at calc(100% - 2.5rem) 2rem); } to { clip-path: circle(150% at calc(100% - 2.5rem) 2rem); } }
 .menu-reveal { animation: menu-reveal 0.7s var(--ease-out-expo) both; }
+
+/* Spotlight auto-advance bar: pure CSS timer (pauses on hover/focus via play-state). */
+@keyframes spot-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.spot-progress { transform-origin: left; animation: spot-progress var(--spot-ms, 6000ms) linear both; }
+.group\/spot:hover .spot-progress, .group\/spot:focus-within .spot-progress { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .spot-progress { animation: none; transform: scaleX(0); } }

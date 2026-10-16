@@ -19,7 +19,7 @@ import type { NavData } from './nav-types';
 import { SearchButton } from './search-palette';
 import { ThemeToggle } from './theme-toggle';
 
-const linkCls = 'relative z-10 flex h-10 items-center gap-1 rounded-full px-4 text-sm font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring';
+const linkCls = 'relative z-10 flex h-10 items-center gap-1 rounded-full px-3 text-sm whitespace-nowrap xl:px-4 font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring';
 
 /**
  * Floating capsule header. Transparent over the hero; a glass capsule fades in once scrolled
@@ -127,7 +127,7 @@ export function SiteHeader({ variant = 'full', nav }: { variant?: 'full' | 'mini
             </span>
             <AccountMenu />
             {variant === 'full' && (
-              <Magnetic className="ml-1 hidden md:inline-flex">
+              <Magnetic className="ml-1 hidden md:inline-flex lg:hidden xl:inline-flex">
                 <Button asChild size="md" className="h-10 md:h-11">
                   <Link href="/enquire">
                     Plan with an expert <ArrowUpRight aria-hidden />
