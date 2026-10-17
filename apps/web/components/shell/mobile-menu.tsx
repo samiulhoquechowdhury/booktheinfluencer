@@ -83,17 +83,17 @@ export function MobileMenu({ nav }: { nav?: NavData }) {
                   {nav && (
                     <section {...rise(0.16)} aria-labelledby="mm-browse">
                       <p id="mm-browse" className="eyebrow mb-3">Browse</p>
-                      <ul className="no-scrollbar -mx-4 flex snap-x gap-3 overflow-x-auto px-4 sm:mx-0 sm:grid sm:grid-cols-5 sm:px-0">
+                      <ul className="no-scrollbar -mx-4 flex snap-x gap-2.5 overflow-x-auto px-4 sm:mx-0 sm:grid sm:grid-cols-6 sm:px-0">
                         {nav.categories.map((c) => (
-                          <li key={c.slug} className="w-32 shrink-0 snap-start sm:w-auto">
-                            <Link href={`/talent/${c.slug}`} onClick={close} className="group relative block aspect-[4/5] overflow-hidden rounded-2xl bg-surface-2">
+                          <li key={c.slug} className="w-24 shrink-0 snap-start sm:w-auto">
+                            <Link href={`/talent/${c.slug}`} onClick={close} className="group relative block aspect-[4/5] overflow-hidden rounded-xl bg-surface-2">
                               {c.image.src && (
-                                <Image src={c.image.src} alt="" fill sizes="(min-width: 640px) 18vw, 128px" quality={60} placeholder={c.image.blurDataURL ? 'blur' : 'empty'} blurDataURL={c.image.blurDataURL} className="object-cover" />
+                                <Image src={c.image.src} alt="" fill sizes="(min-width: 640px) 15vw, 96px" quality={60} placeholder={c.image.blurDataURL ? 'blur' : 'empty'} blurDataURL={c.image.blurDataURL} className="object-cover" />
                               )}
                               <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                              <span className="absolute inset-x-3 bottom-3 text-white">
-                                <span className="block font-display text-base leading-tight font-extrabold">{c.name}</span>
-                                <span className="tabular text-[0.6875rem] text-white/70">{c.count} acts</span>
+                              <span className="absolute inset-x-2 bottom-2 text-white">
+                                <span className="block font-display text-[0.8125rem] leading-tight font-extrabold">{c.name}</span>
+                                <span className="tabular text-[0.625rem] text-white/70">{c.count} acts</span>
                               </span>
                             </Link>
                           </li>

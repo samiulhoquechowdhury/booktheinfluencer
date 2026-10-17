@@ -5,16 +5,16 @@
     "stage": "NEW",
     "availability": "NOT_CHECKED",
     "talent": {
-      "slug": "joi-barua",
-      "name": "Joi Barua",
+      "slug": "nahid-afrin-ansari",
+      "name": "Nahid Afrin Ansari",
       "primaryCategory": "singers",
       "image": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Joi_Barua-1_copy.jpg#w=1841",
-        "width": 1841,
-        "height": 2592,
-        "credit": "Photo: Bids199 (CC BY-SA 3.0), via Wikimedia Commons",
-        "alt": "Joi Barua, singer",
-        "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADwAQCdASoIAAoAA4BaJaQAAp2NrvLjQAAA/sJtyo5eTzr+uHLz9do+IVSL3R/UkJRSYlt5x5s4mAAA"
+        "src": "/talent/nahid-afrin-ansari.jpg?v=0f1a4e7e",
+        "width": 600,
+        "height": 750,
+        "credit": "Photo: Deccan Herald",
+        "alt": "Nahid Afrin Ansari, singer",
+        "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoIAAoAA4BaJYgCdH8AGMCyurgAAPRlAk5ZONbF4nWvvIiIz1JanL4d0exEq0y+HaLAcLz4qedFJB+VAV8VfGM15f7IBMJVP1H+3p1I1gAAAA=="
       }
     },
     "event": {
@@ -60,16 +60,16 @@
     "stage": "AVAILABILITY_CHECK",
     "availability": "AWAITING_MANAGER",
     "talent": {
-      "slug": "kenny-sebastian",
-      "name": "Kenny Sebastian",
-      "primaryCategory": "comedians",
+      "slug": "kopil-bora",
+      "name": "Kopil Bora",
+      "primaryCategory": "actors",
       "image": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/5/58/Kenny_2016_%28cropped%29.jpg#w=397",
-        "width": 397,
-        "height": 560,
-        "credit": "Photo: Vidhishah121 (CC BY-SA 4.0), via Wikimedia Commons",
-        "alt": "Kenny Sebastian, comedian",
-        "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADwAQCdASoIAAoAA4BaJYgCdAEUoBM5Z8AA/veWWX7moXdnTNgZ+tAFsit+TyLNz56iIxRlN6UJ9qrnfBriAAAA"
+        "src": "/talent/kopil-bora.jpg?v=732289dc",
+        "width": 779,
+        "height": 974,
+        "credit": "Photo: TeachAIDS (CC BY-SA 2.0), via Wikimedia Commons",
+        "alt": "Kopil Bora, actor",
+        "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoIAAoAA4BaJaACdAEPDnTiMAD+0P38TVxMWdZSyNAImgrw2DAt7OmyRpk6/fDjY4xbQ0yWXx4CJWNDUPqYTHy8IrzDJ9hdQAA="
       }
     },
     "event": {
@@ -99,7 +99,7 @@
       },
       {
         "at": "2026-10-11T09:05:00Z",
-        "label": "Request sent to Kenny’s representative"
+        "label": "Request sent to Kopil’s representative"
       }
     ],
     "notes": "Clean set; mixed audience of partners and families.",
@@ -119,16 +119,16 @@
     "stage": "AVAILABILITY_CHECK",
     "availability": "HOLD_REQUESTED",
     "talent": {
-      "slug": "badshah",
-      "name": "Badshah",
-      "primaryCategory": "singers",
+      "slug": "nishita-goswami",
+      "name": "Nishita Goswami",
+      "primaryCategory": "actors",
       "image": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/d/db/Badshah_in_2017_at_Mirchi_Music_Awards.png#w=1236",
-        "width": 1236,
-        "height": 1608,
-        "credit": "Photo: Mirchi Plus (CC BY 3.0), via Wikimedia Commons",
-        "alt": "Badshah, singer",
-        "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADQAQCdASoIAAoAA4BaJQBOgB5wXWASAAD+76L2DbCVaV8hZNwu7JbUtJrPTLQRvLl4G0CCPiNbDHRCRAA="
+        "src": "/talent/nishita-goswami.jpg?v=d892b065",
+        "width": 720,
+        "height": 900,
+        "credit": "Photo: Manorama Online",
+        "alt": "Nishita Goswami, actor",
+        "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoIAAoAA4BaJbACdADzggDjfAAA+VJyImbm27nTGMxuUqzAtqKD3TuRl7zrD8mP839nKu92dXYg+2hT7xRlDTxZppWH+l86YgAAAA=="
       }
     },
     "event": {
@@ -182,16 +182,15 @@
     "stage": "QUOTE_SENT",
     "availability": "AVAILABLE",
     "talent": {
-      "slug": "nucleya",
-      "name": "Nucleya",
-      "primaryCategory": "djs",
+      "slug": "bikash-chetry",
+      "name": "Bikash Chetry",
+      "primaryCategory": "creators",
       "image": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Nucleya_Zoom_Holi_2020.png#w=1819",
-        "width": 1819,
-        "height": 1355,
-        "credit": "Photo: Crazy Bollywood (CC BY 3.0), via Wikimedia Commons",
-        "alt": "Nucleya, DJ",
-        "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoIAAoAA4BaJYgC7AD0uUJZOEAA/vCzcmlwnVkE/QNIA/jhm5boGCIqp0YiB9MqedrTRoiKKg2XKv1Ru6gAAA=="
+        "src": "/talent/bikash-chetry.jpg?v=720e8ab7",
+        "width": 1080,
+        "height": 1350,
+        "alt": "Bikash Chetry, creator",
+        "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACQAQCdASoIAAoAA4BaJZwAApn5S8AA/uhsnwYSUOcoxHK3PCoUsOuAmjSOT+m0adOSjhTavcAVWxmd165e4C4FQ3DjuL4/AAA="
       }
     },
     "event": {
@@ -216,7 +215,7 @@
           {
             "id": "Q-24005-1_li1",
             "type": "TALENT_FEE",
-            "description": "Nucleya — 3-hour headline set",
+            "description": "Bikash Chetry — launch film + live appearance",
             "amountPaise": "65000000",
             "internalCostPaise": "52000000",
             "payoutPaise": "52000000"
@@ -390,7 +389,7 @@
       },
       {
         "at": "2026-10-04T12:00:00Z",
-        "label": "Nucleya confirmed available"
+        "label": "Bikash Chetry confirmed available"
       },
       {
         "at": "2026-10-06T10:00:00Z",
@@ -422,16 +421,16 @@
     "stage": "ADVANCE_PENDING",
     "availability": "TENTATIVE",
     "talent": {
-      "slug": "maniesh-paul",
-      "name": "Maniesh Paul",
-      "primaryCategory": "speakers",
+      "slug": "dimpu-baruah",
+      "name": "Dimpu Baruah",
+      "primaryCategory": "creators",
       "image": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Manish_Paul_at_ITA_2012.jpg#w=500",
-        "width": 500,
-        "height": 713,
-        "credit": "Photo: TeamManishPaul (CC BY-SA 3.0), via Wikimedia Commons",
-        "alt": "Maniesh Paul, anchor",
-        "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoIAAoAA4BaJQBOgB6TP6TM84AA/upZdz/nPgbu8yOTHV4uU3Lu3YIP4df4MUDoK0aNUtYkM6YaQqRpgigAAA=="
+        "src": "/talent/dimpu-baruah.jpg?v=0c8d7242",
+        "width": 720,
+        "height": 900,
+        "credit": "Photo: Dimpu’s Vlogs, YouTube",
+        "alt": "Dimpu Baruah, creator",
+        "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoIAAoAA4BaJQBOgCKT/SVxKxAA/sqz+HAZovnGgkSiA876DmLzgUeQ6C8yZvO6OF2J9LgyG3/kap5HsQ13QMG9uHTC1gkAAAA="
       }
     },
     "event": {
@@ -456,7 +455,7 @@
           {
             "id": "Q-24003-1_li1",
             "type": "TALENT_FEE",
-            "description": "Hosting — opening and closing segments (60 min)",
+            "description": "Creator session + Q&A (60 min)",
             "amountPaise": "85000000",
             "internalCostPaise": "70000000",
             "payoutPaise": "70000000"
@@ -600,16 +599,15 @@
     "stage": "AVAILABILITY_CHECK",
     "availability": "UNAVAILABLE",
     "talent": {
-      "slug": "neeti-mohan",
-      "name": "Neeti Mohan",
-      "primaryCategory": "singers",
+      "slug": "yankee-parasar",
+      "name": "Yankee Parasar",
+      "primaryCategory": "actors",
       "image": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/1/13/Neeti_Mohan_attends_Shakti_Mohan%E2%80%99s_Nritya_Shakti_celebrations_for_World_Dance_Day_%2804%29_%28cropped%29.jpg#w=210",
-        "width": 210,
-        "height": 280,
-        "credit": "Photo: Bollywood Hungama (CC BY 3.0), via Wikimedia Commons",
-        "alt": "Neeti Mohan, singer",
-        "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoIAAoAA4BaJYwCdAEDpJ96rqJgAP5sUf3NThW1olfGHwdOdqxkkLV+01PaoGf9fZ1TUF4fsqite5Q2nI7Og5Mg2MHkC2+fc/dw+JGAw9y8AA=="
+        "src": "/talent/yankee-parasar.jpg?v=87e706eb",
+        "width": 1200,
+        "height": 1500,
+        "alt": "Yankee Parasar, actor",
+        "blurDataURL": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADQAQCdASoIAAoAA4BaJYwAAxf9dVdyAAD+9J3+3XhiBHoR0rPXX2/qFS1roYjPuQefwAAA"
       }
     },
     "event": {
@@ -663,16 +661,16 @@
     "stage": "CONFIRMED",
     "availability": "CONFIRMED",
     "talent": {
-      "slug": "papon",
-      "name": "Papon",
+      "slug": "nahid-afrin-ansari",
+      "name": "Nahid Afrin Ansari",
       "primaryCategory": "singers",
       "image": {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/3/38/Papon_at_Coke_Studio_Season_3_launch.jpg#w=585",
-        "width": 585,
-        "height": 881,
-        "credit": "Photo: Bollywood Hungama (CC BY 3.0), via Wikimedia Commons",
-        "alt": "Papon, singer",
-        "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoIAAoAA4BaJbACdAD0cLhbwAD+ghfH/GmtZ89MD8tdHyZjFpGdUTDOSc/9zAbn4Pef7jORmYp2kpWD7rx8AAAA"
+        "src": "/talent/nahid-afrin-ansari.jpg?v=0f1a4e7e",
+        "width": 600,
+        "height": 750,
+        "credit": "Photo: Deccan Herald",
+        "alt": "Nahid Afrin Ansari, singer",
+        "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoIAAoAA4BaJYgCdH8AGMCyurgAAPRlAk5ZONbF4nWvvIiIz1JanL4d0exEq0y+HaLAcLz4qedFJB+VAV8VfGM15f7IBMJVP1H+3p1I1gAAAA=="
       }
     },
     "event": {
@@ -697,7 +695,7 @@
           {
             "id": "Q-23987-1_li1",
             "type": "TALENT_FEE",
-            "description": "Papon — 2-hour headline set",
+            "description": "Nahid Afrin Ansari — 2-hour headline set",
             "amountPaise": "12000000",
             "internalCostPaise": "9500000",
             "payoutPaise": "9500000"

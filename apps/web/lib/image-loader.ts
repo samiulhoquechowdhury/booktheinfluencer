@@ -18,6 +18,8 @@ export default function imageLoader({ src, width, quality }: { src: string; widt
     if (!url.searchParams.has('auto')) url.searchParams.set('auto', 'format');
     return url.toString();
   }
+  // Self-hosted files are served as-is; the query keeps each width's URL distinct for next/image.
+  if (src.startsWith('/')) return `${src}${src.includes('?') ? '&' : '?'}w=${width}`;
   if (src.startsWith(COMMONS)) {
     const [path, hash = ''] = src.slice(COMMONS.length).split('#');
     const original = Number(new URLSearchParams(hash).get('w')) || Infinity;

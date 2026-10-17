@@ -1,6 +1,282 @@
 [
   {
     "id": "tal_001",
+    "slug": "bikash-chetry",
+    "name": "Bikash Chetry",
+    "categories": [
+      "creators"
+    ],
+    "primaryCategory": "creators",
+    "tagline": "YouTuber and travel creator",
+    "bio": "Bikash Chetry is an Assamese YouTuber and travel creator known for motorcycle travel vlogs and food content. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
+    "baseCity": "guwahati",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "Assamese",
+      "Hindi",
+      "English"
+    ],
+    "eventTypes": [
+      "BRAND_CAMPAIGN",
+      "PRODUCT_LAUNCH",
+      "COLLEGE_FEST",
+      "CORPORATE"
+    ],
+    "tier": "PREMIUM",
+    "representation": "PLATFORM_COORDINATED",
+    "verified": false,
+    "featured": true,
+    "feeBand": null,
+    "images": [
+      {
+        "src": "/talent/bikash-chetry.jpg?v=720e8ab7",
+        "width": 1080,
+        "height": 1350,
+        "alt": "Bikash Chetry, creator",
+        "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACQAQCdASoIAAoAA4BaJZwAApn5S8AA/uhsnwYSUOcoxHK3PCoUsOuAmjSOT+m0adOSjhTavcAVWxmd165e4C4FQ3DjuL4/AAA="
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator desk with dual screens — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&ar=4:5",
+        "alt": "Podcast microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&ar=4:5",
+        "alt": "Phone filming a live show — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [],
+    "riderSummary": null,
+    "faqs": [
+      {
+        "q": "Why is the fee “on request”?",
+        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Is my booking confirmed once I send a request?",
+        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
+      }
+    ],
+    "tags": [
+      "travel vlogs",
+      "moto vlogs",
+      "food content",
+      "creator",
+      "assamese",
+      "hindi",
+      "english",
+      "guwahati",
+      "assam"
+    ]
+  },
+  {
+    "id": "tal_002",
+    "slug": "dimpu-baruah",
+    "name": "Dimpu Baruah",
+    "categories": [
+      "creators"
+    ],
+    "primaryCategory": "creators",
+    "tagline": "YouTuber and content creator",
+    "bio": "Dimpu Baruah is an Assamese YouTuber and content creator making videos on technology and travel. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
+    "baseCity": "guwahati",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "Assamese",
+      "Hindi",
+      "English"
+    ],
+    "eventTypes": [
+      "BRAND_CAMPAIGN",
+      "PRODUCT_LAUNCH",
+      "COLLEGE_FEST",
+      "CORPORATE"
+    ],
+    "tier": "PREMIUM",
+    "representation": "PLATFORM_COORDINATED",
+    "verified": false,
+    "featured": true,
+    "feeBand": null,
+    "images": [
+      {
+        "src": "/talent/dimpu-baruah.jpg?v=0c8d7242",
+        "width": 720,
+        "height": 900,
+        "credit": "Photo: Dimpu’s Vlogs, YouTube",
+        "alt": "Dimpu Baruah, creator",
+        "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoIAAoAA4BaJQBOgCKT/SVxKxAA/sqz+HAZovnGgkSiA876DmLzgUeQ6C8yZvO6OF2J9LgyG3/kap5HsQ13QMG9uHTC1gkAAAA="
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&ar=4:5",
+        "alt": "Phone filming a live show — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&ar=4:5",
+        "alt": "Recording microphone — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator posing on a terrace — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1603575448878-868a20723f5d?auto=format&fit=crop&ar=4:5",
+        "alt": "Creator editing on a laptop — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [],
+    "riderSummary": null,
+    "faqs": [
+      {
+        "q": "Why is the fee “on request”?",
+        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Is my booking confirmed once I send a request?",
+        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
+      }
+    ],
+    "tags": [
+      "video content",
+      "travel vlogs",
+      "technology",
+      "creator",
+      "assamese",
+      "hindi",
+      "english",
+      "guwahati",
+      "assam"
+    ]
+  },
+  {
+    "id": "tal_003",
+    "slug": "jatin-bora",
+    "name": "Jatin Bora",
+    "categories": [
+      "actors"
+    ],
+    "primaryCategory": "actors",
+    "tagline": "Actor and director of Assamese film and mobile theatre",
+    "bio": "Jatin Bora is an Assamese actor, director and producer, a long-standing lead in Assamese cinema and mobile theatre. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
+    "baseCity": "guwahati",
+    "travelsTo": [],
+    "travelsPanIndia": true,
+    "languages": [
+      "Assamese",
+      "Hindi",
+      "English"
+    ],
+    "eventTypes": [
+      "BRAND_CAMPAIGN",
+      "PRODUCT_LAUNCH",
+      "AWARD_NIGHT",
+      "CORPORATE",
+      "WEDDING"
+    ],
+    "tier": "PREMIUM",
+    "representation": "PLATFORM_COORDINATED",
+    "verified": false,
+    "featured": true,
+    "feeBand": null,
+    "images": [
+      {
+        "src": "/talent/jatin-bora.jpg?v=3caa52cd",
+        "width": 1050,
+        "height": 1313,
+        "credit": "Photo: Bikram Borpatra Photography",
+        "alt": "Jatin Bora, actor",
+        "blurDataURL": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAACQAQCdASoIAAoAA4BaJaQAAppqwLwA/om6WaYkdV9x1EIz31C93n9AN8uiLPRN9B46bSHLpwAAAA=="
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&ar=4:5",
+        "alt": "Event crowd under lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&ar=4:5",
+        "alt": "Hall with an engaged audience — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&ar=4:5",
+        "alt": "Small theatre stage with a lone performer — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
+        "alt": "Packed auditorium — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&ar=4:5",
+        "alt": "Concert stage with warm lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      }
+    ],
+    "showreelUrl": null,
+    "pastEvents": [],
+    "riderSummary": null,
+    "faqs": [
+      {
+        "q": "Why is the fee “on request”?",
+        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
+      },
+      {
+        "q": "How fast will I hear back?",
+        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
+      },
+      {
+        "q": "Is my booking confirmed once I send a request?",
+        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
+      }
+    ],
+    "tags": [
+      "assamese cinema",
+      "direction",
+      "theatre",
+      "actor",
+      "assamese",
+      "hindi",
+      "english",
+      "guwahati",
+      "assam"
+    ]
+  },
+  {
+    "id": "tal_004",
     "slug": "kopil-bora",
     "name": "Kopil Bora",
     "categories": [
@@ -32,12 +308,12 @@
     "feeBand": null,
     "images": [
       {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Kopil_Bora_-_TeachAIDS_Recording_Session.png#w=1132",
-        "width": 1132,
+        "src": "/talent/kopil-bora.jpg?v=732289dc",
+        "width": 779,
         "height": 974,
         "credit": "Photo: TeachAIDS (CC BY-SA 2.0), via Wikimedia Commons",
         "alt": "Kopil Bora, actor",
-        "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoIAAoAA4BaJaACdAD0ttiAAAD+zgV7rN0zYGPIly6EZlsJkY+kMchp3syYz3l/aFKFDx6BeOJo1R8hGyIUdSgehV5hk+wuoAA="
+        "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoIAAoAA4BaJaACdAEPDnTiMAD+0P38TVxMWdZSyNAImgrw2DAt7OmyRpk6/fDjY4xbQ0yWXx4CJWNDUPqYTHy8IrzDJ9hdQAA="
       },
       {
         "src": "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&ar=4:5",
@@ -46,14 +322,14 @@
         "height": 1500
       },
       {
-        "src": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&ar=4:5",
-        "alt": "Concert stage with warm lights — illustrative photo",
+        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
+        "alt": "Packed auditorium — illustrative photo",
         "width": 1200,
         "height": 1500
       },
       {
-        "src": "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&ar=4:5",
-        "alt": "Event crowd under lights — illustrative photo",
+        "src": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&ar=4:5",
+        "alt": "Concert stage with warm lights — illustrative photo",
         "width": 1200,
         "height": 1500
       }
@@ -76,6 +352,9 @@
       }
     ],
     "tags": [
+      "film & theatre",
+      "anchoring",
+      "voice acting",
       "actor",
       "anchor",
       "assamese",
@@ -86,15 +365,15 @@
     ]
   },
   {
-    "id": "tal_002",
-    "slug": "zerifa-wahid",
-    "name": "Zerifa Wahid",
+    "id": "tal_005",
+    "slug": "nahid-afrin-ansari",
+    "name": "Nahid Afrin Ansari",
     "categories": [
-      "actors"
+      "singers"
     ],
-    "primaryCategory": "actors",
-    "tagline": "Actress of Assamese cinema and theatre",
-    "bio": "Zerifa Wahid is an Assamese actress known for her work in Assamese films and theatre. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
+    "primaryCategory": "singers",
+    "tagline": "Playback singer from Assam",
+    "bio": "Nahid Afrin is a playback singer from Assam who came to national attention on Indian Idol Junior and sings for Hindi and Assamese films. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
     "baseCity": "guwahati",
     "travelsTo": [],
     "travelsPanIndia": true,
@@ -104,11 +383,11 @@
       "English"
     ],
     "eventTypes": [
-      "BRAND_CAMPAIGN",
-      "PRODUCT_LAUNCH",
-      "AWARD_NIGHT",
+      "CONCERT",
+      "WEDDING",
       "CORPORATE",
-      "WEDDING"
+      "COLLEGE_FEST",
+      "AWARD_NIGHT"
     ],
     "tier": "PREMIUM",
     "representation": "PLATFORM_COORDINATED",
@@ -117,18 +396,12 @@
     "feeBand": null,
     "images": [
       {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Zerifa_Wahid.JPG#w=852",
-        "width": 852,
-        "height": 1076,
-        "credit": "Photo: Simbu123 (CC BY-SA 3.0), via Wikimedia Commons",
-        "alt": "Zerifa Wahid, actor",
-        "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoIAAoAA4BaJZACdADdtOqmlAAA/nhYhSE/dXcX8BvFSFo+wcYaeEjLnmw6HTD20h+EdlDixwun1+fg2kQg5hx+Xkk8AAAA"
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
-        "alt": "Packed auditorium — illustrative photo",
-        "width": 1200,
-        "height": 1500
+        "src": "/talent/nahid-afrin-ansari.jpg?v=0f1a4e7e",
+        "width": 600,
+        "height": 750,
+        "credit": "Photo: Deccan Herald",
+        "alt": "Nahid Afrin Ansari, singer",
+        "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoIAAoAA4BaJYgCdH8AGMCyurgAAPRlAk5ZONbF4nWvvIiIz1JanL4d0exEq0y+HaLAcLz4qedFJB+VAV8VfGM15f7IBMJVP1H+3p1I1gAAAA=="
       },
       {
         "src": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&ar=4:5",
@@ -137,14 +410,20 @@
         "height": 1500
       },
       {
-        "src": "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&ar=4:5",
-        "alt": "Hall with an engaged audience — illustrative photo",
+        "src": "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&ar=4:5",
+        "alt": "Crowd silhouettes at a gig — illustrative photo",
         "width": 1200,
         "height": 1500
       },
       {
-        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
-        "alt": "Packed auditorium — illustrative photo",
+        "src": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&ar=4:5",
+        "alt": "Singer performing in stage haze — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&ar=4:5",
+        "alt": "Concert stage with warm lights — illustrative photo",
         "width": 1200,
         "height": 1500
       }
@@ -167,7 +446,9 @@
       }
     ],
     "tags": [
-      "actor",
+      "playback singing",
+      "live music",
+      "singer",
       "assamese",
       "hindi",
       "english",
@@ -176,7 +457,7 @@
     ]
   },
   {
-    "id": "tal_003",
+    "id": "tal_006",
     "slug": "nishita-goswami",
     "name": "Nishita Goswami",
     "categories": [
@@ -207,22 +488,22 @@
     "feeBand": null,
     "images": [
       {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/5/57/Assamese_film_actress_Nishita_Goswami.jpg#w=296",
-        "width": 296,
-        "height": 394,
-        "credit": "Photo: Magical Assam (CC BY 2.0), via Wikimedia Commons",
+        "src": "/talent/nishita-goswami.jpg?v=d892b065",
+        "width": 720,
+        "height": 900,
+        "credit": "Photo: Manorama Online",
         "alt": "Nishita Goswami, actor",
-        "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAAAwAgCdASoIAAoAA4BaJYwCdAEWPcjYqFoIAAD+3fQEhJ8XH5txt38cTvDm85Tqd1jYmm1QWycj4uHKDOHdDbAA"
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&ar=4:5",
-        "alt": "Concert stage with warm lights — illustrative photo",
-        "width": 1200,
-        "height": 1500
+        "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoIAAoAA4BaJbACdADzggDjfAAA+VJyImbm27nTGMxuUqzAtqKD3TuRl7zrD8mP839nKu92dXYg+2hT7xRlDTxZppWH+l86YgAAAA=="
       },
       {
         "src": "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&ar=4:5",
         "alt": "Event crowd under lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&ar=4:5",
+        "alt": "Hall with an engaged audience — illustrative photo",
         "width": 1200,
         "height": 1500
       },
@@ -233,179 +514,8 @@
         "height": 1500
       },
       {
-        "src": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&ar=4:5",
-        "alt": "Concert stage with warm lights — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&ar=4:5",
-        "alt": "Event crowd under lights — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
-      "actor",
-      "assamese",
-      "hindi",
-      "english",
-      "guwahati",
-      "assam"
-    ]
-  },
-  {
-    "id": "tal_004",
-    "slug": "jatin-bora",
-    "name": "Jatin Bora",
-    "categories": [
-      "actors"
-    ],
-    "primaryCategory": "actors",
-    "tagline": "Actor and director of Assamese film and mobile theatre",
-    "bio": "Jatin Bora is an Assamese actor, director and producer, a long-standing lead in Assamese cinema and mobile theatre. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "guwahati",
-    "travelsTo": [],
-    "travelsPanIndia": true,
-    "languages": [
-      "Assamese",
-      "Hindi",
-      "English"
-    ],
-    "eventTypes": [
-      "BRAND_CAMPAIGN",
-      "PRODUCT_LAUNCH",
-      "AWARD_NIGHT",
-      "CORPORATE",
-      "WEDDING"
-    ],
-    "tier": "PREMIUM",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
-    "featured": true,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/5/56/Jatin_Borah.JPG#w=280",
-        "width": 280,
-        "height": 371,
-        "credit": "Photo: Simbu123 (CC BY-SA 3.0), via Wikimedia Commons",
-        "alt": "Jatin Bora, actor",
-        "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoIAAoAA4BaJZACdADdtRaGkAAA/kQpSGKzcSnE0/27BGf2z/Gmm+P+pS1gCznmFI1Y9b7+aSaKljsA5wfwqjawFvSjlFwEyWAAAA=="
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&ar=4:5",
-        "alt": "Stage lights over a crowd — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&ar=4:5",
-        "alt": "Hall with an engaged audience — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
         "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
         "alt": "Packed auditorium — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
-      "actor",
-      "assamese",
-      "hindi",
-      "english",
-      "guwahati",
-      "assam"
-    ]
-  },
-  {
-    "id": "tal_005",
-    "slug": "aimee-baruah",
-    "name": "Aimee Baruah",
-    "categories": [
-      "actors"
-    ],
-    "primaryCategory": "actors",
-    "tagline": "Actress, producer and director",
-    "bio": "Aimee Baruah is an Assamese actress, producer and director, recognised at the 68th National Film Awards for Semkhor. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "guwahati",
-    "travelsTo": [
-      "delhi",
-      "hyderabad"
-    ],
-    "travelsPanIndia": false,
-    "languages": [
-      "Assamese",
-      "Hindi",
-      "English"
-    ],
-    "eventTypes": [
-      "BRAND_CAMPAIGN",
-      "PRODUCT_LAUNCH",
-      "AWARD_NIGHT",
-      "CORPORATE",
-      "WEDDING"
-    ],
-    "tier": "STANDARD",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
-    "featured": false,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Aimee_Baruah_in_68th_National_Film_Awards_2022.jpg#w=4128",
-        "width": 4128,
-        "height": 6192,
-        "credit": "Photo: Lisanian (CC0), via Wikimedia Commons",
-        "alt": "Aimee Baruah, actor",
-        "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAQCdASoIAAoAA4BaJZACdAD0ZjRgXgAA/tIL+gZw7fy2QBbIxXhdgfv4TEohv8XeR+qMJwN/J0x69YhYsstdi5lBn2ka3VIgmURnZBaPXaAA"
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&ar=4:5",
-        "alt": "Event crowd under lights — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&ar=4:5",
-        "alt": "Small theatre stage with a lone performer — illustrative photo",
         "width": 1200,
         "height": 1500
       },
@@ -414,12 +524,6 @@
         "alt": "Concert stage with warm lights — illustrative photo",
         "width": 1200,
         "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&ar=4:5",
-        "alt": "Event crowd under lights — illustrative photo",
-        "width": 1200,
-        "height": 1500
       }
     ],
     "showreelUrl": null,
@@ -440,105 +544,8 @@
       }
     ],
     "tags": [
-      "actor",
-      "assamese",
-      "hindi",
-      "english",
-      "guwahati",
-      "assam"
-    ]
-  },
-  {
-    "id": "tal_006",
-    "slug": "barsha-rani-bishaya",
-    "name": "Barsha Rani Bishaya",
-    "categories": [
-      "actors"
-    ],
-    "primaryCategory": "actors",
-    "tagline": "Actress of Assamese film and television",
-    "bio": "Barsha Rani Bishaya is an Assamese actress who has worked across Assamese films and television. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "guwahati",
-    "travelsTo": [
-      "kolkata",
-      "bengaluru"
-    ],
-    "travelsPanIndia": false,
-    "languages": [
-      "Assamese",
-      "Hindi",
-      "English"
-    ],
-    "eventTypes": [
-      "BRAND_CAMPAIGN",
-      "PRODUCT_LAUNCH",
-      "AWARD_NIGHT",
-      "CORPORATE",
-      "WEDDING"
-    ],
-    "tier": "STANDARD",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
-    "featured": false,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Barsha_Rani_Bishaya.jpg#w=1200",
-        "width": 1200,
-        "height": 1800,
-        "credit": "Photo: Simanta5000 (CC BY-SA 3.0), via Wikimedia Commons",
-        "alt": "Barsha Rani Bishaya, actor",
-        "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQAgCdASoIAAoAA4BaJYgCdAED+L2PTA4AAP6mfWT4tXwNw/PI9yjBLo8jMK4hjES6gG+DLgZ0CbN4FUSZJ4tNuDhCVD8mthjwfacAAAA="
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&ar=4:5",
-        "alt": "Hall with an engaged audience — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
-        "alt": "Packed auditorium — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&ar=4:5",
-        "alt": "Stage lights over a crowd — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&ar=4:5",
-        "alt": "Hall with an engaged audience — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
-        "alt": "Packed auditorium — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
+      "assamese cinema",
+      "acting",
       "actor",
       "assamese",
       "hindi",
@@ -549,295 +556,21 @@
   },
   {
     "id": "tal_007",
-    "slug": "papon",
-    "name": "Papon",
-    "categories": [
-      "singers"
-    ],
-    "primaryCategory": "singers",
-    "tagline": "Assamese folk roots, Bollywood playback hits",
-    "bio": "Papon (Angaraag Mahanta) is a singer and composer from Assam, known for Assamese folk-fusion and Hindi film songs such as “Moh Moh Ke Dhaage”. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "mumbai",
-    "travelsTo": [],
-    "travelsPanIndia": true,
-    "languages": [
-      "Assamese",
-      "Hindi",
-      "English"
-    ],
-    "eventTypes": [
-      "CONCERT",
-      "WEDDING",
-      "CORPORATE",
-      "COLLEGE_FEST",
-      "AWARD_NIGHT"
-    ],
-    "tier": "PREMIUM",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
-    "featured": true,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/3/38/Papon_at_Coke_Studio_Season_3_launch.jpg#w=585",
-        "width": 585,
-        "height": 881,
-        "credit": "Photo: Bollywood Hungama (CC BY 3.0), via Wikimedia Commons",
-        "alt": "Papon, singer",
-        "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoIAAoAA4BaJbACdAD0cLhbwAD+ghfH/GmtZ89MD8tdHyZjFpGdUTDOSc/9zAbn4Pef7jORmYp2kpWD7rx8AAAA"
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&ar=4:5",
-        "alt": "Brass section on stage — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&ar=4:5",
-        "alt": "Stage lights over a crowd — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&ar=4:5",
-        "alt": "Singer performing in stage haze — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
-      "singer",
-      "assamese",
-      "hindi",
-      "english",
-      "mumbai",
-      "assam"
-    ]
-  },
-  {
-    "id": "tal_008",
-    "slug": "joi-barua",
-    "name": "Joi Barua",
-    "categories": [
-      "singers"
-    ],
-    "primaryCategory": "singers",
-    "tagline": "Singer-composer with a full live band",
-    "bio": "Joi Barua is a singer and composer from Assam who performs Assamese and Hindi songs with his band. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "guwahati",
-    "travelsTo": [
-      "delhi",
-      "hyderabad"
-    ],
-    "travelsPanIndia": false,
-    "languages": [
-      "Assamese",
-      "Hindi",
-      "English"
-    ],
-    "eventTypes": [
-      "CONCERT",
-      "WEDDING",
-      "CORPORATE",
-      "COLLEGE_FEST",
-      "AWARD_NIGHT"
-    ],
-    "tier": "STANDARD",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
-    "featured": true,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Joi_Barua-1_copy.jpg#w=1841",
-        "width": 1841,
-        "height": 2592,
-        "credit": "Photo: Bids199 (CC BY-SA 3.0), via Wikimedia Commons",
-        "alt": "Joi Barua, singer",
-        "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADwAQCdASoIAAoAA4BaJaQAAp2NrvLjQAAA/sJtyo5eTzr+uHLz9do+IVSL3R/UkJRSYlt5x5s4mAAA"
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&ar=4:5",
-        "alt": "Studio microphone — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&ar=4:5",
-        "alt": "Crowd silhouettes at a gig — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&ar=4:5",
-        "alt": "Concert stage with warm lights — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1598387993441-a364f854c3e1?auto=format&fit=crop&ar=4:5",
-        "alt": "Guitarist under blue stage lights — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
-      "singer",
-      "assamese",
-      "hindi",
-      "english",
-      "guwahati",
-      "assam"
-    ]
-  },
-  {
-    "id": "tal_009",
-    "slug": "kalpana-patowary",
-    "name": "Kalpana Patowary",
-    "categories": [
-      "singers"
-    ],
-    "primaryCategory": "singers",
-    "tagline": "Folk and Bhojpuri music from Assam to the world",
-    "bio": "Kalpana Patowary is a singer from Assam, best known for Bhojpuri folk and film music. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "mumbai",
-    "travelsTo": [
-      "shillong",
-      "bengaluru"
-    ],
-    "travelsPanIndia": false,
-    "languages": [
-      "Assamese",
-      "Hindi"
-    ],
-    "eventTypes": [
-      "CONCERT",
-      "WEDDING",
-      "CORPORATE",
-      "COLLEGE_FEST",
-      "AWARD_NIGHT"
-    ],
-    "tier": "STANDARD",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
-    "featured": false,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/2/23/List_of_Bhojpuri_film_songs_recorded_by_Kalpana_Patowary.JPG#w=2848",
-        "width": 2848,
-        "height": 4288,
-        "credit": "Photo: Kalpana Patowary Bhojpuri Films (CC BY-SA 3.0), via Wikimedia Commons",
-        "alt": "Kalpana Patowary, singer",
-        "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoIAAoAA4BaJaACdAD0iFu4IgAA/uzEhpvy4ShwbZc/zb1czvA23cYsKJYA7D5F7M98i/bC+BQCpq/sW3o4AAAA"
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&ar=4:5",
-        "alt": "Stage lights over a crowd — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&ar=4:5",
-        "alt": "Singer performing in stage haze — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&ar=4:5",
-        "alt": "Vintage stage microphone — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&ar=4:5",
-        "alt": "Crowd making heart shapes at a concert — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&ar=4:5",
-        "alt": "Brass section on stage — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
-      "singer",
-      "assamese",
-      "hindi",
-      "mumbai",
-      "assam"
-    ]
-  },
-  {
-    "id": "tal_010",
-    "slug": "adil-hussain",
-    "name": "Adil Hussain",
+    "slug": "yankee-parasar",
+    "name": "Yankee Parasar",
     "categories": [
       "actors"
     ],
     "primaryCategory": "actors",
-    "tagline": "Assam-born actor of Indian and international cinema",
-    "bio": "Adil Hussain is an actor from Assam, known for Hindi and international films including Life of Pi and English Vinglish. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "mumbai",
+    "tagline": "Actress and model",
+    "bio": "Yankee Parasar is an Assamese actress and model who works across films, modelling and music videos. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
+    "baseCity": "guwahati",
     "travelsTo": [],
     "travelsPanIndia": true,
     "languages": [
+      "Assamese",
       "Hindi",
-      "English",
-      "Assamese"
+      "English"
     ],
     "eventTypes": [
       "BRAND_CAMPAIGN",
@@ -849,722 +582,15 @@
     "tier": "PREMIUM",
     "representation": "PLATFORM_COORDINATED",
     "verified": false,
-    "featured": false,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Adil_Hussain_at_%27Life_of_Pi%27_press_meet.jpg#w=326",
-        "width": 326,
-        "height": 363,
-        "credit": "Photo: Bollywood Hungama (CC BY 3.0), via Wikimedia Commons",
-        "alt": "Adil Hussain, actor",
-        "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAAAQAgCdASoIAAoAA4BaJYgCdAD0TvsvddQAAP5FenW17a5PfOqOGAp7Wufb10enGmIXk2ggWGfd4vYDzRQHTMZyOgjkRKzWWAAAAA=="
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&ar=4:5",
-        "alt": "Stage lights over a crowd — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&ar=4:5",
-        "alt": "Hall with an engaged audience — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
-        "alt": "Packed auditorium — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
-      "actor",
-      "hindi",
-      "english",
-      "assamese",
-      "mumbai",
-      "assam"
-    ]
-  },
-  {
-    "id": "tal_011",
-    "slug": "shreya-ghoshal",
-    "name": "Shreya Ghoshal",
-    "categories": [
-      "singers"
-    ],
-    "primaryCategory": "singers",
-    "tagline": "One of India’s most celebrated playback voices",
-    "bio": "Shreya Ghoshal is an Indian playback singer and a multiple National Film Award winner, singing in Hindi and many regional languages. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "mumbai",
-    "travelsTo": [],
-    "travelsPanIndia": true,
-    "languages": [
-      "Hindi",
-      "Bengali",
-      "English"
-    ],
-    "eventTypes": [
-      "CONCERT",
-      "WEDDING",
-      "CORPORATE",
-      "COLLEGE_FEST",
-      "AWARD_NIGHT"
-    ],
-    "tier": "PREMIUM",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
     "featured": true,
     "feeBand": null,
     "images": [
       {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Shreya_Ghoshal_Behindwoods_Gold_Icons_Awards_2023_%28cropped%29.jpg#w=548",
-        "width": 548,
-        "height": 896,
-        "credit": "Photo: Behindwoods (CC BY-SA 3.0), via Wikimedia Commons",
-        "alt": "Shreya Ghoshal, singer",
-        "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADQAQCdASoIAAoAA4BaJbACdADzcQSPAAD+3Jmn/xMtPzFPcL9Y9B3jEhkXvuiGuOl/6iLvvRb0k2timNuZ8vrY5LiJjeIQ+ZHsFTu0m/vVf1WRB1wAaxgAAAA="
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&ar=4:5",
-        "alt": "Singer performing in stage haze — illustrative photo",
+        "src": "/talent/yankee-parasar.jpg?v=87e706eb",
         "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&ar=4:5",
-        "alt": "Vintage stage microphone — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&ar=4:5",
-        "alt": "Crowd making heart shapes at a concert — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&ar=4:5",
-        "alt": "Brass section on stage — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
-      "singer",
-      "hindi",
-      "bengali",
-      "english",
-      "mumbai"
-    ]
-  },
-  {
-    "id": "tal_012",
-    "slug": "sunidhi-chauhan",
-    "name": "Sunidhi Chauhan",
-    "categories": [
-      "singers"
-    ],
-    "primaryCategory": "singers",
-    "tagline": "High-energy Bollywood playback and live shows",
-    "bio": "Sunidhi Chauhan is an Indian playback singer known for her Hindi film songs and live concerts. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "mumbai",
-    "travelsTo": [],
-    "travelsPanIndia": true,
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "eventTypes": [
-      "CONCERT",
-      "WEDDING",
-      "CORPORATE",
-      "COLLEGE_FEST",
-      "AWARD_NIGHT"
-    ],
-    "tier": "PREMIUM",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
-    "featured": false,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Sunidhi_Chauhan_performing_in_Delhi.jpg#w=900",
-        "width": 900,
         "height": 1500,
-        "credit": "Photo: GaiusAugustine (CC BY 4.0), via Wikimedia Commons",
-        "alt": "Sunidhi Chauhan, singer",
-        "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoIAAoAA4BaJbACsAD0lg2SXjAA/u+iIyM3jS4NebhnSrDqisPMp4kvqmnBUx0yypWXPUw/XsxVmB/6bVaLVzZX7FglsAAA"
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&ar=4:5",
-        "alt": "Concert stage with warm lights — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1598387993441-a364f854c3e1?auto=format&fit=crop&ar=4:5",
-        "alt": "Guitarist under blue stage lights — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&ar=4:5",
-        "alt": "Acoustic guitar set — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&ar=4:5",
-        "alt": "Studio microphone — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&ar=4:5",
-        "alt": "Crowd silhouettes at a gig — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
-      "singer",
-      "hindi",
-      "english",
-      "mumbai"
-    ]
-  },
-  {
-    "id": "tal_013",
-    "slug": "neeti-mohan",
-    "name": "Neeti Mohan",
-    "categories": [
-      "singers"
-    ],
-    "primaryCategory": "singers",
-    "tagline": "Bollywood playback singer",
-    "bio": "Neeti Mohan is an Indian playback singer known for her Hindi film songs. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "mumbai",
-    "travelsTo": [],
-    "travelsPanIndia": true,
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "eventTypes": [
-      "CONCERT",
-      "WEDDING",
-      "CORPORATE",
-      "COLLEGE_FEST",
-      "AWARD_NIGHT"
-    ],
-    "tier": "PREMIUM",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
-    "featured": false,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/1/13/Neeti_Mohan_attends_Shakti_Mohan%E2%80%99s_Nritya_Shakti_celebrations_for_World_Dance_Day_%2804%29_%28cropped%29.jpg#w=210",
-        "width": 210,
-        "height": 280,
-        "credit": "Photo: Bollywood Hungama (CC BY 3.0), via Wikimedia Commons",
-        "alt": "Neeti Mohan, singer",
-        "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoIAAoAA4BaJYwCdAEDpJ96rqJgAP5sUf3NThW1olfGHwdOdqxkkLV+01PaoGf9fZ1TUF4fsqite5Q2nI7Og5Mg2MHkC2+fc/dw+JGAw9y8AA=="
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&ar=4:5",
-        "alt": "Vintage stage microphone — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&ar=4:5",
-        "alt": "Crowd making heart shapes at a concert — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&ar=4:5",
-        "alt": "Brass section on stage — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
-      "singer",
-      "hindi",
-      "english",
-      "mumbai"
-    ]
-  },
-  {
-    "id": "tal_014",
-    "slug": "badshah",
-    "name": "Badshah",
-    "categories": [
-      "singers"
-    ],
-    "primaryCategory": "singers",
-    "tagline": "Hip-hop and party anthems",
-    "bio": "Badshah is an Indian rapper, singer and music producer known for Hindi and Punjabi party anthems. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "delhi",
-    "travelsTo": [],
-    "travelsPanIndia": true,
-    "languages": [
-      "Hindi",
-      "Punjabi",
-      "English"
-    ],
-    "eventTypes": [
-      "CONCERT",
-      "WEDDING",
-      "CORPORATE",
-      "COLLEGE_FEST",
-      "AWARD_NIGHT"
-    ],
-    "tier": "PREMIUM",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
-    "featured": false,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/d/db/Badshah_in_2017_at_Mirchi_Music_Awards.png#w=1236",
-        "width": 1236,
-        "height": 1608,
-        "credit": "Photo: Mirchi Plus (CC BY 3.0), via Wikimedia Commons",
-        "alt": "Badshah, singer",
-        "blurDataURL": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADQAQCdASoIAAoAA4BaJQBOgB5wXWASAAD+76L2DbCVaV8hZNwu7JbUtJrPTLQRvLl4G0CCPiNbDHRCRAA="
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1598387993441-a364f854c3e1?auto=format&fit=crop&ar=4:5",
-        "alt": "Guitarist under blue stage lights — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&ar=4:5",
-        "alt": "Acoustic guitar set — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&ar=4:5",
-        "alt": "Studio microphone — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&ar=4:5",
-        "alt": "Crowd silhouettes at a gig — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
-      "singer",
-      "hindi",
-      "punjabi",
-      "english",
-      "delhi"
-    ]
-  },
-  {
-    "id": "tal_015",
-    "slug": "nucleya",
-    "name": "Nucleya",
-    "categories": [
-      "djs"
-    ],
-    "primaryCategory": "djs",
-    "tagline": "Bass music with an Indian accent",
-    "bio": "Nucleya (Udyan Sagar) is an Indian electronic music producer and DJ known for bass music built on Indian sounds. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "mumbai",
-    "travelsTo": [],
-    "travelsPanIndia": true,
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "eventTypes": [
-      "CONCERT",
-      "CLUB_NIGHT",
-      "COLLEGE_FEST",
-      "PRODUCT_LAUNCH",
-      "PRIVATE_PARTY"
-    ],
-    "tier": "PREMIUM",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
-    "featured": false,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Nucleya_Zoom_Holi_2020.png#w=1819",
-        "width": 1819,
-        "height": 1355,
-        "credit": "Photo: Crazy Bollywood (CC BY 3.0), via Wikimedia Commons",
-        "alt": "Nucleya, DJ",
-        "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoIAAoAA4BaJYgC7AD0uUJZOEAA/vCzcmlwnVkE/QNIA/jhm5boGCIqp0YiB9MqedrTRoiKKg2XKv1Ru6gAAA=="
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1468164016595-6108e4c60c8b?auto=format&fit=crop&ar=4:5",
-        "alt": "Vinyl record on a turntable — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1504704911898-68304a7d2807?auto=format&fit=crop&ar=4:5",
-        "alt": "Neon installation at a party — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1516873240891-4bf014598ab4?auto=format&fit=crop&ar=4:5",
-        "alt": "DJ mixing at the decks — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?auto=format&fit=crop&ar=4:5",
-        "alt": "Neon-lit warehouse party — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1496024840928-4c417adf211d?auto=format&fit=crop&ar=4:5",
-        "alt": "Colour powder festival crowd — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
-      "dj",
-      "hindi",
-      "english",
-      "mumbai"
-    ]
-  },
-  {
-    "id": "tal_016",
-    "slug": "zakir-khan",
-    "name": "Zakir Khan",
-    "categories": [
-      "comedians"
-    ],
-    "primaryCategory": "comedians",
-    "tagline": "Story-led Hindi stand-up",
-    "bio": "Zakir Khan is an Indian stand-up comedian known for story-led Hindi comedy. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "mumbai",
-    "travelsTo": [],
-    "travelsPanIndia": true,
-    "languages": [
-      "Hindi"
-    ],
-    "eventTypes": [
-      "CORPORATE",
-      "COLLEGE_FEST",
-      "PRIVATE_PARTY",
-      "AWARD_NIGHT",
-      "CONFERENCE"
-    ],
-    "tier": "PREMIUM",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
-    "featured": true,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Zakir_khan_2.jpg#w=2808",
-        "width": 2808,
-        "height": 3456,
-        "credit": "Photo: Panigrahiasmitku (CC BY-SA 4.0), via Wikimedia Commons",
-        "alt": "Zakir Khan, comedian",
-        "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAQCdASoIAAoAA4BaJQBOgB5wF8oAAP5tG+z9oycBLdqO565YWs/l/H/f7TdQBMIOMhX+/T0ilAS9TG9BllEHJtLGtgUi4gooQAAA"
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&ar=4:5",
-        "alt": "Close-up of a microphone — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&ar=4:5",
-        "alt": "Microphone on stage — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1621112904887-419379ce6824?auto=format&fit=crop&ar=4:5",
-        "alt": "Evening gathering with music — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
-      "comedian",
-      "hindi",
-      "mumbai"
-    ]
-  },
-  {
-    "id": "tal_017",
-    "slug": "kenny-sebastian",
-    "name": "Kenny Sebastian",
-    "categories": [
-      "comedians"
-    ],
-    "primaryCategory": "comedians",
-    "tagline": "Observational comedy and music",
-    "bio": "Kenny Sebastian is an Indian stand-up comedian and musician known for observational English comedy. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "bengaluru",
-    "travelsTo": [],
-    "travelsPanIndia": true,
-    "languages": [
-      "English",
-      "Hindi"
-    ],
-    "eventTypes": [
-      "CORPORATE",
-      "COLLEGE_FEST",
-      "PRIVATE_PARTY",
-      "AWARD_NIGHT",
-      "CONFERENCE"
-    ],
-    "tier": "PREMIUM",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
-    "featured": false,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/5/58/Kenny_2016_%28cropped%29.jpg#w=397",
-        "width": 397,
-        "height": 560,
-        "credit": "Photo: Vidhishah121 (CC BY-SA 4.0), via Wikimedia Commons",
-        "alt": "Kenny Sebastian, comedian",
-        "blurDataURL": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADwAQCdASoIAAoAA4BaJYgCdAEUoBM5Z8AA/veWWX7moXdnTNgZ+tAFsit+TyLNz56iIxRlN6UJ9qrnfBriAAAA"
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&ar=4:5",
-        "alt": "Audience laughing — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&ar=4:5",
-        "alt": "Crowd dancing at an event — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
-        "alt": "Packed auditorium — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&ar=4:5",
-        "alt": "Close-up of a microphone — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
-      "comedian",
-      "english",
-      "hindi",
-      "bengaluru"
-    ]
-  },
-  {
-    "id": "tal_018",
-    "slug": "biswa-kalyan-rath",
-    "name": "Biswa Kalyan Rath",
-    "categories": [
-      "comedians"
-    ],
-    "primaryCategory": "comedians",
-    "tagline": "Deadpan stand-up and sharp writing",
-    "bio": "Biswa Kalyan Rath is an Indian stand-up comedian and writer. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "mumbai",
-    "travelsTo": [],
-    "travelsPanIndia": true,
-    "languages": [
-      "English",
-      "Hindi"
-    ],
-    "eventTypes": [
-      "CORPORATE",
-      "COLLEGE_FEST",
-      "PRIVATE_PARTY",
-      "AWARD_NIGHT",
-      "CONFERENCE"
-    ],
-    "tier": "PREMIUM",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
-    "featured": false,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Biswa_Kalyan_Rath_%28cropped%29.jpg#w=1572",
-        "width": 1572,
-        "height": 1487,
-        "credit": "Photo: Sanket Oswal (CC BY-SA 4.0), via Wikimedia Commons",
-        "alt": "Biswa Kalyan Rath, comedian",
-        "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAABQAgCdASoIAAoAA4BaJZgCdAYuvbZWd1Q9CoAA/thnVbWVZ+EL/Fn8kd1OnCqpKIHRoxsVzbrZAPFAdci9VdkACn4cyKLvgf49a7I9tXgV/zu2cuVBAAAA"
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&ar=4:5",
-        "alt": "Microphone on stage — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1621112904887-419379ce6824?auto=format&fit=crop&ar=4:5",
-        "alt": "Evening gathering with music — illustrative photo",
-        "width": 1200,
-        "height": 1500
+        "alt": "Yankee Parasar, actor",
+        "blurDataURL": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADQAQCdASoIAAoAA4BaJYwAAxf9dVdyAAD+9J3+3XhiBHoR0rPXX2/qFS1roYjPuQefwAAA"
       },
       {
         "src": "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&ar=4:5",
@@ -1573,14 +599,14 @@
         "height": 1500
       },
       {
-        "src": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&ar=4:5",
-        "alt": "Audience laughing — illustrative photo",
+        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
+        "alt": "Packed auditorium — illustrative photo",
         "width": 1200,
         "height": 1500
       },
       {
-        "src": "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&ar=4:5",
-        "alt": "Crowd dancing at an event — illustrative photo",
+        "src": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&ar=4:5",
+        "alt": "Concert stage with warm lights — illustrative photo",
         "width": 1200,
         "height": 1500
       }
@@ -1603,54 +629,65 @@
       }
     ],
     "tags": [
-      "comedian",
-      "english",
+      "acting",
+      "modeling",
+      "music videos",
+      "actor",
+      "assamese",
       "hindi",
-      "mumbai"
+      "english",
+      "guwahati",
+      "assam"
     ]
   },
   {
-    "id": "tal_019",
-    "slug": "maniesh-paul",
-    "name": "Maniesh Paul",
+    "id": "tal_008",
+    "slug": "zerifa-wahid",
+    "name": "Zerifa Wahid",
     "categories": [
-      "speakers",
       "actors"
     ],
-    "primaryCategory": "speakers",
-    "tagline": "Television host and award-night anchor",
-    "bio": "Maniesh Paul is an Indian television host and actor, known for anchoring award shows and reality television. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "mumbai",
+    "primaryCategory": "actors",
+    "tagline": "Actress of Assamese cinema and theatre",
+    "bio": "Zerifa Wahid is an Assamese actress known for her work in Assamese films and theatre. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
+    "baseCity": "guwahati",
     "travelsTo": [],
     "travelsPanIndia": true,
     "languages": [
+      "Assamese",
       "Hindi",
       "English"
     ],
     "eventTypes": [
+      "BRAND_CAMPAIGN",
+      "PRODUCT_LAUNCH",
       "AWARD_NIGHT",
       "CORPORATE",
-      "CONFERENCE",
-      "PRODUCT_LAUNCH",
-      "COLLEGE_FEST"
+      "WEDDING"
     ],
     "tier": "PREMIUM",
     "representation": "PLATFORM_COORDINATED",
     "verified": false,
-    "featured": false,
+    "featured": true,
     "feeBand": null,
     "images": [
       {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Manish_Paul_at_ITA_2012.jpg#w=500",
-        "width": 500,
-        "height": 713,
-        "credit": "Photo: TeamManishPaul (CC BY-SA 3.0), via Wikimedia Commons",
-        "alt": "Maniesh Paul, anchor",
-        "blurDataURL": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoIAAoAA4BaJQBOgB6TP6TM84AA/upZdz/nPgbu8yOTHV4uU3Lu3YIP4df4MUDoK0aNUtYkM6YaQqRpgigAAA=="
+        "src": "/talent/zerifa-wahid.jpg?v=8fad2818",
+        "width": 852,
+        "height": 1065,
+        "credit": "Photo: Simbu123 (CC BY-SA 3.0), via Wikimedia Commons",
+        "alt": "Zerifa Wahid, actor",
+        "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAAAQAgCdASoIAAoAA4BaJZACdADdrsD6Rq1AAP54WIUhRb4kYN7UhNwLkZ2T+oQnaTj39WdMKnjIDuoROaBdO+31pD7N3sb64RMAAA=="
       },
       {
-        "src": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&ar=4:5",
-        "alt": "Talk in a startup office — illustrative photo",
+        "src": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&ar=4:5",
+        "alt": "Concert stage with warm lights — illustrative photo",
+        "width": 1200,
+        "height": 1500
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&ar=4:5",
+        "alt": "Stage lights over a crowd — illustrative photo",
         "width": 1200,
         "height": 1500
       },
@@ -1661,8 +698,8 @@
         "height": 1500
       },
       {
-        "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&ar=4:5",
-        "alt": "Conference audience — illustrative photo",
+        "src": "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&ar=4:5",
+        "alt": "Hall with an engaged audience — illustrative photo",
         "width": 1200,
         "height": 1500
       }
@@ -1685,189 +722,14 @@
       }
     ],
     "tags": [
-      "anchor",
+      "assamese cinema",
+      "theatre",
       "actor",
+      "assamese",
       "hindi",
       "english",
-      "mumbai"
-    ]
-  },
-  {
-    "id": "tal_020",
-    "slug": "bhuvan-bam",
-    "name": "Bhuvan Bam",
-    "categories": [
-      "creators"
-    ],
-    "primaryCategory": "creators",
-    "tagline": "YouTuber, writer and actor",
-    "bio": "Bhuvan Bam is an Indian YouTuber, writer and actor, known for his channel BB Ki Vines. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "delhi",
-    "travelsTo": [],
-    "travelsPanIndia": true,
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "eventTypes": [
-      "BRAND_CAMPAIGN",
-      "PRODUCT_LAUNCH",
-      "COLLEGE_FEST",
-      "CORPORATE"
-    ],
-    "tier": "PREMIUM",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
-    "featured": true,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/6/64/Bhuvan_Bam_at_Myntra%27s_Creator_Fest_2023_event_%28cropped%29.jpg#w=213",
-        "width": 213,
-        "height": 290,
-        "credit": "Photo: Bollywood Hungama (CC BY 3.0), via Wikimedia Commons",
-        "alt": "Bhuvan Bam, creator",
-        "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAAAQAgCdASoIAAoAA4BaJZACdAEWPB2XZTgAAP4LRl1quImXv6nj/M7KRTd0bkDjCUb4Kioq9bx3lOVV/7s7BSXC4K9ua0Mj8AAAAA=="
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1603575448878-868a20723f5d?auto=format&fit=crop&ar=4:5",
-        "alt": "Creator editing on a laptop — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&ar=4:5",
-        "alt": "Creator desk with dual screens — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&ar=4:5",
-        "alt": "Phone filming a live show — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&ar=4:5",
-        "alt": "Creator posing on a terrace — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
-      "creator",
-      "hindi",
-      "english",
-      "delhi"
-    ]
-  },
-  {
-    "id": "tal_021",
-    "slug": "prajakta-koli",
-    "name": "Prajakta Koli",
-    "categories": [
-      "creators"
-    ],
-    "primaryCategory": "creators",
-    "tagline": "YouTuber and actress",
-    "bio": "Prajakta Koli is an Indian YouTuber and actress, known for her channel MostlySane. Every booking request is coordinated by our team with the artist’s authorised representative, subject to their availability.",
-    "baseCity": "mumbai",
-    "travelsTo": [],
-    "travelsPanIndia": true,
-    "languages": [
-      "Hindi",
-      "English"
-    ],
-    "eventTypes": [
-      "BRAND_CAMPAIGN",
-      "PRODUCT_LAUNCH",
-      "COLLEGE_FEST",
-      "CORPORATE"
-    ],
-    "tier": "PREMIUM",
-    "representation": "PLATFORM_COORDINATED",
-    "verified": false,
-    "featured": false,
-    "feeBand": null,
-    "images": [
-      {
-        "src": "https://upload.wikimedia.org/wikipedia/commons/7/77/Prajakta_koli_in_2023.jpj.png#w=418",
-        "width": 418,
-        "height": 600,
-        "credit": "Photo: Bollywood Hungama (CC BY 3.0), via Wikimedia Commons",
-        "alt": "Prajakta Koli, creator",
-        "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADQAQCdASoIAAoAA4BaJagCdAD0trtWpAD+0oissH5y5ZT+WIw7gLFxWcDABhDe8XV76E4ilWkbTganGZAfuqjafstBUTpH60uAAA=="
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1496024840928-4c417adf211d?auto=format&fit=crop&ar=4:5",
-        "alt": "Festival crowd in colour — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&ar=4:5",
-        "alt": "Podcast microphone — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&ar=4:5",
-        "alt": "Recording microphone — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1603575448878-868a20723f5d?auto=format&fit=crop&ar=4:5",
-        "alt": "Creator editing on a laptop — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      },
-      {
-        "src": "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&ar=4:5",
-        "alt": "Creator desk with dual screens — illustrative photo",
-        "width": 1200,
-        "height": 1500
-      }
-    ],
-    "showreelUrl": null,
-    "pastEvents": [],
-    "riderSummary": null,
-    "faqs": [
-      {
-        "q": "Why is the fee “on request”?",
-        "a": "Fees depend on date, city, duration, travel and production needs, and are confirmed with the authorised representative before we send you a quote."
-      },
-      {
-        "q": "How fast will I hear back?",
-        "a": "Our team checks availability with the representative and usually responds within 24 hours on working days."
-      },
-      {
-        "q": "Is my booking confirmed once I send a request?",
-        "a": "Not yet. Every request is subject to the artist’s availability and their team’s approval. Nothing is confirmed until the contract is signed and the advance is paid."
-      }
-    ],
-    "tags": [
-      "creator",
-      "hindi",
-      "english",
-      "mumbai"
+      "guwahati",
+      "assam"
     ]
   }
 ]

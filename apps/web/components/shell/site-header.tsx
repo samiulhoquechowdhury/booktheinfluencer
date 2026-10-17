@@ -55,13 +55,21 @@ export function SiteHeader({ variant = 'full', nav }: { variant?: 'full' | 'mini
       transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="shell">
-        <div className="relative flex h-14 items-center gap-2 rounded-full pr-1.5 pl-4 md:h-16 md:pr-2 md:pl-6">
+        <div
+          className="relative flex h-14 items-center gap-2 rounded-full pr-1.5 pl-4 [--lg-hover:0.6] hover:[--lg-hover:1] md:h-16 md:pr-2 md:pl-6"
+          onPointerMove={(e) => {
+            // Drive the glass highlight from the pointer (CSS vars only — no re-render).
+            const r = e.currentTarget.getBoundingClientRect();
+            e.currentTarget.style.setProperty('--mx', `${e.clientX - r.left}px`);
+            e.currentTarget.style.setProperty('--my', `${e.clientY - r.top}px`);
+          }}
+        >
           {/* Capsule surface */}
           <motion.div
             aria-hidden
-            className="pointer-events-none absolute inset-0 rounded-full border border-glass-border bg-[color-mix(in_oklab,var(--bg)_52%,transparent)] shadow-[0_18px_50px_-24px_rgb(0_0_0/0.55)] backdrop-blur-[36px] backdrop-saturate-[1.8]"
+            className="liquid-glass pointer-events-none absolute inset-0 rounded-full"
             initial={false}
-            animate={{ opacity: scrolled || menu ? 1 : 0, scale: scrolled || menu ? 1 : 0.985 }}
+            animate={{ opacity: scrolled || menu ? 1 : 0.85, scale: scrolled || menu ? 1 : 0.985 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           />
 
@@ -143,6 +151,14 @@ export function SiteHeader({ variant = 'full', nav }: { variant?: 'full' | 'mini
         </div>
       </div>
 
+      {/* Refraction map for .liquid-glass (Chromium backdrop-filter: url()). */}
+      <svg aria-hidden width="0" height="0" className="absolute">
+        <filter id="liquid-refract" x="0" y="0" width="100%" height="100%" colorInterpolationFilters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.008 0.02" numOctaves="2" seed="7" result="noise" />
+          <feGaussianBlur in="noise" stdDeviation="2" result="soft" />
+          <feDisplacementMap in="SourceGraphic" in2="soft" scale="18" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </svg>
     </motion.header>
     {/* Dim the page behind an open mega menu (outside the transformed header so it covers the viewport) */}
     <motion.div
@@ -161,7 +177,7 @@ function Pill() {
     <motion.span
       layoutId="nav-pill"
       aria-hidden
-      className="absolute inset-0 rounded-full bg-surface-2"
+      className="absolute inset-0 rounded-full bg-[color-mix(in_oklab,var(--fg)_7%,transparent)] shadow-[inset_0_1px_0_0_var(--lg-rim),inset_0_-1px_0_0_var(--lg-edge-b)]"
       transition={{ type: 'spring', stiffness: 400, damping: 34 }}
     />
   );

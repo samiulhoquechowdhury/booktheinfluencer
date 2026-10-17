@@ -2,6 +2,7 @@ import 'server-only';
 import { cache } from 'react';
 import type { NavData } from '@/components/shell/nav-types';
 import { publicApi } from '@/lib/api/server';
+import { categoryCover } from '@/lib/category-covers';
 import { CATEGORIES, categorySingular, cityName } from '@/lib/reference';
 
 const BLURBS: Record<string, string> = {
@@ -21,13 +22,12 @@ export const getNavData = cache(async (): Promise<NavData> => {
     total: all.total,
     categories: CATEGORIES.map((c) => {
       const inCat = all.items.filter((t) => t.categories.includes(c.slug));
-      const cover = inCat[0]?.images[0];
       return {
         slug: c.slug,
         name: c.name,
         blurb: BLURBS[c.slug] ?? c.name,
         count: inCat.length,
-        image: { src: cover?.src ?? '', blurDataURL: cover?.blurDataURL },
+        image: categoryCover(c.slug, inCat),
       };
     }),
     featured: featured

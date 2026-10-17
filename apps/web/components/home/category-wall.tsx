@@ -71,7 +71,7 @@ export function CategoryWall({ items }: { items: Item[] }) {
                     </span>
                   </span>
                   <span className="relative hidden size-16 shrink-0 overflow-hidden rounded-lg sm:block md:hidden">
-                    <Image src={it.image.src} alt="" fill sizes="64px" className="object-cover" />
+                    {it.image.src && <Image src={it.image.src} alt="" fill sizes="64px" className="object-cover" />}
                   </span>
                   <span className="hidden shrink-0 text-right md:block">
                     <span className="tabular block font-display text-2xl font-bold">{it.count}</span>
@@ -97,7 +97,7 @@ export function CategoryWall({ items }: { items: Item[] }) {
                   >
                     {items.map((it, i) => (
                       <motion.div key={it.slug} className="absolute inset-0" animate={{ opacity: active === i ? 1 : 0, scale: active === i ? 1 : 1.15 }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}>
-                        <Image src={it.image.src} alt="" fill sizes="256px" quality={60} className="object-cover" />
+                        {it.image.src && <Image src={it.image.src} alt="" fill sizes="256px" quality={60} className="object-cover" />}
                       </motion.div>
                     ))}
                   </motion.div>

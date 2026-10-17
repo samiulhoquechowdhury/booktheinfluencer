@@ -1,9 +1,10 @@
 // Generates deterministic mock data for apps/web (run: pnpm mock:generate).
-// Talent are real Assamese and Indian artists with freely licensed Wikimedia Commons cover photos;
+// Talent are real Assamese public figures; cover photos live in apps/web/public/talent/ and
 // gallery images are generic Unsplash scenes. Bookings, quotes and payouts are invented demo data.
 // Raw records intentionally include INTERNAL fields (cost, payout, margin) so that the
 // serializers in apps/web/lib/api/mock are exercised and tested for leaks.
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -20,10 +21,19 @@ const scene = (n, alt) => ({
  * Freely licensed cover photo from Wikimedia Commons; `path` is the part after /wikipedia/commons/.
  * `#w=` carries the original width so the image loader never requests an upscaled thumbnail.
  */
-const commons = (path, width, height, credit) => ({
-  src: `https://upload.wikimedia.org/wikipedia/commons/${path}#w=${width}`,
-  width, height, credit: `Photo: ${credit}, via Wikimedia Commons`,
-});
+const PUBLIC = join(dirname(fileURLToPath(import.meta.url)), '../apps/web/public');
+/**
+ * Cover photo served from apps/web/public/talent/<slug>.jpg. Replace a file with a licensed
+ * photo and re-run this script to refresh its size and blur preview. `credit` names the source
+ * (required for Creative Commons photos) and is shown on the profile.
+ */
+const local = (slug, credit) => {
+  const file = join(PUBLIC, 'talent', `${slug}.jpg`);
+  const [width, height] = spawnSync('magick', ['identify', '-format', '%w %h', file]).stdout.toString().split(' ').map(Number);
+  // Content hash in the URL: a replaced photo gets a new address, so no browser or CDN shows a stale copy.
+  const v = createHash('sha1').update(readFileSync(file)).digest('hex').slice(0, 8);
+  return { src: `/talent/${slug}.jpg?v=${v}`, width, height, ...(credit ? { credit: `Photo: ${credit}` } : {}) };
+};
 
 const POOLS = {
   actors: [[16, 'Small theatre stage with a lone performer'], [18, 'Packed auditorium'], [4, 'Concert stage with warm lights'], [5, 'Stage lights over a crowd'], [65, 'Event crowd under lights'], [21, 'Hall with an engaged audience']],
@@ -53,96 +63,48 @@ const FAQS = {
 
 // Real artists. Bios stick to publicly known facts; fees are on request and no past events are invented.
 // Cover photos are freely licensed (CC0 / CC BY / CC BY-SA) and credited on the profile page.
-const T = (name, cats, city, languages, tier, featured, tagline, bio, cover) => ({ name, cats, city, languages, tier, featured, tagline, bio, cover });
-const AS = ['Assamese', 'Hindi', 'English'];
+const T = (name, cats, tagline, bio, tags, cover) => ({ name, cats, city: 'guwahati', languages: ['Assamese', 'Hindi', 'English'], tier: 'PREMIUM', featured: true, tagline, bio, tags, cover });
 const RAW = [
-  // Assam
-  T('Kopil Bora', ['actors', 'speakers'], 'guwahati', AS, 'PREMIUM', true,
-    'Actor and anchor from Assam',
-    'Kopil Bora is an Assamese actor and anchor, known for his work in Assamese cinema and as a host on stage and television.',
-    commons('c/cb/Kopil_Bora_-_TeachAIDS_Recording_Session.png', 1132, 974, 'TeachAIDS (CC BY-SA 2.0)')),
-  T('Zerifa Wahid', ['actors'], 'guwahati', AS, 'PREMIUM', true,
-    'Actress of Assamese cinema and theatre',
-    'Zerifa Wahid is an Assamese actress known for her work in Assamese films and theatre.',
-    commons('1/1a/Zerifa_Wahid.JPG', 852, 1076, 'Simbu123 (CC BY-SA 3.0)')),
-  T('Nishita Goswami', ['actors'], 'guwahati', AS, 'PREMIUM', true,
-    'Actress of Assamese cinema',
-    'Nishita Goswami is an Assamese film actress known for her lead roles in Assamese cinema.',
-    commons('5/57/Assamese_film_actress_Nishita_Goswami.jpg', 296, 394, 'Magical Assam (CC BY 2.0)')),
-  T('Jatin Bora', ['actors'], 'guwahati', AS, 'PREMIUM', true,
+  T('Bikash Chetry', ['creators'],
+    'YouTuber and travel creator',
+    'Bikash Chetry is an Assamese YouTuber and travel creator known for motorcycle travel vlogs and food content.',
+    ['Travel vlogs', 'Moto vlogs', 'Food content'],
+    local('bikash-chetry')),
+  T('Dimpu Baruah', ['creators'],
+    'YouTuber and content creator',
+    'Dimpu Baruah is an Assamese YouTuber and content creator making videos on technology and travel.',
+    ['Video content', 'Travel vlogs', 'Technology'],
+    local('dimpu-baruah', 'Dimpu’s Vlogs, YouTube')),
+  T('Jatin Bora', ['actors'],
     'Actor and director of Assamese film and mobile theatre',
     'Jatin Bora is an Assamese actor, director and producer, a long-standing lead in Assamese cinema and mobile theatre.',
-    commons('5/56/Jatin_Borah.JPG', 280, 371, 'Simbu123 (CC BY-SA 3.0)')),
-  T('Aimee Baruah', ['actors'], 'guwahati', AS, 'STANDARD', false,
-    'Actress, producer and director',
-    'Aimee Baruah is an Assamese actress, producer and director, recognised at the 68th National Film Awards for Semkhor.',
-    commons('c/c0/Aimee_Baruah_in_68th_National_Film_Awards_2022.jpg', 4128, 6192, 'Lisanian (CC0)')),
-  T('Barsha Rani Bishaya', ['actors'], 'guwahati', AS, 'STANDARD', false,
-    'Actress of Assamese film and television',
-    'Barsha Rani Bishaya is an Assamese actress who has worked across Assamese films and television.',
-    commons('f/f5/Barsha_Rani_Bishaya.jpg', 1200, 1800, 'Simanta5000 (CC BY-SA 3.0)')),
-  T('Papon', ['singers'], 'mumbai', AS, 'PREMIUM', true,
-    'Assamese folk roots, Bollywood playback hits',
-    'Papon (Angaraag Mahanta) is a singer and composer from Assam, known for Assamese folk-fusion and Hindi film songs such as “Moh Moh Ke Dhaage”.',
-    commons('3/38/Papon_at_Coke_Studio_Season_3_launch.jpg', 585, 881, 'Bollywood Hungama (CC BY 3.0)')),
-  T('Joi Barua', ['singers'], 'guwahati', AS, 'STANDARD', true,
-    'Singer-composer with a full live band',
-    'Joi Barua is a singer and composer from Assam who performs Assamese and Hindi songs with his band.',
-    commons('a/a8/Joi_Barua-1_copy.jpg', 1841, 2592, 'Bids199 (CC BY-SA 3.0)')),
-  T('Kalpana Patowary', ['singers'], 'mumbai', ['Assamese', 'Hindi'], 'STANDARD', false,
-    'Folk and Bhojpuri music from Assam to the world',
-    'Kalpana Patowary is a singer from Assam, best known for Bhojpuri folk and film music.',
-    commons('2/23/List_of_Bhojpuri_film_songs_recorded_by_Kalpana_Patowary.JPG', 2848, 4288, 'Kalpana Patowary Bhojpuri Films (CC BY-SA 3.0)')),
-  T('Adil Hussain', ['actors'], 'mumbai', ['Hindi', 'English', 'Assamese'], 'PREMIUM', false,
-    'Assam-born actor of Indian and international cinema',
-    'Adil Hussain is an actor from Assam, known for Hindi and international films including Life of Pi and English Vinglish.',
-    commons('0/0e/Adil_Hussain_at_%27Life_of_Pi%27_press_meet.jpg', 326, 363, 'Bollywood Hungama (CC BY 3.0)')),
-
-  // India
-  T('Shreya Ghoshal', ['singers'], 'mumbai', ['Hindi', 'Bengali', 'English'], 'PREMIUM', true,
-    'One of India’s most celebrated playback voices',
-    'Shreya Ghoshal is an Indian playback singer and a multiple National Film Award winner, singing in Hindi and many regional languages.',
-    commons('a/a0/Shreya_Ghoshal_Behindwoods_Gold_Icons_Awards_2023_%28cropped%29.jpg', 548, 896, 'Behindwoods (CC BY-SA 3.0)')),
-  T('Sunidhi Chauhan', ['singers'], 'mumbai', ['Hindi', 'English'], 'PREMIUM', false,
-    'High-energy Bollywood playback and live shows',
-    'Sunidhi Chauhan is an Indian playback singer known for her Hindi film songs and live concerts.',
-    commons('c/cb/Sunidhi_Chauhan_performing_in_Delhi.jpg', 900, 1500, 'GaiusAugustine (CC BY 4.0)')),
-  T('Neeti Mohan', ['singers'], 'mumbai', ['Hindi', 'English'], 'PREMIUM', false,
-    'Bollywood playback singer',
-    'Neeti Mohan is an Indian playback singer known for her Hindi film songs.',
-    commons('1/13/Neeti_Mohan_attends_Shakti_Mohan%E2%80%99s_Nritya_Shakti_celebrations_for_World_Dance_Day_%2804%29_%28cropped%29.jpg', 210, 280, 'Bollywood Hungama (CC BY 3.0)')),
-  T('Badshah', ['singers'], 'delhi', ['Hindi', 'Punjabi', 'English'], 'PREMIUM', false,
-    'Hip-hop and party anthems',
-    'Badshah is an Indian rapper, singer and music producer known for Hindi and Punjabi party anthems.',
-    commons('d/db/Badshah_in_2017_at_Mirchi_Music_Awards.png', 1236, 1608, 'Mirchi Plus (CC BY 3.0)')),
-  T('Nucleya', ['djs'], 'mumbai', ['Hindi', 'English'], 'PREMIUM', false,
-    'Bass music with an Indian accent',
-    'Nucleya (Udyan Sagar) is an Indian electronic music producer and DJ known for bass music built on Indian sounds.',
-    commons('d/d7/Nucleya_Zoom_Holi_2020.png', 1819, 1355, 'Crazy Bollywood (CC BY 3.0)')),
-  T('Zakir Khan', ['comedians'], 'mumbai', ['Hindi'], 'PREMIUM', true,
-    'Story-led Hindi stand-up',
-    'Zakir Khan is an Indian stand-up comedian known for story-led Hindi comedy.',
-    commons('e/e4/Zakir_khan_2.jpg', 2808, 3456, 'Panigrahiasmitku (CC BY-SA 4.0)')),
-  T('Kenny Sebastian', ['comedians'], 'bengaluru', ['English', 'Hindi'], 'PREMIUM', false,
-    'Observational comedy and music',
-    'Kenny Sebastian is an Indian stand-up comedian and musician known for observational English comedy.',
-    commons('5/58/Kenny_2016_%28cropped%29.jpg', 397, 560, 'Vidhishah121 (CC BY-SA 4.0)')),
-  T('Biswa Kalyan Rath', ['comedians'], 'mumbai', ['English', 'Hindi'], 'PREMIUM', false,
-    'Deadpan stand-up and sharp writing',
-    'Biswa Kalyan Rath is an Indian stand-up comedian and writer.',
-    commons('3/3c/Biswa_Kalyan_Rath_%28cropped%29.jpg', 1572, 1487, 'Sanket Oswal (CC BY-SA 4.0)')),
-  T('Maniesh Paul', ['speakers', 'actors'], 'mumbai', ['Hindi', 'English'], 'PREMIUM', false,
-    'Television host and award-night anchor',
-    'Maniesh Paul is an Indian television host and actor, known for anchoring award shows and reality television.',
-    commons('b/b5/Manish_Paul_at_ITA_2012.jpg', 500, 713, 'TeamManishPaul (CC BY-SA 3.0)')),
-  T('Bhuvan Bam', ['creators'], 'delhi', ['Hindi', 'English'], 'PREMIUM', true,
-    'YouTuber, writer and actor',
-    'Bhuvan Bam is an Indian YouTuber, writer and actor, known for his channel BB Ki Vines.',
-    commons('6/64/Bhuvan_Bam_at_Myntra%27s_Creator_Fest_2023_event_%28cropped%29.jpg', 213, 290, 'Bollywood Hungama (CC BY 3.0)')),
-  T('Prajakta Koli', ['creators'], 'mumbai', ['Hindi', 'English'], 'PREMIUM', false,
-    'YouTuber and actress',
-    'Prajakta Koli is an Indian YouTuber and actress, known for her channel MostlySane.',
-    commons('7/77/Prajakta_koli_in_2023.jpj.png', 418, 600, 'Bollywood Hungama (CC BY 3.0)')),
+    ['Assamese cinema', 'Direction', 'Theatre'],
+    local('jatin-bora', 'Bikram Borpatra Photography')),
+  T('Kopil Bora', ['actors', 'speakers'],
+    'Actor and anchor from Assam',
+    'Kopil Bora is an Assamese actor and anchor, known for his work in Assamese cinema and as a host on stage and television.',
+    ['Film & theatre', 'Anchoring', 'Voice acting'],
+    local('kopil-bora', 'TeachAIDS (CC BY-SA 2.0), via Wikimedia Commons')),
+  T('Nahid Afrin Ansari', ['singers'],
+    'Playback singer from Assam',
+    'Nahid Afrin is a playback singer from Assam who came to national attention on Indian Idol Junior and sings for Hindi and Assamese films.',
+    ['Playback singing', 'Live music'],
+    local('nahid-afrin-ansari', 'Deccan Herald')),
+  T('Nishita Goswami', ['actors'],
+    'Actress of Assamese cinema',
+    'Nishita Goswami is an Assamese film actress known for her lead roles in Assamese cinema.',
+    ['Assamese cinema', 'Acting'],
+    local('nishita-goswami', 'Manorama Online')),
+  T('Yankee Parasar', ['actors'],
+    'Actress and model',
+    'Yankee Parasar is an Assamese actress and model who works across films, modelling and music videos.',
+    ['Acting', 'Modeling', 'Music videos'],
+    local('yankee-parasar')),
+  T('Zerifa Wahid', ['actors'],
+    'Actress of Assamese cinema and theatre',
+    'Zerifa Wahid is an Assamese actress known for her work in Assamese films and theatre.',
+    ['Assamese cinema', 'Theatre'],
+    local('zerifa-wahid', 'Simbu123 (CC BY-SA 3.0), via Wikimedia Commons')),
 ];
 
 const ALL_CITIES = ['guwahati', 'shillong', 'kolkata', 'delhi', 'mumbai', 'bengaluru', 'hyderabad', 'pune'];
@@ -155,7 +117,7 @@ const talents = RAW.map((r, i) => {
   const pool = POOLS[primary];
   const galleryCount = 3 + (i % 3); // 3–5 → 4–6 total images
   const gallery = Array.from({ length: galleryCount }, (_, k) => {
-    const [n, alt] = pool[(i + k * 2) % pool.length];
+    const [n, alt] = pool[(i * 2 + k) % pool.length]; // distinct picks for any pool size
     return scene(n, `${alt} — illustrative photo`);
   });
   const near = ALL_CITIES.filter((c) => c !== r.city).filter((_, k) => (k + i) % 3 === 0);
@@ -182,7 +144,7 @@ const talents = RAW.map((r, i) => {
     pastEvents: [],
     riderSummary: null,
     faqs: FAQS.default,
-    tags: [...new Set([...r.cats.map((c) => CAT_SINGULAR[c].toLowerCase()), ...r.languages.map((l) => l.toLowerCase()), CITY_NAMES[r.city].toLowerCase(), ...(r.languages.includes('Assamese') ? ['assam'] : [])])],
+    tags: [...new Set([...r.tags.map((t) => t.toLowerCase()), ...r.cats.map((c) => CAT_SINGULAR[c].toLowerCase()), ...r.languages.map((l) => l.toLowerCase()), CITY_NAMES[r.city].toLowerCase(), 'assam'])],
   };
 });
 
@@ -226,7 +188,7 @@ const ev = (type, title, date, startTime, city, venue, audienceSize, durationMin
 
 const bookings = [
   {
-    ref: 'BK-24017', leadRef: 'LD-1092', stage: 'NEW', availability: 'NOT_CHECKED', talent: ref(bySlug['joi-barua']),
+    ref: 'BK-24017', leadRef: 'LD-1092', stage: 'NEW', availability: 'NOT_CHECKED', talent: ref(bySlug['nahid-afrin-ansari']),
     event: ev('CORPORATE', 'Annual Day 2027', '2027-01-23', '19:00', 'guwahati', 'Radisson Blu, Guwahati', 600, 75),
     createdAt: '2026-10-15T11:20:00Z', quotes: [], contract: { status: 'NOT_SENT', sentAt: null, signedAt: null }, advancePaid: false,
     milestones: [], documents: [],
@@ -234,15 +196,15 @@ const bookings = [
     notes: 'Prefer a 60–75 min set with Assamese and Hindi songs.', manager, internal: { owner: 'sales_02', leadScore: 72 },
   },
   {
-    ref: 'BK-24011', leadRef: 'LD-1088', stage: 'AVAILABILITY_CHECK', availability: 'AWAITING_MANAGER', talent: ref(bySlug['kenny-sebastian']),
+    ref: 'BK-24011', leadRef: 'LD-1088', stage: 'AVAILABILITY_CHECK', availability: 'AWAITING_MANAGER', talent: ref(bySlug['kopil-bora']),
     event: ev('AWARD_NIGHT', 'Partner Excellence Awards', '2026-12-12', '20:00', 'bengaluru', 'ITC Gardenia, Bengaluru', 350, 45),
     createdAt: '2026-10-11T06:40:00Z', quotes: [], contract: { status: 'NOT_SENT', sentAt: null, signedAt: null }, advancePaid: false,
     milestones: [], documents: [],
-    activity: [{ at: '2026-10-11T06:40:00Z', label: 'Brief received' }, { at: '2026-10-11T09:05:00Z', label: 'Request sent to Kenny’s representative' }],
+    activity: [{ at: '2026-10-11T06:40:00Z', label: 'Brief received' }, { at: '2026-10-11T09:05:00Z', label: 'Request sent to Kopil’s representative' }],
     notes: 'Clean set; mixed audience of partners and families.', manager, internal: { owner: 'sales_01', leadScore: 81 },
   },
   {
-    ref: 'BK-24009', leadRef: 'LD-1085', stage: 'AVAILABILITY_CHECK', availability: 'HOLD_REQUESTED', talent: ref(bySlug['badshah']),
+    ref: 'BK-24009', leadRef: 'LD-1085', stage: 'AVAILABILITY_CHECK', availability: 'HOLD_REQUESTED', talent: ref(bySlug['nishita-goswami']),
     event: ev('WEDDING', 'Sangeet — Sharma & Kapoor', '2027-02-14', '20:30', 'delhi', 'Private farmhouse, Chattarpur', 400, 90),
     createdAt: '2026-10-08T13:00:00Z', quotes: [], contract: { status: 'NOT_SENT', sentAt: null, signedAt: null }, advancePaid: false,
     milestones: [], documents: [],
@@ -250,12 +212,12 @@ const bookings = [
     notes: null, manager, internal: { owner: 'sales_02', leadScore: 90 },
   },
   {
-    ref: 'BK-24005', leadRef: 'LD-1079', stage: 'QUOTE_SENT', availability: 'AVAILABLE', talent: ref(bySlug['nucleya']),
+    ref: 'BK-24005', leadRef: 'LD-1079', stage: 'QUOTE_SENT', availability: 'AVAILABLE', talent: ref(bySlug['bikash-chetry']),
     event: ev('PRODUCT_LAUNCH', 'Launch night — Aurora EV', '2026-11-28', '21:00', 'mumbai', 'Jio World Garden, BKC', 800, 180),
     createdAt: '2026-10-02T08:15:00Z',
     quotes: [
       quote({ id: 'Q-24005-1', version: 1, status: 'SUPERSEDED', issuedAt: '2026-10-06T10:00:00Z', validUntil: '2026-10-13T18:29:59Z',
-        lines: [['TALENT_FEE', 'Nucleya — 3-hour headline set', 650000, 520000, 520000], ['TRAVEL', 'Return flights (2 pax)', 38000], ['ACCOMMODATION', '1 night, 2 rooms', 24000], ['PRODUCTION', 'DJ booth + booth monitors', 55000], ['SERVICE_FEE', 'Platform service fee', 52000, 0]],
+        lines: [['TALENT_FEE', 'Bikash Chetry — launch film + live appearance', 650000, 520000, 520000], ['TRAVEL', 'Return flights (2 pax)', 38000], ['ACCOMMODATION', '1 night, 2 rooms', 24000], ['PRODUCTION', 'DJ booth + booth monitors', 55000], ['SERVICE_FEE', 'Platform service fee', 52000, 0]],
         milestones: [['Advance', 5000, '2026-10-20'], ['Balance', 5000, '2026-11-21']], changeRequest: 'Can we drop the production line? Venue provides the booth.' }),
       quote({ id: 'Q-24005-2', version: 2, status: 'SENT', issuedAt: '2026-10-14T09:30:00Z', validUntil: '2026-11-15T18:29:59Z',
         lines: [['TALENT_FEE', 'Nucleya — 3-hour headline set', 650000, 520000, 520000], ['TRAVEL', 'Return flights (2 pax)', 38000], ['ACCOMMODATION', '1 night, 2 rooms', 24000], ['LOCAL_TRANSPORT', 'Airport + venue transfers', 9500], ['SERVICE_FEE', 'Platform service fee', 52000, 0]],
@@ -263,16 +225,16 @@ const bookings = [
     ],
     contract: { status: 'NOT_SENT', sentAt: null, signedAt: null }, advancePaid: false, milestones: [],
     documents: [{ id: 'doc_1', name: 'Quote Q-24005 v2.pdf', kind: 'QUOTE_PDF', uploadedAt: '2026-10-14T09:31:00Z', sizeKb: 142 }],
-    activity: [{ at: '2026-10-02T08:15:00Z', label: 'Brief received' }, { at: '2026-10-04T12:00:00Z', label: 'Nucleya confirmed available' }, { at: '2026-10-06T10:00:00Z', label: 'Quote v1 sent' }, { at: '2026-10-07T07:45:00Z', label: 'You requested changes' }, { at: '2026-10-14T09:30:00Z', label: 'Quote v2 sent' }],
+    activity: [{ at: '2026-10-02T08:15:00Z', label: 'Brief received' }, { at: '2026-10-04T12:00:00Z', label: 'Bikash Chetry confirmed available' }, { at: '2026-10-06T10:00:00Z', label: 'Quote v1 sent' }, { at: '2026-10-07T07:45:00Z', label: 'You requested changes' }, { at: '2026-10-14T09:30:00Z', label: 'Quote v2 sent' }],
     notes: 'Launch reveal at 22:15 — needs a build-up track.', manager, internal: { owner: 'sales_01', leadScore: 88 },
   },
   {
-    ref: 'BK-24003', leadRef: 'LD-1074', stage: 'ADVANCE_PENDING', availability: 'TENTATIVE', talent: ref(bySlug['maniesh-paul']),
+    ref: 'BK-24003', leadRef: 'LD-1074', stage: 'ADVANCE_PENDING', availability: 'TENTATIVE', talent: ref(bySlug['dimpu-baruah']),
     event: ev('CONFERENCE', 'Future of Work Summit', '2026-12-05', '10:00', 'bengaluru', 'Bangalore International Centre', 450, 60),
     createdAt: '2026-09-24T05:00:00Z',
     quotes: [
       quote({ id: 'Q-24003-1', version: 1, status: 'ACCEPTED', issuedAt: '2026-09-30T06:00:00Z', validUntil: '2026-10-10T18:29:59Z', acceptedAt: '2026-10-03T04:12:00Z',
-        lines: [['TALENT_FEE', 'Hosting — opening and closing segments (60 min)', 850000, 700000, 700000], ['TRAVEL', 'Local — no travel', 0, 0], ['LOCAL_TRANSPORT', 'Car on event day', 4500], ['SERVICE_FEE', 'Platform service fee', 68000, 0]],
+        lines: [['TALENT_FEE', 'Creator session + Q&A (60 min)', 850000, 700000, 700000], ['TRAVEL', 'Local — no travel', 0, 0], ['LOCAL_TRANSPORT', 'Car on event day', 4500], ['SERVICE_FEE', 'Platform service fee', 68000, 0]],
         milestones: [['Advance', 5000, '2026-10-22'], ['Balance', 5000, '2026-11-28']] }),
     ],
     contract: { status: 'SENT', sentAt: '2026-10-05T07:00:00Z', signedAt: null }, advancePaid: false,
@@ -285,7 +247,7 @@ const bookings = [
     notes: 'Theme: “Teams that learn faster”.', manager, internal: { owner: 'sales_03', leadScore: 93 },
   },
   {
-    ref: 'BK-23998', leadRef: 'LD-1066', stage: 'AVAILABILITY_CHECK', availability: 'UNAVAILABLE', talent: ref(bySlug['neeti-mohan']),
+    ref: 'BK-23998', leadRef: 'LD-1066', stage: 'AVAILABILITY_CHECK', availability: 'UNAVAILABLE', talent: ref(bySlug['yankee-parasar']),
     event: ev('WEDDING', 'Reception — Mehta family', '2026-12-19', '19:30', 'mumbai', 'The St. Regis, Lower Parel', 700, 90),
     createdAt: '2026-09-18T09:00:00Z', quotes: [], contract: { status: 'NOT_SENT', sentAt: null, signedAt: null }, advancePaid: false,
     milestones: [], documents: [],
@@ -293,12 +255,12 @@ const bookings = [
     notes: null, manager, internal: { owner: 'sales_02', leadScore: 64 },
   },
   {
-    ref: 'BK-23987', leadRef: 'LD-1051', stage: 'CONFIRMED', availability: 'CONFIRMED', talent: ref(bySlug['papon']),
+    ref: 'BK-23987', leadRef: 'LD-1051', stage: 'CONFIRMED', availability: 'CONFIRMED', talent: ref(bySlug['nahid-afrin-ansari']),
     event: ev('COLLEGE_FEST', 'Techfest closing night', '2026-11-08', '20:00', 'guwahati', 'Main ground, engineering college campus', 3000, 120),
     createdAt: '2026-09-05T10:00:00Z',
     quotes: [
       quote({ id: 'Q-23987-1', version: 1, status: 'ACCEPTED', issuedAt: '2026-09-09T08:00:00Z', validUntil: '2026-09-19T18:29:59Z', acceptedAt: '2026-09-11T10:20:00Z',
-        lines: [['TALENT_FEE', 'Papon — 2-hour headline set', 120000, 95000, 95000], ['PRODUCTION', 'Sound and stage setup', 35000], ['SECURITY', 'Stage security (4 guards)', 12000], ['SERVICE_FEE', 'Platform service fee', 10000, 0]],
+        lines: [['TALENT_FEE', 'Nahid Afrin Ansari — 2-hour headline set', 120000, 95000, 95000], ['PRODUCTION', 'Sound and stage setup', 35000], ['SECURITY', 'Stage security (4 guards)', 12000], ['SERVICE_FEE', 'Platform service fee', 10000, 0]],
         milestones: [['Advance', 5000, '2026-09-15'], ['Balance', 5000, '2026-11-01']] }),
     ],
     contract: { status: 'SIGNED', sentAt: '2026-09-11T12:00:00Z', signedAt: '2026-09-12T06:30:00Z' }, advancePaid: true,
@@ -326,10 +288,10 @@ for (const b of bookings) {
   });
 }
 
-// ---------- Talent portal (logged-in talent: Papon) ----------
+// ---------- Talent portal (logged-in talent: Nahid Afrin Ansari) ----------
 const portal = {
-  talentSlug: 'papon',
-  name: 'Papon (Angaraag Mahanta)',
+  talentSlug: 'nahid-afrin-ansari',
+  name: 'Nahid Afrin Ansari',
   blackoutEditable: true,
   bookings: [
     { ref: 'BK-23987', event: bookings[6].event, availability: 'CONFIRMED', contract: 'SIGNED', payoutPaise: paise(95000), sellingPaise: paise(120000), reportingTime: '18:30', pointOfContact: 'Priyanka Das · +91 98640 12345' },
@@ -354,38 +316,17 @@ const portal = {
 const blackouts = Object.fromEntries(
   talents.map((t, i) => [t.slug, [`2026-11-${String(((i * 3) % 27) + 1).padStart(2, '0')}`, `2026-12-${String(((i * 5) % 27) + 1).padStart(2, '0')}`, '2026-12-31'].filter((_, k) => k < 2 || i % 4 === 0)]),
 );
-blackouts['papon'] = portal.blackouts.map((b) => b.date);
+blackouts['nahid-afrin-ansari'] = portal.blackouts.map((b) => b.date);
 
-// Tiny blurred previews (8×10 WebP, ~90 bytes) for cover images → next/image placeholder="blur".
-// Fetches a small Commons thumbnail and re-encodes it with ImageMagick (metadata stripped).
-// Sequential with a pause, as Wikimedia rate-limits bursts. Skipped gracefully if `magick` isn't installed.
+// Tiny blurred previews (8×10 WebP, ~90 bytes) for cover images → next/image placeholder="blur",
+// made from the local cover with ImageMagick. Skipped gracefully if `magick` isn't installed.
 import { spawnSync } from 'node:child_process';
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-async function blurFor({ src, width }) {
-  const base = src.split('#')[0];
-  const file = base.split('/').pop();
-  const url = width > 120 ? `${base.replace('/commons/', '/commons/thumb/')}/120px-${file}` : base;
-  for (let attempt = 0; attempt < 3; attempt++) {
-    try {
-      const res = await fetch(url, { headers: { 'User-Agent': 'booktheinfluencer-mock/1.0' }, signal: AbortSignal.timeout(20000) });
-      if (!res.ok) {
-        await sleep(3000);
-        continue;
-      }
-      const out = spawnSync('magick', ['-', '-resize', '8x10^', '-gravity', 'center', '-extent', '8x10', '-strip', '-quality', '40', 'webp:-'], { input: Buffer.from(await res.arrayBuffer()) });
-      if (out.status !== 0 || !out.stdout.length || out.stdout.length > 1000) return undefined;
-      return `data:image/webp;base64,${out.stdout.toString('base64')}`;
-    } catch {
-      /* retry */
-    }
-  }
-  return undefined;
+async function blurFor({ src }) {
+  const out = spawnSync('magick', [join(PUBLIC, src.split('?')[0]), '-resize', '8x10^', '-gravity', 'center', '-extent', '8x10', '-strip', '-quality', '40', 'webp:-']);
+  if (out.status !== 0 || !out.stdout.length || out.stdout.length > 1000) return undefined;
+  return `data:image/webp;base64,${out.stdout.toString('base64')}`;
 }
-const blurs = [];
-for (const t of talents) {
-  blurs.push(await blurFor(t.images[0]));
-  await sleep(500);
-}
+const blurs = await Promise.all(talents.map((t) => blurFor(t.images[0])));
 talents.forEach((t, i) => {
   if (blurs[i]) t.images[0].blurDataURL = blurs[i];
 });

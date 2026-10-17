@@ -110,6 +110,9 @@ html.lenis, html.lenis body { height: auto; }
 @keyframes acc-down { from { height: 0; opacity: 0; } to { height: var(--radix-accordion-content-height); opacity: 1; } }
 @keyframes acc-up { from { height: var(--radix-accordion-content-height); opacity: 1; } to { height: 0; opacity: 0; } }
 
+/* Brush stroke wipes in left → right. */
+@keyframes brush-in { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+
 @keyframes drift-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
 @keyframes drift-down { from { transform: translateY(-50%); } to { transform: translateY(0); } }
 
@@ -135,3 +138,59 @@ html.lenis, html.lenis body { height: auto; }
 @keyframes menu-reveal { from { clip-path: circle(0% at calc(100% - 2.5rem) 2rem); } to { clip-path: circle(150% at calc(100% - 2.5rem) 2rem); } }
 .menu-reveal { animation: menu-reveal 0.7s var(--ease-out-expo) both; }
 
+
+/* ── Liquid glass (Apple-style): translucent tint, saturated blur, specular rim, edge ring and
+   a pointer-following highlight (--mx / --my set by the host). Chromium also refracts the backdrop
+   through the #liquid-refract SVG filter; other engines drop that declaration and keep the plain blur. ── */
+:root {
+  --lg-tint: color-mix(in oklab, #ffffff 42%, transparent);
+  --lg-rim: rgb(255 255 255 / 0.95);
+  --lg-edge-a: rgb(255 255 255 / 0.9);
+  --lg-edge-b: rgb(255 255 255 / 0.15);
+  --lg-glow: rgb(255 255 255 / 0.55);
+  --lg-shadow: 0 10px 34px -12px rgb(17 17 20 / 0.22), 0 2px 6px -2px rgb(17 17 20 / 0.08);
+}
+.dark {
+  --lg-tint: color-mix(in oklab, #16161b 34%, transparent);
+  --lg-rim: rgb(255 255 255 / 0.32);
+  --lg-edge-a: rgb(255 255 255 / 0.38);
+  --lg-edge-b: rgb(255 255 255 / 0.04);
+  --lg-glow: rgb(255 255 255 / 0.12);
+  --lg-shadow: 0 18px 50px -20px rgb(0 0 0 / 0.75), 0 2px 8px -2px rgb(0 0 0 / 0.4);
+}
+.liquid-glass {
+  isolation: isolate;
+  background: var(--lg-tint);
+  -webkit-backdrop-filter: blur(14px) saturate(1.9) brightness(1.05);
+  backdrop-filter: blur(14px) saturate(1.9) brightness(1.05);
+  backdrop-filter: url(#liquid-refract) blur(14px) saturate(1.9) brightness(1.05);
+  box-shadow:
+    inset 0 1px 0.5px 0 var(--lg-rim),
+    inset 0 -1px 1px 0 var(--lg-edge-b),
+    inset 0 0 22px -6px var(--lg-glow),
+    var(--lg-shadow);
+}
+/* Gradient edge ring (brighter top-left, fading bottom-right). */
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--lg-edge-a), var(--lg-edge-b) 40%, var(--lg-edge-b) 60%, var(--lg-edge-a));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+/* Specular highlight that follows the pointer. */
+.liquid-glass::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(180px 90px at var(--mx, 30%) var(--my, 0%), var(--lg-glow), transparent 70%);
+  opacity: var(--lg-hover, 0.6);
+  transition: opacity var(--duration-slow) var(--ease-out-expo);
+  pointer-events: none;
+}

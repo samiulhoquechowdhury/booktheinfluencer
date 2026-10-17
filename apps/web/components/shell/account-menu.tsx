@@ -73,9 +73,11 @@ export function AccountMenu() {
 
   return (
     <DropdownMenu.Root modal={false}>
-      <DropdownMenu.Trigger className="group/acc flex h-10 items-center gap-2 rounded-full border border-border pr-3 pl-1 text-sm font-medium transition-colors outline-none hover:border-border-strong focus-visible:ring-2 focus-visible:ring-ring data-[state=open]:border-border-strong data-[state=open]:bg-surface-2">
+      <DropdownMenu.Trigger
+        aria-label={`Account menu for ${session.name ?? 'your account'}`}
+        className="group/acc flex h-10 items-center gap-1.5 rounded-full border border-border pr-2.5 pl-1 text-sm font-medium transition-colors outline-none hover:border-border-strong focus-visible:ring-2 focus-visible:ring-ring data-[state=open]:border-border-strong data-[state=open]:bg-surface-2"
+      >
         <span className="grid size-8 place-items-center rounded-full bg-brand-gradient text-xs font-bold text-primary-fg">{initials}</span>
-        <span className="hidden max-w-28 truncate sm:inline">{session.name}</span>
         <ChevronDown className="size-4 text-fg-muted transition-transform duration-(--duration-base) ease-(--ease-out-expo) group-data-[state=open]/acc:rotate-180" aria-hidden />
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
@@ -91,7 +93,7 @@ export function AccountMenu() {
               <span className="grid size-11 place-items-center rounded-full bg-brand-gradient text-sm font-bold text-primary-fg">{initials}</span>
               <span className="min-w-0">
                 <span className="block truncate font-semibold">{session.name}</span>
-                <span className="block text-xs text-fg-muted">{session.role === 'TALENT' ? 'Talent · Papon' : 'Customer account'}</span>
+                <span className="block text-xs text-fg-muted">{session.role === 'TALENT' ? 'Talent · Nahid Afrin' : 'Customer account'}</span>
               </span>
             </div>
           </div>

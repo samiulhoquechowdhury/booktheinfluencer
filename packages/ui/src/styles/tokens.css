@@ -35,6 +35,7 @@
   --grain-opacity: 0.035;
   --shadow-card: 0 1px 2px rgb(17 17 20 / 0.06), 0 1px 1px rgb(17 17 20 / 0.04);
   --shadow-float: 0 24px 60px -20px rgb(17 17 20 / 0.25);
+  --brush: #fde68a;
 }
 
 .dark {
@@ -69,6 +70,7 @@
   --grain-opacity: 0.06;
   --shadow-card: none;
   --shadow-float: 0 30px 80px -24px rgb(0 0 0 / 0.7);
+  --brush: color-mix(in oklab, #fde68a 88%, transparent);
 }
 
 @theme inline {

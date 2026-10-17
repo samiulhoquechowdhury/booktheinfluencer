@@ -241,13 +241,13 @@ export function SearchButton({ className }: { className?: string }) {
       aria-keyshortcuts="Meta+K Control+K /"
       className={cn(
         'group/search flex h-10 items-center gap-2 rounded-full text-sm text-fg-muted transition-colors hover:text-fg',
-        'w-10 justify-center hover:bg-surface-2 xl:w-auto xl:justify-start xl:border xl:border-border xl:bg-surface/60 xl:pr-2 xl:pl-3.5 xl:hover:border-border-strong xl:hover:bg-surface',
+        'w-10 justify-center hover:bg-surface-2 2xl:w-auto 2xl:justify-start 2xl:border 2xl:border-border 2xl:bg-surface/60 2xl:pr-2 2xl:pl-3.5 2xl:hover:border-border-strong 2xl:hover:bg-surface',
         className,
       )}
     >
-      <Search className="size-[18px] shrink-0 xl:size-4" aria-hidden />
-      <span className="hidden xl:inline">Search talent</span>
-      <kbd className="ml-6 hidden rounded-md border border-border bg-bg px-1.5 py-0.5 font-sans text-[0.6875rem] text-fg-subtle xl:inline">{mac ? '⌘' : 'Ctrl'} K</kbd>
+      <Search className="size-[18px] shrink-0 2xl:size-4" aria-hidden />
+      <span className="hidden 2xl:inline">Search talent</span>
+      <kbd className="ml-6 hidden rounded-md border border-border bg-bg px-1.5 py-0.5 font-sans text-[0.6875rem] text-fg-subtle 2xl:inline">{mac ? '⌘' : 'Ctrl'} K</kbd>
     </button>
   );
 }

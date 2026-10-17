@@ -7,7 +7,8 @@ import blackoutsJson from './data/blackouts.json';
 /**
  * In-memory mock database. Raw records mirror what the real DB holds, INCLUDING internal fields
  * (cost, payout, margin) — serializers.ts is the only way data leaves. State lives on globalThis
- * so it survives dev HMR; it resets on server restart.
+ * so it survives dev HMR; it resets on server restart, or when the generated data changes (HMR
+ * re-imports talents.json as a new object).
  */
 /** `feeBand` is widened: the current roster is all "on request", so JSON inference alone gives `null`. */
 export type RawTalent = Omit<(typeof talentsJson)[number], 'feeBand'> & { feeBand: { minPaise: string; maxPaise: string } | null };
@@ -42,20 +43,22 @@ type Db = {
   blackouts: Record<string, string[]>;
   favourites: Set<string>;
   seq: number;
+  source: unknown;
 };
 
 const g = globalThis as unknown as { __mockDb?: Db };
 
 export function db(): Db {
-  if (!g.__mockDb) {
+  if (!g.__mockDb || g.__mockDb.source !== talentsJson) {
     g.__mockDb = {
       talents: structuredClone(talentsJson),
       bookings: structuredClone(bookingsJson) as unknown as RawBooking[],
       briefs: [],
       portal: structuredClone(portalJson),
       blackouts: structuredClone(blackoutsJson) as Record<string, string[]>,
-      favourites: new Set(['joi-barua', 'nucleya', 'maniesh-paul']),
+      favourites: new Set(['dimpu-baruah', 'kopil-bora', 'zerifa-wahid']),
       seq: 24030,
+      source: talentsJson,
     };
   }
   return g.__mockDb;

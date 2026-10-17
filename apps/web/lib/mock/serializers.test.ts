@@ -76,8 +76,8 @@ describe('mock API rules', () => {
   });
 
   it('date filter hides blacked-out talent', () => {
-    const date = db().blackouts['joi-barua']![0]!;
+    const date = db().blackouts['jatin-bora']![0]!;
     const res = handle({ method: 'GET', path: 'talents', query: { date, pageSize: '48' }, role: 'GUEST' }) as { body: { items: { slug: string }[] } };
-    expect(res.body.items.map((t) => t.slug)).not.toContain('joi-barua');
+    expect(res.body.items.map((t) => t.slug)).not.toContain('jatin-bora');
   });
 });

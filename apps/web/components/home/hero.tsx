@@ -2,122 +2,152 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
 import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
-import { useRef } from 'react';
+import { CircleCheck } from 'lucide-react';
+import type { ReactNode } from 'react';
 import type { PublicTalent } from '@repo/schemas';
 import { SearchBar } from '@/components/search/search-bar';
 import { SplitText } from '@/lib/motion';
+import { categorySingular } from '@/lib/reference';
+import { cn } from '@repo/ui/lib/cn';
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+/** Fan layout, left → right. The outer pair is hidden on phones so three cards stay large. */
+const FAN = [
+  { rot: -10, y: '22%', cls: 'hidden w-[19%] sm:block', z: 'z-10' },
+  { rot: -5, y: '9%', cls: 'w-[31%] sm:w-[21%]', z: 'z-20' },
+  { rot: 0, y: '0%', cls: 'w-[38%] sm:w-[25%]', z: 'z-30' },
+  { rot: 5, y: '9%', cls: 'w-[31%] sm:w-[21%]', z: 'z-20' },
+  { rot: 10, y: '22%', cls: 'hidden w-[19%] sm:block', z: 'z-10' },
+] as const;
+
+const CHECKS = ['Managed end to end', 'Itemised quotes', 'Secure payments'];
 
 /**
- * Hero: line-by-line split headline over a slow drifting mosaic of featured talent photos,
- * soft radial glows, glass search bar and an animated scroll cue.
+ * Hero: centred badge, two-line headline, single search field and a fan of featured talent
+ * cards rising from the bottom edge.
  */
 export function Hero({ mosaic }: { mosaic: PublicTalent[] }) {
-  const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const mosaicY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
-  const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-
-  // Repeat the featured set until every column has enough tiles to drift without gaps.
-  const tiles = mosaic.length ? Array.from({ length: Math.max(18, mosaic.length) }, (_, i) => mosaic[i % mosaic.length]!) : [];
-  const columns = [0, 1, 2, 3, 4, 5].map((c) => tiles.filter((_, i) => i % 6 === c));
+  const cards = mosaic.slice(0, FAN.length);
+  const rise = (delay: number) => (reduce ? {} : { initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, ease: EASE, delay } });
 
   return (
-    <section ref={ref} className="relative isolate flex min-h-[100svh] flex-col overflow-hidden pt-28 pb-10 md:pt-36">
-      {/* Mosaic */}
-      <motion.div aria-hidden style={reduce ? undefined : { y: mosaicY }} className="absolute inset-0 -z-20">
-        <div className="absolute inset-[-10%] flex rotate-[-8deg] gap-3 opacity-[0.28] dark:opacity-[0.22] md:gap-4">
-          {columns.map((col, ci) => (
-            <div
-              key={ci}
-              className={`flex min-w-0 flex-1 flex-col gap-3 md:gap-4 ${ci % 2 ? 'motion-safe:animate-[drift-down_60s_linear_infinite]' : 'motion-safe:animate-[drift-up_70s_linear_infinite]'} ${ci > 3 ? 'hidden md:flex' : ''}`}
-            >
-              {[...col, ...col].map((t, i) => (
-                <div key={`${t.slug}-${i}`} className="relative aspect-[4/5] overflow-hidden rounded-xl">
-                  <Image src={t.images[0]!.src} alt="" fill sizes="(min-width: 768px) 20vw, 30vw" quality={35} loading="lazy" fetchPriority="low" className="object-cover grayscale" />
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,var(--bg)_72%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg to-transparent" />
-      </motion.div>
-
+    <section className="relative isolate overflow-hidden pt-28 md:pt-36">
       {/* Glows */}
-      <div aria-hidden className="absolute top-[18%] left-1/2 -z-10 size-[42rem] -translate-x-[70%] rounded-full bg-[radial-gradient(circle,var(--glow-1),transparent_65%)] blur-2xl motion-safe:animate-[float_14s_ease-in-out_infinite]" />
-      <div aria-hidden className="absolute top-[34%] left-1/2 -z-10 size-[34rem] -translate-x-[10%] rounded-full bg-[radial-gradient(circle,var(--glow-2),transparent_65%)] blur-2xl motion-safe:animate-[float_18s_ease-in-out_infinite_reverse]" />
+      <div aria-hidden className="absolute top-[8%] left-1/2 -z-10 size-[44rem] -translate-x-[75%] rounded-full bg-[radial-gradient(circle,var(--glow-1),transparent_65%)] blur-2xl motion-safe:animate-[float_14s_ease-in-out_infinite]" />
+      <div aria-hidden className="absolute top-[20%] left-1/2 -z-10 size-[36rem] -translate-x-[15%] rounded-full bg-[radial-gradient(circle,var(--glow-2),transparent_65%)] blur-2xl motion-safe:animate-[float_18s_ease-in-out_infinite_reverse]" />
 
-      <motion.div style={reduce ? undefined : { opacity: fade }} className="shell relative flex flex-1 flex-col">
-        <motion.p
-          initial={reduce ? false : { opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="glass mx-auto mb-8 md:mx-0 inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium text-fg-muted"
-        >
-          <span className="relative flex size-2">
-            <span className="absolute inset-0 rounded-full bg-success motion-safe:animate-ping" />
-            <span className="relative size-2 rounded-full bg-success" />
-          </span>
-          Managed bookings across 8 Indian cities
+      <div className="shell flex flex-col items-center text-center">
+        <motion.p {...rise(0.05)} className="mb-6 inline-flex items-center rounded-full bg-gold px-4 py-1.5 text-xs font-semibold text-black sm:text-sm">
+          Celebrity bookings, right at your event.
         </motion.p>
 
         <SplitText
           as="h1"
           by="line"
           trigger="mount"
-          delay={0.15}
-          className="text-center font-display text-hero font-black uppercase md:text-left"
+          delay={0.12}
+          className="font-display text-[clamp(2.75rem,1rem+7.4vw,7.75rem)] leading-[0.92] font-black tracking-[-0.045em]"
           lines={[
-            { text: 'Book the talent.', node: <>Book the <span className="text-outline">talent.</span></> },
-            {
-              text: 'We handle the rest.',
-              node: (
-                <>
-                  We handle the{' '}
-                  <span className="text-gradient pr-[0.06em] font-serif font-normal normal-case italic tracking-[-0.02em]">rest.</span>
-                </>
-              ),
-            },
+            { text: 'Book the Talent.', node: <>Book the <BrushWord>Talent.</BrushWord></> },
+            'We Handle the Rest.',
           ]}
         />
 
-        <motion.div
-          initial={reduce ? false : { opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.75 }}
-          className="mt-8 grid gap-8 text-center md:text-left lg:mt-12 xl:grid-cols-12 xl:items-end"
-        >
-          <div className="mx-auto max-w-xl md:mx-0 xl:col-span-5">
-            <h2 className="text-lg font-semibold text-fg md:text-xl">Book verified talent for any event.</h2>
-            <p className="mx-auto mt-2 max-w-md text-fg-muted md:mx-0 md:text-lg">
-              Actors, singers, DJs, comedians, anchors and creators — with contracts, secure payments and a dedicated manager.
-            </p>
-            <Link href="/enquire" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary-text underline-offset-4 hover:underline">
-              Or plan with an expert →
-            </Link>
-          </div>
-          <div className="max-w-4xl xl:col-span-7 xl:max-w-none">
-            <SearchBar />
-          </div>
+        <motion.p {...rise(0.45)} className="mt-6 max-w-xl text-base text-fg-muted md:text-lg">
+          Book trusted actors, singers, comedians, anchors and creators from Assam and across India, all in one place.
+        </motion.p>
+
+        <motion.div {...rise(0.6)} className="mt-8 w-full max-w-xl">
+          <SearchBar />
         </motion.div>
 
-        <div className="mt-auto flex items-end justify-center pt-12 md:justify-between">
-          <a href="#categories" className="group flex items-center gap-3 text-xs font-medium tracking-[0.2em] text-fg-muted uppercase hover:text-fg">
-            <span className="relative block h-12 w-px overflow-hidden bg-border">
-              <span className="absolute inset-x-0 top-0 h-1/2 bg-fg motion-safe:animate-scroll-cue" />
-            </span>
-            Scroll to explore
-          </a>
-          <p className="hidden text-right text-xs text-fg-subtle md:block">
-            Fees on request.
-            <br />
-            Confirmed with the authorised representative.
-          </p>
+        <motion.ul {...rise(0.7)} className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-medium text-fg">
+          {CHECKS.map((c) => (
+            <li key={c} className="flex items-center gap-1.5">
+              <CircleCheck className="size-4 text-primary-text" aria-hidden />
+              {c}
+            </li>
+          ))}
+        </motion.ul>
+        <Link href="/enquire" className="mt-3 text-sm font-semibold text-primary-text underline-offset-4 hover:underline">
+          Or plan with an expert →
+        </Link>
+      </div>
+
+      {/* Talent fan */}
+      {cards.length > 0 && (
+        <div className="relative mx-auto mt-12 flex max-w-5xl items-start justify-center px-2 pb-[8%] md:mt-16">
+          {cards.map((t, i) => {
+            const f = FAN[i]!;
+            const img = t.images[0]!;
+            return (
+              <motion.div
+                key={t.slug}
+                className={cn('relative -mx-[1.5%] shrink-0', f.cls, f.z)}
+                style={{ rotate: f.rot, y: f.y }}
+                initial={reduce ? false : { opacity: 0, y: '45%' }}
+                animate={{ opacity: 1, y: f.y }}
+                transition={{ duration: 1, ease: EASE, delay: 0.55 + Math.abs(i - 2) * 0.1 }}
+              >
+                <Link
+                  href={`/t/${t.slug}`}
+                  className="group block rounded-[1.75rem] border border-border-strong bg-bg-elevated p-1.5 shadow-float outline-none transition-transform duration-(--duration-slow) ease-(--ease-out-expo) hover:-translate-y-4 focus-visible:-translate-y-4 focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <span className="relative block aspect-[3/4] overflow-hidden rounded-[1.375rem] bg-surface-2">
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      priority={i === 2}
+                      placeholder={img.blurDataURL ? 'blur' : 'empty'}
+                      blurDataURL={img.blurDataURL}
+                      sizes="(min-width: 1024px) 260px, (min-width: 640px) 25vw, 38vw"
+                      className="object-cover transition-transform duration-[900ms] ease-(--ease-out-expo) group-hover:scale-105"
+                    />
+                    <span aria-hidden className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/75 to-transparent" />
+                    <span className="absolute inset-x-2 bottom-2 text-left text-white sm:inset-x-3 sm:bottom-3">
+                      <span className="block truncate text-xs font-semibold sm:text-sm">{t.name}</span>
+                      <span className="block truncate text-[0.625rem] text-white/75 sm:text-xs">{categorySingular(t.primaryCategory)}</span>
+                    </span>
+                  </span>
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
-      </motion.div>
+      )}
     </section>
+  );
+}
+
+/** Gradient word over a hand-painted brush stroke that sweeps in from the left. */
+function BrushWord({ children }: { children: ReactNode }) {
+  return (
+    <span className="relative isolate inline-block">
+      <svg
+        aria-hidden
+        viewBox="0 0 300 60"
+        preserveAspectRatio="none"
+        className="absolute inset-x-[-5%] top-[22%] bottom-[-2%] -z-10 h-[86%] w-[110%] text-(--brush) motion-safe:animate-[brush-in_0.9s_var(--ease-out-expo)_0.55s_both]"
+      >
+        <defs>
+          {/* Rough, dry-brush edges. */}
+          <filter id="brush-rough" x="-5%" y="-20%" width="110%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.045 0.6" numOctaves="3" seed="3" result="n" />
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="7" />
+          </filter>
+        </defs>
+        <g filter="url(#brush-rough)" fill="currentColor">
+          <path d="M6 32C40 16 120 9 214 10c38 0 66 3 80 8 6 4 5 14-2 19-44 12-150 18-250 17C18 54 2 47 6 32Z" />
+          <path opacity="0.55" d="M20 14c70-8 170-10 262-2 6 1 6 6 0 7-90-4-190-2-262 4-5 0-6-8 0-9Z" />
+          <path opacity="0.45" d="M14 52c90 4 190 2 270-8 6-1 7 5 1 7-84 12-190 14-272 8-5-1-5-7 1-7Z" />
+        </g>
+      </svg>
+      <span className="text-gradient pr-[0.04em]">{children}</span>
+    </span>
   );
 }

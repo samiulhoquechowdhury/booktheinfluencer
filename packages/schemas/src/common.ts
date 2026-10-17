@@ -14,8 +14,19 @@ export const IsoDateTimeSchema = z.string().datetime({ offset: true });
 /** Calendar date YYYY-MM-DD (event dates, blackouts). */
 export const IsoDateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
 
+/** Absolute URL, or a site-relative path for self-hosted files (e.g. /talent/x.jpg). */
+const isImageSrc = (s: string) => {
+  if (s.startsWith('/')) return !s.startsWith('//');
+  try {
+    new URL(s);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
 export const ImageSchema = z.object({
-  src: z.string().url(),
+  src: z.string().refine(isImageSrc, 'Absolute URL or site-relative path'),
   alt: z.string().min(1),
   width: z.number().int().positive(),
   height: z.number().int().positive(),

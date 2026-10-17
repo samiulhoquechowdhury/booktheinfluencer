@@ -57,7 +57,7 @@ export function LoginDialog({ open, onOpenChange, next }: { open: boolean; onOpe
                 <div className="mt-6 grid gap-3">
                   {[
                     { role: 'CUSTOMER' as const, icon: Building2, title: 'Customer — Riya Sharma', body: 'Bookings, quotes, payments and favourites.' },
-                    { role: 'TALENT' as const, icon: Mic2, title: 'Talent — Papon', body: 'Your bookings, payouts and blackout dates.' },
+                    { role: 'TALENT' as const, icon: Mic2, title: 'Talent — Nahid Afrin Ansari', body: 'Your bookings, payouts and blackout dates.' },
                   ].map((o) => (
                     <button
                       key={o.role}

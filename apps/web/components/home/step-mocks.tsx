@@ -85,7 +85,7 @@ export function VerifyMock({ active }: { active: boolean }) {
     <Card>
       <p className="eyebrow mb-4">Availability check</p>
       {[
-        ['Joi B.', s1],
+        ['Nahid A.', s1],
         ['Ishita S.', s2],
       ].map(([name, s]) => (
         <div key={name} className="flex flex-wrap items-center justify-between gap-2 border-b border-border py-3 last:border-0">
