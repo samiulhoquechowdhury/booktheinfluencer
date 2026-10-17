@@ -28,7 +28,7 @@ export default function HowItWorksPage() {
         title={<>Request. Verify. <span className="font-serif font-normal normal-case italic">Perform.</span></>}
         lead="Booking talent shouldn’t mean calling five agents and wiring money on trust. One brief, one manager, one booking record — from first message to final bow."
       />
-      <HowItWorks />
+      <HowItWorks showFullProcessLink={false} />
       <section aria-labelledby="confirm-title" className="py-24 md:py-36">
         <div className="shell grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">

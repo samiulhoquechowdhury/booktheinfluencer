@@ -13,10 +13,10 @@ export function TrustNumbers({ talentCount, cityCount }: { talentCount: number; 
     { value: 4, suffix: '', label: 'Checks before “Confirmed”' },
   ];
   const trust = [
-    { icon: BadgeCheck, title: 'Verified representation', body: 'Every rep’s authority is checked by our team.' },
-    { icon: FileText, title: 'GST-ready paperwork', body: 'Itemised quotes, proforma and contracts.' },
-    { icon: Lock, title: 'Secure payments', body: 'UPI, cards and net banking via the gateway.' },
-    { icon: UserRound, title: 'Dedicated manager', body: 'One human from brief to final bow.' },
+    { icon: BadgeCheck, title: 'Verified representation', body: 'We check that every manager or agent is authorised to book the artist before anything moves.', tag: 'Authority checked' },
+    { icon: FileText, title: 'GST-ready paperwork', body: 'Itemised quotes, a proforma invoice and a proper contract for every booking.', tag: 'Quote · Proforma · Contract' },
+    { icon: Lock, title: 'Secure payments', body: 'Pay in milestones by UPI, card or net banking through a secure payment gateway.', tag: 'UPI · Cards · Net banking' },
+    { icon: UserRound, title: 'Dedicated manager', body: 'One person handles your booking from the first brief to the final bow.', tag: 'One point of contact' },
   ];
   return (
     <section aria-labelledby="trust-title" className="relative border-y border-border py-24 md:py-32">
@@ -39,15 +39,35 @@ export function TrustNumbers({ talentCount, cityCount }: { talentCount: number; 
         ))}
       </Marquee>
 
-      <Reveal stagger className="shell mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        {trust.map((t) => (
-          <RevealItem key={t.title}>
-            <t.icon className="size-6 text-gold" aria-hidden />
-            <h3 className="mt-4 font-semibold">{t.title}</h3>
-            <p className="mt-1 text-sm text-fg-muted">{t.body}</p>
-          </RevealItem>
-        ))}
-      </Reveal>
+      <div className="shell mt-20 md:mt-24">
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="eyebrow mb-3">Why book with us</p>
+            <p className="font-display text-h1 font-extrabold">
+              Booked with <span className="font-serif font-normal italic">confidence.</span>
+            </p>
+          </div>
+          <p className="max-w-sm text-fg-muted">Every booking runs through the same managed process, whoever you book.</p>
+        </div>
+
+        <Reveal stagger className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {trust.map((t) => (
+            <RevealItem key={t.title} className="h-full">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-bg-elevated p-6 transition-[transform,border-color,box-shadow] duration-(--duration-slow) ease-(--ease-out-expo) hover:-translate-y-1 hover:border-border-strong hover:shadow-float">
+                {/* Gradient edge that lights up on hover */}
+                <span aria-hidden className="absolute inset-x-0 top-0 h-px bg-brand-gradient opacity-0 transition-opacity duration-(--duration-slow) group-hover:opacity-100" />
+                <span aria-hidden className="pointer-events-none absolute -top-16 -right-16 size-40 rounded-full bg-[radial-gradient(circle,var(--glow-1),transparent_70%)] opacity-0 transition-opacity duration-(--duration-slow) group-hover:opacity-100" />
+                <span className="relative grid size-12 place-items-center rounded-xl bg-[color-mix(in_oklab,var(--primary)_12%,transparent)] text-primary-text ring-1 ring-[color-mix(in_oklab,var(--primary)_25%,transparent)] transition-transform duration-(--duration-slow) group-hover:scale-105">
+                  <t.icon className="size-6" aria-hidden />
+                </span>
+                <h3 className="relative mt-6 text-lg font-semibold">{t.title}</h3>
+                <p className="relative mt-2 flex-1 text-sm text-fg-muted">{t.body}</p>
+                <p className="relative mt-6 border-t border-border pt-4 text-xs font-medium text-fg-subtle">{t.tag}</p>
+              </article>
+            </RevealItem>
+          ))}
+        </Reveal>
+      </div>
     </section>
   );
 }

@@ -2,11 +2,10 @@
 
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import type { PublicTalent } from '@repo/schemas';
 import { SectionHeading } from '@repo/ui/section-heading';
 import { TalentCard } from '@/components/talent/talent-card';
-import { Reveal } from '@/lib/motion';
 
 /**
  * Horizontal carousel on native scroll (touch, trackpad, keyboard all work) plus mouse
@@ -14,16 +13,26 @@ import { Reveal } from '@/lib/motion';
  */
 export function FeaturedCarousel({ talents }: { talents: PublicTalent[] }) {
   const scroller = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0);
+  const bar = useRef<HTMLDivElement>(null);
   const drag = useRef({ active: false, startX: 0, startScroll: 0, lastX: 0, lastT: 0, v: 0, moved: 0 });
   const raf = useRef(0);
 
   useEffect(() => {
     const el = scroller.current;
     if (!el) return;
-    const onScroll = () => setProgress(el.scrollLeft / Math.max(1, el.scrollWidth - el.clientWidth));
+    let frame = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const p = el.scrollLeft / Math.max(1, el.scrollWidth - el.clientWidth);
+        if (bar.current) bar.current.style.transform = `scaleX(${Math.max(0.08, p)})`;
+      });
+    };
     el.addEventListener('scroll', onScroll, { passive: true });
-    return () => el.removeEventListener('scroll', onScroll);
+    return () => {
+      el.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   const glide = () => {
@@ -64,10 +73,11 @@ export function FeaturedCarousel({ talents }: { talents: PublicTalent[] }) {
       </div>
 
       {/* Same container as the navbar: edges line up with the header capsule */}
-      <Reveal className="shell">
+      <div className="shell">
         <div
           ref={scroller}
-          data-lenis-prevent-wheel
+          // Mostly-sideways swipes scroll the strip natively; vertical wheel stays smooth (Lenis).
+          data-lenis-prevent-horizontal
           className="no-scrollbar mt-12 flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-6 active:cursor-grabbing md:gap-6"
           onPointerDown={(e) => {
             if (e.pointerType !== 'mouse' || !scroller.current) return;
@@ -107,7 +117,7 @@ export function FeaturedCarousel({ talents }: { talents: PublicTalent[] }) {
         >
           {talents.map((t) => (
             <div key={t.slug} className="w-[78%] shrink-0 snap-start sm:w-[calc((100%-1.25rem)/2)] md:w-[calc((100%-3rem)/3)] lg:w-[calc((100%-4.5rem)/4)]">
-              <TalentCard talent={t} sizes="(min-width: 1440px) 300px, (min-width: 1024px) 22vw, (min-width: 768px) 30vw, (min-width: 640px) 46vw, 76vw" />
+              <TalentCard talent={t} tilt={false} sizes="(min-width: 1440px) 300px, (min-width: 1024px) 22vw, (min-width: 768px) 30vw, (min-width: 640px) 46vw, 76vw" />
             </div>
           ))}
           <Link href="/talent" className="group grid w-[60%] shrink-0 snap-start place-items-center rounded-xl border border-dashed border-border-strong sm:w-[calc((100%-1.25rem)/2)] md:w-[calc((100%-3rem)/3)] lg:w-[calc((100%-4.5rem)/4)]">
@@ -119,10 +129,10 @@ export function FeaturedCarousel({ talents }: { talents: PublicTalent[] }) {
             </span>
           </Link>
         </div>
-      </Reveal>
+      </div>
       <div className="shell">
         <div className="h-px w-full bg-border" aria-hidden>
-          <div className="h-px origin-left bg-fg transition-transform duration-150" style={{ transform: `scaleX(${Math.max(0.08, progress)})` }} />
+          <div ref={bar} className="h-px origin-left scale-x-[0.08] bg-fg transition-transform duration-150" />
         </div>
       </div>
     </section>

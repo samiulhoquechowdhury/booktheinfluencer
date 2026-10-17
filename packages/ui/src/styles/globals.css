@@ -113,6 +113,9 @@ html.lenis, html.lenis body { height: auto; }
 /* Brush stroke wipes in left → right. */
 @keyframes brush-in { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 
+/* Tumbling 3D cube (How it works banner). */
+@keyframes cube-spin { from { transform: rotateX(-24deg) rotateY(0deg) rotateZ(0deg); } to { transform: rotateX(336deg) rotateY(360deg) rotateZ(180deg); } }
+
 @keyframes drift-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
 @keyframes drift-down { from { transform: translateY(-50%); } to { transform: translateY(0); } }
 
