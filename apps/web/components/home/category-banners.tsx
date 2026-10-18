@@ -140,9 +140,9 @@ export function CategoryBanners({ banners }: { banners: CategoryBanner[] }) {
               <span aria-hidden className="absolute inset-y-0 left-0 -z-10 w-[62%] bg-gradient-to-r from-white/85 via-white/55 to-transparent sm:hidden" />
               <div className="flex h-full w-[52%] flex-col justify-center gap-3 p-4 sm:w-[55%] sm:gap-4 sm:p-8">
                 <p className="font-display text-lg leading-[1.05] font-black tracking-[-0.02em] text-[#16121f] sm:text-2xl lg:text-[2rem]">{b.title}</p>
-                <span className="inline-flex w-fit items-center gap-2 rounded-full bg-[#16121f] px-4 py-2 text-xs font-semibold text-white transition-[transform,background-color] duration-(--duration-base) group-hover:-translate-y-0.5 group-hover:bg-[#2c2340] sm:px-5 sm:py-2.5 sm:text-sm">
+                <span className="inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full bg-[#16121f] px-3 py-1.5 text-[0.6875rem] font-semibold whitespace-nowrap text-white sm:gap-2 transition-[transform,background-color] duration-(--duration-base) group-hover:-translate-y-0.5 group-hover:bg-[#2c2340] sm:px-5 sm:py-2.5 sm:text-sm">
                   {b.cta}
-                  <ArrowRight className="size-4 transition-transform duration-(--duration-base) group-hover:translate-x-1" aria-hidden />
+                  <ArrowRight className="size-3.5 shrink-0 transition-transform duration-(--duration-base) group-hover:translate-x-1 sm:size-4" aria-hidden />
                 </span>
               </div>
             </Link>

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { SiteFooter } from '@/components/shell/site-footer';
+import { FooterGate } from '@/components/shell/footer-gate';
 import { SiteHeader } from '@/components/shell/site-header';
 import { ScrollProgress } from '@/lib/motion';
 import { getNavData } from '@/lib/nav';
@@ -11,7 +11,7 @@ export default async function MarketingLayout({ children }: { children: ReactNod
       <ScrollProgress />
       <SiteHeader nav={nav} />
       <main id="main">{children}</main>
-      <SiteFooter />
+      <FooterGate />
     </>
   );
 }

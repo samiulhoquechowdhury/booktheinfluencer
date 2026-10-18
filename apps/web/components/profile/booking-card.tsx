@@ -12,9 +12,11 @@ import { Magnetic } from '@/lib/motion';
 
 export const QUOTE_INCLUDES = ['Talent fee for the agreed set', 'Travel, stay and local transport (if needed)', 'Production and rider requirements', 'Service fee and GST — itemised'];
 
-export const enquireHref = (t: PublicTalent, date?: string) => {
+export const enquireHref = (t: PublicTalent, date?: string, extra?: { eventType?: string; city?: string }) => {
   const sp = new URLSearchParams({ talent: t.slug });
   if (date) sp.set('date', date);
+  if (extra?.eventType) sp.set('eventType', extra.eventType);
+  if (extra?.city) sp.set('city', extra.city);
   return `/enquire?${sp}`;
 };
 

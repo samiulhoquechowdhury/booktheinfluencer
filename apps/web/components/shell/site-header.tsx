@@ -56,7 +56,7 @@ export function SiteHeader({ variant = 'full', nav }: { variant?: 'full' | 'mini
     >
       <div className="shell">
         <div
-          className="relative flex h-14 items-center gap-2 rounded-full pr-1.5 pl-4 [--lg-hover:0.6] hover:[--lg-hover:1] md:h-16 md:pr-2 md:pl-6"
+          className="relative flex h-14 items-center gap-1 rounded-full pr-1.5 pl-3.5 min-[360px]:gap-2 min-[360px]:pl-4 [--lg-hover:0.6] hover:[--lg-hover:1] md:h-16 md:pr-2 md:pl-6"
           onPointerMove={(e) => {
             // Drive the glass highlight from the pointer (CSS vars only — no re-render).
             const r = e.currentTarget.getBoundingClientRect();
@@ -136,10 +136,7 @@ export function SiteHeader({ variant = 'full', nav }: { variant?: 'full' | 'mini
           )}
 
           <div className="relative ml-auto flex shrink-0 items-center gap-0.5 sm:gap-1">
-            {/* Below 400px the mobile menu carries search, leaving room for the full wordmark. */}
-            <span className={variant === 'full' ? 'hidden min-[400px]:contents' : 'contents'}>
-              <SearchButton />
-            </span>
+            <SearchButton />
             <span className="hidden sm:contents">
               <ThemeToggle />
             </span>

@@ -17,14 +17,14 @@ export const BANNERS: Banner[] = [
   {
     slug: 'actors',
     title: 'Book the stars of the screen',
-    cta: 'Explore actors',
+    cta: 'Explore Actors',
     tint: '#fdeedd',
     image: { src: '/banners/actor.jpg', blurDataURL: 'data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoQAAgAA4BaJYgCdAEKbaU0kAD+9gnDd/t2f1ffvqTn4UdO/ezs1bWjYjH8d6EWgAFUXqZA0AQipcWFAAA=' },
   },
   {
     slug: 'speakers',
     title: 'Hosts who own the room',
-    cta: 'Explore anchors',
+    cta: 'Explore Anchors',
     tint: '#ebe9f9',
     image: { src: '/banners/anchor.jpg', blurDataURL: 'data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAQAgCdASoQAAgAA4BaJZAC7AEQZG/jlwUAAP72B/IhD5x6nP6yXvJ0cegj/LmcnUShEbE8HTA+lmTl1XgYQjOYNmJfwGAA' },
   },
@@ -38,7 +38,7 @@ export const BANNERS: Banner[] = [
   {
     slug: 'creators',
     title: 'Influencers your audience loves',
-    cta: 'Explore influencers',
+    cta: 'Explore Influencers',
     tint: '#f8f6e4',
     image: { src: '/banners/influencer.jpg', blurDataURL: 'data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAQAgCdASoQAAgAA4BaJQBWAMUA4LLRjQwYAP73CJemTKF1Cg7f39NPTTWa5yslQPhyXe7dNUNOCZrVmLKF848oeIV15KTxavE+8mAA' },
   },

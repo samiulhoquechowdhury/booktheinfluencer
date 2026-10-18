@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Controller, useForm, type FieldPath } from 'react-hook-form';
 import { ArrowLeft, ArrowRight, Loader2, ShieldCheck } from 'lucide-react';
 import { toast } from 'sonner';
-import { EVENT_TYPES, EnquirySchema, LANGUAGES, type Enquiry, type EnquiryInput } from '@repo/schemas';
+import { CitySlugSchema, EVENT_TYPES, EnquirySchema, EventTypeSchema, LANGUAGES, type Enquiry, type EnquiryInput } from '@repo/schemas';
 import { EVENT_TYPE_LABELS, todayIST } from '@repo/utils';
 import { Button } from '@repo/ui/button';
 import { DatePicker } from '@repo/ui/date-picker';
@@ -65,12 +65,14 @@ export function EnquiryStepper() {
 
   const prefillTalent = (params.get('talent') ?? '').split(',').filter(Boolean).slice(0, 5);
   const prefillDate = params.get('date') ?? '';
+  const prefillEventType = EventTypeSchema.safeParse(params.get('eventType')).data;
+  const prefillCity = CitySlugSchema.safeParse(params.get('city')).data;
 
   const form = useForm<EnquiryInput, unknown, Enquiry>({
     resolver: zodResolver(EnquirySchema),
     mode: 'onTouched',
     defaultValues: {
-      event: { eventType: undefined, date: prefillDate, altDate: '', city: undefined, venue: '', audienceSize: undefined, durationMins: 60 },
+      event: { eventType: prefillEventType, date: prefillDate, altDate: '', city: prefillCity, venue: '', audienceSize: undefined, durationMins: 60 },
       talent: { talentSlugs: prefillTalent, budgetMinRupees: 100_000, budgetMaxRupees: 500_000, language: undefined, notes: '' },
       contact: { name: '', phone: '', email: '', company: '', gstin: '', otp: '', consent: undefined },
     },

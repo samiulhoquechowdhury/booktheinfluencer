@@ -3,9 +3,8 @@ import { notFound } from 'next/navigation';
 import { Info } from 'lucide-react';
 import { Accordion } from '@repo/ui/accordion';
 import { EVENT_TYPE_LABELS } from '@repo/utils';
-import { BookingCard } from '@/components/profile/booking-card';
+import { BookingDock } from '@/components/profile/booking-dock';
 import { Gallery } from '@/components/profile/gallery';
-import { MobileBookingBar } from '@/components/profile/mobile-booking-bar';
 import { ProfileHero } from '@/components/profile/profile-hero';
 import { TalentCard } from '@/components/talent/talent-card';
 import { ApiError } from '@/lib/api/transport';
@@ -62,8 +61,8 @@ export default async function TalentProfilePage({ params }: Props) {
       <JsonLd data={breadcrumbLd([{ name: 'Talent', path: '/talent' }, { name: categoryName(t.primaryCategory), path: `/talent/${t.primaryCategory}` }, { name: t.name, path: `/t/${t.slug}` }])} />
       <ProfileHero talent={t} />
 
-      <div className="shell mt-12 grid gap-12 pb-16 md:mt-16 lg:mt-24 lg:grid-cols-12 lg:pb-24">
-        <div className="lg:col-span-8">
+      <div className="shell mt-12 pb-16 md:mt-16 lg:mt-24 lg:pb-24">
+        <div className="mx-auto max-w-4xl">
           <Gallery images={t.images} showreelUrl={t.showreelUrl} name={t.name} />
 
           <Section id="about" title="About">
@@ -109,15 +108,10 @@ export default async function TalentProfilePage({ params }: Props) {
 
           <p className="mt-2 flex gap-2 text-xs text-fg-subtle">
             <Info className="size-4 shrink-0" aria-hidden />
-            Fees and availability are confirmed with the authorised representative before booking. Images are illustrative placeholders.
+            Fees and availability are confirmed with the authorised representative before booking.
           </p>
         </div>
 
-        <aside className="hidden lg:col-span-4 lg:block" aria-label="Request this talent">
-          <div className="sticky top-28">
-            <BookingCard talent={t} />
-          </div>
-        </aside>
       </div>
 
       {similar.length > 0 && (
@@ -134,8 +128,9 @@ export default async function TalentProfilePage({ params }: Props) {
           </div>
         </section>
       )}
-      <div aria-hidden className="h-24 lg:hidden" />
-      <MobileBookingBar talent={t} />
+      {/* Room so the floating dock never covers the last section. */}
+      <div aria-hidden className="h-28" />
+      <BookingDock talent={t} />
     </>
   );
 }

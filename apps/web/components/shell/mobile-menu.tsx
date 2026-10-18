@@ -6,14 +6,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { ArrowUpRight, Mail, MessageCircle, Phone, Search, X } from 'lucide-react';
+import { ArrowUpRight, Mail, MessageCircle, Phone, X } from 'lucide-react';
 import { Logo } from './logo';
 import { cn } from '@repo/ui/lib/cn';
 import { BRAND } from '@/lib/brand';
 import { useScrollLock } from '@/lib/motion';
 import { NAV_LINKS } from './nav-links';
 import type { NavData } from './nav-types';
-import { useSearchPalette } from './search-palette';
 import { ThemeToggle } from './theme-toggle';
 
 const EASE = [0.16, 1, 0.3, 1] as const; // container reveal
@@ -22,7 +21,6 @@ const EASE = [0.16, 1, 0.3, 1] as const; // container reveal
 export function MobileMenu({ nav }: { nav?: NavData }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const { open: openSearch } = useSearchPalette();
   useScrollLock(open);
   useEffect(() => setOpen(false), [pathname]);
 
@@ -67,19 +65,6 @@ export function MobileMenu({ nav }: { nav?: NavData }) {
                 </div>
 
                 <div className="shell relative flex flex-1 flex-col gap-8">
-                  <div {...rise(0.1)}>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        close();
-                        setTimeout(openSearch, 250);
-                      }}
-                      className="flex h-12 w-full items-center gap-3 rounded-full border border-border bg-surface px-4 text-left text-fg-muted"
-                    >
-                      <Search className="size-4" aria-hidden /> Search talent, cities…
-                    </button>
-                  </div>
-
                   {nav && (
                     <section {...rise(0.16)} aria-labelledby="mm-browse">
                       <p id="mm-browse" className="eyebrow mb-3">Browse</p>
