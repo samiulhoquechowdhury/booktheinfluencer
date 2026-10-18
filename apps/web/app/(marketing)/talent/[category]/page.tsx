@@ -36,7 +36,8 @@ export default async function CategoryPage({ params }: Props) {
     <>
       <JsonLd data={breadcrumbLd(crumbs.map((x) => ({ name: x.label, path: x.href })))} />
       <ListingHero
-        eyebrow={`${initial.total} verified ${c.name.toLowerCase()}`}
+        category={c.slug}
+        eyebrow={`${initial.total} ${c.name.toLowerCase()}`}
         title={c.name}
         description={c.description}
         crumbs={crumbs}

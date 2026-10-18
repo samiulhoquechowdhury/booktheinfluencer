@@ -28,7 +28,6 @@ export function CategoryWall({ items }: { items: Item[] }) {
     <section id="categories" className="relative py-24 md:py-36">
       <div className="shell">
         <SectionHeading
-          index="01"
           eyebrow="Launch categories"
           title={<>Six stages. <span className="font-serif font-normal italic">One</span> booking desk.</>}
           className="mb-14 md:mb-20"
@@ -56,10 +55,7 @@ export function CategoryWall({ items }: { items: Item[] }) {
                   onBlur={() => setActive(null)}
                   className="group relative flex items-center gap-4 py-5 outline-none md:gap-8 md:py-6"
                 >
-                  <span className="tabular w-8 shrink-0 font-display text-sm font-bold text-fg-subtle md:w-12">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span className="relative block flex-1 overflow-hidden font-display text-[clamp(2.25rem,10vw,9rem)] leading-[0.9] font-black tracking-[-0.05em] uppercase">
+                  <span className="relative block flex-1 overflow-hidden font-display text-[clamp(1.875rem,9.5vw,9rem)] leading-[0.9] font-black tracking-[-0.05em] uppercase">
                     <span className="block text-fg-muted transition-opacity md:text-outline md:[--stroke-color:var(--fg-muted)] duration-(--duration-slow) group-hover:opacity-0 group-focus-visible:opacity-0">
                       {it.label}
                     </span>
@@ -70,7 +66,7 @@ export function CategoryWall({ items }: { items: Item[] }) {
                       {it.label}
                     </span>
                   </span>
-                  <span className="relative hidden size-16 shrink-0 overflow-hidden rounded-lg sm:block md:hidden">
+                  <span className="relative block size-11 shrink-0 overflow-hidden rounded-full bg-surface-2 ring-1 ring-border sm:size-14 md:hidden">
                     {it.image.src && <Image src={it.image.src} alt="" fill sizes="64px" className="object-cover" />}
                   </span>
                   <span className="hidden shrink-0 text-right md:block">

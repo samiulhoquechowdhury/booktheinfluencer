@@ -126,7 +126,7 @@ export function ListingView({ initial, locked = {} }: { initial: TalentPage; loc
               action={<Button onClick={() => void query.refetch()}>Try again</Button>}
             />
           ) : !query.data ? (
-            <div className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-4 md:grid-cols-3 md:gap-x-6 md:gap-y-10 2xl:grid-cols-4">
+            <div className="grid grid-cols-1 min-[400px]:grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-4 md:grid-cols-3 md:gap-x-6 md:gap-y-10 2xl:grid-cols-4">
               {Array.from({ length: 6 }, (_, i) => <TalentCardSkeleton key={i} />)}
             </div>
           ) : items.length === 0 ? (
@@ -144,7 +144,7 @@ export function ListingView({ initial, locked = {} }: { initial: TalentPage; loc
           ) : (
             <LayoutGroup>
               <motion.ul
-                className={cn('grid grid-cols-2 gap-x-3 gap-y-8 transition-opacity sm:gap-x-4 md:grid-cols-3 md:gap-x-6 md:gap-y-10 2xl:grid-cols-4', query.isPlaceholderData && 'opacity-60')}
+                className={cn('grid grid-cols-1 min-[400px]:grid-cols-2 gap-x-3 gap-y-8 transition-opacity sm:gap-x-4 md:grid-cols-3 md:gap-x-6 md:gap-y-10 2xl:grid-cols-4', query.isPlaceholderData && 'opacity-60')}
               >
                 <AnimatePresence mode="popLayout" initial={false}>
                   {items.map((t, i) => (

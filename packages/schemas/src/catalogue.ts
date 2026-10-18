@@ -105,6 +105,8 @@ export const PublicTalentSchema = z.strictObject({
   riderSummary: z.string().nullable(),
   faqs: z.array(z.object({ q: z.string(), a: z.string() })),
   tags: z.array(z.string()),
+  /** Public audience size per platform (approximate; empty when not yet sourced). */
+  followers: z.array(z.object({ platform: z.enum(['instagram', 'youtube']), count: z.number().int().nonnegative() })),
 });
 export type PublicTalent = z.infer<typeof PublicTalentSchema>;
 

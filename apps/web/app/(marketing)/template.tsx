@@ -1,12 +1,7 @@
 import type { ReactNode } from 'react';
-import { Curtain } from '@/lib/motion';
+import { FadeIn } from '@/lib/motion';
 
-/** Re-mounts per navigation → curtain wipe on route entry. */
+/** Re-mounts per navigation → gentle fade on route entry. */
 export default function MarketingTemplate({ children }: { children: ReactNode }) {
-  return (
-    <>
-      <Curtain />
-      {children}
-    </>
-  );
+  return <FadeIn>{children}</FadeIn>;
 }

@@ -29,6 +29,7 @@ export function toPublicTalent(t: RawTalent) {
     riderSummary: t.riderSummary,
     faqs: t.faqs,
     tags: t.tags,
+    followers: t.followers,
   };
 }
 

@@ -4,6 +4,7 @@
 // Raw records intentionally include INTERNAL fields (cost, payout, margin) so that the
 // serializers in apps/web/lib/api/mock are exercised and tested for leaks.
 import { createHash } from 'node:crypto';
+import { optimizeImages } from './optimize-images.mjs';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -74,7 +75,7 @@ const RAW = [
     'YouTuber and content creator',
     'Dimpu Baruah is an Assamese YouTuber and content creator making videos on technology and travel.',
     ['Video content', 'Travel vlogs', 'Technology'],
-    local('dimpu-baruah', 'Dimpu’s Vlogs, YouTube')),
+    local('dimpu-baruah')),
   T('Jatin Bora', ['actors'],
     'Actor and director of Assamese film and mobile theatre',
     'Jatin Bora is an Assamese actor, director and producer, a long-standing lead in Assamese cinema and mobile theatre.',
@@ -89,7 +90,7 @@ const RAW = [
     'Playback singer from Assam',
     'Nahid Afrin is a playback singer from Assam who came to national attention on Indian Idol Junior and sings for Hindi and Assamese films.',
     ['Playback singing', 'Live music'],
-    local('nahid-afrin-ansari', 'Deccan Herald')),
+    local('nahid-afrin-ansari')),
   T('Nishita Goswami', ['actors'],
     'Actress of Assamese cinema',
     'Nishita Goswami is an Assamese film actress known for her lead roles in Assamese cinema.',
@@ -106,6 +107,16 @@ const RAW = [
     ['Assamese cinema', 'Theatre'],
     local('zerifa-wahid', 'Simbu123 (CC BY-SA 3.0), via Wikimedia Commons')),
 ];
+
+/**
+ * Approximate public audience sizes, with the source for each figure. Leave a talent out until a
+ * figure is sourced — never estimate.
+ */
+const FOLLOWERS = {
+  'bikash-chetry': [{ platform: 'youtube', count: 1320000 }], // vidIQ, "I Love Travel and Food", Jul 2025
+  'dimpu-baruah': [{ platform: 'youtube', count: 2200000 }], // "Dimpu's Vlogs" channel (lower of published figures)
+  'nishita-goswami': [{ platform: 'instagram', count: 857200 }, { platform: 'youtube', count: 95200 }], // Qoruz profile
+};
 
 const ALL_CITIES = ['guwahati', 'shillong', 'kolkata', 'delhi', 'mumbai', 'bengaluru', 'hyderabad', 'pune'];
 const CITY_NAMES = { guwahati: 'Guwahati', shillong: 'Shillong', kolkata: 'Kolkata', delhi: 'Delhi', mumbai: 'Mumbai', bengaluru: 'Bengaluru', hyderabad: 'Hyderabad', pune: 'Pune' };
@@ -144,6 +155,7 @@ const talents = RAW.map((r, i) => {
     pastEvents: [],
     riderSummary: null,
     faqs: FAQS.default,
+    followers: FOLLOWERS[slugify(r.name)] ?? [],
     tags: [...new Set([...r.tags.map((t) => t.toLowerCase()), ...r.cats.map((c) => CAT_SINGULAR[c].toLowerCase()), ...r.languages.map((l) => l.toLowerCase()), CITY_NAMES[r.city].toLowerCase(), 'assam'])],
   };
 });
@@ -339,3 +351,4 @@ write('bookings.json', bookings);
 write('portal.json', portal);
 write('blackouts.json', blackouts);
 console.log(`Wrote ${talents.length} talents, ${bookings.length} bookings → ${OUT}`);
+optimizeImages();

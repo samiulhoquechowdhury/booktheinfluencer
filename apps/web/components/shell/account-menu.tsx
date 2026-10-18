@@ -1,7 +1,7 @@
 'use client';
 
 import { DropdownMenu } from 'radix-ui';
-import { ChevronDown, Heart, LayoutDashboard, LogOut, Mic2, Plus, WifiOff } from 'lucide-react';
+import { ChevronDown, CircleUserRound, Heart, LayoutDashboard, LogOut, Mic2, Plus, WifiOff } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, type ReactNode } from 'react';
@@ -53,9 +53,11 @@ export function AccountMenu() {
         <button
           type="button"
           onClick={() => setLoginOpen(true)}
-          className="h-10 rounded-full px-2.5 text-sm font-medium whitespace-nowrap min-[400px]:px-3 text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg sm:px-4"
+          aria-label="Log in"
+          title="Log in"
+          className="grid size-10 place-items-center rounded-full text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg"
         >
-          Log in
+          <CircleUserRound className="size-[22px]" strokeWidth={1.75} aria-hidden />
         </button>
         <LoginDialog open={loginOpen} onOpenChange={setLoginOpen} />
       </>

@@ -72,6 +72,14 @@ export function SiteHeader({ variant = 'full', nav }: { variant?: 'full' | 'mini
             animate={{ opacity: scrolled || menu ? 1 : 0.85, scale: scrolled || menu ? 1 : 0.985 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           />
+          {/* Light mode, page at the top: the glass edge is white-on-white, so outline the capsule. */}
+          <span
+            aria-hidden
+            className={cn(
+              'pointer-events-none absolute inset-0 rounded-full border border-[color-mix(in_oklab,var(--fg)_14%,transparent)] shadow-[0_6px_20px_-12px_rgb(17_17_20/0.25)] transition-opacity duration-300 dark:hidden',
+              scrolled || menu ? 'opacity-0' : 'opacity-100',
+            )}
+          />
 
           <Logo className="relative" />
 
@@ -113,7 +121,6 @@ export function SiteHeader({ variant = 'full', nav }: { variant?: 'full' | 'mini
                           className={cn(linkCls, active ? 'text-fg' : 'text-fg-muted hover:text-fg')}
                         >
                           {l.label}
-                          {active && <span aria-hidden className="absolute bottom-1.5 left-1/2 size-1 -translate-x-1/2 rounded-full bg-brand-gradient" />}
                         </Link>
                       </NavigationMenu.Link>
                       {pillOn(l.href, active) && !menu && <Pill />}

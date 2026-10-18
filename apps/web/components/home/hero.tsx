@@ -4,10 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { useReducedMotion } from '@repo/ui/lib/use-reduced-motion';
-import { CircleCheck } from 'lucide-react';
+import { ArrowRight, CircleCheck } from 'lucide-react';
 import type { ReactNode } from 'react';
 import type { PublicTalent } from '@repo/schemas';
 import { SearchBar } from '@/components/search/search-bar';
+import { CategoryBanners, type CategoryBanner } from './category-banners';
 import { SplitText } from '@/lib/motion';
 import { categorySingular } from '@/lib/reference';
 import { cn } from '@repo/ui/lib/cn';
@@ -26,25 +27,26 @@ const FAN = [
 const CHECKS = ['Managed end to end', 'Itemised quotes', 'Secure payments'];
 
 /**
- * Hero: centred badge, two-line headline, single search field and a fan of featured talent
- * cards rising from the bottom edge.
+ * Hero: category banners under the navbar, then the centred badge, two-line headline, single
+ * search field, a fan of featured talent cards and a "See all talent" link.
  */
-export function Hero({ mosaic }: { mosaic: PublicTalent[] }) {
+export function Hero({ mosaic, banners }: { mosaic: PublicTalent[]; banners: CategoryBanner[] }) {
   const reduce = useReducedMotion();
   const cards = mosaic.slice(0, FAN.length);
   const rise = (delay: number) => (reduce ? {} : { initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, ease: EASE, delay } });
 
   return (
-    <section className="relative isolate overflow-hidden pt-28 md:pt-36">
+    <section className="relative isolate overflow-hidden pt-24 md:pt-28">
       {/* Glows */}
       <div aria-hidden className="absolute top-[8%] left-1/2 -z-10 size-[44rem] -translate-x-[75%] rounded-full bg-[radial-gradient(circle,var(--glow-1),transparent_65%)] blur-2xl motion-safe:animate-[float_14s_ease-in-out_infinite]" />
       <div aria-hidden className="absolute top-[20%] left-1/2 -z-10 size-[36rem] -translate-x-[15%] rounded-full bg-[radial-gradient(circle,var(--glow-2),transparent_65%)] blur-2xl motion-safe:animate-[float_18s_ease-in-out_infinite_reverse]" />
 
-      <div className="shell flex flex-col items-center text-center">
-        <motion.p {...rise(0.05)} className="mb-6 inline-flex items-center rounded-full bg-gold px-4 py-1.5 text-xs font-semibold text-black sm:text-sm">
-          Celebrity bookings, right at your event.
-        </motion.p>
+      {/* Category banners, clear of the floating navbar */}
+      <motion.div {...rise(0)} className="shell">
+        <CategoryBanners banners={banners} />
+      </motion.div>
 
+      <div className="shell mt-8 flex flex-col items-center text-center md:mt-10">
         <SplitText
           as="h1"
           by="line"
@@ -73,14 +75,11 @@ export function Hero({ mosaic }: { mosaic: PublicTalent[] }) {
             </li>
           ))}
         </motion.ul>
-        <Link href="/enquire" className="mt-3 text-sm font-semibold text-primary-text underline-offset-4 hover:underline">
-          Or plan with an expert →
-        </Link>
       </div>
 
       {/* Talent fan */}
       {cards.length > 0 && (
-        <div className="relative mx-auto mt-12 flex max-w-5xl items-start justify-center px-2 pb-[8%] md:mt-16">
+        <div className="relative mx-auto mt-12 flex max-w-5xl items-start justify-center px-2 pb-[3%] md:mt-16">
           {cards.map((t, i) => {
             const f = FAN[i]!;
             const img = t.images[0]!;
@@ -120,6 +119,26 @@ export function Hero({ mosaic }: { mosaic: PublicTalent[] }) {
           })}
         </div>
       )}
+
+      {/* See all talent */}
+      <div className="relative z-40 mt-4 flex justify-center pb-4 md:mt-6 md:pb-8">
+        <Link
+          href="/talent"
+          className="group relative isolate inline-flex h-14 items-center overflow-hidden rounded-full border border-border-strong bg-bg-elevated pr-[62px] pl-7 font-semibold text-fg shadow-card transition-[border-color,box-shadow,color,transform] duration-500 ease-(--ease-out-expo) hover:border-transparent hover:text-primary-fg hover:shadow-[0_18px_40px_-16px_var(--glow-1)] active:scale-[0.98]"
+        >
+          {/* Gradient disc: 6px inset circle (matches the search field) that grows to fill the pill on hover. */}
+          <span
+            aria-hidden
+            className="absolute top-1.5 right-1.5 bottom-1.5 -z-10 w-11 rounded-full bg-brand-gradient transition-[width] duration-500 ease-(--ease-out-expo) group-hover:w-[calc(100%-12px)] group-focus-visible:w-[calc(100%-12px)]"
+          />
+          <span className="relative">See all talent</span>
+          {/* Arrow: slides out right while its twin slides in from the left. */}
+          <span aria-hidden className="absolute top-1.5 right-1.5 grid size-11 place-items-center overflow-hidden rounded-full text-primary-fg">
+            <ArrowRight className="size-5 transition-[transform,opacity] duration-500 ease-(--ease-out-expo) group-hover:translate-x-[250%] group-hover:opacity-0" />
+            <ArrowRight className="absolute size-5 -translate-x-[250%] opacity-0 transition-[transform,opacity] duration-500 ease-(--ease-out-expo) group-hover:translate-x-0 group-hover:opacity-100" />
+          </span>
+        </Link>
+      </div>
     </section>
   );
 }
@@ -147,7 +166,7 @@ function BrushWord({ children }: { children: ReactNode }) {
           <path opacity="0.45" d="M14 52c90 4 190 2 270-8 6-1 7 5 1 7-84 12-190 14-272 8-5-1-5-7 1-7Z" />
         </g>
       </svg>
-      <span className="text-gradient pr-[0.04em]">{children}</span>
+      <span className="text-gradient pr-[0.1em]">{children}</span>
     </span>
   );
 }

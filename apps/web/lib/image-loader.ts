@@ -1,5 +1,9 @@
 'use client';
 
+/** Widths pre-built by scripts/optimize-images.mjs (keep in sync with WIDTHS there). */
+const VARIANT_WIDTHS = [256, 384, 640, 960, 1280, 1600];
+const OPTIMIZED_DIRS = ['/talent/', '/banners/', '/categories/'];
+
 /** Thumbnail widths Wikimedia pre-renders; other widths are throttled by its CDN. */
 const COMMONS_WIDTHS = [120, 250, 330, 500, 960, 1280, 1920];
 const COMMONS = 'https://upload.wikimedia.org/wikipedia/commons/';
@@ -18,7 +22,13 @@ export default function imageLoader({ src, width, quality }: { src: string; widt
     if (!url.searchParams.has('auto')) url.searchParams.set('auto', 'format');
     return url.toString();
   }
-  // Self-hosted files are served as-is; the query keeps each width's URL distinct for next/image.
+  // Self-hosted photos → pre-built WebP at the nearest width ≥ requested (public/_img/…).
+  if (OPTIMIZED_DIRS.some((d) => src.startsWith(d))) {
+    const [path, query] = src.split('?');
+    const w = VARIANT_WIDTHS.find((v) => v >= width) ?? VARIANT_WIDTHS.at(-1)!;
+    const base = path!.replace(/\.(jpe?g|png|webp)$/i, '');
+    return `/_img${base}-${w}.webp${query ? `?${query}` : ''}`;
+  }
   if (src.startsWith('/')) return `${src}${src.includes('?') ? '&' : '?'}w=${width}`;
   if (src.startsWith(COMMONS)) {
     const [path, hash = ''] = src.slice(COMMONS.length).split('#');

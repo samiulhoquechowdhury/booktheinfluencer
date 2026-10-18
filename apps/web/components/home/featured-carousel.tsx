@@ -2,10 +2,10 @@
 
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import type { PublicTalent } from '@repo/schemas';
 import { SectionHeading } from '@repo/ui/section-heading';
-import { TalentCard } from '@/components/talent/talent-card';
+import { FeaturedTalentCard } from '@/components/talent/featured-talent-card';
 
 /**
  * Horizontal carousel on native scroll (touch, trackpad, keyboard all work) plus mouse
@@ -13,27 +13,8 @@ import { TalentCard } from '@/components/talent/talent-card';
  */
 export function FeaturedCarousel({ talents }: { talents: PublicTalent[] }) {
   const scroller = useRef<HTMLDivElement>(null);
-  const bar = useRef<HTMLDivElement>(null);
   const drag = useRef({ active: false, startX: 0, startScroll: 0, lastX: 0, lastT: 0, v: 0, moved: 0 });
   const raf = useRef(0);
-
-  useEffect(() => {
-    const el = scroller.current;
-    if (!el) return;
-    let frame = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const p = el.scrollLeft / Math.max(1, el.scrollWidth - el.clientWidth);
-        if (bar.current) bar.current.style.transform = `scaleX(${Math.max(0.08, p)})`;
-      });
-    };
-    el.addEventListener('scroll', onScroll, { passive: true });
-    return () => {
-      el.removeEventListener('scroll', onScroll);
-      cancelAnimationFrame(frame);
-    };
-  }, []);
 
   const glide = () => {
     const el = scroller.current;
@@ -54,10 +35,9 @@ export function FeaturedCarousel({ talents }: { talents: PublicTalent[] }) {
   };
 
   return (
-    <section aria-labelledby="featured-title" className="py-24 md:py-36">
+    <section aria-labelledby="featured-title" className="py-16 md:py-24">
       <div className="shell flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <SectionHeading
-          index="03"
           eyebrow="Featured talent"
           title={<span id="featured-title">Featured, <span className="font-serif font-normal italic">handpicked.</span></span>}
           description="Featured profiles are paid placements and always marked. Every act is bookable through the same managed process."
@@ -78,7 +58,7 @@ export function FeaturedCarousel({ talents }: { talents: PublicTalent[] }) {
           ref={scroller}
           // Mostly-sideways swipes scroll the strip natively; vertical wheel stays smooth (Lenis).
           data-lenis-prevent-horizontal
-          className="no-scrollbar mt-12 flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-6 active:cursor-grabbing md:gap-6"
+          className="no-scrollbar mt-9 flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pt-3 pb-14 active:cursor-grabbing md:gap-6"
           onPointerDown={(e) => {
             if (e.pointerType !== 'mouse' || !scroller.current) return;
             cancelAnimationFrame(raf.current);
@@ -117,10 +97,10 @@ export function FeaturedCarousel({ talents }: { talents: PublicTalent[] }) {
         >
           {talents.map((t) => (
             <div key={t.slug} className="w-[78%] shrink-0 snap-start sm:w-[calc((100%-1.25rem)/2)] md:w-[calc((100%-3rem)/3)] lg:w-[calc((100%-4.5rem)/4)]">
-              <TalentCard talent={t} tilt={false} sizes="(min-width: 1440px) 300px, (min-width: 1024px) 22vw, (min-width: 768px) 30vw, (min-width: 640px) 46vw, 76vw" />
+              <FeaturedTalentCard talent={t} sizes="(min-width: 1440px) 300px, (min-width: 1024px) 22vw, (min-width: 768px) 30vw, (min-width: 640px) 46vw, 76vw" />
             </div>
           ))}
-          <Link href="/talent" className="group grid w-[60%] shrink-0 snap-start place-items-center rounded-xl border border-dashed border-border-strong sm:w-[calc((100%-1.25rem)/2)] md:w-[calc((100%-3rem)/3)] lg:w-[calc((100%-4.5rem)/4)]">
+          <Link href="/talent" className="group grid w-[60%] shrink-0 snap-start place-items-center rounded-3xl border border-dashed border-border-strong sm:w-[calc((100%-1.25rem)/2)] md:w-[calc((100%-3rem)/3)] lg:w-[calc((100%-4.5rem)/4)]">
             <span className="text-center">
               <span className="mx-auto grid size-16 place-items-center rounded-full bg-brand-gradient text-primary-fg transition-transform duration-(--duration-slow) group-hover:scale-110">
                 <ArrowRight className="size-6" />
@@ -128,11 +108,6 @@ export function FeaturedCarousel({ talents }: { talents: PublicTalent[] }) {
               <span className="mt-4 block font-display text-xl font-extrabold">Browse all talent</span>
             </span>
           </Link>
-        </div>
-      </div>
-      <div className="shell">
-        <div className="h-px w-full bg-border" aria-hidden>
-          <div ref={bar} className="h-px origin-left scale-x-[0.08] bg-fg transition-transform duration-150" />
         </div>
       </div>
     </section>

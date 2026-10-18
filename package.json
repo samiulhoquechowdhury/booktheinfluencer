@@ -8,7 +8,8 @@
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
     "test": "turbo test",
-    "mock:generate": "node scripts/generate-mock.mjs"
+    "mock:generate": "node scripts/generate-mock.mjs",
+    "images:optimize": "node scripts/optimize-images.mjs"
   },
   "devDependencies": {
     "prettier": "^3.3.3",

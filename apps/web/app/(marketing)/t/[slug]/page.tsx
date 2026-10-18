@@ -126,7 +126,7 @@ export default async function TalentProfilePage({ params }: Props) {
             <h2 id="similar-title" className="mb-10 font-display text-h1 font-extrabold">
               You might also <span className="font-serif font-normal italic">like</span>
             </h2>
-            <div className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-4 md:grid-cols-4 md:gap-x-6">
+            <div className="grid grid-cols-1 gap-x-3 gap-y-8 min-[400px]:grid-cols-2 sm:gap-x-4 md:grid-cols-4 md:gap-x-6">
               {similar.map((s) => (
                 <TalentCard key={s.slug} talent={s} sizes="(min-width: 1440px) 300px, (min-width: 768px) 23vw, 47vw" />
               ))}

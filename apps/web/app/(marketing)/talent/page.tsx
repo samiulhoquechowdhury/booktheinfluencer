@@ -18,8 +18,8 @@ export default async function TalentIndexPage() {
     <>
       <ListingHero
         eyebrow={`${initial.total} artists · 8 cities`}
-        title={<>All <span className="font-serif font-normal normal-case italic">talent</span></>}
-        description="Every profile shows who represents the artist. Shortlist a few — your manager confirms availability and sends one itemised quote."
+        title={<>Find your <span className="font-serif font-normal italic">headliner.</span></>}
+        description="Shortlist a few artists. Your manager confirms availability and sends one itemised quote."
         crumbs={[{ href: '/', label: 'Home' }, { href: '/talent', label: 'Talent' }]}
       />
       <Suspense>

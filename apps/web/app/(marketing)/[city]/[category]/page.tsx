@@ -46,13 +46,14 @@ export default async function CityCategoryPage({ params }: Props) {
     <>
       <JsonLd data={breadcrumbLd(crumbs.map((x) => ({ name: x.label, path: x.href })))} />
       <ListingHero
+        category={category.slug}
         eyebrow={`${city.name}, ${city.state}`}
         title={
           <>
             {category.name} <span className="font-serif font-normal normal-case italic">in</span> {city.name}
           </>
         }
-        description={`Verified ${category.name.toLowerCase()} based in or travelling to ${city.name} — for weddings, annual days, college fests and launches. Fees are indicative; your manager confirms availability and sends an itemised quote.`}
+        description={`${category.name} based in or travelling to ${city.name}, for weddings, annual days, college fests and launches. Your manager confirms availability and sends one itemised quote.`}
         crumbs={crumbs}
       />
       <Suspense>
