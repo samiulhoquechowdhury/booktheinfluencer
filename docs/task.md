@@ -52,12 +52,12 @@
 - [x] T-126 Audit interceptor + `AuditLog` writes (1d) — AUD-1..3  — _interceptor logs every /admin mutation (incl. failures); services add before/after; secrets redacted; `GET /v1/admin/audit`_
 
 ### M1.3 Talent catalogue (week 3–5) — CAT, ADM
-- [ ] T-140 Categories CRUD (admin) (0.5d)
-- [ ] T-141 Talent CRUD API + admin form (profile, categories, tags, languages, cities, tier, status, representation) (2d)
-- [ ] T-142 Media upload via presigned URLs, ordering, cover image (1.5d)
-- [ ] T-143 Rate cards (internal) UI + API (1d)
-- [ ] T-144 Representatives CRUD, link to talents, KYC upload, verification status (1.5d)
-- [ ] T-145 Blackout dates (admin) (0.5d)
+- [x] T-140 Categories CRUD (admin) (0.5d)  — _API `/v1/admin/categories`; can't delete one in use_
+- [~] T-141 Talent CRUD API + admin form (profile, categories, tags, languages, cities, tier, status, representation) (2d)  — _API done (drafts, publish check, hide); form waits for `apps/admin`_
+- [~] T-142 Media upload via presigned URLs, ordering, cover image (1.5d)  — _register/order/cover/remove done; presigned upload waits for the storage vendor (S3/R2)_
+- [~] T-143 Rate cards (internal) UI + API (1d)  — _API done (staff read, TM/SA write, audited); UI waits for `apps/admin`_
+- [~] T-144 Representatives CRUD, link to talents, KYC upload, verification status (1.5d)  — _CRUD, linking, verification done; KYC upload waits for storage_
+- [x] T-145 Blackout dates (admin) (0.5d)  — _API `/v1/admin/talents/:id/blackouts`_
 - [ ] T-146 Public catalogue API: list, filters, full-text search, pagination (2d)
 - [x] T-147 Serializer tests: public talent DTO has no rate card fields (0.5d)  — _mock + NestJS: strict-schema parse and leak checks on every catalogue route_
 - [~] T-148 Web: listing page with filters (desktop rail, mobile sheet) (2d)  — _UI done on mock API (`apps/web`); API part pending_

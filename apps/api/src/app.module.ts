@@ -6,6 +6,8 @@ import type { IncomingMessage, ServerResponse } from 'node:http';
 import { GlobalErrorFilter } from './common/error.filter';
 import { ENV, type Env } from './config/env';
 import { AdminAuditController } from './admin/admin-audit.controller';
+import { AdminCatalogController } from './admin-catalog/admin-catalog.controller';
+import { AdminCatalogService } from './admin-catalog/admin-catalog.service';
 import { AdminUsersController } from './admin/admin-users.controller';
 import { AuditInterceptor } from './audit/audit.interceptor';
 import { AuditService } from './audit/audit.service';
@@ -54,13 +56,14 @@ export class AppModule {
         PrismaModule,
         AuthModule,
       ],
-      controllers: [HealthController, CatalogController, UsersController, InvitesController, AdminInvitesController, AdminUsersController, AdminAuditController],
+      controllers: [HealthController, CatalogController, UsersController, InvitesController, AdminInvitesController, AdminUsersController, AdminAuditController, AdminCatalogController],
       providers: [
         { provide: APP_FILTER, useClass: GlobalErrorFilter },
         { provide: APP_INTERCEPTOR, useClass: AuditInterceptor },
         AuditService,
         InvitesService,
         CatalogService,
+        AdminCatalogService,
       ],
     };
   }

@@ -1,6 +1,7 @@
 import { type ArgumentsHost, Catch, type ExceptionFilter, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import type { Request, Response } from 'express';
 import { ZodError } from 'zod';
+import { Prisma } from '@repo/db';
 import { StageTransitionError } from '@repo/utils';
 import { DomainError } from './errors';
 
@@ -29,6 +30,12 @@ export class GlobalErrorFilter implements ExceptionFilter {
         status: HttpStatus.BAD_REQUEST,
         body: { error: { code: 'VALIDATION_FAILED', message: 'Some fields are missing or invalid.', details: e.issues.map((i) => ({ path: i.path.join('.'), message: i.message })) } },
       };
+    if (e instanceof Prisma.PrismaClientKnownRequestError) {
+      // P2002 unique, P2025 record not found, P2003 foreign key still in use.
+      if (e.code === 'P2002') return { status: HttpStatus.CONFLICT, body: { error: { code: 'CONFLICT', message: 'That already exists.', details: { fields: (e.meta?.target as string[] | undefined) ?? [] } } } };
+      if (e.code === 'P2025') return { status: HttpStatus.NOT_FOUND, body: { error: { code: 'NOT_FOUND', message: 'That record doesn’t exist.' } } };
+      if (e.code === 'P2003') return { status: HttpStatus.CONFLICT, body: { error: { code: 'IN_USE', message: 'It’s still in use, so it can’t be removed.' } } };
+    }
     if (e instanceof HttpException) {
       const status = e.getStatus();
       const code = HttpStatus[status] ?? 'HTTP_ERROR';
