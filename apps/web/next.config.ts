@@ -1,4 +1,6 @@
 import type { NextConfig } from 'next';
+// Fail fast on bad environment variables (trd §11).
+import './lib/env';
 
 const config: NextConfig = {
   reactStrictMode: true,

@@ -9,7 +9,9 @@
     "typecheck": "turbo typecheck",
     "test": "turbo test",
     "mock:generate": "node scripts/generate-mock.mjs",
-    "images:optimize": "node scripts/optimize-images.mjs"
+    "images:optimize": "node scripts/optimize-images.mjs",
+    "db:up": "docker compose up -d --wait",
+    "db:down": "docker compose down"
   },
   "devDependencies": {
     "prettier": "^3.3.3",

@@ -40,6 +40,8 @@ Turborepo + pnpm · Next.js 15 (web, admin) · NestJS 11 (api, worker) · Prisma
 | 2026-10-16 | Mock "Pay" opens a gateway hand-off only; never mutates payment state client-side. CONFIRMED appears only in seeded data | Golden rules 1 & 4 | Frontend brief |
 | 2026-10-16 | Dev-only session switcher (guest/customer/talent) stands in for OTP auth | No backend yet | Frontend brief |
 | 2026-10-16 | Placeholder brand name kept in one constant; `/compare` (CAT-9) deferred; paid placements tagged "Featured" | Brand undecided; not in brief page list; design.md §6.1 | Frontend brief |
+| 2026-10-19 | State machine guards: trd §5 lists "quote status SENT" on the QUOTE_SENT row; applied as "entering QUOTE_SENT/NEGOTIATION needs a SENT quote" and "entering ADVANCE_PENDING needs an ACCEPTED quote". LOST/CANCELLED need a reason; SETTLEMENT a completion note; CLOSED needs payout + every milestone PAID | Row guards were ambiguous about entering vs leaving a stage | trd §5, PIPE-5, OPS-5 |
+| 2026-10-19 | API uses explicit `@Inject()` for every constructor dependency (no `emitDecoratorMetadata`); tsx in dev, Vitest in tests, tsup bundle in prod | esbuild-based tools can't emit decorator metadata; workspace packages ship TS source | T-106 |
 
 ## 5. Open questions
 - [ ] Brand name / domain
@@ -63,9 +65,9 @@ Turborepo + pnpm · Next.js 15 (web, admin) · NestJS 11 (api, worker) · Prisma
 |---|---|---|
 | Planning docs | Done (v1.0) | 16 Oct 2026 |
 | Design | In code (no Figma) | Tokens + components in `packages/ui`; motion system in `apps/web/lib/motion` |
-| Repo / foundation | Partial | Turborepo + pnpm; `apps/web`, `packages/{schemas,ui,utils,config}` |
+| Repo / foundation | Partial | Turborepo + pnpm; `apps/web`, `packages/{schemas,ui,utils,config,db}`; Docker Postgres + Redis; state machine in `packages/utils` |
 | Web frontend | Clickable on mock API | Home, listing, category, city/category SEO, profile, enquiry, account, booking detail, favourites, talent portal, content/legal, 404/error |
-| Backend | Not started | `lib/api` transports swap to NestJS later (`NEXT_PUBLIC_API_BASE`) |
+| Backend | Core ready | `packages/db` (schema, migration, seed); `apps/api` NestJS core with health check + e2e tests. M1.2 done in the API (OTP, staff MFA, sessions, guards, invites, roles, audit). Next: catalogue API (M1.3) so `apps/web` can leave the mock API. `lib/api` transports swap later (`NEXT_PUBLIC_API_BASE`) |
 | Integrations | Not started | Blocked on vendor choice |
 
 ## 7. Glossary
@@ -93,8 +95,19 @@ _(add as they happen — e.g. gateway webhook quirks, DLT template rejections, P
 - Header data (category images/counts, featured act) comes from `lib/nav.ts` (server, static-safe) and is passed to `<SiteHeader nav>` by layouts.
 - Unsplash placeholder IDs were checked to resolve (HTTP 200) and reviewed visually; one with a recognisable celebrity DJ helmet and one brand logo were excluded.
 
+- Local services: `pnpm db:up` (Docker). Host ports are **5440** (Postgres) and **6390** (Redis) because 5432/5433/6379 are taken by other local projects; override with POSTGRES_PORT / REDIS_PORT. `packages/db/.env` holds DATABASE_URL (git-ignored; copy from `.env.example`).
+- Postgres extensions (pg_trgm, unaccent) are created by the Prisma migration, not the Docker init script — otherwise `migrate dev` sees drift and wants a reset. Prisma refuses `migrate reset` from an AI agent without the user's explicit consent.
+- API (`apps/api`): always inject with `@Inject(Token)` — without decorator metadata Nest can't infer constructor types. `@prisma/client` must stay a direct dependency of `apps/api` and external in tsup (it can't be bundled). Port 4000 is taken by another local program here: set `PORT` in `apps/api/.env`.
+- **Never pass `talent_dev` or `talent_test` as `--shadow-database-url`**: Prisma wipes its shadow database. Use a throwaway database (e.g. `createdb talent_shadow`) for `migrate diff`. Happened once on 2026-10-19 (dev seed data was restored by re-seeding).
+- Auth: every API route needs sign-in unless marked `@Public()`. OTP codes are read in e2e tests from `ConsoleSmsSender.lastCode()`. API e2e tests use the `talent_test` database (`test/support/app.ts`) and delete what they create.
+- Admin routes live under `/v1/admin/*`; the audit interceptor records any mutating request whose route contains `/admin/`, so keep admin endpoints under that prefix.
+- Dev staff sign-in after `pnpm --filter @repo/db seed`: any `@booktheinfluencer.local` staff email (e.g. admin@…) with password `dev-staff-password-2026`; the first sign-in returns an authenticator setup (add the secret to any authenticator app). Seed data only — never used in production.
+- Fixed 2026-10-19: `IndianMobileSchema` used to strip a leading `91` from every number, so real numbers like 9123456789 were rejected. It now strips +91/91/0 only when the input has the extra digits.
+- pnpm isn't on PATH here: use `npx --yes pnpm@9.15.9 …`. Run the seed through `pnpm --filter @repo/db seed` (calling `prisma db seed` directly can't find `tsx`).
+
 ## 9. Session log
 | Date | Who | What changed |
 |---|---|---|
 | 2026-10-16 | Planning | Created all docs v1.0 |
 | 2026-10-16 | Claude (frontend) | Built `apps/web` on mock data: tokens/fonts, motion library, shell, all customer + portal pages; mock API with serializer tests; ticked T-1xx/T-2xx UI items as `[~]` |
+| 2026-10-19 | Claude (foundation) | T-108 state machine + tests; T-102 Docker Postgres/Redis; T-104 `packages/db` schema, migration, seed; T-105 env validation for web + api; T-106 NestJS core in `apps/api`; T-103 CI workflow; T-120 OTP sign-in, T-122 sessions, T-123 guards (ownership pending); fixed phone normalisation bug; T-121 staff password + TOTP MFA; T-124 invites; T-125 users/roles API; T-126 audit log |

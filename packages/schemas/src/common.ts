@@ -49,3 +49,10 @@ export const ApiErrorSchema = z.object({
   error: z.object({ code: z.string(), message: z.string() }),
 });
 export type ApiError = z.infer<typeof ApiErrorSchema>;
+
+/** Admin list query (trd §3): `?page&pageSize`, max 100 per page. */
+export const PageQuerySchema = z.object({
+  page: z.coerce.number().int().positive().default(1),
+  pageSize: z.coerce.number().int().positive().max(100).default(25),
+});
+export type PageQuery = z.infer<typeof PageQuerySchema>;

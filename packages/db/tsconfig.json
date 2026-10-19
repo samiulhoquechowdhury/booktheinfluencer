@@ -1,0 +1,1 @@
+{ "extends": "@repo/config/tsconfig.base.json", "compilerOptions": { "lib": ["ES2023"], "types": ["node"] }, "include": ["src", "prisma/seed.ts"] }

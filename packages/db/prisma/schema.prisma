@@ -1,0 +1,560 @@
+// Prisma schema v1 (trd.md §4). Money is BigInt paise; percentages are Int basis points
+// (rules.md §0.3). Fields marked INTERNAL never leave the API to customers or talent (trd §7).
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearchPostgres", "postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [pg_trgm, unaccent]
+}
+
+enum Role {
+  SUPER_ADMIN
+  SALES
+  TALENT_MANAGER
+  OPS
+  ACCOUNTS
+  TALENT
+  REP
+  CUSTOMER
+}
+
+enum RepresentationType {
+  TALENT_MANAGED
+  AGENCY_MANAGED
+  PLATFORM_COORDINATED
+}
+
+enum ProfileStatus {
+  DRAFT
+  PUBLISHED
+  HIDDEN
+}
+
+enum TalentTier {
+  STANDARD
+  PREMIUM
+}
+
+enum VerificationStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+enum LeadStage {
+  NEW
+  CONTACTED
+  REQUIREMENT_RECEIVED
+  SHORTLISTED
+  AVAILABILITY_CHECK
+  QUOTE_SENT
+  NEGOTIATION
+  ADVANCE_PENDING
+  CONFIRMED
+  EVENT_COMPLETED
+  SETTLEMENT
+  CLOSED
+  LOST
+  CANCELLED
+}
+
+enum AvailabilityStatus {
+  NOT_CHECKED
+  AWAITING_MANAGER
+  HOLD_REQUESTED
+  AVAILABLE
+  TENTATIVE
+  UNAVAILABLE
+  CONFIRMED
+}
+
+enum QuoteStatus {
+  DRAFT
+  PENDING_APPROVAL
+  SENT
+  ACCEPTED
+  REJECTED
+  EXPIRED
+  SUPERSEDED
+}
+
+enum LineItemType {
+  TALENT_FEE
+  TRAVEL
+  ACCOMMODATION
+  LOCAL_TRANSPORT
+  SECURITY
+  PRODUCTION
+  SERVICE_FEE
+  OTHER
+}
+
+enum ContractStatus {
+  DRAFT
+  SENT
+  PARTIALLY_SIGNED
+  SIGNED
+  VOID
+}
+
+enum MilestoneStatus {
+  PENDING
+  LINK_SENT
+  PAID
+  OVERDUE
+  REFUNDED
+  CANCELLED
+}
+
+enum PayoutStatus {
+  PENDING
+  SCHEDULED
+  PAID
+  ON_HOLD
+}
+
+enum MediaKind {
+  IMAGE
+  VIDEO
+}
+
+// ─── People ──────────────────────────────────────────────────────────────────
+
+model User {
+  id           String    @id @default(cuid())
+  phone        String?   @unique
+  email        String?   @unique
+  name         String?
+  passwordHash String?
+  mfaSecret    String? // encrypted at rest (AES-256-GCM, trd §10)
+  mfaEnabledAt DateTime? // null = enrolment not finished
+  mfaLastStep  Int? // last accepted TOTP time step (blocks code replay)
+  roles        Role[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime?
+
+  talent         Talent?
+  representative Representative?
+  ownedLeads     Lead[]          @relation("LeadOwner")
+  customerLeads  Lead[]          @relation("LeadCustomer")
+  favourites     Favourite[]
+  refreshTokens  RefreshToken[]
+  activities     Activity[]
+  invitesSent    Invite[]        @relation("InvitesSent")
+}
+
+/// Rotating refresh tokens (trd §1 auth). Only the hash is stored.
+model RefreshToken {
+  id         String    @id @default(cuid())
+  userId     String
+  tokenHash  String    @unique
+  expiresAt  DateTime
+  revokedAt  DateTime?
+  replacedBy String?
+  createdAt  DateTime  @default(now())
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+/// Invite link (AUTH-3): talent, reps and staff join only this way. Only the token's HMAC is stored.
+model Invite {
+  id          String    @id @default(cuid())
+  email       String?
+  phone       String?
+  name        String?
+  roles       Role[]
+  talentId    String? // link the new account to this talent profile
+  repId       String? // …or to this representative record
+  tokenHash   String    @unique
+  invitedById String
+  expiresAt   DateTime
+  acceptedAt  DateTime?
+  acceptedBy  String?
+  revokedAt   DateTime?
+  createdAt   DateTime  @default(now())
+
+  invitedBy User @relation("InvitesSent", fields: [invitedById], references: [id], onDelete: Restrict)
+
+  @@index([email])
+  @@index([phone])
+}
+
+/// Staff password sign-in attempts; drive the login rate limit (trd §10: 10 per 15 min).
+model LoginAttempt {
+  id        String   @id @default(cuid())
+  email     String
+  ip        String?
+  success   Boolean
+  createdAt DateTime @default(now())
+
+  @@index([email, createdAt])
+  @@index([ip, createdAt])
+}
+
+/// One OTP sent to a phone (AUTH-1). Only an HMAC of the code is stored. Rows also drive the
+/// send rate limits (trd §10: 3 per 10 min per phone and per IP).
+model OtpChallenge {
+  id         String    @id @default(cuid())
+  phone      String
+  codeHash   String
+  ip         String?
+  attempts   Int       @default(0)
+  expiresAt  DateTime
+  consumedAt DateTime?
+  createdAt  DateTime  @default(now())
+
+  @@index([phone, createdAt])
+  @@index([ip, createdAt])
+}
+
+// ─── Catalogue ───────────────────────────────────────────────────────────────
+
+model Category {
+  id        String           @id @default(cuid())
+  slug      String           @unique
+  name      String
+  sortOrder Int              @default(0)
+  talents   TalentCategory[]
+}
+
+model Talent {
+  id                 String             @id @default(cuid())
+  slug               String             @unique
+  stageName          String
+  tagline            String?
+  bio                String?
+  baseCity           String
+  travelsTo          String[]
+  travelsPanIndia    Boolean            @default(false)
+  languages          String[]
+  eventTypes         String[]
+  tags               String[]
+  tier               TalentTier         @default(STANDARD)
+  status             ProfileStatus      @default(DRAFT)
+  featured           Boolean            @default(false)
+  representationType RepresentationType
+  feeBandMinPaise    BigInt? // public
+  feeBandMaxPaise    BigInt? // public
+  showreelUrl        String?
+  riderSummary       String?
+  userId             String?            @unique // talent login
+  searchVector       Unsupported("tsvector")?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  user       User?            @relation(fields: [userId], references: [id], onDelete: SetNull)
+  categories TalentCategory[]
+  media      TalentMedia[]
+  rateCards  RateCard[] // INTERNAL
+  reps       TalentRep[]
+  blackouts  Blackout[]
+  bookings   Booking[]
+  favourites Favourite[]
+
+  @@index([status, tier])
+  @@index([searchVector], type: Gin)
+  @@index([stageName(ops: raw("gin_trgm_ops"))], type: Gin, map: "Talent_stageName_trgm_idx")
+}
+
+model TalentCategory {
+  talentId   String
+  categoryId String
+  isPrimary  Boolean  @default(false)
+  talent     Talent   @relation(fields: [talentId], references: [id], onDelete: Cascade)
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+
+  @@id([talentId, categoryId])
+  @@index([categoryId])
+}
+
+model TalentMedia {
+  id        String    @id @default(cuid())
+  talentId  String
+  kind      MediaKind @default(IMAGE)
+  key       String // object key in the public media bucket
+  alt       String
+  width     Int?
+  height    Int?
+  credit    String? // licence attribution where required
+  sortOrder Int       @default(0)
+  isCover   Boolean   @default(false)
+  talent    Talent    @relation(fields: [talentId], references: [id], onDelete: Cascade)
+
+  @@index([talentId, sortOrder])
+}
+
+/// INTERNAL ONLY — never serialised to customers or talent.
+model RateCard {
+  id               String  @id @default(cuid())
+  talentId         String
+  eventType        String?
+  minimumRatePaise BigInt
+  sellingRatePaise BigInt
+  commissionBps    Int // 1500 = 15%
+  notes            String?
+  talent           Talent  @relation(fields: [talentId], references: [id], onDelete: Cascade)
+
+  @@index([talentId])
+}
+
+model Representative {
+  id             String             @id @default(cuid())
+  name           String
+  agencyName     String?
+  phone          String
+  email          String?
+  verification   VerificationStatus @default(PENDING)
+  kycDocumentIds String[]
+  userId         String?            @unique
+  user           User?              @relation(fields: [userId], references: [id], onDelete: SetNull)
+  talents        TalentRep[]
+}
+
+model TalentRep {
+  talentId String
+  repId    String
+  talent   Talent         @relation(fields: [talentId], references: [id], onDelete: Cascade)
+  rep      Representative @relation(fields: [repId], references: [id], onDelete: Cascade)
+
+  @@id([talentId, repId])
+  @@index([repId])
+}
+
+model Blackout {
+  id       String   @id @default(cuid())
+  talentId String
+  date     DateTime @db.Date
+  note     String?
+  talent   Talent   @relation(fields: [talentId], references: [id], onDelete: Cascade)
+
+  @@unique([talentId, date])
+}
+
+model Favourite {
+  userId    String
+  talentId  String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  talent    Talent   @relation(fields: [talentId], references: [id], onDelete: Cascade)
+
+  @@id([userId, talentId])
+}
+
+// ─── Pipeline ────────────────────────────────────────────────────────────────
+
+model Lead {
+  id             String    @id @default(cuid())
+  ref            String    @unique // e.g. TB-2026-000123
+  stage          LeadStage @default(NEW) // change only via packages/utils stateMachine
+  ownerId        String?
+  customerId     String
+  eventType      String
+  eventDate      DateTime  @db.Date
+  altDate        DateTime? @db.Date
+  city           String
+  venue          String?
+  audienceSize   Int?
+  durationMins   Int?
+  budgetMinPaise BigInt?
+  budgetMaxPaise BigInt?
+  language       String?
+  notes          String?
+  companyName    String?
+  gstin          String?
+  source         String? // utm / landing page
+  lostReason     String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  owner      User?      @relation("LeadOwner", fields: [ownerId], references: [id], onDelete: SetNull)
+  customer   User       @relation("LeadCustomer", fields: [customerId], references: [id], onDelete: Restrict)
+  bookings   Booking[]
+  activities Activity[]
+
+  @@index([stage, ownerId])
+  @@index([eventDate])
+  @@index([customerId])
+}
+
+model Booking {
+  id                String             @id @default(cuid())
+  leadId            String
+  talentId          String
+  availability      AvailabilityStatus @default(NOT_CHECKED) // CONFIRMED set only by the system
+  repAcceptedAt     DateTime?
+  confirmedAt       DateTime?
+  completedAt       DateTime?
+  completionNote    String?
+  cancelledAt       DateTime?
+  cancelReason      String?
+  sellingTotalPaise BigInt? // from accepted quote
+  payoutTotalPaise  BigInt? // INTERNAL + talent
+  marginPaise       BigInt? // INTERNAL
+  opsChecklist      Json?
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+
+  lead       Lead               @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  talent     Talent             @relation(fields: [talentId], references: [id], onDelete: Restrict)
+  quotes     Quote[]
+  contracts  Contract[]
+  milestones PaymentMilestone[]
+  payout     Payout?
+
+  @@unique([leadId, talentId])
+  @@index([talentId])
+}
+
+model Quote {
+  id                String      @id @default(cuid())
+  bookingId         String
+  version           Int
+  status            QuoteStatus @default(DRAFT)
+  validUntil        DateTime
+  subtotalPaise     BigInt
+  taxPaise          BigInt
+  totalPaise        BigInt
+  internalCostPaise BigInt // INTERNAL
+  acceptedAt        DateTime?
+  acceptedByUserId  String?
+  acceptedIp        String?
+  approvedById      String?
+  changeRequest     String?
+  notes             String?
+  milestonePlan     Json // [{ label, percentBps | amountPaise, dueDate }]
+  createdAt         DateTime    @default(now())
+
+  booking   Booking         @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  lineItems QuoteLineItem[]
+
+  @@unique([bookingId, version])
+}
+
+model QuoteLineItem {
+  id                  String       @id @default(cuid())
+  quoteId             String
+  type                LineItemType
+  description         String
+  customerAmountPaise BigInt
+  internalCostPaise   BigInt // INTERNAL
+  payoutPaise         BigInt? // INTERNAL + talent (talent fee lines)
+  taxRateBps          Int // 1800 = 18%
+  sortOrder           Int          @default(0)
+  quote               Quote        @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+  @@index([quoteId])
+}
+
+model Contract {
+  id          String         @id @default(cuid())
+  bookingId   String
+  status      ContractStatus @default(DRAFT)
+  documentId  String?
+  providerRef String?        @unique
+  sentAt      DateTime?
+  signedAt    DateTime?
+  booking     Booking        @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId])
+}
+
+model PaymentMilestone {
+  id            String          @id @default(cuid())
+  bookingId     String
+  label         String // "Advance", "Balance"
+  amountPaise   BigInt
+  dueDate       DateTime        @db.Date
+  status        MilestoneStatus @default(PENDING)
+  isAdvance     Boolean         @default(false)
+  gatewayLinkId String?         @unique
+  booking       Booking         @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  payments      Payment[]
+
+  @@index([status, dueDate])
+  @@index([bookingId])
+}
+
+model Payment {
+  id               String           @id @default(cuid())
+  milestoneId      String
+  method           String // gateway | bank_transfer
+  gatewayPaymentId String?          @unique
+  amountPaise      BigInt
+  status           String // captured | failed | refunded
+  proofDocumentId  String?
+  receivedAt       DateTime
+  milestone        PaymentMilestone @relation(fields: [milestoneId], references: [id], onDelete: Restrict)
+
+  @@index([milestoneId])
+}
+
+model Payout {
+  id          String       @id @default(cuid())
+  bookingId   String       @unique
+  amountPaise BigInt
+  status      PayoutStatus @default(PENDING)
+  reference   String?
+  paidAt      DateTime?
+  booking     Booking      @relation(fields: [bookingId], references: [id], onDelete: Restrict)
+}
+
+// ─── Records ─────────────────────────────────────────────────────────────────
+
+model Document {
+  id           String   @id @default(cuid())
+  key          String   @unique
+  mime         String
+  size         Int
+  kind         String // QUOTE_PDF | CONTRACT | RECEIPT | INVOICE | RIDER | KYC | PAYMENT_PROOF
+  ownerType    String
+  ownerId      String
+  uploadedById String
+  createdAt    DateTime @default(now())
+
+  @@index([ownerType, ownerId])
+}
+
+model Activity {
+  id        String   @id @default(cuid())
+  leadId    String
+  actorId   String?
+  type      String // stage_change | note | availability | quote_sent | ...
+  body      String?
+  meta      Json?
+  createdAt DateTime @default(now())
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  actor     User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([leadId, createdAt])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String?
+  action    String
+  entity    String
+  entityId  String
+  before    Json?
+  after     Json?
+  ip        String?
+  createdAt DateTime @default(now())
+
+  @@index([entity, entityId])
+  @@index([actorId, createdAt])
+}
+
+/// Webhook idempotency: id = provider event id (trd §8).
+model WebhookEvent {
+  id          String    @id
+  provider    String
+  payload     Json
+  receivedAt  DateTime  @default(now())
+  processedAt DateTime?
+}

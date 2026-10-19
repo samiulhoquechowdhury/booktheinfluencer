@@ -30,26 +30,26 @@
 ## Phase 1 — MVP (8–12 weeks build)
 
 ### M1.1 Foundation (week 1–2)
-- [~] T-100 Turborepo + pnpm monorepo, apps `web`, `admin`, `api`, `worker`, packages `db`, `schemas`, `ui`, `config`, `utils` (1d)  — _done: `web`, `schemas`, `ui`, `config`, `utils`; pending: `admin`, `api`, `worker`, `db`_
+- [~] T-100 Turborepo + pnpm monorepo, apps `web`, `admin`, `api`, `worker`, packages `db`, `schemas`, `ui`, `config`, `utils` (1d)  — _done: `web`, `api` (core), `schemas`, `ui`, `config`, `utils`, `db`; pending: `admin`, `worker`_
 - [ ] T-101 Shared ESLint/Prettier/tsconfig, Husky + lint-staged, commitlint (0.5d)
-- [ ] T-102 Docker Compose: Postgres 16 + Redis (0.5d)
-- [ ] T-103 GitHub Actions: lint, typecheck, test, build (0.5d)
-- [ ] T-104 Prisma schema v1 from `trd.md §4` + first migration + seed (2d)
-- [ ] T-105 Zod env validation per app; `.env.example` (0.5d)
-- [ ] T-106 NestJS core: config, Prisma service, pino logger, global error filter, Zod pipe, request id (1d)
+- [x] T-102 Docker Compose: Postgres 16 + Redis (0.5d)  — _`docker-compose.yml`; host ports 5440/6390; `pnpm db:up` / `db:down`; `talent_test` DB for e2e_
+- [x] T-103 GitHub Actions: lint, typecheck, test, build (0.5d)  — _`.github/workflows/ci.yml`: Postgres service, Prisma generate + migrate, then turbo lint/typecheck/test/build (simulated locally: all pass)_
+- [x] T-104 Prisma schema v1 from `trd.md §4` + first migration + seed (2d)  — _`packages/db`: 23 tables, GIN/trigram indexes, `init` migration, seed = 8 talents + one lead per stage_
+- [~] T-105 Zod env validation per app; `.env.example` (0.5d)  — _done for `web` (`lib/env.ts`, checked in next.config), `db` and `api` (`src/config/env.ts`); `worker` when it exists_
+- [x] T-106 NestJS core: config, Prisma service, pino logger, global error filter, Zod pipe, request id (1d)  — _`apps/api`: `/v1` prefix, helmet, strict CORS, `GET /v1/health`; 9 e2e tests (Supertest + Docker DB); tsup production build_
 - [x] T-107 `packages/utils`: money (paise, bps, formatINR, tax rounding) + tests (1d)
-- [ ] T-108 `packages/utils`: lead/booking state machine + tests (1d)
+- [x] T-108 `packages/utils`: lead/booking state machine + tests (1d)  — _`packages/utils/src/stateMachine.ts`; 19 tests incl. every rejected move_
 - [x] T-109 `packages/ui`: tokens, Tailwind preset, shadcn setup, base components (2d)  — _Tailwind v4 CSS tokens instead of a JS preset_
 - [ ] T-110 Staging environments (web, admin, api, worker, DB, Redis, buckets) (1d)
 
 ### M1.2 Auth & users (week 2–3) — AUTH-1..5
-- [ ] T-120 OTP send/verify (provider adapter, rate limits) (1.5d)
-- [ ] T-121 Staff email/password login + TOTP MFA (1.5d)
-- [ ] T-122 JWT access + rotating refresh cookie, logout (1d)
-- [ ] T-123 Roles guard, `@Public`, ownership guard (1d)
-- [ ] T-124 Invite flow for talent/rep and staff (1d)
-- [ ] T-125 Admin: users & roles screen (1d)
-- [ ] T-126 Audit interceptor + `AuditLog` writes (1d) — AUD-1..3
+- [x] T-120 OTP send/verify (provider adapter, rate limits) (1.5d)  — _`apps/api/src/auth`; console SMS adapter until a vendor is chosen; 5-min codes, 5 attempts, 30 s resend, 3/10 min per phone & IP_
+- [x] T-121 Staff email/password login + TOTP MFA (1.5d)  — _scrypt passwords (`@repo/db`), mandatory TOTP with enrolment on first sign-in, AES-256-GCM secrets, replay block, 10/15 min lockout_
+- [x] T-122 JWT access + rotating refresh cookie, logout (1d)  — _15-min HS256 access token; refresh in httpOnly SameSite=Strict cookie on /v1/auth; reuse of a rotated token revokes all sessions_
+- [~] T-123 Roles guard, `@Public`, ownership guard (1d)  — _global sign-in guard + `@Public()` + `@Roles()` done; ownership guard comes with the first owned resources (bookings)_
+- [x] T-124 Invite flow for talent/rep and staff (1d)  — _7-day single-use links (HMAC stored); staff accept with a password then MFA, talent/reps with a phone OTP; links talent/rep records; links returned (sending waits for the notifications worker)_
+- [~] T-125 Admin: users & roles screen (1d)  — _API done (`/v1/admin/users`, role changes revoke sessions, self-lockout blocked); screen waits for `apps/admin`_
+- [x] T-126 Audit interceptor + `AuditLog` writes (1d) — AUD-1..3  — _interceptor logs every /admin mutation (incl. failures); services add before/after; secrets redacted; `GET /v1/admin/audit`_
 
 ### M1.3 Talent catalogue (week 3–5) — CAT, ADM
 - [ ] T-140 Categories CRUD (admin) (0.5d)

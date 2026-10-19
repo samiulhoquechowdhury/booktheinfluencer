@@ -1,0 +1,28 @@
+import { type DynamicModule, Module, type Type } from '@nestjs/common';
+import type { NestExpressApplication } from '@nestjs/platform-express';
+import { AppModule } from '../../src/app.module';
+import { createApp } from '../../src/bootstrap';
+import { loadEnv } from '../../src/config/env';
+
+/** Test env: the separate talent_test database (never the dev data), silent logs. */
+export const testEnv = loadEnv({
+  ...process.env,
+  NODE_ENV: 'test',
+  LOG_LEVEL: 'silent',
+  DATABASE_URL: process.env.DATABASE_URL ?? 'postgresql://talent:talent@localhost:5440/talent_test?schema=public',
+  REDIS_URL: process.env.REDIS_URL ?? 'redis://localhost:6390',
+  CORS_ORIGINS: 'http://localhost:3000',
+  JWT_ACCESS_SECRET: 'test-access-secret-0123456789abcdefghijklmnop',
+  AUTH_SECRET: 'test-auth-secret-0123456789abcdefghijklmnopqr',
+  SMS_PROVIDER: 'console',
+  MFA_ENCRYPTION_KEY: Buffer.alloc(32, 7).toString('base64'),
+});
+
+/** Boots the real app plus optional test-only controllers. */
+export async function bootTestApp(controllers: Type[] = []): Promise<NestExpressApplication> {
+  @Module({ imports: [AppModule.forRoot(testEnv)], controllers })
+  class TestRoot {}
+  const app = await createApp(testEnv, { module: TestRoot } satisfies DynamicModule);
+  await app.init();
+  return app;
+}

@@ -40,7 +40,14 @@ export const EnquiryTalentStepSchema = z
 export const IndianMobileSchema = z
   .string()
   .trim()
-  .transform((s) => s.replace(/[\s-]/g, '').replace(/^(\+91|91|0)/, ''))
+  .transform((s) => {
+    // Strip a country code / trunk zero only when it's extra: 9123456789 is a valid 10-digit number.
+    const d = s.replace(/[\s-]/g, '');
+    if (/^\+91\d{10}$/.test(d)) return d.slice(3);
+    if (/^91\d{10}$/.test(d)) return d.slice(2);
+    if (/^0\d{10}$/.test(d)) return d.slice(1);
+    return d;
+  })
   .pipe(z.string().regex(/^[6-9]\d{9}$/, 'Enter a valid 10-digit Indian mobile number'));
 
 export const GstinSchema = z

@@ -1,0 +1,66 @@
+# T-103: lint, typecheck, test and build on every push and pull request.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    services:
+      # API e2e tests run against a real database (trd §12).
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: talent
+          POSTGRES_PASSWORD: talent
+          POSTGRES_DB: talent_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U talent -d talent_test"
+          --health-interval 5s --health-timeout 3s --health-retries 10
+
+    env:
+      DATABASE_URL: postgresql://talent:talent@localhost:5432/talent_test?schema=public
+      REDIS_URL: redis://localhost:6379
+      NEXT_PUBLIC_SITE_URL: https://booktheinfluencer.com
+      TURBO_TELEMETRY_DISABLED: '1'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma client
+        run: pnpm --filter @repo/db generate
+
+      - name: Apply migrations
+        run: pnpm --filter @repo/db migrate:deploy
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build

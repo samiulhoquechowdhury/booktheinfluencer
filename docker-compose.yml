@@ -1,0 +1,41 @@
+# Local services (trd §11): Postgres 16 + Redis for the API and worker.
+#   pnpm db:up      start in the background
+#   pnpm db:down    stop (data is kept in named volumes)
+# Host ports default to 5440 / 6390 so they never clash with other local projects;
+# override with POSTGRES_PORT / REDIS_PORT.
+name: talent-platform
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: talent
+      POSTGRES_PASSWORD: talent
+      POSTGRES_DB: talent_dev
+    ports:
+      - '${POSTGRES_PORT:-5440}:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./infra/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U talent -d talent_dev']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    command: ['redis-server', '--appendonly', 'yes']
+    ports:
+      - '${REDIS_PORT:-6390}:6379'
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:
+  redisdata:

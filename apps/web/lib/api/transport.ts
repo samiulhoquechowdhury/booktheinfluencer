@@ -1,4 +1,5 @@
 import { ApiErrorSchema } from '@repo/schemas';
+import { env } from '@/lib/env';
 
 export type ApiRequest = {
   method: 'GET' | 'POST' | 'PUT' | 'DELETE';
@@ -43,7 +44,7 @@ const bigintReplacer = (_k: string, v: unknown) => (typeof v === 'bigint' ? v.to
  * (`/v1`) — nothing in UI changes.
  */
 export const httpTransport =
-  (base = process.env.NEXT_PUBLIC_API_BASE ?? '/api/mock'): Transport =>
+  (base = env.NEXT_PUBLIC_API_BASE): Transport =>
   async ({ method, path, query, body }) => {
     const res = await fetch(`${base}${path}${toSearch(query)}`, {
       method,
