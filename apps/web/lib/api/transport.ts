@@ -40,6 +40,17 @@ export function raise(status: number, body: unknown): never {
 const bigintReplacer = (_k: string, v: unknown) => (typeof v === 'bigint' ? v.toString() : v);
 
 /**
+ * The NestJS API wraps responses (trd §3): `{ data }`, and lists as `{ data, meta }`. Unwrap to
+ * what endpoints.ts parses — lists become `{ items, total, page, pageSize }`. Mock responses
+ * have no envelope and pass through unchanged.
+ */
+export function unwrapEnvelope(json: unknown): unknown {
+  if (!json || typeof json !== 'object' || Array.isArray(json) || !('data' in json)) return json;
+  const { data, meta } = json as { data: unknown; meta?: { total: number; page: number; pageSize: number } };
+  return meta ? { items: data, total: meta.total, page: meta.page, pageSize: meta.pageSize } : data;
+}
+
+/**
  * Browser transport. Today: Next route handler at /api/mock. Later: point API_BASE at NestJS
  * (`/v1`) — nothing in UI changes.
  */
@@ -54,5 +65,5 @@ export const httpTransport =
     });
     const json: unknown = await res.json().catch(() => null);
     if (!res.ok) raise(res.status, json);
-    return json;
+    return unwrapEnvelope(json);
   };

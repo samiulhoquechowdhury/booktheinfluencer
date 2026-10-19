@@ -59,7 +59,7 @@
 - [ ] T-144 Representatives CRUD, link to talents, KYC upload, verification status (1.5d)
 - [ ] T-145 Blackout dates (admin) (0.5d)
 - [ ] T-146 Public catalogue API: list, filters, full-text search, pagination (2d)
-- [~] T-147 Serializer tests: public talent DTO has no rate card fields (0.5d)  — _mock serializer tests pass; NestJS serializer tests pending_
+- [x] T-147 Serializer tests: public talent DTO has no rate card fields (0.5d)  — _mock + NestJS: strict-schema parse and leak checks on every catalogue route_
 - [~] T-148 Web: listing page with filters (desktop rail, mobile sheet) (2d)  — _UI done on mock API (`apps/web`); API part pending_
 - [~] T-149 Web: talent profile page with sticky CTA, fee band, disclaimer (2d)  — _UI done on mock API (`apps/web`); API part pending_
 - [~] T-150 Web: home page (1.5d)  — _UI done on mock API (`apps/web`); API part pending_

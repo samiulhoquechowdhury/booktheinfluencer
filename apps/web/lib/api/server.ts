@@ -5,7 +5,8 @@ import { SessionRoleSchema, type SessionRole } from '@repo/schemas';
 import { handle, toWire } from '@/lib/mock/router';
 import { createApi } from './endpoints';
 import { SESSION_COOKIE } from './constants';
-import { raise, type Transport } from './transport';
+import { env } from '@/lib/env';
+import { httpTransport, raise, type Transport } from './transport';
 
 /**
  * Server API client for Server Components / SSG. In-process call into the mock router with the
@@ -21,8 +22,18 @@ const inProcess =
     return wire;
   };
 
+/**
+ * Migration switch: with API_URL set, the public catalogue (`/talents…`) comes from the NestJS API;
+ * everything else stays on the mock until those API modules exist. Without API_URL: all mock.
+ */
+const withRealCatalogue = (fallback: Transport): Transport => {
+  if (!env.API_URL) return fallback;
+  const real = httpTransport(`${env.API_URL.replace(/\/$/, '')}/v1`);
+  return (req) => (req.path.startsWith('/talents') ? real(req) : fallback(req));
+};
+
 /** Public catalogue — no cookies, so pages stay static/ISR. */
-export const publicApi = createApi(inProcess('GUEST'));
+export const publicApi = createApi(withRealCatalogue(inProcess('GUEST')));
 
 /** Session-aware server API (opts the route into dynamic rendering). */
 export const getSessionApi = cache(async () => {

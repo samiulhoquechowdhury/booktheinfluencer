@@ -36,12 +36,17 @@ type MockTalent = {
   representation: RepresentationType;
   featured: boolean;
   feeBand: { minPaise: string; maxPaise: string } | null;
-  images: { src: string; alt: string; width: number; height: number; credit?: string }[];
+  images: { src: string; alt: string; width: number; height: number; credit?: string; blurDataURL?: string }[];
+  pastEvents: { title: string; city: string; year: number }[];
+  faqs: { q: string; a: string }[];
+  followers: { platform: string; count: number }[];
   showreelUrl: string | null;
   riderSummary: string | null;
   tags: string[];
 };
-const talents: MockTalent[] = JSON.parse(readFileSync(join(here, '../../../apps/web/lib/mock/data/talents.json'), 'utf8'));
+const mockData = (f: string) => JSON.parse(readFileSync(join(here, '../../../apps/web/lib/mock/data', f), 'utf8'));
+const talents: MockTalent[] = mockData('talents.json');
+const blackoutsBySlug: Record<string, string[]> = mockData('blackouts.json');
 
 const CATEGORIES = [
   { slug: 'actors', name: 'Actors & celebrities' },
@@ -137,9 +142,14 @@ async function main() {
         feeBandMaxPaise: t.feeBand ? BigInt(t.feeBand.maxPaise) : null,
         showreelUrl: t.showreelUrl,
         riderSummary: t.riderSummary,
+        pastEvents: t.pastEvents,
+        faqs: t.faqs,
+        followers: t.followers,
+        blackouts: { create: (blackoutsBySlug[t.slug] ?? []).map((d) => ({ date: day(d) })) },
         categories: { create: t.categories.filter((c) => cats.has(c)).map((c) => ({ categoryId: cats.get(c)!, isPrimary: c === t.primaryCategory })) },
         media: {
-          create: t.images.map((img, i) => ({ key: img.src.split('?')[0]!, alt: img.alt, width: img.width, height: img.height, credit: img.credit, sortOrder: i, isCover: i === 0 })),
+          // `key` keeps the full site path (with its ?v= fingerprint) until media moves to the bucket.
+          create: t.images.map((img, i) => ({ key: img.src, alt: img.alt, width: img.width, height: img.height, credit: img.credit, blurDataURL: img.blurDataURL, sortOrder: i, isCover: i === 0 })),
         },
         // INTERNAL demo values — replace with real rate cards before launch.
         rateCards: { create: { minimumRatePaise: rupees(150000), sellingRatePaise: rupees(250000), commissionBps: 1500, notes: 'Demo seed value' } },

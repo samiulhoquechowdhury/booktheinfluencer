@@ -10,6 +10,8 @@ import { AdminUsersController } from './admin/admin-users.controller';
 import { AuditInterceptor } from './audit/audit.interceptor';
 import { AuditService } from './audit/audit.service';
 import { AuthModule } from './auth/auth.module';
+import { CatalogController } from './catalog/catalog.controller';
+import { CatalogService } from './catalog/catalog.service';
 import { AdminInvitesController, InvitesController } from './invites/invites.controller';
 import { InvitesService } from './invites/invites.service';
 import { HealthController } from './health/health.controller';
@@ -52,12 +54,13 @@ export class AppModule {
         PrismaModule,
         AuthModule,
       ],
-      controllers: [HealthController, UsersController, InvitesController, AdminInvitesController, AdminUsersController, AdminAuditController],
+      controllers: [HealthController, CatalogController, UsersController, InvitesController, AdminInvitesController, AdminUsersController, AdminAuditController],
       providers: [
         { provide: APP_FILTER, useClass: GlobalErrorFilter },
         { provide: APP_INTERCEPTOR, useClass: AuditInterceptor },
         AuditService,
         InvitesService,
+        CatalogService,
       ],
     };
   }
