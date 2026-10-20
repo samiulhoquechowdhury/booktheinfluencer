@@ -16,7 +16,7 @@ export const SEND_CONTRACT: StaffRole[] = ['SALES', 'OPS'];
 
 /** Catalogue edits (talent, photos, rate cards, reps, blackouts). */
 export const EDIT_CATALOGUE: StaffRole[] = ['TALENT_MANAGER'];
-export const ROLE_LABELS: Record<StaffRole, string> = { SUPER_ADMIN: 'Super admin', SALES: 'Sales', TALENT_MANAGER: 'Talent manager', OPS: 'Ops', ACCOUNTS: 'Accounts' };
+export const ROLE_LABELS: Record<StaffRole | 'TALENT' | 'REP' | 'CUSTOMER', string> = { SUPER_ADMIN: 'Super admin', SALES: 'Sales', TALENT_MANAGER: 'Talent manager', OPS: 'Ops', ACCOUNTS: 'Accounts', TALENT: 'Talent', REP: 'Representative', CUSTOMER: 'Customer' };
 
 /** Staff-facing stage names (the customer copy lives in @repo/utils STAGE_LABELS). */
 export const STAGE_NAMES = {

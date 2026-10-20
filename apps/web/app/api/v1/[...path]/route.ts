@@ -78,8 +78,8 @@ async function dispatch(req: NextRequest, ctx: { params: Promise<{ path: string[
       r = await callApi(method, path, { token, body, query: Object.fromEntries(req.nextUrl.searchParams), ip });
     } else ended = true;
   }
-  if (path === '/enquiries' && method === 'POST') {
-    // The enquiry signs the customer in (AUTH-4).
+  if ((path === '/enquiries' || /^\/invites\/[^/]+\/accept$/.test(path)) && method === 'POST') {
+    // The enquiry signs the customer in (AUTH-4); accepting a talent / rep invite signs them in too.
     const { tokens, body: out } = takeSession(r);
     const res = json(r.status, out);
     if (tokens) setTokenCookies(res.cookies, tokens);

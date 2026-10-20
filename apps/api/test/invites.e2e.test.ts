@@ -52,7 +52,8 @@ describe('invites (AUTH-3)', () => {
     const email = `new-${randomUUID()}@test.local`;
     emails.push(email);
     const created = await http().post('/v1/admin/invites').set(as(admin.token)).send({ email, name: 'Priya Das', roles: ['SALES'] }).expect(201);
-    expect(created.body.data.url).toMatch(/^http:\/\/localhost:3000\/invite\/[\w-]{40,}$/);
+    // Staff invites open the admin app; talent / rep invites open the website.
+    expect(created.body.data.url).toMatch(/^http:\/\/localhost:3001\/invite\/[\w-]{40,}$/);
     const token = tokenOf(created.body.data.url);
 
     // The token itself is never stored.
@@ -82,7 +83,9 @@ describe('invites (AUTH-3)', () => {
     const noCode = await http().post(`/v1/invites/${token}/accept`).send({}).expect(400);
     expect(noCode.body.error.code).toBe('CODE_REQUIRED');
 
-    await http().post('/v1/auth/otp/send').set('X-Forwarded-For', `10.8.${randomInt(0, 250)}.1`).send({ phone }).expect(202);
+    expect(created.body.data.url).toMatch(/^http:\/\/localhost:3000\/invite\//);
+    // The page only knows the masked number, so the code is sent to the invited phone by token.
+    expect((await http().post(`/v1/invites/${token}/code`).set('X-Forwarded-For', `10.8.${randomInt(0, 250)}.1`).expect(202)).body.data).toMatchObject({ resendInSeconds: 30 });
     const accepted = await http().post(`/v1/invites/${token}/accept`).send({ code: sms.lastCode(`+91${phone}`), name: 'Test Talent' }).expect(200);
     expect(accepted.body.data.nextStep).toBe('signed-in');
     expect(accepted.body.data.user.roles).toEqual(['TALENT']);

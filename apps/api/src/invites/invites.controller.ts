@@ -25,6 +25,12 @@ export class InvitesController {
     return { data: await this.invites.preview(token) };
   }
 
+  @Post(':token/code')
+  @HttpCode(202)
+  async sendCode(@Param('token') token: string, @Req() req: Request) {
+    return { data: await this.invites.sendCode(token, req.ip) };
+  }
+
   /** Talent/rep (phone) invites sign the person in straight away; staff go on to sign in with MFA. */
   @Post(':token/accept')
   @HttpCode(200)

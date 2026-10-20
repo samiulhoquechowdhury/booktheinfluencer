@@ -177,3 +177,8 @@ export type PayoutRow = {
   note: string | null;
 };
 export type ContractRow = { id: string; status: 'DRAFT' | 'SENT' | 'PARTIALLY_SIGNED' | 'SIGNED' | 'VOID'; sentAt: string | null; signedAt: string | null; hasDocument: boolean; providerRef: string | null };
+
+export type Role = StaffRole | 'TALENT' | 'REP' | 'CUSTOMER';
+export type UserRow = { id: string; name: string | null; phone: string | null; email: string | null; roles: Role[]; mfaEnabled: boolean; createdAt: string };
+export type InviteRow = { id: string; email: string | null; phone: string | null; name: string | null; roles: Role[]; status: 'PENDING' | 'ACCEPTED' | 'REVOKED' | 'EXPIRED'; invitedBy: string | null; expiresAt: string; createdAt: string };
+export type AuditRow = { id: string; actorId: string | null; action: string; entity: string; entityId: string; before: unknown; after: unknown; ip: string | null; createdAt: string };

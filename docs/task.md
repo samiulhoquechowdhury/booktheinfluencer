@@ -22,7 +22,7 @@
 ### M0.2 Design
 - [ ] T-010 Design tokens + component library in Figma (`design.md` §3–4)
 - [ ] T-011 Customer screens: home, listing, profile, enquiry, booking detail (mobile + desktop)
-- [~] T-012 Admin screens: pipeline, lead workspace, quote builder, talent edit, dashboard  — _`apps/admin`: staff sign-in (password + authenticator), overview, pipeline board/table, lead workspace done; quote builder, talents, payments (collections + record payment), payouts (schedule/adjust/pay) and contract send done; settings, audit next_
+- [~] T-012 Admin screens: pipeline, lead workspace, quote builder, talent edit, dashboard  — _`apps/admin`: staff sign-in (password + authenticator), overview, pipeline board/table, lead workspace done; quote builder, talents, payments, payouts, contract send, settings (users & roles, invites, categories) and audit log done_
 - [ ] T-013 Clickable prototype; 5 user tests (2 corporate, 2 planners, 1 private)
 
 ---
@@ -48,7 +48,7 @@
 - [x] T-122 JWT access + rotating refresh cookie, logout (1d)  — _15-min HS256 access token; refresh in httpOnly SameSite=Strict cookie on /v1/auth; reuse of a rotated token revokes all sessions_
 - [~] T-123 Roles guard, `@Public`, ownership guard (1d)  — _global sign-in guard + `@Public()` + `@Roles()` done; ownership guard comes with the first owned resources (bookings)_
 - [x] T-124 Invite flow for talent/rep and staff (1d)  — _7-day single-use links (HMAC stored); staff accept with a password then MFA, talent/reps with a phone OTP; links talent/rep records; links returned (sending waits for the notifications worker)_
-- [~] T-125 Admin: users & roles screen (1d)  — _API done (`/v1/admin/users`, role changes revoke sessions, self-lockout blocked); screen waits for `apps/admin`_
+- [x] T-125 Admin: users & roles screen (1d)  — _admin Settings → Users & roles; invites tab + accept pages (admin for staff, website for talent/reps)_
 - [x] T-126 Audit interceptor + `AuditLog` writes (1d) — AUD-1..3  — _interceptor logs every /admin mutation (incl. failures); services add before/after; secrets redacted; `GET /v1/admin/audit`_
 
 ### M1.3 Talent catalogue (week 3–5) — CAT, ADM

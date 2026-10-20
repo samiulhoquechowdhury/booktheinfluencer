@@ -18,8 +18,10 @@ const EnvSchema = z.object({
   AUTH_SECRET: z.string().min(32, 'Use at least 32 characters'),
   /** AES-256-GCM key for MFA secrets at rest: 32 random bytes, base64 (openssl rand -base64 32). */
   MFA_ENCRYPTION_KEY: z.string().refine((k) => Buffer.from(k, 'base64').length === 32, 'Must be 32 bytes, base64-encoded'),
-  /** Page that accepts invite links; the token is appended (AUTH-3). */
+  /** Website page that accepts talent / rep invite links; the token is appended (AUTH-3). */
   INVITE_BASE_URL: z.url().default('http://localhost:3000/invite'),
+  /** Staff invites open the admin app instead (staff set a password there, then sign in with MFA). */
+  STAFF_INVITE_BASE_URL: z.url().default('http://localhost:3001/invite'),
   /** SMS adapter for OTPs. `console` logs codes instead of sending them (development/test only). */
   SMS_PROVIDER: z.enum(['console']).default('console'),
   /** Payment gateway adapter. `fake` = local test gateway (development/test only) until the vendor is chosen. */

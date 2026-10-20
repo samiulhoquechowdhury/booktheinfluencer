@@ -61,7 +61,8 @@ export class InvitesService {
       return created;
     });
     // Sending by email/SMS comes with the notifications worker; for now the link is returned.
-    return { id: invite.id, url: `${this.env.INVITE_BASE_URL}/${token}`, expiresAt: invite.expiresAt.toISOString() };
+    const base = invite.roles.some(isStaffRole) ? this.env.STAFF_INVITE_BASE_URL : this.env.INVITE_BASE_URL;
+    return { id: invite.id, url: `${base}/${token}`, expiresAt: invite.expiresAt.toISOString() };
   }
 
   private async findUsable(token: string) {
@@ -77,6 +78,13 @@ export class InvitesService {
   async preview(token: string) {
     const i = await this.findUsable(token);
     return { name: i.name, email: i.email, phone: mask(i.phone), roles: i.roles, expiresAt: i.expiresAt.toISOString(), method: i.email ? ('password' as const) : ('otp' as const) };
+  }
+
+  /** Phone invites: text the code to the invited number (the page only shows it masked). Same limits as sign-in OTPs. */
+  async sendCode(token: string, ip?: string) {
+    const invite = await this.findUsable(token);
+    if (!invite.phone) throw new DomainError('NOT_A_PHONE_INVITE', 'This invite uses a password, not a code.', 400);
+    return this.otp.send(invite.phone, ip);
   }
 
   async accept(token: string, body: InviteAccept, ip?: string) {

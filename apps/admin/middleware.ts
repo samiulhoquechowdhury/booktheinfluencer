@@ -2,9 +2,10 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { ACCESS_COOKIE, REFRESH_COOKIE, clearTokenCookies, clientIp, setTokenCookies } from '@/lib/api/cookies';
 import { refreshTokens } from '@/lib/api/server-api';
 
-/** Every page needs a staff session (except /login). Renews an expired access token before rendering. */
+/** Every page needs a staff session (except /login and /invite/…). Renews an expired access token before rendering. */
 export async function middleware(req: NextRequest) {
-  const isLogin = req.nextUrl.pathname === '/login';
+  // Public: sign-in, and invite links (staff set their password there before their first sign-in).
+  const isLogin = req.nextUrl.pathname === '/login' || req.nextUrl.pathname.startsWith('/invite/');
   const refresh = req.cookies.get(REFRESH_COOKIE)?.value;
   const access = req.cookies.get(ACCESS_COOKIE)?.value;
 
