@@ -22,7 +22,7 @@
 ### M0.2 Design
 - [ ] T-010 Design tokens + component library in Figma (`design.md` §3–4)
 - [ ] T-011 Customer screens: home, listing, profile, enquiry, booking detail (mobile + desktop)
-- [ ] T-012 Admin screens: pipeline, lead workspace, quote builder, talent edit, dashboard
+- [~] T-012 Admin screens: pipeline, lead workspace, quote builder, talent edit, dashboard  — _`apps/admin`: staff sign-in (password + authenticator), overview, pipeline board/table, lead workspace done; quote builder, talents, payments/payouts, settings, audit next_
 - [ ] T-013 Clickable prototype; 5 user tests (2 corporate, 2 planners, 1 private)
 
 ---
@@ -30,7 +30,7 @@
 ## Phase 1 — MVP (8–12 weeks build)
 
 ### M1.1 Foundation (week 1–2)
-- [~] T-100 Turborepo + pnpm monorepo, apps `web`, `admin`, `api`, `worker`, packages `db`, `schemas`, `ui`, `config`, `utils` (1d)  — _done: `web`, `api` (core), `schemas`, `ui`, `config`, `utils`, `db`; pending: `admin`, `worker`_
+- [~] T-100 Turborepo + pnpm monorepo, apps `web`, `admin`, `api`, `worker`, packages `db`, `schemas`, `ui`, `config`, `utils` (1d)  — _done: `web`, `api` (core), `schemas`, `ui`, `config`, `utils`, `db`; pending: `worker` (`admin` scaffolded 2026-10-20)_
 - [ ] T-101 Shared ESLint/Prettier/tsconfig, Husky + lint-staged, commitlint (0.5d)
 - [x] T-102 Docker Compose: Postgres 16 + Redis (0.5d)  — _`docker-compose.yml`; host ports 5440/6390; `pnpm db:up` / `db:down`; `talent_test` DB for e2e_
 - [x] T-103 GitHub Actions: lint, typecheck, test, build (0.5d)  — _`.github/workflows/ci.yml`: Postgres service, Prisma generate + migrate, then turbo lint/typecheck/test/build (simulated locally: all pass)_
@@ -71,9 +71,9 @@
 - [~] T-160 Enquiry API: create lead + draft bookings, ref number, Turnstile (1.5d)  — _`POST /v1/enquiries` done (OTP-verified, signs the customer in, TB-/BK- refs from Postgres sequences, 5/hour/IP); Turnstile waits for keys_
 - [~] T-161 Web: enquiry stepper with OTP, success page (2d)  — _UI done on mock API (`apps/web`); API part pending_
 - [ ] T-162 Acknowledgement notifications (worker + templates) (1d)
-- [~] T-163 Admin: pipeline Kanban + table views, filters (2.5d)  — _API done: `GET /v1/admin/leads` (stage/owner/city/category/date/q filters) and `/v1/admin/pipeline/board`; admin UI pending_
+- [~] T-163 Admin: pipeline Kanban + table views, filters (2.5d)  — _API done: `GET /v1/admin/leads` (stage/owner/city/category/date/q filters) and `/v1/admin/pipeline/board`; admin board + table done_
 - [x] T-164 Stage transition endpoint using state machine; lost reason; activity log (1d)
-- [~] T-165 Admin: lead workspace (brief, bookings per talent, activity, notes) (2.5d)  — _API done (`GET /v1/admin/leads/:id`, notes, owner, add/remove talent); admin UI pending_
+- [~] T-165 Admin: lead workspace (brief, bookings per talent, activity, notes) (2.5d)  — _API done (`GET /v1/admin/leads/:id`, notes, owner, add/remove talent); admin workspace done (stage moves, availability, rep acceptance, notes, activity); add/remove talent UI pending_
 - [x] T-166 Availability status per booking + rep acceptance capture (1d)  — _plus the automatic confirmation check (`PipelineService.evaluateConfirmation`); M1.5/M1.6 must call it after quote accept, contract sign and advance paid_
 - [x] T-167 Auto-assign owner round robin (SHOULD) (0.5d)  — _sales user with the fewest open leads_
 - [ ] T-168 Follow-up tasks/reminders (SHOULD) (1d)
@@ -110,7 +110,7 @@
 - [x] T-241 Mark completed; cancellation flow with reason (1d)  — _completion creates payouts; cancellation stores reason + policy ref, closes unpaid milestones/unsigned contracts, flags paid money for refund review (refunds manual, PAY-6)_
 - [x] T-242 Payout records + mark paid (Accounts) (1d)
 - [x] T-243 Margin calculation on confirmation/settlement (0.5d)  — _stored at acceptance, finalised when the payout is paid_
-- [~] T-244 Analytics dashboard: pipeline, GMV, conversion, time-to-confirm, receivables, pending payouts (2d)  — _API done (`GET /v1/admin/analytics`, finance block for ACCOUNTS/SUPER_ADMIN); admin UI pending_
+- [~] T-244 Analytics dashboard: pipeline, GMV, conversion, time-to-confirm, receivables, pending payouts (2d)  — _API done (`GET /v1/admin/analytics`, finance block for ACCOUNTS/SUPER_ADMIN); admin overview done (date range + my leads; full filter UI pending)_
 - [ ] T-245 Event reminders T-3/T-1, feedback request (0.5d)
 - [ ] T-246 Nightly reconciliation job (1d)
 

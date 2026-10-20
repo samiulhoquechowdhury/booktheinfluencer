@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+@import '@repo/ui/styles.css';
+
+@source '../../../packages/ui/src';
+
+/* Dense internal tool: tabular numbers everywhere money and counts line up. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}

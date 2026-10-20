@@ -6,6 +6,8 @@ import type { AuthUserRef } from '../auth/guards';
 import { PrismaService } from '../prisma/prisma.service';
 import { seesFinance, todayIST } from '../quotes/quote-access';
 
+/** A quote the customer has seen (rows from before `sentAt` existed only have the status). */
+const SENT_QUOTE: Prisma.QuoteWhereInput = { OR: [{ sentAt: { not: null } }, { status: { in: ['SENT', 'ACCEPTED', 'REJECTED', 'EXPIRED'] } }] };
 const sum = (xs: (bigint | null)[]) => xs.reduce<bigint>((a, x) => a + (x ?? 0n), 0n);
 const bps = (n: number, d: number) => (d === 0 ? 0 : Math.floor((n * 10_000) / d));
 
@@ -29,13 +31,14 @@ export class AnalyticsService {
     const [leads, byStage, quotedLeads, confirmedLeads, confirmed] = await Promise.all([
       this.prisma.lead.count({ where: lead }),
       this.prisma.lead.groupBy({ by: ['stage'], where: lead, _count: true }),
-      this.prisma.lead.count({ where: { ...lead, bookings: { some: { ...(lead.bookings?.some ?? {}), quotes: { some: { sentAt: { not: null } } } } } } }),
+      this.prisma.lead.count({ where: { ...lead, bookings: { some: { ...(lead.bookings?.some ?? {}), quotes: { some: SENT_QUOTE } } } } }),
       this.prisma.lead.count({ where: { ...lead, bookings: { some: { ...(lead.bookings?.some ?? {}), confirmedAt: { not: null } } } } }),
       this.prisma.booking.findMany({ where: confirmedWhere, select: { sellingTotalPaise: true, marginPaise: true, confirmedAt: true, lead: { select: { createdAt: true } } } }),
     ]);
 
     const gmv = sum(confirmed.map((b) => b.sellingTotalPaise));
-    const hours = confirmed.map((b) => (b.confirmedAt!.getTime() - b.lead.createdAt.getTime()) / 3_600_000);
+    // Imported/backfilled rows can be confirmed before the lead row was created; leave those out.
+    const hours = confirmed.map((b) => (b.confirmedAt!.getTime() - b.lead.createdAt.getTime()) / 3_600_000).filter((h) => h >= 0);
     const out = {
       filters: q,
       leads,
