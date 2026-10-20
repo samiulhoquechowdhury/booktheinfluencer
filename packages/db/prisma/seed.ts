@@ -197,6 +197,8 @@ async function main() {
     const confirmed = availability === 'CONFIRMED';
     const booking = await prisma.booking.create({
       data: {
+        // Below the booking_ref_seq start (1000), so live refs never collide.
+        ref: `BK-2026-${String(101 + i).padStart(6, '0')}`,
         leadId: lead.id,
         talentId: talentIds[i % talentIds.length]!,
         availability,

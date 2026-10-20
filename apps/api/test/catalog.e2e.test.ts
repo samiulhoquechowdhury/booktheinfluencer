@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { PublicTalentSchema, TalentPageSchema } from '@repo/schemas';
 import { PrismaService } from '../src/prisma/prisma.service';
 import { bootTestApp } from './support/app';
+import { ensureCategory } from './support/fixtures';
 
 let app: NestExpressApplication;
 let prisma: PrismaService;
@@ -35,7 +36,7 @@ async function talent(data: {
   tags?: string[];
   blackout?: string;
 }) {
-  const cat = await prisma.category.upsert({ where: { slug: data.category }, update: {}, create: { slug: data.category, name: data.category } });
+  const cat = await ensureCategory(prisma, data.category);
   const rep = await prisma.representative.create({ data: { name: `Rep ${run}`, phone: '+919000000000', verification: data.verified ? 'VERIFIED' : 'PENDING' } });
   const t = await prisma.talent.create({
     data: {

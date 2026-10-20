@@ -5,6 +5,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { PublicTalentSchema } from '@repo/schemas';
 import { PrismaService } from '../src/prisma/prisma.service';
 import { bootTestApp } from './support/app';
+import { ensureCategory } from './support/fixtures';
 import { staffSession } from './support/staff';
 
 let app: NestExpressApplication;
@@ -45,7 +46,7 @@ async function addPhotos(id: string, n = 4) {
 beforeAll(async () => {
   app = await bootTestApp();
   prisma = app.get(PrismaService);
-  await prisma.category.upsert({ where: { slug: 'singers' }, update: {}, create: { slug: 'singers', name: 'Singers' } });
+  await ensureCategory(prisma, 'singers', 'Singers');
   manager = await staffSession(app, ['TALENT_MANAGER'], emails);
   sales = await staffSession(app, ['SALES'], emails);
 });

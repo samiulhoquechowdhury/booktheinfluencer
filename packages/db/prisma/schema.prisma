@@ -373,6 +373,7 @@ model Lead {
   companyName    String?
   gstin          String?
   source         String? // utm / landing page
+  createdIp      String? // enquiry rate limit (trd §10: 5 / hour / IP)
   lostReason     String?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
@@ -385,10 +386,12 @@ model Lead {
   @@index([stage, ownerId])
   @@index([eventDate])
   @@index([customerId])
+  @@index([createdIp, createdAt])
 }
 
 model Booking {
   id                String             @id @default(cuid())
+  ref               String             @unique // customer-facing, e.g. BK-2026-001042
   leadId            String
   talentId          String
   availability      AvailabilityStatus @default(NOT_CHECKED) // CONFIRMED set only by the system

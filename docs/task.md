@@ -68,14 +68,14 @@
 - [ ] T-153 CSV bulk import of talents (SHOULD) (1d)
 
 ### M1.4 Enquiry & pipeline (week 5–7) — ENQ, PIPE, AVL
-- [ ] T-160 Enquiry API: create lead + draft bookings, ref number, Turnstile (1.5d)
+- [~] T-160 Enquiry API: create lead + draft bookings, ref number, Turnstile (1.5d)  — _`POST /v1/enquiries` done (OTP-verified, signs the customer in, TB-/BK- refs from Postgres sequences, 5/hour/IP); Turnstile waits for keys_
 - [~] T-161 Web: enquiry stepper with OTP, success page (2d)  — _UI done on mock API (`apps/web`); API part pending_
 - [ ] T-162 Acknowledgement notifications (worker + templates) (1d)
-- [ ] T-163 Admin: pipeline Kanban + table views, filters (2.5d)
-- [ ] T-164 Stage transition endpoint using state machine; lost reason; activity log (1d)
-- [ ] T-165 Admin: lead workspace (brief, bookings per talent, activity, notes) (2.5d)
-- [ ] T-166 Availability status per booking + rep acceptance capture (1d)
-- [ ] T-167 Auto-assign owner round robin (SHOULD) (0.5d)
+- [~] T-163 Admin: pipeline Kanban + table views, filters (2.5d)  — _API done: `GET /v1/admin/leads` (stage/owner/city/category/date/q filters) and `/v1/admin/pipeline/board`; admin UI pending_
+- [x] T-164 Stage transition endpoint using state machine; lost reason; activity log (1d)
+- [~] T-165 Admin: lead workspace (brief, bookings per talent, activity, notes) (2.5d)  — _API done (`GET /v1/admin/leads/:id`, notes, owner, add/remove talent); admin UI pending_
+- [x] T-166 Availability status per booking + rep acceptance capture (1d)  — _plus the automatic confirmation check (`PipelineService.evaluateConfirmation`); M1.5/M1.6 must call it after quote accept, contract sign and advance paid_
+- [x] T-167 Auto-assign owner round robin (SHOULD) (0.5d)  — _sales user with the fewest open leads_
 - [ ] T-168 Follow-up tasks/reminders (SHOULD) (1d)
 
 ### M1.5 Quotes (week 7–8) — QUO
