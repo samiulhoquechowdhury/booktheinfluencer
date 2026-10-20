@@ -71,9 +71,9 @@
 - [~] T-160 Enquiry API: create lead + draft bookings, ref number, Turnstile (1.5d)  — _`POST /v1/enquiries` done (OTP-verified, signs the customer in, TB-/BK- refs from Postgres sequences, 5/hour/IP); Turnstile waits for keys_
 - [~] T-161 Web: enquiry stepper with OTP, success page (2d)  — _UI done on mock API (`apps/web`); API part pending_
 - [ ] T-162 Acknowledgement notifications (worker + templates) (1d)
-- [~] T-163 Admin: pipeline Kanban + table views, filters (2.5d)  — _API done: `GET /v1/admin/leads` (stage/owner/city/category/date/q filters) and `/v1/admin/pipeline/board`; admin board + table done_
+- [x] T-163 Admin: pipeline Kanban + table views, filters (2.5d)  — _API done: `GET /v1/admin/leads` (stage/owner/city/category/date/q filters) and `/v1/admin/pipeline/board`; admin board + table done_
 - [x] T-164 Stage transition endpoint using state machine; lost reason; activity log (1d)
-- [~] T-165 Admin: lead workspace (brief, bookings per talent, activity, notes) (2.5d)  — _API done (`GET /v1/admin/leads/:id`, notes, owner, add/remove talent); admin workspace done (stage moves, availability, rep acceptance, notes, activity); add/remove talent UI pending_
+- [x] T-165 Admin: lead workspace (brief, bookings per talent, activity, notes) (2.5d)  — _API done (`GET /v1/admin/leads/:id`, notes, owner, add/remove talent); admin workspace done (stage moves, availability, rep acceptance, add/remove talent, start time, notes, activity)_
 - [x] T-166 Availability status per booking + rep acceptance capture (1d)  — _plus the automatic confirmation check (`PipelineService.evaluateConfirmation`); M1.5/M1.6 must call it after quote accept, contract sign and advance paid_
 - [x] T-167 Auto-assign owner round robin (SHOULD) (0.5d)  — _sales user with the fewest open leads_
 - [ ] T-168 Follow-up tasks/reminders (SHOULD) (1d)
@@ -106,7 +106,7 @@
 - [x] T-223 Serializer tests: talent DTO has payout only, no selling price/margin (0.5d)  — _`apps/api/test/portal.e2e.test.ts` (strict schemas + leak checks)_
 
 ### M1.8 Ops, settlement, analytics (week 11–12) — OPS, SET, ANA
-- [~] T-240 Ops checklist on booking (SHOULD) (1d)  — _API done (`PUT /v1/admin/bookings/:id/ops`; reporting time + contact shown in the talent portal); admin UI pending_
+- [x] T-240 Ops checklist on booking (SHOULD) (1d)  — _API done (`PUT /v1/admin/bookings/:id/ops`; reporting time + contact shown in the talent portal); admin checklist dialog on confirmed / accepted bookings_
 - [x] T-241 Mark completed; cancellation flow with reason (1d)  — _completion creates payouts; cancellation stores reason + policy ref, closes unpaid milestones/unsigned contracts, flags paid money for refund review (refunds manual, PAY-6)_
 - [x] T-242 Payout records + mark paid (Accounts) (1d)
 - [x] T-243 Margin calculation on confirmation/settlement (0.5d)  — _stored at acceptance, finalised when the payout is paid_

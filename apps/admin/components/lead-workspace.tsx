@@ -11,15 +11,16 @@ import { Button } from '@repo/ui/button';
 import { Select } from '@repo/ui/select';
 import { Skeleton } from '@repo/ui/skeleton';
 import { AVAILABILITY_LABELS, EVENT_TYPE_LABELS } from '@repo/utils';
-import { api, ApiError } from '@/lib/api/client';
+import { api } from '@/lib/api/client';
 import { day, rupeesRange, titleCase, when } from '@/lib/format';
 import { SEND_CONTRACT, SET_AVAILABILITY, STAGE_NAMES, WORK_LEADS, can } from '@/lib/roles';
 import type { Activity, ContractRow, Workspace, WorkspaceBooking } from '@/lib/types';
+import { errMsg, useLeadMutation } from '@/lib/hooks/use-lead-mutation';
+import { AddTalent, OpsChecklist, RemoveBooking, StartTime, canChangeShortlist } from './lead-extras';
 import { Card, ErrorNote, Field, PageHeader } from './ui';
 import { useUser } from './user-context';
 
 const NEEDS_REASON: LeadStage[] = ['LOST', 'CANCELLED'];
-const errMsg = (e: unknown) => (e instanceof ApiError ? e.message : 'Something went wrong. Try again.');
 
 /** PIPE-3..6, AVL-1..4: one lead, its bookings and the activity log. */
 export function LeadWorkspace({ id }: { id: string }) {
@@ -33,21 +34,6 @@ export function LeadWorkspace({ id }: { id: string }) {
       </div>
     );
   return <Loaded w={q.data} />;
-}
-
-function useLeadMutation<T>(id: string, fn: (v: T) => Promise<Workspace | unknown>, success: string) {
-  const qc = useQueryClient();
-  return useMutation({
-    mutationFn: fn,
-    onSuccess: (data) => {
-      if (data && typeof data === 'object' && 'bookings' in data) qc.setQueryData(['lead', id], data);
-      else void qc.invalidateQueries({ queryKey: ['lead', id] });
-      void qc.invalidateQueries({ queryKey: ['board'] });
-      void qc.invalidateQueries({ queryKey: ['leads'] });
-      toast.success(success);
-    },
-    onError: (e) => toast.error(errMsg(e)),
-  });
 }
 
 function Loaded({ w }: { w: Workspace }) {
@@ -79,8 +65,10 @@ function Loaded({ w }: { w: Workspace }) {
               <Field label="Event">{EVENT_TYPE_LABELS[b.eventType as keyof typeof EVENT_TYPE_LABELS] ?? titleCase(b.eventType)}</Field>
               <Field label="Date">
                 {day(b.eventDate)}
-                {b.startTime ? `, ${b.startTime}` : ''}
                 {b.altDate ? ` (alt ${day(b.altDate)})` : ''}
+              </Field>
+              <Field label="Start time">
+                <StartTime w={w} editable={canWork} />
               </Field>
               <Field label="City / venue">
                 {titleCase(b.city)}
@@ -96,13 +84,16 @@ function Loaded({ w }: { w: Workspace }) {
             {b.notes && <p className="mt-4 rounded-xl bg-surface p-3 text-sm whitespace-pre-line">{b.notes}</p>}
           </Card>
           <Card>
-            <h2 className="font-semibold">Talent</h2>
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="font-semibold">Talent</h2>
+              {canWork && canChangeShortlist(w) && <AddTalent w={w} />}
+            </div>
             {w.bookings.length === 0 ? (
               <p className="mt-3 text-sm text-fg-muted">No talent on this lead yet.</p>
             ) : (
               <ul className="mt-4 grid gap-3">
                 {w.bookings.map((bk) => (
-                  <BookingRow key={bk.id} leadId={w.id} b={bk} />
+                  <BookingRow key={bk.id} leadId={w.id} b={bk} canEditShortlist={canWork && canChangeShortlist(w)} />
                 ))}
               </ul>
             )}
@@ -189,7 +180,7 @@ function StageControl({ w }: { w: Workspace }) {
   );
 }
 
-function BookingRow({ leadId, b }: { leadId: string; b: WorkspaceBooking }) {
+function BookingRow({ leadId, b, canEditShortlist }: { leadId: string; b: WorkspaceBooking; canEditShortlist: boolean }) {
   const user = useUser();
   const canSet = can(user, ...SET_AVAILABILITY) && b.availability !== 'CONFIRMED' && !b.cancelledAt;
   const setAvail = useLeadMutation(leadId, (status: AvailabilityStatus) => api.put<Workspace>(`/admin/bookings/${b.id}/availability`, { status }), 'Availability updated');
@@ -203,7 +194,10 @@ function BookingRow({ leadId, b }: { leadId: string; b: WorkspaceBooking }) {
           <p className="font-semibold">{b.talent.name}</p>
           <p className="font-mono text-xs text-fg-subtle">{b.ref}</p>
         </div>
-        <AvailabilityPill status={b.availability} />
+        <span className="flex items-center gap-2">
+          <AvailabilityPill status={b.availability} />
+          {canEditShortlist && <RemoveBooking leadId={leadId} b={b} />}
+        </span>
       </div>
       <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-fg-muted">
         <span className="rounded-full bg-surface-2 px-2 py-1">Quotes: {b.quoteStatuses.length ? b.quoteStatuses.map(titleCase).join(', ') : 'none'}</span>
@@ -214,6 +208,7 @@ function BookingRow({ leadId, b }: { leadId: string; b: WorkspaceBooking }) {
           </span>
         )}
         {b.cancelledAt && <span className="rounded-full bg-danger/10 px-2 py-1 font-medium text-danger">Cancelled</span>}
+        {can(user, 'OPS', 'SALES', 'TALENT_MANAGER') && !b.cancelledAt && (b.availability === 'CONFIRMED' || b.quoteStatuses.includes('ACCEPTED')) && <OpsChecklist leadId={leadId} b={b} />}
         <Link href={`/bookings/${b.id}/quotes`} className="ml-auto font-medium text-primary-text hover:underline">
           Quotes →
         </Link>
@@ -298,6 +293,15 @@ const TYPE_LABEL: Record<string, string> = {
   assigned: 'Owner',
   stage_change: 'Stage',
   note: 'Note',
+  talent_added: 'Talent added',
+  talent_removed: 'Talent removed',
+  quote_drafted: 'Quote drafted',
+  quote_approval_requested: 'Quote needs approval',
+  quote_returned: 'Quote returned',
+  contract_void: 'Contract void',
+  payment_partial: 'Part payment',
+  payment_duplicate: 'Extra payment',
+  payment_failed: 'Payment failed',
   availability: 'Availability',
   rep_accepted: 'Rep accepted',
   confirmed: 'Confirmed',
