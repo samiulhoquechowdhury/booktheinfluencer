@@ -50,6 +50,12 @@ function timelineLabel(a: BookingRow['lead']['activities'][number], bookingId: s
       return 'Quote accepted';
     case 'quote_changes_requested':
       return 'Changes requested';
+    case 'contract_sent':
+      return 'Contract sent for signature';
+    case 'contract_signed':
+      return 'Contract signed';
+    case 'payment_received':
+      return a.body ?? 'Payment received';
     case 'confirmed':
       return 'Booking confirmed';
     default:
@@ -146,8 +152,8 @@ export class CustomerBookingsService {
           amountPaise: s(m.amountPaise),
           dueDate: day(m.dueDate),
           status: m.status === 'PAID' ? 'PAID' : m.status === 'OVERDUE' ? 'OVERDUE' : m.status === 'LINK_SENT' || day(m.dueDate) <= today ? 'DUE' : 'UPCOMING',
-          paidAt: null, // payments arrive in M1.6
-          receiptNo: null,
+          paidAt: m.paidAt?.toISOString() ?? null,
+          receiptNo: m.receiptNo,
         })),
       documents: [], // uploads wait for the storage vendor
       activity: b.lead.activities.flatMap((a) => {

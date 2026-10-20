@@ -485,7 +485,10 @@ model PaymentMilestone {
   dueDate       DateTime        @db.Date
   status        MilestoneStatus @default(PENDING)
   isAdvance     Boolean         @default(false)
+  paidAt        DateTime?
+  receiptNo     String?         @unique // RC-2026-001000, from receipt_seq
   gatewayLinkId String?         @unique
+  gatewayLinkUrl String? // reused so a milestone never has two live links
   booking       Booking         @relation(fields: [bookingId], references: [id], onDelete: Cascade)
   payments      Payment[]
 
@@ -502,6 +505,10 @@ model Payment {
   status           String // captured | failed | refunded
   proofDocumentId  String?
   receivedAt       DateTime
+  reference        String? // bank UTR / cheque no. for manual entries
+  note             String?
+  recordedById     String? // ACCOUNTS user for manual entries; null = gateway webhook
+  createdAt        DateTime         @default(now())
   milestone        PaymentMilestone @relation(fields: [milestoneId], references: [id], onDelete: Restrict)
 
   @@index([milestoneId])

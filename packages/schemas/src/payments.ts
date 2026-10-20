@@ -1,0 +1,18 @@
+import { z } from 'zod';
+import { IsoDateSchema } from './common';
+
+/** Accounts records an offline payment (PAY-4). Exact paise, since milestones can carry paise. */
+export const ManualPaymentSchema = z.object({
+  amountPaise: z.string().regex(/^[1-9]\d{0,13}$/, 'Amount in paise, e.g. 15930000'),
+  method: z.enum(['bank_transfer', 'upi', 'cheque', 'cash']),
+  reference: z.string().trim().min(4, 'Add the UTR / cheque number').max(80),
+  receivedOn: IsoDateSchema,
+  note: z.string().trim().max(500).optional(),
+  /** Uploaded proof, once the storage vendor is wired (T-200). */
+  proofDocumentId: z.string().min(1).max(40).optional(),
+});
+export type ManualPayment = z.infer<typeof ManualPaymentSchema>;
+
+/** Send the contract for e-signature (CON-2). */
+export const ContractSendSchema = z.object({ includeRep: z.boolean().default(false) });
+export const ContractVoidSchema = z.object({ reason: z.string().trim().min(3).max(500) });

@@ -97,8 +97,20 @@ describe('API core', () => {
 });
 
 describe('env validation', () => {
-  it('refuses the console SMS adapter in production', () => {
-    expect(() => loadEnv({ NODE_ENV: 'production', DATABASE_URL: 'postgresql://a/b', REDIS_URL: 'redis://x', JWT_ACCESS_SECRET: 'x'.repeat(40), AUTH_SECRET: 'y'.repeat(40), MFA_ENCRYPTION_KEY: Buffer.alloc(32).toString('base64'), SMS_PROVIDER: 'console' })).toThrow(/SMS_PROVIDER/);
+  const production = { NODE_ENV: 'production', DATABASE_URL: 'postgresql://a/b', REDIS_URL: 'redis://x', JWT_ACCESS_SECRET: 'x'.repeat(40), AUTH_SECRET: 'y'.repeat(40), MFA_ENCRYPTION_KEY: Buffer.alloc(32).toString('base64'), PAYMENT_WEBHOOK_SECRET: 'p'.repeat(40), ESIGN_WEBHOOK_SECRET: 'e'.repeat(40) };
+
+  it('refuses the dev-only adapters in production', () => {
+    let message = '';
+    try {
+      loadEnv({ ...production, SMS_PROVIDER: 'console', PAYMENT_PROVIDER: 'fake', ESIGN_PROVIDER: 'fake' });
+    } catch (e) {
+      message = (e as Error).message;
+    }
+    for (const k of ['SMS_PROVIDER', 'PAYMENT_PROVIDER', 'ESIGN_PROVIDER', 'SUPPORT_PHONE']) expect(message).toContain(k);
+  });
+
+  it('requires distinct webhook secrets', () => {
+    expect(() => loadEnv({ ...production, NODE_ENV: 'development', ESIGN_WEBHOOK_SECRET: 'p'.repeat(40) })).toThrow(/ESIGN_WEBHOOK_SECRET/);
   });
 
   it('rejects bad values with a readable message', () => {

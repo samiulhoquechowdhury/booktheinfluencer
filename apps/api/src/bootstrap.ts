@@ -9,7 +9,7 @@ import type { Env } from './config/env';
 
 /** Builds the configured app (shared by main.ts and the e2e tests, which pass a wrapping module). */
 export async function createApp(env: Env, root: DynamicModule = AppModule.forRoot(env)): Promise<NestExpressApplication> {
-  const app = await NestFactory.create<NestExpressApplication>(root, { bufferLogs: true });
+  const app = await NestFactory.create<NestExpressApplication>(root, { bufferLogs: true, rawBody: true }); // rawBody: webhook signatures
   app.useLogger(app.get(Logger));
   app.setGlobalPrefix('v1');
   app.use(helmet());

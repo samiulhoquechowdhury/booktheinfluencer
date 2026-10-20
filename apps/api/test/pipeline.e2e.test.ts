@@ -90,8 +90,10 @@ beforeAll(async () => {
 afterAll(async () => {
   const users = await prisma.user.findMany({ where: { OR: [{ email: { in: emails } }, { phone: { in: phones } }] }, select: { id: true } });
   const ids = users.map((u) => u.id);
-  await prisma.lead.deleteMany({ where: { OR: [{ customerId: { in: ids } }, { bookings: { some: { talentId: { in: talentIds } } } }] } });
-  await prisma.auditLog.deleteMany({ where: { actorId: { in: ids } } });
+  const leadWhere = { OR: [{ customerId: { in: ids } }, { bookings: { some: { talentId: { in: talentIds } } } }] };
+  const bookingIds = (await prisma.booking.findMany({ where: { lead: leadWhere }, select: { id: true } })).map((b) => b.id);
+  await prisma.lead.deleteMany({ where: leadWhere });
+  await prisma.auditLog.deleteMany({ where: { OR: [{ actorId: { in: ids } }, { entityId: { in: bookingIds } }] } });
   await prisma.talent.deleteMany({ where: { id: { in: talentIds } } });
   await prisma.representative.deleteMany({ where: { id: { in: repIds } } });
   await prisma.refreshToken.deleteMany({ where: { userId: { in: ids } } });

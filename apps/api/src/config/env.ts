@@ -22,12 +22,24 @@ const EnvSchema = z.object({
   INVITE_BASE_URL: z.url().default('http://localhost:3000/invite'),
   /** SMS adapter for OTPs. `console` logs codes instead of sending them (development/test only). */
   SMS_PROVIDER: z.enum(['console']).default('console'),
+  /** Payment gateway adapter. `fake` = local test gateway (development/test only) until the vendor is chosen. */
+  PAYMENT_PROVIDER: z.enum(['fake']).default('fake'),
+  /** HMAC-SHA256 key the gateway signs webhooks with. */
+  PAYMENT_WEBHOOK_SECRET: z.string().min(32, 'Use at least 32 characters'),
+  /** E-sign adapter. `fake` = local test provider (development/test only). */
+  ESIGN_PROVIDER: z.enum(['fake']).default('fake'),
+  ESIGN_WEBHOOK_SECRET: z.string().min(32, 'Use at least 32 characters'),
+  /** Customer site; the fake gateway's checkout links point here. */
+  WEB_BASE_URL: z.url().default('http://localhost:3000'),
   /** QUO-6: quotes with a margin below this (basis points of the pre-tax subtotal) need SUPER_ADMIN approval. Placeholder until the client sets it (memory.md open questions). */
   QUOTE_MARGIN_FLOOR_BPS: z.coerce.number().int().min(0).max(10_000).default(1000),
   /** Booking desk number shown to customers when their lead owner has no phone on file. */
   SUPPORT_PHONE: z.string().regex(/^\+91[6-9]\d{9}$/, 'E.164 Indian mobile, e.g. +919876543210').optional(),
 })
   .refine((e) => e.NODE_ENV !== 'production' || e.SMS_PROVIDER !== 'console', { path: ['SMS_PROVIDER'], message: 'Configure a real SMS provider in production' })
+  .refine((e) => e.NODE_ENV !== 'production' || e.PAYMENT_PROVIDER !== 'fake', { path: ['PAYMENT_PROVIDER'], message: 'Configure a real payment gateway in production' })
+  .refine((e) => e.NODE_ENV !== 'production' || e.ESIGN_PROVIDER !== 'fake', { path: ['ESIGN_PROVIDER'], message: 'Configure a real e-sign provider in production' })
+  .refine((e) => e.PAYMENT_WEBHOOK_SECRET !== e.ESIGN_WEBHOOK_SECRET, { path: ['ESIGN_WEBHOOK_SECRET'], message: 'Must differ from PAYMENT_WEBHOOK_SECRET' })
   .refine((e) => e.NODE_ENV !== 'production' || e.SUPPORT_PHONE, { path: ['SUPPORT_PHONE'], message: 'Set the booking desk number in production' })
   .refine((e) => e.JWT_ACCESS_SECRET !== e.AUTH_SECRET, { path: ['AUTH_SECRET'], message: 'Must differ from JWT_ACCESS_SECRET' });
 

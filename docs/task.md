@@ -89,15 +89,15 @@
 
 ### M1.6 Contracts & payments (week 8–10) — CON, PAY
 - [ ] T-200 Documents module: private bucket, presigned GET (0.5d)
-- [ ] T-201 Contract: upload PDF or generate from simple template; send via e-sign adapter (2d)
-- [ ] T-202 E-sign webhook, status tracking, signed PDF storage (1d)
-- [ ] T-203 Payment milestones from accepted quote (0.5d)
-- [ ] T-204 Gateway adapter: payment link per milestone (1d)
-- [ ] T-205 Gateway webhook: signature verify, idempotency, worker processing (1.5d)
-- [ ] T-206 Manual payment entry with proof (Accounts) (0.5d)
-- [ ] T-207 Receipts + payment reminders (1d)
-- [ ] T-208 Confirmation rule handler → CONFIRMED + notifications (1d)
-- [ ] T-209 Webhook replay/duplicate tests; full-lifecycle e2e test (1.5d)
+- [~] T-201 Contract: upload PDF or generate from simple template; send via e-sign adapter (2d)  — _send/void via `ESignProvider` (fake adapter); PDF template + upload wait for the worker and storage_
+- [~] T-202 E-sign webhook, status tracking, signed PDF storage (1d)  — _`POST /v1/webhooks/esign`: HMAC, idempotent, forward-only status; signed-PDF storage waits for T-200_
+- [x] T-203 Payment milestones from accepted quote (0.5d)
+- [~] T-204 Gateway adapter: payment link per milestone (1d)  — _`PaymentGateway` interface + fake adapter; one reusable link per milestone, advance first; real adapter waits for the vendor_
+- [~] T-205 Gateway webhook: signature verify, idempotency, worker processing (1.5d)  — _`POST /v1/webhooks/payments` done (HMAC, `WebhookEvent` claim, partial/duplicate payments); processed inline until the worker exists_
+- [~] T-206 Manual payment entry with proof (Accounts) (0.5d)  — _done with UTR reference; proof upload waits for storage_
+- [~] T-207 Receipts + payment reminders (1d)  — _receipt numbers (RC-…) issued on payment; emails and reminders wait for the worker + messaging vendor_
+- [~] T-208 Confirmation rule handler → CONFIRMED + notifications (1d)  — _runs after quote accepted, contract signed, milestone paid, rep accepted; notifications wait for the worker_
+- [x] T-209 Webhook replay/duplicate tests; full-lifecycle e2e test (1.5d)  — _`apps/api/test/payments.e2e.test.ts`_
 
 ### M1.7 Customer dashboard & talent portal (week 10–11) — CUS, TAL
 - [~] T-220 Web: account bookings list (1d)  — _UI done on mock API (`apps/web`); API part pending_
