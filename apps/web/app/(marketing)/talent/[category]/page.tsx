@@ -4,12 +4,14 @@ import { Suspense } from 'react';
 import Link from 'next/link';
 import { CATEGORY_SLUGS, CategorySlugSchema } from '@repo/schemas';
 import { ListingHero } from '@/components/listing/listing-hero';
+import { ListingFallback } from '@/components/listing/listing-fallback';
 import { ListingView } from '@/components/listing/listing-view';
 import { publicApi } from '@/lib/api/server';
 import { CITIES, categoryBySlug } from '@/lib/reference';
 import { JsonLd, breadcrumbLd } from '@/lib/seo/json-ld';
 
-export const revalidate = 3600;
+/** trd §13: catalogue pages refresh every 5 minutes, and at once when the API pings /api/revalidate. */
+export const revalidate = 300;
 export const dynamicParams = false;
 export const generateStaticParams = () => CATEGORY_SLUGS.map((category) => ({ category }));
 
@@ -51,7 +53,7 @@ export default async function CategoryPage({ params }: Props) {
           </nav>
         }
       />
-      <Suspense>
+      <Suspense fallback={<ListingFallback initial={initial} />}>
         <ListingView initial={initial} locked={{ category: c.slug }} />
       </Suspense>
     </>

@@ -81,7 +81,7 @@ export function HowItWorks({ showFullProcessLink = true, showHeading = true }: {
             <h2 id="hiw-title" className="font-display text-display font-extrabold">
               Four steps. <span className="font-serif font-normal italic">Zero</span> guesswork.
             </h2>
-            <p className="mx-auto mt-4 max-w-lg text-lg text-fg-muted">Watch a booking go from brief to show night.</p>
+            <p className="mx-auto mt-4 max-w-lg text-lg text-fg/80">Watch a booking go from brief to show night.</p>
           </header>
         )}
 
@@ -151,9 +151,9 @@ export function HowItWorks({ showFullProcessLink = true, showHeading = true }: {
                     <span className="block h-0.5 overflow-hidden rounded-full bg-border">
                       <span className="block h-full origin-left bg-brand-gradient" style={{ transform: `scaleX(${fill})` }} />
                     </span>
-                    <span className={cn('mt-5 block transition-opacity duration-(--duration-slow)', on ? 'opacity-100' : 'opacity-50 group-hover:opacity-80')}>
-                      <s.icon className={cn('size-5', on ? 'text-primary-text' : 'text-fg')} aria-hidden />
-                      <span className="mt-3 block text-lg font-semibold group-focus-visible:underline">{s.title}</span>
+                    <span className="mt-5 block">
+                      <s.icon className={cn('size-5 transition-opacity duration-(--duration-slow)', on ? 'text-primary-text' : 'text-fg opacity-50 group-hover:opacity-80')} aria-hidden />
+                      <span className={cn('mt-3 block text-lg font-semibold transition-colors duration-(--duration-slow) group-focus-visible:underline', on ? 'text-fg' : 'text-fg-muted group-hover:text-fg')}>{s.title}</span>
                       <span className="mt-1 block text-sm text-fg-muted">{s.body}</span>
                     </span>
                   </button>

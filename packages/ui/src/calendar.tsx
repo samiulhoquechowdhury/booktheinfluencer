@@ -8,12 +8,7 @@ import { cn } from './lib/cn';
 import { useReducedMotion } from './lib/use-reduced-motion';
 
 /** Calendar date ↔ YYYY-MM-DD using local components (the date the user means, not a UTC instant). */
-export const dateToIso = (d: Date) =>
-  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-export const isoToDate = (s: string) => {
-  const [y, m, d] = s.split('-').map(Number);
-  return new Date(y!, (m ?? 1) - 1, d ?? 1);
-};
+export { dateToIso, isoToDate } from './lib/iso-date';
 
 const CLASSES = {
   root: 'relative select-none',

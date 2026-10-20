@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import { EnquiryFallback } from '@/components/enquiry/enquiry-fallback';
 import { EnquiryStepper } from '@/components/enquiry/enquiry-stepper';
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 export default function EnquirePage() {
   return (
     <div className="shell">
-      <Suspense>
+      <Suspense fallback={<EnquiryFallback />}>
         <EnquiryStepper />
       </Suspense>
     </div>

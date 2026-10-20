@@ -156,7 +156,7 @@ export function ListingView({ initial, locked = {} }: { initial: TalentPage; loc
                       exit={{ opacity: 0, scale: 0.94 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 30, delay: reduce ? 0 : Math.min(i % PAGE_SIZE, 8) * 0.03 }}
                     >
-                      <TalentCard talent={t} priority={i < 2} sizes="(min-width: 1440px) 240px, (min-width: 1024px) 22vw, (min-width: 768px) 30vw, 47vw" />
+                      <TalentCard talent={t} sizes="(min-width: 1440px) 240px, (min-width: 1024px) 22vw, (min-width: 768px) 30vw, 47vw" />
                     </motion.li>
                   ))}
                 </AnimatePresence>

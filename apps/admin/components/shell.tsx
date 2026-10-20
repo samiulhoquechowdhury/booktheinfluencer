@@ -65,6 +65,9 @@ export function Shell({ user, children }: { user: StaffUser; children: ReactNode
 
   return (
     <UserProvider user={user}>
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-lg focus:bg-bg-elevated focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:shadow-float">
+        Skip to content
+      </a>
       <div className="min-h-dvh lg:grid lg:grid-cols-[15rem_1fr]">
         <aside className="sticky top-0 hidden h-dvh border-r border-border bg-bg-elevated lg:block">{nav}</aside>
         <header className="sticky top-0 z-40 flex h-14 items-center justify-between border-b border-border bg-bg-elevated px-4 lg:hidden">

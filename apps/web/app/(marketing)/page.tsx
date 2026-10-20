@@ -11,7 +11,8 @@ import { categoryCover } from '@/lib/category-covers';
 import { CATEGORIES, CITIES } from '@/lib/reference';
 import { JsonLd, organizationLd } from '@/lib/seo/json-ld';
 
-export const revalidate = 3600;
+/** trd §13: catalogue pages refresh every 5 minutes, and at once when the API pings /api/revalidate. */
+export const revalidate = 300;
 
 
 export default async function HomePage() {

@@ -13,7 +13,8 @@ import { categoryName, categorySingular, cityName } from '@/lib/reference';
 import { JsonLd, breadcrumbLd, personLd } from '@/lib/seo/json-ld';
 import { Reveal, RevealItem } from '@/lib/motion';
 
-export const revalidate = 3600;
+/** trd §13: catalogue pages refresh every 5 minutes, and at once when the API pings /api/revalidate. */
+export const revalidate = 300;
 
 export async function generateStaticParams() {
   const all = await publicApi.talents.list({ pageSize: 48 });

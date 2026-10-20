@@ -2,9 +2,12 @@
 
 import { Popover } from 'radix-ui';
 import { CalendarDays, X } from 'lucide-react';
-import { useId, useState, type ReactNode } from 'react';
+import { lazy, Suspense, useId, useState, type ReactNode } from 'react';
 import { formatDate, todayIST } from '@repo/utils';
-import { Calendar, dateToIso, isoToDate } from './calendar';
+import { dateToIso, isoToDate } from './lib/iso-date';
+
+// The calendar (react-day-picker + date-fns) loads when a picker first opens, not with every page that has one.
+const Calendar = lazy(() => import('./calendar').then((m) => ({ default: m.Calendar })));
 import { FieldShell } from './field';
 import { cn } from './lib/cn';
 
@@ -108,22 +111,24 @@ export function DatePicker({
         }}
         className="pop z-[98] max-h-(--radix-popover-content-available-height) w-max max-w-[calc(100vw-1.5rem)] overflow-y-auto overscroll-contain rounded-2xl border border-border bg-bg-elevated p-3 shadow-float sm:p-4"
       >
-        <Calendar
-          mode="single"
-          selected={selected}
-          month={month}
-          onMonthChange={setMonth}
-          startMonth={isoToDate(minIso)}
-          disabled={[{ before: isoToDate(minIso) }, ...disabledDates.map(isoToDate)]}
-          onSelect={(d) => d && pick(dateToIso(d))}
-          classNames={{
-            day: 'relative size-9 p-0.5 text-center text-sm sm:size-10',
-            weekday: 'w-9 pb-1 text-center text-[0.6875rem] font-semibold tracking-wide text-fg-subtle uppercase sm:w-10',
-            month_caption: 'flex h-9 items-center pl-1',
-            button_previous: 'grid size-9 place-items-center rounded-full border border-border text-fg transition-[background-color,transform] hover:bg-surface-2 active:scale-90 disabled:pointer-events-none disabled:opacity-30',
-            button_next: 'grid size-9 place-items-center rounded-full border border-border text-fg transition-[background-color,transform] hover:bg-surface-2 active:scale-90 disabled:pointer-events-none disabled:opacity-30',
-          }}
-        />
+        <Suspense fallback={<div className="h-[21rem] w-[17.5rem] sm:w-[19.5rem]" aria-busy />}>
+          <Calendar
+            mode="single"
+            selected={selected}
+            month={month}
+            onMonthChange={setMonth}
+            startMonth={isoToDate(minIso)}
+            disabled={[{ before: isoToDate(minIso) }, ...disabledDates.map(isoToDate)]}
+            onSelect={(d) => d && pick(dateToIso(d))}
+            classNames={{
+              day: 'relative size-9 p-0.5 text-center text-sm sm:size-10',
+              weekday: 'w-9 pb-1 text-center text-[0.6875rem] font-semibold tracking-wide text-fg-subtle uppercase sm:w-10',
+              month_caption: 'flex h-9 items-center pl-1',
+              button_previous: 'grid size-9 place-items-center rounded-full border border-border text-fg transition-[background-color,transform] hover:bg-surface-2 active:scale-90 disabled:pointer-events-none disabled:opacity-30',
+              button_next: 'grid size-9 place-items-center rounded-full border border-border text-fg transition-[background-color,transform] hover:bg-surface-2 active:scale-90 disabled:pointer-events-none disabled:opacity-30',
+            }}
+          />
+        </Suspense>
         <div className="mt-3 flex items-start justify-between gap-3 border-t border-border pt-3">
           <div className="flex flex-wrap gap-1.5">
             {[

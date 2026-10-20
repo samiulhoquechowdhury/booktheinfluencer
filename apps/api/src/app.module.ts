@@ -8,6 +8,7 @@ import { ENV, type Env } from './config/env';
 import { AdminAuditController } from './admin/admin-audit.controller';
 import { AdminCatalogController } from './admin-catalog/admin-catalog.controller';
 import { AdminCatalogService } from './admin-catalog/admin-catalog.service';
+import { RevalidateWebInterceptor } from './admin-catalog/revalidate-web.interceptor';
 import { AdminUsersController } from './admin/admin-users.controller';
 import { AuditInterceptor } from './audit/audit.interceptor';
 import { AuditService } from './audit/audit.service';
@@ -82,6 +83,7 @@ export class AppModule {
         InvitesService,
         CatalogService,
         AdminCatalogService,
+        RevalidateWebInterceptor,
         EnquiriesService,
         PipelineService,
         QuotesService,

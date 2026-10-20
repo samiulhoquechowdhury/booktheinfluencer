@@ -37,4 +37,5 @@ Managed Postgres keeps its own point-in-time backups. These scripts give an inde
 - API: `NODE_ENV=production` refuses the dev-only adapters (console SMS, fake gateway, fake e-sign) and requires `SUPPORT_PHONE`. Set `CORS_ORIGINS`, `INVITE_BASE_URL` (website `/invite`), `STAFF_INVITE_BASE_URL` (admin `/invite`), distinct 32+ character secrets, `MFA_ENCRYPTION_KEY` (32 bytes, base64).
 - Web: `NEXT_PUBLIC_API_BASE=/api/v1`, `API_URL`, `NEXT_PUBLIC_SITE_URL`.
 - Admin: `API_URL`, `NEXT_PUBLIC_WEB_URL`, optionally `ADMIN_IP_ALLOWLIST`.
+- On-demand page refresh after catalogue edits: `WEB_REVALIDATE_URL` (website `/api/revalidate`) and `REVALIDATE_SECRET` on the API; the same `REVALIDATE_SECRET` on the website.
 - Monitoring: point uptime checks at `GET /v1/health` (checks the database). Error tracking (Sentry) is pending an account.

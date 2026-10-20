@@ -31,6 +31,9 @@ const EnvSchema = z.object({
   /** E-sign adapter. `fake` = local test provider (development/test only). */
   ESIGN_PROVIDER: z.enum(['fake']).default('fake'),
   ESIGN_WEBHOOK_SECRET: z.string().min(32, 'Use at least 32 characters'),
+  /** trd §13: the website's on-demand revalidation endpoint (…/api/revalidate) and its shared secret. Optional. */
+  WEB_REVALIDATE_URL: z.url().optional(),
+  REVALIDATE_SECRET: z.string().min(32, 'Use at least 32 characters').optional(),
   /** Customer site; the fake gateway's checkout links point here. */
   WEB_BASE_URL: z.url().default('http://localhost:3000'),
   /** QUO-6: quotes with a margin below this (basis points of the pre-tax subtotal) need SUPER_ADMIN approval. Placeholder until the client sets it (memory.md open questions). */

@@ -77,12 +77,12 @@ export function PortalView() {
               {bookings.data.map((b) => {
                 const past = b.event.date < today;
                 return (
-                  <RevealItem as="li" key={b.ref} className={cn('grid gap-4 rounded-2xl border border-border bg-surface p-5 md:grid-cols-[1fr_auto] md:items-center', past && 'opacity-70')}>
+                  <RevealItem as="li" key={b.ref} className={cn('grid gap-4 rounded-2xl border border-border bg-surface p-5 md:grid-cols-[1fr_auto] md:items-center', past && 'border-dashed bg-transparent')}>
                     <div>
                       <div className="flex flex-wrap items-center gap-2">
                         <span className="tabular text-xs text-fg-muted">{b.ref}</span>
                         <AvailabilityPill status={b.availability} size="sm" />
-                        {past && <span className="text-xs text-fg-subtle">Completed</span>}
+                        {past && <span className="rounded-full bg-surface-2 px-2 py-0.5 text-xs font-medium text-fg-muted">Completed</span>}
                       </div>
                       <p className="mt-2 font-display text-xl font-extrabold tracking-tight">{b.event.title}</p>
                       <p className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-fg-muted">

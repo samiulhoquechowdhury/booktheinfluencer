@@ -133,7 +133,9 @@ export function CategoryBanners({ banners }: { banners: CategoryBanner[] }) {
                 sizes="(min-width: 768px) 50vw, 100vw"
                 placeholder={b.image.blurDataURL ? 'blur' : 'empty'}
                 blurDataURL={b.image.blurDataURL}
-                priority={i < 2}
+                // Only the first banner is the LCP image on phones; preloading the second competed with it on slow links.
+                priority={i === 0}
+                loading={i === 1 ? 'eager' : undefined}
                 className="-z-10 object-cover object-right transition-transform duration-[1200ms] ease-(--ease-out-expo) group-hover:scale-[1.03]"
               />
               {/* Soft light fade keeps the copy legible where the art reaches in (narrow screens). */}

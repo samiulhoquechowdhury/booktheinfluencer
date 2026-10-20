@@ -116,8 +116,8 @@
 
 ### M1.9 Hardening & launch prep
 - [~] T-260 Security review: OWASP checklist, rate limits, headers, CORS, MFA enforcement (1.5d)  — _done: MFA now enforced in the session (phone-code sessions can't carry staff roles), origin checks on the proxies, headers/CSP, admin IP allowlist, Dependabot + `pnpm audit` (4 high advisories fixed via overrides); pending: global per-IP limit (needs the Redis client), external pen test. See `docs/runbook.md`_
-- [ ] T-261 Accessibility pass (axe + manual) (1d)
-- [ ] T-262 Performance pass: LCP, image optimisation, ISR (1d)
+- [x] T-261 Accessibility pass (axe + manual) (1d)  — _axe WCAG 2.1 AA on 13 website pages + 13 admin pages, desktop and phone: fixed every real failure (faded text below AA in How It Works and the talent portal, one muted lead); one reviewed false positive (breadcrumb under the fixed navbar while axe scrolls); admin skip link added_
+- [~] T-262 Performance pass: LCP, image optimisation, ISR (1d)  — _throttled phone (4G-like, 4× CPU): listing CLS 0.659 → 0 and SEO links in HTML (server fallback), enquire LCP 3.6 s → 1.1 s, −20 KB JS (lazy calendar), ISR 5 min + on-demand revalidation from the API. Hero-image LCP still ~4 s: bandwidth/JS-bound (~400 KB JS, 147 KB fonts); next levers are client-side Zod/motion weight and font subsetting_
 - [x] T-263 Backups + restore drill (0.5d)  — _`scripts/db-backup.sh`, `scripts/db-restore-drill.sh`; drill passed on dev 2026-10-20_
 - [~] T-264 Sentry, uptime monitoring, alerting (0.5d)  — _`GET /v1/health` checks the DB for uptime monitors; Sentry waits for an account_
 - [~] T-265 Legal pages live; consent capture on forms (0.5d)  — _placeholder legal copy + consent checkbox; awaiting T-007 lawyer text_

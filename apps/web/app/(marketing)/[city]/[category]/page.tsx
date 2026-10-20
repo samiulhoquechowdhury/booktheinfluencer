@@ -4,13 +4,15 @@ import { Suspense } from 'react';
 import Link from 'next/link';
 import { CATEGORY_SLUGS, CITY_SLUGS, CategorySlugSchema, CitySlugSchema } from '@repo/schemas';
 import { ListingHero } from '@/components/listing/listing-hero';
+import { ListingFallback } from '@/components/listing/listing-fallback';
 import { ListingView } from '@/components/listing/listing-view';
 import { publicApi } from '@/lib/api/server';
 import { CATEGORIES, CITIES, categoryBySlug, cityBySlug } from '@/lib/reference';
 import { JsonLd, breadcrumbLd } from '@/lib/seo/json-ld';
 
 /** SEO landing (CAT-10): /guwahati/singers etc. Fully static, ISR hourly. */
-export const revalidate = 3600;
+/** trd §13: catalogue pages refresh every 5 minutes, and at once when the API pings /api/revalidate. */
+export const revalidate = 300;
 export const dynamicParams = false;
 export const generateStaticParams = () => CITY_SLUGS.flatMap((city) => CATEGORY_SLUGS.map((category) => ({ city, category })));
 
@@ -56,7 +58,7 @@ export default async function CityCategoryPage({ params }: Props) {
         description={`${category.name} based in or travelling to ${city.name}, for weddings, annual days, college fests and launches. Your manager confirms availability and sends one itemised quote.`}
         crumbs={crumbs}
       />
-      <Suspense>
+      <Suspense fallback={<ListingFallback initial={initial} />}>
         <ListingView initial={initial} locked={{ category: category.slug, city: city.slug }} />
       </Suspense>
       <section aria-labelledby="more-title" className="shell border-t border-border py-16">

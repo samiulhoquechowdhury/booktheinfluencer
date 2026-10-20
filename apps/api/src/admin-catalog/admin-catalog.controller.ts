@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpCode, Inject, Param, Patch, Post, Put, Query, Req } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Inject, Param, Patch, Post, Put, Query, Req, UseInterceptors } from '@nestjs/common';
 import type { Request } from 'express';
 import {
   AdminTalentQuerySchema,
@@ -23,6 +23,7 @@ import { CurrentUser, Roles } from '../auth/decorators';
 import type { AuthUserRef } from '../auth/guards';
 import { ZodPipe } from '../common/zod.pipe';
 import { AdminCatalogService } from './admin-catalog.service';
+import { RevalidateWebInterceptor } from './revalidate-web.interceptor';
 
 /** trd §7: all staff may read the catalogue incl. rate cards; talent managers (and super admins) edit. */
 const STAFF_READ = ['SALES', 'TALENT_MANAGER', 'OPS', 'ACCOUNTS'] as const;
@@ -30,6 +31,7 @@ const Edit = () => Roles('TALENT_MANAGER');
 
 @Controller('admin')
 @Roles(...STAFF_READ)
+@UseInterceptors(RevalidateWebInterceptor)
 export class AdminCatalogController {
   constructor(@Inject(AdminCatalogService) private readonly svc: AdminCatalogService) {}
 
