@@ -214,6 +214,9 @@ function BookingRow({ leadId, b }: { leadId: string; b: WorkspaceBooking }) {
           </span>
         )}
         {b.cancelledAt && <span className="rounded-full bg-danger/10 px-2 py-1 font-medium text-danger">Cancelled</span>}
+        <Link href={`/bookings/${b.id}/quotes`} className="ml-auto font-medium text-primary-text hover:underline">
+          Quotes →
+        </Link>
       </div>
       {canSet && (
         <div className="mt-3 flex flex-wrap items-center gap-2">

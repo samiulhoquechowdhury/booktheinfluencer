@@ -22,7 +22,7 @@
 ### M0.2 Design
 - [ ] T-010 Design tokens + component library in Figma (`design.md` §3–4)
 - [ ] T-011 Customer screens: home, listing, profile, enquiry, booking detail (mobile + desktop)
-- [~] T-012 Admin screens: pipeline, lead workspace, quote builder, talent edit, dashboard  — _`apps/admin`: staff sign-in (password + authenticator), overview, pipeline board/table, lead workspace done; quote builder, talents, payments/payouts, settings, audit next_
+- [~] T-012 Admin screens: pipeline, lead workspace, quote builder, talent edit, dashboard  — _`apps/admin`: staff sign-in (password + authenticator), overview, pipeline board/table, lead workspace done; quote builder done; talents, payments/payouts, settings, audit next_
 - [ ] T-013 Clickable prototype; 5 user tests (2 corporate, 2 planners, 1 private)
 
 ---
@@ -80,7 +80,7 @@
 
 ### M1.5 Quotes (week 7–8) — QUO
 - [x] T-180 Quote model, versions, line items, tax calc, milestone plan (1.5d)  — _`packages/utils/src/quote.ts` + `/v1/admin/bookings/:id/quotes`_
-- [~] T-181 Admin quote builder with rate card hints, live totals, margin (finance only) (2.5d)  — _API done (role-aware views; payout TM/finance, cost & margin finance only); admin UI pending_
+- [x] T-181 Admin quote builder with rate card hints, live totals, margin (finance only) (2.5d)  — _`apps/admin` `/bookings/:id/quotes`: versions, editor with live totals (same `calculateQuote`), role-aware payout/cost/margin columns, send, super-admin approve/return_
 - [x] T-182 Approval rule (below minimum / margin floor) + approval action (1d)  — _floor `QUOTE_MARGIN_FLOOR_BPS` (placeholder 10% until the client decides)_
 - [ ] T-183 Quote PDF render in worker (1d)
 - [~] T-184 Send quote: email/WA with secure link (0.5d)  — _send action + lead → QUOTE_SENT done; delivery waits for the worker and email/WhatsApp vendor_

@@ -5,6 +5,10 @@ export const can = (u: Pick<StaffUser, 'roles'>, ...roles: StaffRole[]) => u.rol
 
 export const WORK_LEADS: StaffRole[] = ['SALES', 'TALENT_MANAGER', 'OPS'];
 export const SET_AVAILABILITY: StaffRole[] = ['SALES', 'TALENT_MANAGER'];
+/** Quotes (trd §7): who builds them, who sees the talent payout, who sees cost and margin. */
+export const BUILD_QUOTES: StaffRole[] = ['SALES', 'TALENT_MANAGER', 'ACCOUNTS'];
+export const SEE_PAYOUT: StaffRole[] = ['TALENT_MANAGER', 'ACCOUNTS'];
+export const SEE_FINANCE: StaffRole[] = ['ACCOUNTS'];
 export const ROLE_LABELS: Record<StaffRole, string> = { SUPER_ADMIN: 'Super admin', SALES: 'Sales', TALENT_MANAGER: 'Talent manager', OPS: 'Ops', ACCOUNTS: 'Accounts' };
 
 /** Staff-facing stage names (the customer copy lives in @repo/utils STAGE_LABELS). */

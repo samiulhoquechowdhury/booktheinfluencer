@@ -75,3 +75,36 @@ export type Analytics = {
   avgHoursToConfirm: number | null;
   finance?: { marginPaise: string; receivablesPaise: string; overduePaise: string; pendingPayouts: { count: number; amountPaise: string } };
 };
+
+/** Staff quote view (apps/api quotes.service `view`). Payout / cost / margin keys appear only for roles allowed to see them. */
+export type QuoteLineView = { id: string; type: string; description: string; amountPaise: string; taxPaise: string; payoutPaise?: string | null; internalCostPaise?: string };
+export type QuoteView = {
+  id: string;
+  bookingId: string;
+  version: number;
+  status: 'DRAFT' | 'PENDING_APPROVAL' | 'SENT' | 'ACCEPTED' | 'REJECTED' | 'EXPIRED' | 'SUPERSEDED';
+  validUntil: string;
+  sentAt: string | null;
+  acceptedAt: string | null;
+  changeRequest: string | null;
+  notes: string | null;
+  inclusions: string[];
+  gstBps: number;
+  approval: { reasons: string[]; approved: boolean };
+  lines: QuoteLineView[];
+  milestones: { label: string; percentBps: number; dueDate: string; amountPaise: string }[];
+  subtotalPaise: string;
+  taxPaise: string;
+  totalPaise: string;
+  payoutTotalPaise?: string;
+  payoutComplete?: boolean;
+  internalCostPaise?: string;
+  marginPaise?: string;
+  marginBps?: number;
+};
+export type BookingQuotes = {
+  booking: { id: string; ref: string; availability: string; lead: { id: string; ref: string; stage: string; eventType: string }; talent: { slug: string; name: string } };
+  rateCard: { eventType: string | null; minimumRupees: number; sellingRupees: number; commissionBps: number } | null;
+  marginFloorBps?: number;
+  quotes: QuoteView[];
+};
