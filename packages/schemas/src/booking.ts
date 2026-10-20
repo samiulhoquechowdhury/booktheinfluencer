@@ -131,7 +131,8 @@ export const BookingEventSchema = z.strictObject({
   type: EventTypeSchema,
   title: z.string(),
   date: IsoDateSchema,
-  startTime: z.string().regex(/^\d{2}:\d{2}$/),
+  /** null until staff agree a start time with the customer. */
+  startTime: z.string().regex(/^\d{2}:\d{2}$/).nullable(),
   city: CitySlugSchema,
   venue: z.string(),
   audienceSize: z.number().int().positive(),

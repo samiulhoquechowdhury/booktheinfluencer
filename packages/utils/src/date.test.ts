@@ -8,6 +8,7 @@ describe('IST dates', () => {
   it('formats wall-clock times', () => {
     expect(formatTime('19:30')).toBe('7:30 PM IST');
     expect(formatTime('00:05')).toBe('12:05 AM IST');
+    expect(formatTime(null)).toBe('Time to be confirmed');
   });
   it('converts UTC instants to IST', () => {
     expect(formatDateTime('2027-02-13T20:00:00Z')).toBe('Sun, 14 Feb 2027 · 1:30 AM IST');

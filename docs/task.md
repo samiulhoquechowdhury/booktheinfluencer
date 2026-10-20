@@ -79,13 +79,13 @@
 - [ ] T-168 Follow-up tasks/reminders (SHOULD) (1d)
 
 ### M1.5 Quotes (week 7–8) — QUO
-- [ ] T-180 Quote model, versions, line items, tax calc, milestone plan (1.5d)
-- [ ] T-181 Admin quote builder with rate card hints, live totals, margin (finance only) (2.5d)
-- [ ] T-182 Approval rule (below minimum / margin floor) + approval action (1d)
+- [x] T-180 Quote model, versions, line items, tax calc, milestone plan (1.5d)  — _`packages/utils/src/quote.ts` + `/v1/admin/bookings/:id/quotes`_
+- [~] T-181 Admin quote builder with rate card hints, live totals, margin (finance only) (2.5d)  — _API done (role-aware views; payout TM/finance, cost & margin finance only); admin UI pending_
+- [x] T-182 Approval rule (below minimum / margin floor) + approval action (1d)  — _floor `QUOTE_MARGIN_FLOOR_BPS` (placeholder 10% until the client decides)_
 - [ ] T-183 Quote PDF render in worker (1d)
-- [ ] T-184 Send quote: email/WA with secure link (0.5d)
-- [~] T-185 Web: quote view, accept (IP + timestamp), request changes, expiry (1.5d)  — _UI done on mock API (`apps/web`); API part pending_
-- [~] T-186 Serializer tests: customer quote DTO has no internal cost (0.5d)  — _mock serializer tests pass; NestJS serializer tests pending_
+- [~] T-184 Send quote: email/WA with secure link (0.5d)  — _send action + lead → QUOTE_SENT done; delivery waits for the worker and email/WhatsApp vendor_
+- [~] T-185 Web: quote view, accept (IP + timestamp), request changes, expiry (1.5d)  — _UI done on mock; API done (`/v1/me/bookings`, `…/quotes/:id/decision`); web switch to the API pending_
+- [x] T-186 Serializer tests: customer quote DTO has no internal cost (0.5d)  — _API e2e parses the strict `CustomerBookingSchema` and checks for leaked fields_
 
 ### M1.6 Contracts & payments (week 8–10) — CON, PAY
 - [ ] T-200 Documents module: private bucket, presigned GET (0.5d)

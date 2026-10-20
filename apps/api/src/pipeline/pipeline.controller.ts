@@ -3,6 +3,7 @@ import type { Request } from 'express';
 import {
   AvailabilityUpdateSchema,
   LeadBookingAddSchema,
+  LeadBriefUpdateSchema,
   LeadNoteSchema,
   LeadOwnerSchema,
   LeadTransitionSchema,
@@ -49,6 +50,12 @@ export class PipelineController {
   @HttpCode(200)
   async transition(@Param('id') id: string, @Body(new ZodPipe(LeadTransitionSchema)) b: LeadTransition, @CurrentUser() u: AuthUserRef, @Req() req: Request) {
     return { data: await this.svc.transition(id, b, u, req.ip) };
+  }
+
+  @Patch('leads/:id/brief')
+  @Work()
+  async brief(@Param('id') id: string, @Body(new ZodPipe(LeadBriefUpdateSchema)) b: z.infer<typeof LeadBriefUpdateSchema>, @CurrentUser() u: AuthUserRef, @Req() req: Request) {
+    return { data: await this.svc.updateBrief(id, b, u, req.ip) };
   }
 
   @Post('leads/:id/notes')

@@ -366,6 +366,7 @@ model Lead {
   venue          String?
   audienceSize   Int?
   durationMins   Int?
+  startTime      String? // HH:MM IST; set by staff once agreed
   budgetMinPaise BigInt?
   budgetMaxPaise BigInt?
   language       String?
@@ -435,7 +436,11 @@ model Quote {
   approvedById      String?
   changeRequest     String?
   notes             String?
-  milestonePlan     Json // [{ label, percentBps | amountPaise, dueDate }]
+  milestonePlan     Json // [{ label, percentBps, dueDate }]
+  gstBps            Int         @default(1800) // shown to the customer; every line uses it
+  inclusions        String[]    @default([])
+  approvalReasons   String[]    @default([]) // why it needs SUPER_ADMIN approval (QUO-6)
+  sentAt            DateTime?
   createdAt         DateTime    @default(now())
 
   booking   Booking         @relation(fields: [bookingId], references: [id], onDelete: Cascade)

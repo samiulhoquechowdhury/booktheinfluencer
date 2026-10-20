@@ -47,7 +47,7 @@ Turborepo + pnpm · Next.js 15 (web, admin) · NestJS 11 (api, worker) · Prisma
 - [ ] Brand name / domain
 - [ ] Launch geography (single city/region vs pan-India)
 - [ ] Launch categories (proposed: singers, DJs, comedians, anchors/speakers, creators)
-- [ ] Commission %, service fee %, margin floor for approval
+- [ ] Commission %, service fee %, margin floor for approval — _margin floor is a placeholder 10% (`QUOTE_MARGIN_FLOOR_BPS`)_
 - [ ] Payment gateway (assumed Razorpay) · e-sign vendor · SMS/WA vendor
 - [ ] Pilot target N bookings
 - [ ] MVP budget ceiling and team size
@@ -67,7 +67,7 @@ Turborepo + pnpm · Next.js 15 (web, admin) · NestJS 11 (api, worker) · Prisma
 | Design | In code (no Figma) | Tokens + components in `packages/ui`; motion system in `apps/web/lib/motion` |
 | Repo / foundation | Partial | Turborepo + pnpm; `apps/web`, `packages/{schemas,ui,utils,config,db}`; Docker Postgres + Redis; state machine in `packages/utils` |
 | Web frontend | Clickable on mock API | Home, listing, category, city/category SEO, profile, enquiry, account, booking detail, favourites, talent portal, content/legal, 404/error |
-| Backend | Core ready | `packages/db` (schema, migration, seed); `apps/api` NestJS core with health check + e2e tests. M1.2 done in the API; public catalogue API live (T-146/147). `apps/web` uses it when `API_URL` is set (catalogue only; rest still mock). Admin catalogue API done (T-140…145; uploads wait for a storage vendor). Enquiry & pipeline API done (M1.4: T-160 minus Turnstile, T-163…167; admin UI pending). Next: quotes (M1.5). `lib/api` transports swap later (`NEXT_PUBLIC_API_BASE`) |
+| Backend | Core ready | `packages/db` (schema, migration, seed); `apps/api` NestJS core with health check + e2e tests. M1.2 done in the API; public catalogue API live (T-146/147). `apps/web` uses it when `API_URL` is set (catalogue only; rest still mock). Admin catalogue API done (T-140…145; uploads wait for a storage vendor). Enquiry & pipeline API done (M1.4: T-160 minus Turnstile, T-163…167; admin UI pending). Quotes API done (M1.5: T-180/182/186, T-181/184/185 API parts; PDF + delivery wait for the worker). Next: contracts & payments (M1.6). `lib/api` transports swap later (`NEXT_PUBLIC_API_BASE`) |
 | Integrations | Not started | Blocked on vendor choice |
 
 ## 7. Glossary
@@ -110,6 +110,9 @@ _(add as they happen — e.g. gateway webhook quirks, DLT template rejections, P
 - Lead/booking refs come from Postgres sequences `lead_ref_seq` / `booking_ref_seq` (start 1000; seed uses …000101+). Use `nextLeadRef`/`nextBookingRef` in `apps/api/src/pipeline/refs.ts` inside the same transaction.
 - **CONFIRMED is reached only through `PipelineService.evaluateConfirmation(bookingId)`** (idempotent). Quote acceptance, contract signing and advance-payment handlers (M1.5/M1.6) must call it after their write, as rep acceptance already does.
 - **Fixed 2026-10-20: API e2e tests had been running against `talent_dev`.** `PrismaService` used Prisma's own `.env` loading (packages/db/.env → dev) and the test helper fell back to `process.env.DATABASE_URL`, which Prisma had already filled. Now `PrismaService` takes `env.DATABASE_URL`, and tests read only `TEST_DATABASE_URL` and refuse any database not named `*_test`. Dev leftovers were removed; seed data was intact.
+- Quotes: money on staff and customer responses is paise as decimal strings. Payout is visible/writable only by TALENT_MANAGER/ACCOUNTS/SUPER_ADMIN, internal cost and margin only by ACCOUNTS/SUPER_ADMIN; other roles' edits keep those values by line `id` (sending a hidden field = 403). A version is editable only while DRAFT/PENDING_APPROVAL, and any edit clears approval. Approving sends it.
+- Quote acceptance creates the PaymentMilestones from the plan (first = advance) and calls `evaluateConfirmation`. M1.6 contract-signed and advance-paid handlers must call it too.
+- `Lead.startTime` is optional (the brief form doesn't ask); staff set it via `PATCH /v1/admin/leads/:id/brief`. `BookingEventSchema.startTime` is nullable, and `formatTime(null)` → "Time to be confirmed".
 - The enquiry consumes the OTP before creating the lead; a failed write means the customer requests a new code.
 - API e2e test fixtures that create PUBLISHED talents must satisfy the public schema (languages, event types, tagline, bio, 4 photos) — the catalogue test parses every published talent in the test DB.
 - pnpm isn't on PATH here: use `npx --yes pnpm@9.15.9 …`. Run the seed through `pnpm --filter @repo/db seed` (calling `prisma db seed` directly can't find `tsx`).
@@ -121,3 +124,4 @@ _(add as they happen — e.g. gateway webhook quirks, DLT template rejections, P
 | 2026-10-16 | Claude (frontend) | Built `apps/web` on mock data: tokens/fonts, motion library, shell, all customer + portal pages; mock API with serializer tests; ticked T-1xx/T-2xx UI items as `[~]` |
 | 2026-10-19 | Claude (foundation) | T-108 state machine + tests; T-102 Docker Postgres/Redis; T-104 `packages/db` schema, migration, seed; T-105 env validation for web + api; T-106 NestJS core in `apps/api`; T-103 CI workflow; T-120 OTP sign-in, T-122 sessions, T-123 guards (ownership pending); fixed phone normalisation bug; T-121 staff password + TOTP MFA; T-124 invites; T-125 users/roles API; T-126 audit log; T-146/147 public catalogue API; web catalogue switch via API_URL; T-140…145 admin catalogue API; fixed PATCH-defaults bug |
 | 2026-10-20 | Claude (backend) | M1.4 API: `POST /v1/enquiries` (T-160 minus Turnstile), pipeline list/board/workspace (T-163/165 API), transitions with reason/notes/audit (T-164), availability + rep acceptance + automatic confirmation (T-166), round-robin owner (T-167); migration `pipeline_refs` (Booking.ref, Lead.createdIp, ref sequences) |
+| 2026-10-20 | Claude (backend) | Fixed e2e tests hitting talent_dev (PrismaService URL, TEST_DATABASE_URL guard). M1.5 quotes API: quote maths in utils, staff builder with role-aware fields, QUO-6 approval, send, customer bookings + accept/request changes/expiry; migration `quotes` (Lead.startTime, Quote.gstBps/inclusions/approvalReasons/sentAt) |

@@ -28,8 +28,9 @@ export function formatDateShort(value: string | Date): string {
   return `${p.day} ${p.month}`;
 }
 
-/** "7:30 PM IST" from a Date/ISO string, or from "19:30" wall-clock time (already IST). */
-export function formatTime(value: string | Date): string {
+/** "7:30 PM IST" from a Date/ISO string, or from "19:30" wall-clock time (already IST); null = not agreed yet. */
+export function formatTime(value: string | Date | null): string {
+  if (value === null) return 'Time to be confirmed';
   if (typeof value === 'string' && /^\d{2}:\d{2}$/.test(value)) {
     const [h = 0, m = 0] = value.split(':').map(Number);
     const hour12 = h % 12 === 0 ? 12 : h % 12;

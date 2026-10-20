@@ -148,6 +148,7 @@ export class PipelineService {
         venue: l.venue,
         audienceSize: l.audienceSize,
         durationMins: l.durationMins,
+        startTime: l.startTime,
         budget: { minRupees: rupees(l.budgetMinPaise), maxRupees: rupees(l.budgetMaxPaise) },
         language: l.language,
         notes: l.notes,
@@ -190,6 +191,17 @@ export class PipelineService {
       const note = body.reason ?? body.completionNote ?? body.note ?? null;
       await tx.activity.create({ data: { leadId: id, actorId: actor.id, type: 'stage_change', body: note, meta: { from: lead.stage, to: body.to } } });
       await this.audit.record({ actorId: actor.id, action: 'lead.transition', entity: 'lead', entityId: id, before: { stage: lead.stage }, after: { stage: body.to, note }, ip }, tx);
+    });
+    return this.workspace(id);
+  }
+
+  /** Brief details staff agree after the enquiry (the form doesn't ask for a start time). */
+  async updateBrief(id: string, b: { startTime: string | null }, actor: AuthUserRef, ip?: string) {
+    await this.prisma.$transaction(async (tx) => {
+      const lead = await tx.lead.findUnique({ where: { id } });
+      if (!lead) throw new NotFoundError('Lead', id);
+      await tx.lead.update({ where: { id }, data: { startTime: b.startTime } });
+      await this.audit.record({ actorId: actor.id, action: 'lead.brief', entity: 'lead', entityId: id, before: { startTime: lead.startTime }, after: b, ip }, tx);
     });
     return this.workspace(id);
   }

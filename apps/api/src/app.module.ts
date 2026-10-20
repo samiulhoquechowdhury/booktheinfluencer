@@ -22,6 +22,9 @@ import { EnquiriesController } from './pipeline/enquiries.controller';
 import { EnquiriesService } from './pipeline/enquiries.service';
 import { PipelineController } from './pipeline/pipeline.controller';
 import { PipelineService } from './pipeline/pipeline.service';
+import { CustomerBookingsService } from './quotes/customer-bookings.service';
+import { AdminQuotesController, CustomerBookingsController } from './quotes/quotes.controller';
+import { QuotesService } from './quotes/quotes.service';
 import { UsersController } from './users/users.controller';
 
 /** Accept a caller's request id if it looks sane; otherwise mint one. Echoed in `x-request-id`. */
@@ -60,7 +63,7 @@ export class AppModule {
         PrismaModule,
         AuthModule,
       ],
-      controllers: [HealthController, CatalogController, UsersController, InvitesController, AdminInvitesController, AdminUsersController, AdminAuditController, AdminCatalogController, EnquiriesController, PipelineController],
+      controllers: [HealthController, CatalogController, UsersController, InvitesController, AdminInvitesController, AdminUsersController, AdminAuditController, AdminCatalogController, EnquiriesController, PipelineController, AdminQuotesController, CustomerBookingsController],
       providers: [
         { provide: APP_FILTER, useClass: GlobalErrorFilter },
         { provide: APP_INTERCEPTOR, useClass: AuditInterceptor },
@@ -70,6 +73,8 @@ export class AppModule {
         AdminCatalogService,
         EnquiriesService,
         PipelineService,
+        QuotesService,
+        CustomerBookingsService,
       ],
     };
   }
