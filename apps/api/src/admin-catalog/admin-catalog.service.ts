@@ -41,6 +41,7 @@ function toAdminTalent(t: AdminTalentRow) {
     tier: t.tier,
     status: t.status,
     featured: t.featured,
+    blackoutSelfEdit: t.blackoutSelfEdit,
     representationType: t.representationType,
     feeBand: t.feeBandMinPaise != null && t.feeBandMaxPaise != null ? { minRupees: rupees(t.feeBandMinPaise), maxRupees: rupees(t.feeBandMaxPaise) } : null,
     showreelUrl: t.showreelUrl,

@@ -248,6 +248,7 @@ model Talent {
   faqs               Json                     @default("[]") // [{ q, a }]
   followers          Json                     @default("[]") // [{ platform, count }] — public, sourced figures only
   userId             String?                  @unique // talent login
+  blackoutSelfEdit   Boolean                  @default(false) // TAL-3: talent may edit own blackout dates
   searchVector       Unsupported("tsvector")?
   createdAt          DateTime                 @default(now())
   updatedAt          DateTime                 @updatedAt

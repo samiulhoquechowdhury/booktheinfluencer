@@ -30,6 +30,8 @@ import { ESIGN_PROVIDER, FakeESign } from './contracts/esign';
 import { FakeGateway, PAYMENT_GATEWAY } from './payments/gateway';
 import { AdminPaymentsController, CustomerPaymentsController, WebhooksController } from './payments/payments.controller';
 import { PaymentsService } from './payments/payments.service';
+import { PortalController } from './portal/portal.controller';
+import { PortalService } from './portal/portal.service';
 import { UsersController } from './users/users.controller';
 
 /** Accept a caller's request id if it looks sane; otherwise mint one. Echoed in `x-request-id`. */
@@ -68,7 +70,7 @@ export class AppModule {
         PrismaModule,
         AuthModule,
       ],
-      controllers: [HealthController, CatalogController, UsersController, InvitesController, AdminInvitesController, AdminUsersController, AdminAuditController, AdminCatalogController, EnquiriesController, PipelineController, AdminQuotesController, CustomerBookingsController, AdminPaymentsController, CustomerPaymentsController, WebhooksController],
+      controllers: [HealthController, CatalogController, UsersController, InvitesController, AdminInvitesController, AdminUsersController, AdminAuditController, AdminCatalogController, EnquiriesController, PipelineController, AdminQuotesController, CustomerBookingsController, AdminPaymentsController, CustomerPaymentsController, WebhooksController, PortalController],
       providers: [
         { provide: APP_FILTER, useClass: GlobalErrorFilter },
         { provide: APP_INTERCEPTOR, useClass: AuditInterceptor },
@@ -82,6 +84,7 @@ export class AppModule {
         CustomerBookingsService,
         PaymentsService,
         ContractsService,
+        PortalService,
         // Only the fake adapters exist until vendors are chosen (memory.md open questions); env validation refuses them in production.
         { provide: PAYMENT_GATEWAY, useFactory: (e: Env) => new FakeGateway(e.PAYMENT_WEBHOOK_SECRET, e.WEB_BASE_URL), inject: [ENV] },
         { provide: ESIGN_PROVIDER, useFactory: (e: Env) => new FakeESign(e.ESIGN_WEBHOOK_SECRET), inject: [ENV] },

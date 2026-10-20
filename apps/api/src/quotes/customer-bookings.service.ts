@@ -2,13 +2,14 @@ import { Inject, Injectable } from '@nestjs/common';
 import type { Prisma } from '@repo/db';
 import type { CustomerBookingSchema, CustomerQuoteSchema, QuoteDecision } from '@repo/schemas';
 import type { z } from 'zod';
-import { assertLeadTransition, calculateQuote, EVENT_TYPE_LABELS } from '@repo/utils';
+import { assertLeadTransition, calculateQuote } from '@repo/utils';
 import { AuditService } from '../audit/audit.service';
 import type { AuthUserRef } from '../auth/guards';
 import { DomainError, NotFoundError } from '../common/errors';
 import { ENV, type Env } from '../config/env';
 import { PipelineService, toFacts } from '../pipeline/pipeline.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { toBookingEvent } from './booking-event';
 import { todayIST } from './quote-access';
 import { toCalc, withAmounts } from './quotes.service';
 
@@ -113,21 +114,8 @@ export class CustomerBookingsService {
           ? { src: cover.key, alt: cover.alt, width: cover.width ?? 1200, height: cover.height ?? 1500, ...(cover.blurDataURL ? { blurDataURL: cover.blurDataURL } : {}), ...(cover.credit ? { credit: cover.credit } : {}) }
           : { src: '/talent/placeholder.jpg', alt: b.talent.stageName, width: 1200, height: 1500 },
       },
-      event: this.event(l),
+      event: toBookingEvent(l),
       createdAt: b.createdAt.toISOString(),
-    };
-  }
-
-  private event(l: BookingRow['lead']) {
-    return {
-      type: l.eventType as CustomerBooking['event']['type'],
-      title: l.companyName ? `${EVENT_TYPE_LABELS[l.eventType as keyof typeof EVENT_TYPE_LABELS] ?? 'Event'} · ${l.companyName}` : (EVENT_TYPE_LABELS[l.eventType as keyof typeof EVENT_TYPE_LABELS] ?? 'Event'),
-      date: day(l.eventDate),
-      startTime: l.startTime,
-      city: l.city as CustomerBooking['event']['city'],
-      venue: l.venue ?? '',
-      audienceSize: l.audienceSize ?? 1,
-      durationMins: l.durationMins ?? 60,
     };
   }
 
@@ -178,7 +166,7 @@ export class CustomerBookingsService {
     ]);
     return {
       bookings: bookings.map((b) => this.summary(b)),
-      briefs: briefs.map((l) => ({ ref: l.ref, event: this.event(l), createdAt: l.createdAt.toISOString() })),
+      briefs: briefs.map((l) => ({ ref: l.ref, event: toBookingEvent(l), createdAt: l.createdAt.toISOString() })),
     };
   }
 

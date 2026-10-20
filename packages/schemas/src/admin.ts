@@ -46,6 +46,8 @@ const TalentFields = z.object({
   tags: z.array(z.string().trim().min(1).max(30)).max(20).default([]),
   tier: TierSchema.default('STANDARD'),
   featured: z.boolean().default(false),
+  /** TAL-3: let the talent edit their own blackout dates in the portal. */
+  blackoutSelfEdit: z.boolean().default(false),
   representationType: RepresentationTypeSchema,
   /** null = "On request". */
   feeBand: FeeBandRupees.nullable().default(null),
