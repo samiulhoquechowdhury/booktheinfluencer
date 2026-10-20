@@ -1,6 +1,7 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import type { AvailabilityStatus, LeadStage, Prisma } from '@repo/db';
-import { assertAvailabilityChange, assertLeadTransition, isConfirmable, nextLeadStages, type BookingFacts } from '@repo/utils';
+import type { OpsChecklist } from '@repo/schemas';
+import { assertAvailabilityChange, assertLeadTransition, formatINR, isConfirmable, nextLeadStages, type BookingFacts } from '@repo/utils';
 import { AuditService } from '../audit/audit.service';
 import type { AuthUserRef } from '../auth/guards';
 import { DomainError, NotFoundError } from '../common/errors';
@@ -165,6 +166,8 @@ export class PipelineService {
         confirmedAt: b.confirmedAt?.toISOString() ?? null,
         quoteStatuses: b.quotes.map((q) => q.status),
         confirmable: isConfirmable(toFacts(b)),
+        opsChecklist: b.opsChecklist,
+        cancelledAt: b.cancelledAt?.toISOString() ?? null,
       })),
       activity: l.activities.map((a) => ({ id: a.id, type: a.type, body: a.body, meta: a.meta, actor: a.actor?.name ?? null, at: a.createdAt.toISOString() })),
       createdAt: l.createdAt.toISOString(),
@@ -178,21 +181,58 @@ export class PipelineService {
   }
 
   /** PIPE-3/4/5: state-machine transition, logged with actor, time and note. */
-  async transition(id: string, body: { to: LeadStage; reason?: string; completionNote?: string; note?: string }, actor: AuthUserRef, ip?: string) {
+  async transition(id: string, body: { to: LeadStage; reason?: string; completionNote?: string; note?: string; policyRef?: string }, actor: AuthUserRef, ip?: string) {
     await this.prisma.$transaction(async (tx) => {
       const lead = await this.loadForChange(tx, id);
       assertLeadTransition(lead.stage, body.to, { actor: 'user', ownerId: lead.ownerId, bookings: lead.bookings.map(toFacts), reason: body.reason, completionNote: body.completionNote });
 
       await tx.lead.update({ where: { id }, data: { stage: body.to, lostReason: body.to === 'LOST' ? body.reason! : undefined } });
-      if (body.to === 'CANCELLED') await tx.booking.updateMany({ where: { leadId: id, cancelledAt: null }, data: { cancelledAt: new Date(), cancelReason: body.reason! } });
+      if (body.to === 'CANCELLED') await this.cancelBookings(tx, id, body.reason!, body.policyRef, actor);
       if (body.to === 'SETTLEMENT') await tx.booking.updateMany({ where: { leadId: id, availability: 'CONFIRMED' }, data: { completionNote: body.completionNote! } });
-      if (body.to === 'EVENT_COMPLETED') await tx.booking.updateMany({ where: { leadId: id, availability: 'CONFIRMED', completedAt: null }, data: { completedAt: new Date() } });
+      if (body.to === 'EVENT_COMPLETED') await this.completeBookings(tx, id, actor);
 
       const note = body.reason ?? body.completionNote ?? body.note ?? null;
       await tx.activity.create({ data: { leadId: id, actorId: actor.id, type: 'stage_change', body: note, meta: { from: lead.stage, to: body.to } } });
       await this.audit.record({ actorId: actor.id, action: 'lead.transition', entity: 'lead', entityId: id, before: { stage: lead.stage }, after: { stage: body.to, note }, ip }, tx);
     });
     return this.workspace(id);
+  }
+
+  /** OPS-4 / SET-1: confirmed bookings are completed and get a payout record for the contracted payout. */
+  private async completeBookings(tx: Prisma.TransactionClient, leadId: string, actor: AuthUserRef) {
+    const bookings = await tx.booking.findMany({ where: { leadId, availability: 'CONFIRMED', cancelledAt: null }, include: { payout: true, talent: { select: { stageName: true } } } });
+    for (const b of bookings) {
+      await tx.booking.update({ where: { id: b.id }, data: { completedAt: b.completedAt ?? new Date() } });
+      if (b.payout || b.payoutTotalPaise == null) continue;
+      const payout = await tx.payout.create({ data: { bookingId: b.id, amountPaise: b.payoutTotalPaise } });
+      await tx.activity.create({ data: { leadId, actorId: actor.id, type: 'payout_created', body: `Payout due to ${b.talent.stageName}`, meta: { bookingId: b.id, payoutId: payout.id } } });
+    }
+  }
+
+  /** OPS-5: close what's still open; money already received goes to a refund review (refunds are manual in the MVP, PAY-6). */
+  private async cancelBookings(tx: Prisma.TransactionClient, leadId: string, reason: string, policyRef: string | undefined, actor: AuthUserRef) {
+    const bookings = await tx.booking.findMany({ where: { leadId, cancelledAt: null }, include: { milestones: { include: { payments: true } } } });
+    for (const b of bookings) {
+      await tx.booking.update({ where: { id: b.id }, data: { cancelledAt: new Date(), cancelReason: reason, cancelPolicyRef: policyRef ?? null } });
+      await tx.paymentMilestone.updateMany({ where: { bookingId: b.id, status: { in: ['PENDING', 'LINK_SENT', 'OVERDUE'] } }, data: { status: 'CANCELLED' } });
+      await tx.contract.updateMany({ where: { bookingId: b.id, status: { in: ['DRAFT', 'SENT', 'PARTIALLY_SIGNED'] } }, data: { status: 'VOID' } });
+      await tx.payout.updateMany({ where: { bookingId: b.id, status: { in: ['PENDING', 'SCHEDULED'] } }, data: { status: 'ON_HOLD' } });
+      const paid = b.milestones.flatMap((m) => m.payments).filter((p) => p.status === 'captured').reduce((a, p) => a + p.amountPaise, 0n);
+      if (paid > 0n)
+        await tx.activity.create({ data: { leadId, actorId: actor.id, type: 'refund_review', body: `${formatINR(paid)} received; review the refund${policyRef ? ` under ${policyRef}` : ''}`, meta: { bookingId: b.id, paidPaise: paid.toString(), policyRef: policyRef ?? null } } });
+    }
+  }
+
+  /** OPS-3: the booking's ops checklist (travel, hotel, transport, rider, reporting time, contact). */
+  async setOpsChecklist(bookingId: string, checklist: OpsChecklist, actor: AuthUserRef, ip?: string) {
+    const leadId = await this.prisma.$transaction(async (tx) => {
+      const b = await tx.booking.findUnique({ where: { id: bookingId } });
+      if (!b) throw new NotFoundError('Booking', bookingId);
+      await tx.booking.update({ where: { id: bookingId }, data: { opsChecklist: checklist as Prisma.InputJsonValue } });
+      await this.audit.record({ actorId: actor.id, action: 'booking.ops', entity: 'booking', entityId: bookingId, after: { reportingTime: checklist.reportingTime }, ip }, tx);
+      return b.leadId;
+    });
+    return this.workspace(leadId);
   }
 
   /** Brief details staff agree after the enquiry (the form doesn't ask for a start time). */

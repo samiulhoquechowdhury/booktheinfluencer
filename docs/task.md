@@ -106,11 +106,11 @@
 - [x] T-223 Serializer tests: talent DTO has payout only, no selling price/margin (0.5d)  — _`apps/api/test/portal.e2e.test.ts` (strict schemas + leak checks)_
 
 ### M1.8 Ops, settlement, analytics (week 11–12) — OPS, SET, ANA
-- [ ] T-240 Ops checklist on booking (SHOULD) (1d)
-- [ ] T-241 Mark completed; cancellation flow with reason (1d)
-- [ ] T-242 Payout records + mark paid (Accounts) (1d)
-- [ ] T-243 Margin calculation on confirmation/settlement (0.5d)
-- [ ] T-244 Analytics dashboard: pipeline, GMV, conversion, time-to-confirm, receivables, pending payouts (2d)
+- [~] T-240 Ops checklist on booking (SHOULD) (1d)  — _API done (`PUT /v1/admin/bookings/:id/ops`; reporting time + contact shown in the talent portal); admin UI pending_
+- [x] T-241 Mark completed; cancellation flow with reason (1d)  — _completion creates payouts; cancellation stores reason + policy ref, closes unpaid milestones/unsigned contracts, flags paid money for refund review (refunds manual, PAY-6)_
+- [x] T-242 Payout records + mark paid (Accounts) (1d)
+- [x] T-243 Margin calculation on confirmation/settlement (0.5d)  — _stored at acceptance, finalised when the payout is paid_
+- [~] T-244 Analytics dashboard: pipeline, GMV, conversion, time-to-confirm, receivables, pending payouts (2d)  — _API done (`GET /v1/admin/analytics`, finance block for ACCOUNTS/SUPER_ADMIN); admin UI pending_
 - [ ] T-245 Event reminders T-3/T-1, feedback request (0.5d)
 - [ ] T-246 Nightly reconciliation job (1d)
 

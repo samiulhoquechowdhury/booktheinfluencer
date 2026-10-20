@@ -403,6 +403,7 @@ model Booking {
   completionNote    String?
   cancelledAt       DateTime?
   cancelReason      String?
+  cancelPolicyRef   String? // OPS-5: which cancellation clause applies
   sellingTotalPaise BigInt? // from accepted quote
   payoutTotalPaise  BigInt? // INTERNAL + talent
   marginPaise       BigInt? // INTERNAL
@@ -479,19 +480,19 @@ model Contract {
 }
 
 model PaymentMilestone {
-  id            String          @id @default(cuid())
-  bookingId     String
-  label         String // "Advance", "Balance"
-  amountPaise   BigInt
-  dueDate       DateTime        @db.Date
-  status        MilestoneStatus @default(PENDING)
-  isAdvance     Boolean         @default(false)
-  paidAt        DateTime?
-  receiptNo     String?         @unique // RC-2026-001000, from receipt_seq
-  gatewayLinkId String?         @unique
+  id             String          @id @default(cuid())
+  bookingId      String
+  label          String // "Advance", "Balance"
+  amountPaise    BigInt
+  dueDate        DateTime        @db.Date
+  status         MilestoneStatus @default(PENDING)
+  isAdvance      Boolean         @default(false)
+  paidAt         DateTime?
+  receiptNo      String?         @unique // RC-2026-001000, from receipt_seq
+  gatewayLinkId  String?         @unique
   gatewayLinkUrl String? // reused so a milestone never has two live links
-  booking       Booking         @relation(fields: [bookingId], references: [id], onDelete: Cascade)
-  payments      Payment[]
+  booking        Booking         @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  payments       Payment[]
 
   @@index([status, dueDate])
   @@index([bookingId])
@@ -516,13 +517,17 @@ model Payment {
 }
 
 model Payout {
-  id          String       @id @default(cuid())
-  bookingId   String       @unique
-  amountPaise BigInt
-  status      PayoutStatus @default(PENDING)
-  reference   String?
-  paidAt      DateTime?
-  booking     Booking      @relation(fields: [bookingId], references: [id], onDelete: Restrict)
+  id           String       @id @default(cuid())
+  bookingId    String       @unique
+  amountPaise  BigInt
+  status       PayoutStatus @default(PENDING)
+  reference    String?
+  paidAt       DateTime?
+  scheduledFor DateTime?    @db.Date
+  paidById     String? // ACCOUNTS user who recorded the transfer
+  note         String? // e.g. why the amount differs from the contracted payout
+  createdAt    DateTime     @default(now())
+  booking      Booking      @relation(fields: [bookingId], references: [id], onDelete: Restrict)
 }
 
 // ─── Records ─────────────────────────────────────────────────────────────────
@@ -579,7 +584,9 @@ model WebhookEvent {
   processedAt DateTime?
 }
 
-/** Website contact form (marketing /contact). Staff follow up; email alert once messaging exists. */
+/**
+ * Website contact form (marketing /contact). Staff follow up; email alert once messaging exists.
+ */
 model ContactMessage {
   id        String    @id @default(cuid())
   ref       String    @unique // CT-2026-001000

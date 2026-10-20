@@ -32,6 +32,9 @@ import { AdminPaymentsController, CustomerPaymentsController, WebhooksController
 import { PaymentsService } from './payments/payments.service';
 import { PortalController } from './portal/portal.controller';
 import { PortalService } from './portal/portal.service';
+import { AnalyticsService } from './settlement/analytics.service';
+import { PayoutsService } from './settlement/payouts.service';
+import { AdminAnalyticsController, AdminPayoutsController } from './settlement/settlement.controller';
 import { UsersController } from './users/users.controller';
 import { ContactController, FavouritesController } from './users/me.controller';
 
@@ -71,7 +74,7 @@ export class AppModule {
         PrismaModule,
         AuthModule,
       ],
-      controllers: [HealthController, CatalogController, UsersController, InvitesController, AdminInvitesController, AdminUsersController, AdminAuditController, AdminCatalogController, EnquiriesController, PipelineController, AdminQuotesController, CustomerBookingsController, AdminPaymentsController, CustomerPaymentsController, WebhooksController, PortalController, FavouritesController, ContactController],
+      controllers: [HealthController, CatalogController, UsersController, InvitesController, AdminInvitesController, AdminUsersController, AdminAuditController, AdminCatalogController, EnquiriesController, PipelineController, AdminQuotesController, CustomerBookingsController, AdminPaymentsController, CustomerPaymentsController, WebhooksController, PortalController, FavouritesController, ContactController, AdminPayoutsController, AdminAnalyticsController],
       providers: [
         { provide: APP_FILTER, useClass: GlobalErrorFilter },
         { provide: APP_INTERCEPTOR, useClass: AuditInterceptor },
@@ -86,6 +89,8 @@ export class AppModule {
         PaymentsService,
         ContractsService,
         PortalService,
+        PayoutsService,
+        AnalyticsService,
         // Only the fake adapters exist until vendors are chosen (memory.md open questions); env validation refuses them in production.
         { provide: PAYMENT_GATEWAY, useFactory: (e: Env) => new FakeGateway(e.PAYMENT_WEBHOOK_SECRET, e.WEB_BASE_URL), inject: [ENV] },
         { provide: ESIGN_PROVIDER, useFactory: (e: Env) => new FakeESign(e.ESIGN_WEBHOOK_SECRET), inject: [ENV] },

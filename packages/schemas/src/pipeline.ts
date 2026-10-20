@@ -25,6 +25,8 @@ export const LeadTransitionSchema = z.object({
   reason: Note.optional(),
   /** Required for EVENT_COMPLETED → SETTLEMENT. */
   completionNote: Note.optional(),
+  /** OPS-5: the cancellation clause that applies (contract / policy section). */
+  policyRef: z.string().trim().min(1).max(80).optional(),
   note: Note.optional(),
 });
 export type LeadTransition = z.infer<typeof LeadTransitionSchema>;

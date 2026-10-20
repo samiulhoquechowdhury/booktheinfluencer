@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import type { Prisma } from '@repo/db';
-import type { BlackoutSchema, TalentBookingSchema, TalentPayoutSchema } from '@repo/schemas';
+import type { BlackoutSchema, OpsChecklist, TalentBookingSchema, TalentPayoutSchema } from '@repo/schemas';
 import type { z } from 'zod';
 import { AuditService } from '../audit/audit.service';
 import type { AuthUserRef } from '../auth/guards';
@@ -60,14 +60,15 @@ export class PortalService {
       const signed = b.contracts.some((c) => c.status === 'SIGNED');
       const sent = b.contracts.some((c) => c.status === 'SENT' || c.status === 'PARTIALLY_SIGNED');
       const payout = b.payout?.amountPaise ?? b.payoutTotalPaise;
+      const ops = b.opsChecklist as Pick<OpsChecklist, 'reportingTime' | 'pointOfContact'> | null;
       return {
         ref: b.ref,
         event: toBookingEvent(b.lead),
         availability: b.availability,
         contract: signed ? 'SIGNED' : sent ? 'SENT' : 'NOT_SENT',
         payoutPaise: payout == null ? null : payout.toString(),
-        reportingTime: null, // ops run sheet arrives with M1.8
-        pointOfContact: this.contact(b.lead.owner),
+        reportingTime: ops?.reportingTime ?? null,
+        pointOfContact: ops?.pointOfContact ? `${ops.pointOfContact.name} · +91${ops.pointOfContact.phone}` : this.contact(b.lead.owner),
       };
     });
   }

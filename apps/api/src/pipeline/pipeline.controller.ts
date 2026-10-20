@@ -7,6 +7,8 @@ import {
   LeadNoteSchema,
   LeadOwnerSchema,
   LeadTransitionSchema,
+  OpsChecklistSchema,
+  type OpsChecklist,
   PipelineQuerySchema,
   RepAcceptanceSchema,
   type LeadTransition,
@@ -87,6 +89,12 @@ export class PipelineController {
   @Roles('SALES', 'TALENT_MANAGER')
   async availability(@Param('id') id: string, @Body(new ZodPipe(AvailabilityUpdateSchema)) b: z.infer<typeof AvailabilityUpdateSchema>, @CurrentUser() u: AuthUserRef, @Req() req: Request) {
     return { data: await this.svc.setAvailability(id, b.status, b.note, u, req.ip) };
+  }
+
+  @Put('bookings/:id/ops')
+  @Roles('OPS', 'SALES', 'TALENT_MANAGER')
+  async ops(@Param('id') id: string, @Body(new ZodPipe(OpsChecklistSchema)) b: OpsChecklist, @CurrentUser() u: AuthUserRef, @Req() req: Request) {
+    return { data: await this.svc.setOpsChecklist(id, b, u, req.ip) };
   }
 
   @Post('bookings/:id/rep-acceptance')

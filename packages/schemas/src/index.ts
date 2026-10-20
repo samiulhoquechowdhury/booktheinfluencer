@@ -9,3 +9,4 @@ export * from './admin';
 export * from './pipeline';
 export * from './quote';
 export * from './payments';
+export * from './ops';
