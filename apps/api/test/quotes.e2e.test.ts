@@ -7,7 +7,7 @@ import { ConsoleSmsSender, SMS_SENDER } from '../src/auth/sms';
 import { PrismaService } from '../src/prisma/prisma.service';
 import { bootTestApp } from './support/app';
 import { ensureCategory } from './support/fixtures';
-import { staffSession } from './support/staff';
+import { retireStaff, staffSession } from './support/staff';
 
 type Session = { userId: string; token: string };
 let app: NestExpressApplication;
@@ -102,6 +102,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
+  await retireStaff(prisma, emails);
   const users = await prisma.user.findMany({ where: { OR: [{ email: { in: emails } }, { phone: { in: phones } }] }, select: { id: true } });
   const ids = users.map((u) => u.id);
   const leadWhere = { OR: [{ customerId: { in: ids } }, { bookings: { some: { talentId: { in: talentIds } } } }] };

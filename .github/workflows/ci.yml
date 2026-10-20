@@ -48,6 +48,10 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
+      # trd §10: fail on known high/critical advisories in production dependencies.
+      - name: Audit dependencies
+        run: pnpm audit --prod --audit-level high
+
       - name: Generate Prisma client
         run: pnpm --filter @repo/db generate
 

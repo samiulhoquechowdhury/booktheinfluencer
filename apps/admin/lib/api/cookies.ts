@@ -19,3 +19,14 @@ export function clearTokenCookies(jar: Jar) {
 }
 
 export const clientIp = (h: Headers) => h.get('x-forwarded-for')?.split(',')[0]?.trim() || h.get('x-real-ip') || undefined;
+
+/** True when a state-changing request comes from this site (Origin, else Referer, must match the host). */
+export function sameOrigin(req: { headers: Headers; nextUrl: { host: string } }) {
+  const src = req.headers.get('origin') ?? req.headers.get('referer');
+  if (!src) return false;
+  try {
+    return new URL(src).host === (req.headers.get('x-forwarded-host') ?? req.nextUrl.host);
+  } catch {
+    return false;
+  }
+}

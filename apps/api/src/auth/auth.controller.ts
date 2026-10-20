@@ -6,7 +6,7 @@ import { ENV, type Env } from '../config/env';
 import { Public } from './decorators';
 import { OtpService, toE164 } from './otp.service';
 import { StaffAuthService } from './staff-auth.service';
-import { ACCESS_TTL_SECONDS, REFRESH_TTL_DAYS, TokensService, UnauthenticatedError } from './tokens.service';
+import { ACCESS_TTL_SECONDS, REFRESH_TTL_DAYS, TokensService, UnauthenticatedError, sessionRoles, type AuthMethod } from './tokens.service';
 import { toAuthUser } from './auth-user';
 
 export const REFRESH_COOKIE = 'tp_refresh';
@@ -22,7 +22,7 @@ const readCookie = (req: Request, name: string) => {
 };
 
 /** Sets the refresh cookie and returns the access token + user (shared by sign-in flows). */
-export async function sessionResponse(res: Response, env: Env, tokens: TokensService, user: Parameters<typeof toAuthUser>[0], refresh: string): Promise<{ data: AuthTokens }> {
+export async function sessionResponse(res: Response, env: Env, tokens: TokensService, user: Parameters<typeof toAuthUser>[0], refresh: string, method: AuthMethod = 'otp'): Promise<{ data: AuthTokens }> {
   res.cookie(REFRESH_COOKIE, refresh, {
     httpOnly: true,
     secure: env.NODE_ENV === 'production',
@@ -30,7 +30,8 @@ export async function sessionResponse(res: Response, env: Env, tokens: TokensSer
     path: COOKIE_PATH,
     maxAge: REFRESH_TTL_DAYS * 86_400_000,
   });
-  return { data: { accessToken: await tokens.signAccess(user), expiresInSeconds: ACCESS_TTL_SECONDS, user: toAuthUser(user) } };
+  // The session (and what we tell the client) carries staff roles only after MFA.
+  return { data: { accessToken: await tokens.signAccess(user, method), expiresInSeconds: ACCESS_TTL_SECONDS, user: toAuthUser({ ...user, roles: sessionRoles(user.roles, method) }) } };
 }
 
 @Public()
@@ -43,8 +44,8 @@ export class AuthController {
     @Inject(StaffAuthService) private readonly staff: StaffAuthService,
   ) {}
 
-  private session(res: Response, user: Parameters<typeof toAuthUser>[0], refresh: string) {
-    return sessionResponse(res, this.env, this.tokens, user, refresh);
+  private session(res: Response, user: Parameters<typeof toAuthUser>[0], refresh: string, method: AuthMethod = 'otp') {
+    return sessionResponse(res, this.env, this.tokens, user, refresh, method);
   }
 
   /** Step 1: text a code to the phone. */
@@ -74,7 +75,7 @@ export class AuthController {
   @HttpCode(200)
   async verifyMfa(@Body(new ZodPipe(MfaVerifySchema)) body: MfaVerify, @Req() req: Request, @Res({ passthrough: true }) res: Response) {
     const user = await this.staff.verifyMfa(body.mfaToken, body.code, req.ip);
-    return this.session(res, user, await this.tokens.issueRefresh(user.id));
+    return this.session(res, user, await this.tokens.issueRefresh(user.id, 'mfa'), 'mfa');
   }
 
   /** New access token from the refresh cookie; the refresh token rotates every time. */
@@ -84,8 +85,8 @@ export class AuthController {
     const token = readCookie(req, REFRESH_COOKIE);
     if (!token) throw new UnauthenticatedError('SESSION_INVALID', 'Your session has ended. Sign in again.');
     try {
-      const { user, token: next } = await this.tokens.rotateRefresh(token);
-      return await this.session(res, user, next);
+      const { user, token: next, method } = await this.tokens.rotateRefresh(token);
+      return await this.session(res, user, next, method);
     } catch (e) {
       res.clearCookie(REFRESH_COOKIE, { path: COOKIE_PATH });
       throw e;

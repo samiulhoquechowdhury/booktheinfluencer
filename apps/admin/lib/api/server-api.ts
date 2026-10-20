@@ -13,7 +13,13 @@ export async function callApi(method: Method, path: string, o: { token?: string;
   if (o.token) headers.Authorization = `Bearer ${o.token}`;
   if (o.cookie) headers.Cookie = o.cookie;
   if (o.ip) headers['X-Forwarded-For'] = o.ip;
-  const res = await fetch(`${base()}${path}${o.search ?? ''}`, { method, headers, body: o.body === undefined ? undefined : JSON.stringify(o.body), cache: 'no-store' });
+  let res: Response;
+  try {
+    res = await fetch(`${base()}${path}${o.search ?? ''}`, { method, headers, body: o.body === undefined ? undefined : JSON.stringify(o.body), cache: 'no-store' });
+  } catch {
+    // API down or unreachable: a clean error instead of a crashed request.
+    return { status: 502, json: { error: { code: 'API_UNAVAILABLE', message: 'The service is unavailable. Try again shortly.' } }, setCookies: [] };
+  }
   const json: unknown = res.status === 204 ? null : await res.json().catch(() => null);
   return { status: res.status, json, setCookies: res.headers.getSetCookie() };
 }

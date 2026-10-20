@@ -8,7 +8,7 @@ import { hmacHex } from '../src/common/hmac';
 import { PrismaService } from '../src/prisma/prisma.service';
 import { bootTestApp, testEnv } from './support/app';
 import { publishedTalent, type Track } from './support/fixtures';
-import { staffSession } from './support/staff';
+import { retireStaff, staffSession } from './support/staff';
 
 type Session = { userId: string; token: string };
 let app: NestExpressApplication;
@@ -90,6 +90,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
+  await retireStaff(prisma, emails);
   const users = await prisma.user.findMany({ where: { OR: [{ email: { in: emails } }, { phone: { in: track.phones } }] }, select: { id: true } });
   const ids = users.map((u) => u.id);
   const leads = await prisma.lead.findMany({ where: { customerId: { in: ids } }, select: { id: true, bookings: { select: { id: true, contracts: { select: { id: true } }, milestones: { select: { id: true } } } } } });

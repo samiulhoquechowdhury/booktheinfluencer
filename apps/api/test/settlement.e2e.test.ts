@@ -6,7 +6,7 @@ import { PrismaService } from '../src/prisma/prisma.service';
 import { bootTestApp } from './support/app';
 import { publishedTalent, type Track } from './support/fixtures';
 import { cleanupLifecycle, confirmedBooking, future, type Ctx } from './support/lifecycle';
-import { staffSession } from './support/staff';
+import { retireStaff, staffSession } from './support/staff';
 
 type Session = { userId: string; token: string };
 let ctx: Ctx;
@@ -30,6 +30,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
+  await retireStaff(ctx.prisma, emails);
   await cleanupLifecycle(ctx, emails);
   await ctx.app.close();
 });
@@ -100,7 +101,10 @@ describe('ops, settlement and analytics (T-240..T-244)', () => {
   });
 
   it('analytics: pipeline numbers for staff, money details for finance only', async () => {
-    const q = `ownerId=${ctx.sales.userId}`;
+    // Own these two leads by the OPS user: round robin only hands new enquiries to SALES users, so leads from
+    // other test files running in parallel can't land in this filter.
+    await ctx.prisma.lead.updateMany({ where: { bookings: { some: { talentId: { in: track.talentIds } } } }, data: { ownerId: ops.userId } });
+    const q = `ownerId=${ops.userId}`;
     const staff = (await http().get(`/v1/admin/analytics?${q}`).set(auth(ops)).expect(200)).body.data;
     expect(staff).toMatchObject({
       leads: 2,

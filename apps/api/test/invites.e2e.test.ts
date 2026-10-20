@@ -5,7 +5,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { ConsoleSmsSender, SMS_SENDER } from '../src/auth/sms';
 import { PrismaService } from '../src/prisma/prisma.service';
 import { bootTestApp } from './support/app';
-import { STAFF_PASSWORD, staffSession } from './support/staff';
+import { retireStaff, STAFF_PASSWORD, staffSession } from './support/staff';
 
 let app: NestExpressApplication;
 let prisma: PrismaService;
@@ -35,6 +35,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
+  await retireStaff(prisma, emails);
   const users = await prisma.user.findMany({ where: { OR: [{ email: { in: emails } }, { phone: { in: phones } }] }, select: { id: true } });
   const ids = users.map((u) => u.id);
   await prisma.talent.deleteMany({ where: { id: talentId } });

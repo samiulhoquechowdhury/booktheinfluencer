@@ -157,6 +157,8 @@ model RefreshToken {
   expiresAt  DateTime
   revokedAt  DateTime?
   replacedBy String?
+  /** How the session was opened: 'mfa' (staff password + authenticator) or 'otp' (phone code). Only 'mfa' sessions carry staff roles. */
+  authMethod String    @default("otp")
   createdAt  DateTime  @default(now())
   user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 

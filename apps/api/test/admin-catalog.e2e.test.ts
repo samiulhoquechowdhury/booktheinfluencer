@@ -6,7 +6,7 @@ import { PublicTalentSchema } from '@repo/schemas';
 import { PrismaService } from '../src/prisma/prisma.service';
 import { bootTestApp } from './support/app';
 import { ensureCategory } from './support/fixtures';
-import { staffSession } from './support/staff';
+import { retireStaff, staffSession } from './support/staff';
 
 let app: NestExpressApplication;
 let prisma: PrismaService;
@@ -52,6 +52,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
+  await retireStaff(prisma, emails);
   const users = await prisma.user.findMany({ where: { email: { in: emails } }, select: { id: true } });
   await prisma.auditLog.deleteMany({ where: { actorId: { in: users.map((u) => u.id) } } });
   await prisma.talent.deleteMany({ where: { id: { in: talentIds } } });

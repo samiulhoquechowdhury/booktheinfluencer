@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { ACCESS_COOKIE, REAL_API, REFRESH_COOKIE } from '@/lib/api/constants';
 import { callApi, refreshFromSetCookie, refreshTokens, requestCode, sessionFor, type RawResult, type Tokens } from '@/lib/api/real';
-import { clearTokenCookies, clientIp, setTokenCookies } from '@/lib/api/token-cookies';
+import { clearTokenCookies, clientIp, sameOrigin, setTokenCookies } from '@/lib/api/token-cookies';
 import { unwrapEnvelope } from '@/lib/api/transport';
 
 /**
@@ -23,6 +23,8 @@ function takeSession(r: RawResult): { tokens: Tokens | null; body: unknown } {
 
 async function dispatch(req: NextRequest, ctx: { params: Promise<{ path: string[] }> }) {
   if (!REAL_API) return json(404, { error: { code: 'NOT_FOUND', message: 'Real API mode is off.' } });
+  // CSRF defence in depth: browsers send Origin on cross-site writes; refuse anything not from this site.
+  if (req.method !== 'GET' && !sameOrigin(req)) return json(403, { error: { code: 'BAD_ORIGIN', message: 'Request refused.' } });
   const path = `/${(await ctx.params).path.map(encodeURIComponent).join('/')}`;
   const method = req.method as 'GET' | 'POST' | 'PUT' | 'DELETE';
   const body = method === 'GET' || method === 'DELETE' ? undefined : await req.json().catch(() => undefined);

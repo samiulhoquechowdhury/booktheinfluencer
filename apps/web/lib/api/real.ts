@@ -19,12 +19,18 @@ export async function callApi(method: ApiRequest['method'], path: string, o: { t
   if (o.cookie) headers.Cookie = o.cookie;
   // The API rate-limits per client IP; pass the visitor's address on (API trusts one proxy hop).
   if (o.ip) headers['X-Forwarded-For'] = o.ip;
-  const res = await fetch(`${apiBase()}${path}${toSearch(o.query)}`, {
-    method,
-    headers,
-    body: o.body === undefined ? undefined : JSON.stringify(o.body, (_k, v: unknown) => (typeof v === 'bigint' ? v.toString() : v)),
-    cache: 'no-store',
-  });
+  let res: Response;
+  try {
+    res = await fetch(`${apiBase()}${path}${toSearch(o.query)}`, {
+      method,
+      headers,
+      body: o.body === undefined ? undefined : JSON.stringify(o.body, (_k, v: unknown) => (typeof v === 'bigint' ? v.toString() : v)),
+      cache: 'no-store',
+    });
+  } catch {
+    // API down or unreachable: a clean error instead of a crashed request.
+    return { status: 502, json: { error: { code: 'API_UNAVAILABLE', message: 'The service is unavailable. Try again shortly.' } }, setCookies: [] };
+  }
   const json: unknown = res.status === 204 ? null : await res.json().catch(() => null);
   return { status: res.status, json, setCookies: res.headers.getSetCookie() };
 }

@@ -19,3 +19,11 @@ export async function staffSession(app: NestExpressApplication, roles: Role[], t
   const step2 = await request(app.getHttpServer()).post('/v1/auth/mfa/verify').send({ mfaToken, code: totpAt(setup.secret, currentStep()) });
   return { userId: user.id, email, token: step2.body.data.accessToken as string };
 }
+
+/**
+ * First step of every cleanup that deletes staff: take them out of round-robin owner assignment (soft-delete
+ * + no roles) so another test file's enquiry can't pick a user this file is about to hard-delete.
+ */
+export async function retireStaff(prisma: PrismaService, emails: string[]) {
+  await prisma.user.updateMany({ where: { email: { in: emails } }, data: { roles: [], deletedAt: new Date() } });
+}

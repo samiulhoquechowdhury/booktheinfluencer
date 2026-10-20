@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { ACCESS_COOKIE, REFRESH_COOKIE, clearTokenCookies, clientIp, setTokenCookies } from '@/lib/api/cookies';
+import { ACCESS_COOKIE, REFRESH_COOKIE, clearTokenCookies, clientIp, sameOrigin, setTokenCookies } from '@/lib/api/cookies';
 import { callApi, refreshFromSetCookie, refreshTokens, staffFor, type Tokens } from '@/lib/api/server-api';
 
 /**
@@ -10,6 +10,7 @@ const json = (status: number, body: unknown) => NextResponse.json(body, { status
 
 async function dispatch(req: NextRequest, ctx: { params: Promise<{ path: string[] }> }) {
   const path = `/${(await ctx.params).path.map(encodeURIComponent).join('/')}`;
+  if (req.method !== 'GET' && !sameOrigin(req)) return json(403, { error: { code: 'BAD_ORIGIN', message: 'Request refused.' } });
   const method = req.method as 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
   const body = method === 'GET' || method === 'DELETE' ? undefined : await req.json().catch(() => undefined);
   const ip = clientIp(req.headers);

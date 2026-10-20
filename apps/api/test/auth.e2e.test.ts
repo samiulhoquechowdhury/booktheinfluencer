@@ -188,4 +188,15 @@ describe('roles', () => {
     const r = await http().get('/v1/__test/staff').set('Authorization', `Bearer ${token}`).expect(403);
     expect(r.body.error.code).toBe('FORBIDDEN');
   });
+
+  it('a phone code never grants staff access, even on a staff account with a phone (MFA mandatory, trd §10)', async () => {
+    const phone = newPhone();
+    await prisma.user.create({ data: { phone: `+91${phone}`, name: 'Staff With Phone', roles: ['SALES', 'CUSTOMER'] } });
+    const { token, cookie, res } = await signIn(phone);
+    expect(res.body.data.user.roles).toEqual(['CUSTOMER']); // staff roles stripped from the session
+    await http().get('/v1/__test/staff').set('Authorization', `Bearer ${token}`).expect(403);
+    // …and still not after a refresh.
+    const refreshed = await http().post('/v1/auth/refresh').set('Cookie', cookie).expect(200);
+    await http().get('/v1/__test/staff').set('Authorization', `Bearer ${refreshed.body.data.accessToken}`).expect(403);
+  });
 });
