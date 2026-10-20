@@ -33,6 +33,7 @@ import { PaymentsService } from './payments/payments.service';
 import { PortalController } from './portal/portal.controller';
 import { PortalService } from './portal/portal.service';
 import { UsersController } from './users/users.controller';
+import { ContactController, FavouritesController } from './users/me.controller';
 
 /** Accept a caller's request id if it looks sane; otherwise mint one. Echoed in `x-request-id`. */
 function requestId(req: IncomingMessage, res: ServerResponse) {
@@ -70,7 +71,7 @@ export class AppModule {
         PrismaModule,
         AuthModule,
       ],
-      controllers: [HealthController, CatalogController, UsersController, InvitesController, AdminInvitesController, AdminUsersController, AdminAuditController, AdminCatalogController, EnquiriesController, PipelineController, AdminQuotesController, CustomerBookingsController, AdminPaymentsController, CustomerPaymentsController, WebhooksController, PortalController],
+      controllers: [HealthController, CatalogController, UsersController, InvitesController, AdminInvitesController, AdminUsersController, AdminAuditController, AdminCatalogController, EnquiriesController, PipelineController, AdminQuotesController, CustomerBookingsController, AdminPaymentsController, CustomerPaymentsController, WebhooksController, PortalController, FavouritesController, ContactController],
       providers: [
         { provide: APP_FILTER, useClass: GlobalErrorFilter },
         { provide: APP_INTERCEPTOR, useClass: AuditInterceptor },

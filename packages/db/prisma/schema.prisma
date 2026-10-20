@@ -578,3 +578,20 @@ model WebhookEvent {
   receivedAt  DateTime  @default(now())
   processedAt DateTime?
 }
+
+/** Website contact form (marketing /contact). Staff follow up; email alert once messaging exists. */
+model ContactMessage {
+  id        String    @id @default(cuid())
+  ref       String    @unique // CT-2026-001000
+  name      String
+  email     String
+  phone     String?
+  topic     String // booking | corporate | talent | other
+  message   String
+  createdIp String?
+  createdAt DateTime  @default(now())
+  handledAt DateTime?
+
+  @@index([createdIp, createdAt])
+  @@index([handledAt, createdAt])
+}

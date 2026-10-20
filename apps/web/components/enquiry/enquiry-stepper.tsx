@@ -17,6 +17,7 @@ import { CheckboxField, Input, Textarea } from '@repo/ui/field';
 import { Select } from '@repo/ui/select';
 import { OtpInput } from '@repo/ui/otp-input';
 import { ApiError } from '@/lib/api/client';
+import { REAL_API } from '@/lib/api/constants';
 import { useRequestOtp, useSetSession, useSubmitEnquiry } from '@/lib/api/hooks';
 import { CITIES } from '@/lib/reference';
 import { Magnetic } from '@/lib/motion';
@@ -282,7 +283,7 @@ export function EnquiryStepper() {
                   {otpSent && (
                     <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
                       <div className="rounded-xl border border-border bg-surface p-5">
-                        <p className="mb-3 text-sm text-fg-muted">Enter the 6-digit code we sent to your phone. <span className="text-fg-subtle">(Demo: 123456)</span></p>
+                        <p className="mb-3 text-sm text-fg-muted">Enter the 6-digit code we sent to your phone.{!REAL_API && <span className="text-fg-subtle"> (Demo: 123456)</span>}</p>
                         <Controller control={control} name="contact.otp" render={({ field, fieldState }) => <OtpInput value={field.value ?? ''} onChange={field.onChange} error={!!fieldState.error} />} />
                         {errAt(errors, 'contact.otp') && <p role="alert" className="mt-2 text-xs font-medium text-danger">{errAt(errors, 'contact.otp')}</p>}
                       </div>

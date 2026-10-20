@@ -100,9 +100,9 @@
 - [x] T-209 Webhook replay/duplicate tests; full-lifecycle e2e test (1.5d)  — _`apps/api/test/payments.e2e.test.ts`_
 
 ### M1.7 Customer dashboard & talent portal (week 10–11) — CUS, TAL
-- [~] T-220 Web: account bookings list (1d)  — _UI done on mock; API done (`GET /v1/me/bookings`); web switch pending (needs real sign-in in the web app)_
-- [~] T-221 Web: booking detail with status timeline, action card, tabs (2d)  — _UI done on mock; API done (`GET /v1/me/bookings/:ref`, decision, pay); web switch pending_
-- [~] T-222 Talent portal: my bookings, my payouts, blackout dates (1.5d)  — _UI done on mock; API done (`/v1/portal…`, talent + rep logins, admin `blackoutSelfEdit` switch); web switch pending_
+- [~] T-220 Web: account bookings list (1d)  — _UI done on mock; API done (`GET /v1/me/bookings`); web switched (real mode: `NEXT_PUBLIC_API_BASE=/api/v1`)_
+- [~] T-221 Web: booking detail with status timeline, action card, tabs (2d)  — _UI done on mock; API done (`GET /v1/me/bookings/:ref`, decision, pay); web switched_
+- [~] T-222 Talent portal: my bookings, my payouts, blackout dates (1.5d)  — _UI done on mock; API done (`/v1/portal…`, talent + rep logins, admin `blackoutSelfEdit` switch); web switched_
 - [x] T-223 Serializer tests: talent DTO has payout only, no selling price/margin (0.5d)  — _`apps/api/test/portal.e2e.test.ts` (strict schemas + leak checks)_
 
 ### M1.8 Ops, settlement, analytics (week 11–12) — OPS, SET, ANA

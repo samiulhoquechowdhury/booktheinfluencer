@@ -6,17 +6,26 @@ import { Building2, Mic2, ShieldCheck, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import type { SessionRole } from '@repo/schemas';
+import type { Session } from '@repo/schemas';
+import { REAL_API } from '@/lib/api/constants';
 import { useSetSession } from '@/lib/api/hooks';
+import { OtpSignIn } from './otp-sign-in';
 import { useScrollLock } from '@/lib/motion';
 
 /**
- * Demo sign-in. Stands in for phone-OTP (customers) and invite-only login (talent) until the
- * API exists — see memory.md decisions.
+ * Sign-in. Real API: phone + one-time code. Mock mode: a demo account picker (memory.md decisions).
  */
 export function LoginDialog({ open, onOpenChange, next }: { open: boolean; onOpenChange: (v: boolean) => void; next?: string }) {
   const setSession = useSetSession();
   const router = useRouter();
   useScrollLock(open);
+
+  const signedIn = (s: Session) => {
+    onOpenChange(false);
+    toast.success(s.name ? `Signed in as ${s.name}` : 'Signed in');
+    router.push(next ?? (s.role === 'TALENT' ? '/talent-portal' : '/account'));
+    router.refresh();
+  };
 
   const choose = (role: SessionRole) =>
     setSession.mutate(role, {
@@ -49,6 +58,17 @@ export function LoginDialog({ open, onOpenChange, next }: { open: boolean; onOpe
                 <Dialog.Close className="absolute top-4 right-4 grid size-9 place-items-center rounded-full text-fg-muted hover:bg-surface-2 hover:text-fg" aria-label="Close">
                   <X className="size-4" />
                 </Dialog.Close>
+                {REAL_API ? (
+                  <>
+                <p className="eyebrow">Sign in</p>
+                <Dialog.Title className="mt-2 font-display text-3xl font-extrabold tracking-tight">Welcome back</Dialog.Title>
+                <Dialog.Description className="mt-2 text-sm text-fg-muted">
+                  We’ll text a one-time code to your mobile. New here? Your account is created when you sign in. Talent: use the number on your invite.
+                </Dialog.Description>
+                <OtpSignIn onSignedIn={signedIn} />
+                  </>
+                ) : (
+                  <>
                 <p className="eyebrow">Demo sign-in</p>
                 <Dialog.Title className="mt-2 font-display text-3xl font-extrabold tracking-tight">Welcome back</Dialog.Title>
                 <Dialog.Description className="mt-2 text-sm text-fg-muted">
@@ -79,6 +99,8 @@ export function LoginDialog({ open, onOpenChange, next }: { open: boolean; onOpe
                 <p className="mt-5 flex items-center gap-2 text-xs text-fg-subtle">
                   <ShieldCheck className="size-3.5" aria-hidden /> No real data — everything on this site is mock.
                 </p>
+                  </>
+                )}
               </motion.div>
             </Dialog.Content>
           </Dialog.Portal>

@@ -39,6 +39,10 @@ export function createApi(t: Transport) {
     session: {
       get: () => get(SessionSchema, '/session'),
       set: (role: SessionRole) => send(SessionSchema, 'POST', '/session', { role }),
+      /** Real API: phone OTP sign-in (customers, and talent with an accepted invite). */
+      requestCode: (phone: string) => send(z.object({ sent: z.boolean(), resendInSeconds: z.number(), devHint: z.string().optional() }), 'POST', '/session/otp', { phone }),
+      verify: (phone: string, code: string, name?: string) => send(SessionSchema, 'POST', '/session/verify', { phone, code, ...(name ? { name } : {}) }),
+      logout: () => send(SessionSchema, 'POST', '/session/logout'),
     },
     favourites: {
       list: () => get(z.array(PublicTalentSchema), '/me/favourites'),

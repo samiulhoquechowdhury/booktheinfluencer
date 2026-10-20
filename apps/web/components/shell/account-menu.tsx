@@ -8,7 +8,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { toast } from 'sonner';
 import { cn } from '@repo/ui/lib/cn';
 import { useSession, useSetSession } from '@/lib/api/hooks';
-import { FAIL_COOKIE } from '@/lib/api/constants';
+import { FAIL_COOKIE, REAL_API } from '@/lib/api/constants';
 import { LoginDialog } from './login-dialog';
 
 const itemCls =
@@ -120,17 +120,21 @@ export function AccountMenu() {
             )}
           </DropdownMenu.Group>
 
-          <DropdownMenu.Separator className="my-1.5 h-px bg-border" />
-          <DropdownMenu.Label className="px-2.5 pt-1 pb-1.5 text-[0.6875rem] font-semibold tracking-wide text-fg-subtle uppercase">Demo tools</DropdownMenu.Label>
-          <DropdownMenu.CheckboxItem checked={failMode} onSelect={(e) => { e.preventDefault(); toggleFail(); }} className={itemCls}>
-            <Row icon={<WifiOff />} title="Simulate API errors" hint="Show error states" />
-            <span
-              aria-hidden
-              className={cn('ml-auto h-5 w-9 shrink-0 rounded-full p-0.5 transition-colors', failMode ? 'bg-warning' : 'bg-surface-3')}
-            >
-              <span className={cn('block size-4 rounded-full bg-fg transition-transform duration-(--duration-base) ease-(--ease-out-expo)', failMode && 'translate-x-4 bg-black')} />
-            </span>
-          </DropdownMenu.CheckboxItem>
+          {!REAL_API && (
+            <>
+              <DropdownMenu.Separator className="my-1.5 h-px bg-border" />
+              <DropdownMenu.Label className="px-2.5 pt-1 pb-1.5 text-[0.6875rem] font-semibold tracking-wide text-fg-subtle uppercase">Demo tools</DropdownMenu.Label>
+              <DropdownMenu.CheckboxItem checked={failMode} onSelect={(e) => { e.preventDefault(); toggleFail(); }} className={itemCls}>
+                <Row icon={<WifiOff />} title="Simulate API errors" hint="Show error states" />
+                <span
+                  aria-hidden
+                  className={cn('ml-auto h-5 w-9 shrink-0 rounded-full p-0.5 transition-colors', failMode ? 'bg-warning' : 'bg-surface-3')}
+                >
+                  <span className={cn('block size-4 rounded-full bg-fg transition-transform duration-(--duration-base) ease-(--ease-out-expo)', failMode && 'translate-x-4 bg-black')} />
+                </span>
+              </DropdownMenu.CheckboxItem>
+            </>
+          )}
 
           <DropdownMenu.Separator className="my-1.5 h-px bg-border" />
           <DropdownMenu.Item

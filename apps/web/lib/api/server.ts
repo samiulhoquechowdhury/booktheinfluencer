@@ -4,7 +4,8 @@ import { cookies } from 'next/headers';
 import { SessionRoleSchema, type SessionRole } from '@repo/schemas';
 import { handle, toWire } from '@/lib/mock/router';
 import { createApi } from './endpoints';
-import { SESSION_COOKIE } from './constants';
+import { ACCESS_COOKIE, REAL_API, SESSION_COOKIE } from './constants';
+import { realTransport, sessionFor } from './real';
 import { env } from '@/lib/env';
 import { httpTransport, raise, type Transport } from './transport';
 
@@ -33,11 +34,17 @@ const withRealCatalogue = (fallback: Transport): Transport => {
 };
 
 /** Public catalogue — no cookies, so pages stay static/ISR. */
-export const publicApi = createApi(withRealCatalogue(inProcess('GUEST')));
+export const publicApi = createApi(REAL_API ? realTransport() : withRealCatalogue(inProcess('GUEST')));
 
 /** Session-aware server API (opts the route into dynamic rendering). */
 export const getSessionApi = cache(async () => {
   const jar = await cookies();
+  if (REAL_API) {
+    // middleware.ts has already renewed an expired access token for this request.
+    const token = jar.get(ACCESS_COOKIE)?.value;
+    const session = await sessionFor(token);
+    return { role: session.role, api: createApi(realTransport(token)) };
+  }
   const role = SessionRoleSchema.catch('GUEST').parse(jar.get(SESSION_COOKIE)?.value);
   return { role, api: createApi(inProcess(role)) };
 });

@@ -12,9 +12,11 @@ const schema = z.object({
   NEXT_PUBLIC_SITE_URL: isProd ? z.url() : z.url().default('http://localhost:3000'),
   /** Where the browser sends API calls. `/api/mock` (default) is the built-in mock API. */
   NEXT_PUBLIC_API_BASE: z.string().regex(/^(\/|https?:\/\/)/, 'Must be a path starting with / or an http(s) URL').default('/api/mock'),
-  /** Server-side API origin once the NestJS API exists (unused while on the mock API). */
+  /** Server-side NestJS API origin. With NEXT_PUBLIC_API_BASE=/api/v1 every call goes there (via the /api/v1 proxy). */
   API_URL: z.url().optional(),
-});
+})
+  // Server only: the browser bundle never sees API_URL.
+  .refine((e) => typeof window !== 'undefined' || e.NEXT_PUBLIC_API_BASE !== '/api/v1' || Boolean(e.API_URL), { path: ['API_URL'], message: 'Set API_URL when NEXT_PUBLIC_API_BASE=/api/v1' });
 
 const parsed = schema.safeParse({
   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || undefined,

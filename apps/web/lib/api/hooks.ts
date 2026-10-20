@@ -5,6 +5,7 @@ import { toast } from 'sonner';
 import type { Blackout, PublicTalent, QuoteDecision, Session, SessionRole, TalentPage, TalentQuery } from '@repo/schemas';
 import { api, ApiError } from './client';
 import { qk } from './keys';
+import { REAL_API } from './constants';
 
 export const useSession = (initial?: Session) =>
   useQuery({ queryKey: qk.session, queryFn: api.session.get, initialData: initial, staleTime: Infinity });
@@ -12,7 +13,24 @@ export const useSession = (initial?: Session) =>
 export function useSetSession() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (role: SessionRole) => api.session.set(role),
+    // Real API: there's no role switch — GUEST signs out, anything else re-reads the session the
+    // server just set (e.g. after an enquiry signs the customer in). Mock: the demo role switch.
+    mutationFn: (role: SessionRole) => (!REAL_API ? api.session.set(role) : role === 'GUEST' ? api.session.logout() : api.session.get()),
+    onSuccess: (s) => {
+      qc.setQueryData(qk.session, s);
+      qc.removeQueries({ queryKey: ['me'] });
+      qc.removeQueries({ queryKey: ['portal'] });
+    },
+  });
+}
+
+/** Real API sign-in: text a code, then verify it (creates a customer account on first use). */
+export const useRequestCode = () => useMutation({ mutationFn: (phone: string) => api.session.requestCode(phone) });
+
+export function useVerifyCode() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: ({ phone, code, name }: { phone: string; code: string; name?: string }) => api.session.verify(phone, code, name),
     onSuccess: (s) => {
       qc.setQueryData(qk.session, s);
       qc.removeQueries({ queryKey: ['me'] });
