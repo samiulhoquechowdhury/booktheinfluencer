@@ -210,6 +210,26 @@ describe('contracts, payments and confirmation (T-201..T-209)', () => {
     expect(await prisma.auditLog.count({ where: { action: 'payment.manual', entityId: b.balance.id } })).toBe(1);
   });
 
+  it('collections list: due, overdue (computed from the due date), paid, by booking and search', async () => {
+    const c = await acceptedBooking(slug);
+    await prisma.paymentMilestone.update({ where: { id: c.advance.id }, data: { dueDate: new Date('2026-01-01T00:00:00.000Z') } });
+    const list = (view: string, extra = '') => http().get(`/v1/admin/milestones?view=${view}&bookingId=${c.bookingId}${extra}`).set(auth(accounts));
+
+    const due = (await list('due').expect(200)).body;
+    expect(due.data.map((m: { label: string; overdue: boolean }) => [m.label, m.overdue])).toEqual([['Advance', true], ['Balance', false]]);
+    expect(due.data[0]).toMatchObject({ booking: { id: c.bookingId, ref: c.ref }, lead: { customer: 'Riya Sharma' }, amountPaise: c.advance.amountPaise.toString() });
+    expect(due.meta.overdue.count).toBeGreaterThanOrEqual(1);
+    expect((await list('overdue').expect(200)).body.data.map((m: { label: string }) => m.label)).toEqual(['Advance']);
+    expect((await list('paid').expect(200)).body.data).toEqual([]);
+    expect((await http().get(`/v1/admin/milestones?view=all&q=${c.ref}`).set(auth(sales)).expect(200)).body.data).toHaveLength(2);
+
+    // The fully paid booking from the earlier tests shows under "paid" with receipts.
+    const paid = (await http().get(`/v1/admin/milestones?view=paid&bookingId=${b.bookingId}`).set(auth(accounts)).expect(200)).body.data;
+    expect(paid.map((m: { receiptNo: string }) => m.receiptNo)).toEqual([expect.stringMatching(/^RC-/), expect.stringMatching(/^RC-/)]);
+    await http().get('/v1/admin/milestones').set(auth(b.customer)).expect(403);
+    await http().get('/v1/admin/milestones?view=nope').set(auth(accounts)).expect(400);
+  });
+
   it('a contract can’t be sent before the quote is accepted', async () => {
     const lead = await prisma.lead.findUniqueOrThrow({ where: { id: b.leadId } });
     const other = await prisma.booking.create({ data: { ref: `BK-T-${run}`, leadId: lead.id, talentId: (await publishedTalent(prisma, 'second', run, track)).id } });

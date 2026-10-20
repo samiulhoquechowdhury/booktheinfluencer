@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, type ReactNode } from 'react';
-import { BarChart3, KanbanSquare, LogOut, Menu, Mic2, X } from 'lucide-react';
+import { BarChart3, HandCoins, IndianRupee, KanbanSquare, LogOut, Menu, Mic2, X } from 'lucide-react';
 import { toast } from 'sonner';
 import { cn } from '@repo/ui/lib/cn';
 import { api } from '@/lib/api/client';
@@ -16,6 +16,8 @@ const NAV: { href: string; label: string; icon: typeof BarChart3; roles: StaffRo
   { href: '/', label: 'Overview', icon: BarChart3, roles: ['SALES', 'TALENT_MANAGER', 'OPS', 'ACCOUNTS'] },
   { href: '/leads', label: 'Pipeline', icon: KanbanSquare, roles: ['SALES', 'TALENT_MANAGER', 'OPS', 'ACCOUNTS'] },
   { href: '/talents', label: 'Talents', icon: Mic2, roles: ['SALES', 'TALENT_MANAGER', 'OPS', 'ACCOUNTS'] },
+  { href: '/payments', label: 'Payments', icon: IndianRupee, roles: ['SALES', 'TALENT_MANAGER', 'OPS', 'ACCOUNTS'] },
+  { href: '/payouts', label: 'Payouts', icon: HandCoins, roles: ['TALENT_MANAGER', 'ACCOUNTS'] },
 ];
 
 export function Shell({ user, children }: { user: StaffUser; children: ReactNode }) {

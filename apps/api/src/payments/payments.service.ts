@@ -1,6 +1,6 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import type { Prisma } from '@repo/db';
-import type { ManualPayment } from '@repo/schemas';
+import type { ManualPayment, MilestoneQuery } from '@repo/schemas';
 import { formatINR } from '@repo/utils';
 import { AuditService } from '../audit/audit.service';
 import type { AuthUserRef } from '../auth/guards';
@@ -125,6 +125,49 @@ export class PaymentsService {
     if (!recordedById) await this.audit.record({ actorId: null, action: 'payment.gateway', entity: 'milestone', entityId: m.id, after: { amountPaise: p.amountPaise.toString(), receiptNo } }, tx);
     // Receipt email (PAY-5) goes through the notifications worker once it exists.
     return { bookingId: m.bookingId, paid: true };
+  }
+
+  /** Collections across bookings (design.md /payments). Overdue = unpaid and past its due date (no job marks it yet). */
+  async listMilestones(q: MilestoneQuery) {
+    const today = new Date(`${todayIST()}T00:00:00.000Z`);
+    const unpaid: Prisma.PaymentMilestoneWhereInput = { status: { in: ['PENDING', 'LINK_SENT', 'OVERDUE'] }, booking: { cancelledAt: null } };
+    const where: Prisma.PaymentMilestoneWhereInput = {
+      AND: [
+        q.view === 'paid' ? { status: 'PAID' } : q.view === 'all' ? {} : q.view === 'overdue' ? { ...unpaid, dueDate: { lt: today } } : unpaid,
+        q.bookingId ? { bookingId: q.bookingId } : {},
+        q.q
+          ? { OR: [{ booking: { ref: { contains: q.q, mode: 'insensitive' } } }, { booking: { lead: { ref: { contains: q.q, mode: 'insensitive' } } } }, { booking: { lead: { companyName: { contains: q.q, mode: 'insensitive' } } } }, { booking: { lead: { customer: { name: { contains: q.q, mode: 'insensitive' } } } } }, { receiptNo: { contains: q.q, mode: 'insensitive' } }] }
+          : {},
+      ],
+    };
+    const [rows, total, overdue] = await this.prisma.$transaction([
+      this.prisma.paymentMilestone.findMany({
+        where,
+        include: { booking: { include: { talent: { select: { stageName: true } }, lead: { select: { id: true, ref: true, companyName: true, customer: { select: { name: true } } } } } } },
+        orderBy: q.view === 'paid' ? { paidAt: 'desc' } : { dueDate: 'asc' },
+        skip: (q.page - 1) * q.pageSize,
+        take: q.pageSize,
+      }),
+      this.prisma.paymentMilestone.count({ where }),
+      this.prisma.paymentMilestone.aggregate({ where: { ...unpaid, dueDate: { lt: today } }, _sum: { amountPaise: true }, _count: true }),
+    ]);
+    return {
+      data: rows.map((m) => ({
+        id: m.id,
+        label: m.label,
+        isAdvance: m.isAdvance,
+        amountPaise: m.amountPaise.toString(),
+        dueDate: m.dueDate.toISOString().slice(0, 10),
+        status: m.status,
+        overdue: m.status !== 'PAID' && m.status !== 'CANCELLED' && m.status !== 'REFUNDED' && m.dueDate < today,
+        paidAt: m.paidAt?.toISOString() ?? null,
+        receiptNo: m.receiptNo,
+        linkSent: Boolean(m.gatewayLinkId),
+        booking: { id: m.bookingId, ref: m.booking.ref, talent: m.booking.talent.stageName },
+        lead: { id: m.booking.lead.id, ref: m.booking.lead.ref, customer: m.booking.lead.companyName ?? m.booking.lead.customer.name },
+      })),
+      meta: { page: q.page, pageSize: q.pageSize, total, overdue: { count: overdue._count, amountPaise: (overdue._sum.amountPaise ?? 0n).toString() } },
+    };
   }
 
   /** Staff view: every milestone with its payments. Customer amounts only; no payout or margin. */

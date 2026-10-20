@@ -11,7 +11,7 @@ export class ApiError extends Error {
   }
 }
 
-export type Page<T> = { items: T[]; page: number; pageSize: number; total: number };
+export type Page<T, Extra = object> = { items: T[]; page: number; pageSize: number; total: number } & Extra;
 type Query = Record<string, string | number | boolean | undefined | null>;
 
 const qs = (q?: Query) => {

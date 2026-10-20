@@ -13,8 +13,8 @@ import { Skeleton } from '@repo/ui/skeleton';
 import { AVAILABILITY_LABELS, EVENT_TYPE_LABELS } from '@repo/utils';
 import { api, ApiError } from '@/lib/api/client';
 import { day, rupeesRange, titleCase, when } from '@/lib/format';
-import { SET_AVAILABILITY, STAGE_NAMES, WORK_LEADS, can } from '@/lib/roles';
-import type { Activity, Workspace, WorkspaceBooking } from '@/lib/types';
+import { SEND_CONTRACT, SET_AVAILABILITY, STAGE_NAMES, WORK_LEADS, can } from '@/lib/roles';
+import type { Activity, ContractRow, Workspace, WorkspaceBooking } from '@/lib/types';
 import { Card, ErrorNote, Field, PageHeader } from './ui';
 import { useUser } from './user-context';
 
@@ -218,6 +218,7 @@ function BookingRow({ leadId, b }: { leadId: string; b: WorkspaceBooking }) {
           Quotes →
         </Link>
       </div>
+      {b.quoteStatuses.includes('ACCEPTED') && <ContractAndPayments leadId={leadId} b={b} />}
       {canSet && (
         <div className="mt-3 flex flex-wrap items-center gap-2">
           <Select className="w-full sm:w-72" aria-label={`Availability for ${b.talent.name}`} value={b.availability} onValueChange={(v) => v !== b.availability && setAvail.mutate(v as AvailabilityStatus)} options={options} disabled={setAvail.isPending} />
@@ -229,6 +230,47 @@ function BookingRow({ leadId, b }: { leadId: string; b: WorkspaceBooking }) {
         </div>
       )}
     </li>
+  );
+}
+
+const CONTRACT_LABEL: Record<ContractRow['status'], string> = { DRAFT: 'Draft', SENT: 'Out for signature', PARTIALLY_SIGNED: 'Partly signed', SIGNED: 'Signed', VOID: 'Void' };
+
+/** CON-2: after the quote is accepted, send the contract for e-signature; payments link to the collections list. */
+function ContractAndPayments({ leadId, b }: { leadId: string; b: WorkspaceBooking }) {
+  const user = useUser();
+  const qc = useQueryClient();
+  const [withRep, setWithRep] = useState(false);
+  const contracts = useQuery({ queryKey: ['contracts', b.id], queryFn: () => api.get<ContractRow[]>(`/admin/bookings/${b.id}/contracts`) });
+  const live = contracts.data?.find((c) => c.status !== 'VOID');
+  const send = useMutation({
+    mutationFn: () => api.post<ContractRow[]>(`/admin/bookings/${b.id}/contract`, { includeRep: withRep }),
+    onSuccess: (rows) => {
+      qc.setQueryData(['contracts', b.id], rows);
+      void qc.invalidateQueries({ queryKey: ['lead', leadId] });
+      toast.success('Contract sent for e-signature');
+    },
+    onError: (e) => toast.error(errMsg(e)),
+  });
+  return (
+    <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-lg bg-surface px-3 py-2 text-sm">
+      <span className="text-fg-muted">
+        Contract: <span className="font-medium text-fg">{contracts.isLoading ? '…' : live ? CONTRACT_LABEL[live.status] : 'Not sent'}</span>
+        {live?.signedAt ? ` · ${when(live.signedAt)}` : live?.sentAt ? ` · sent ${when(live.sentAt)}` : ''}
+      </span>
+      {!live && contracts.data && can(user, ...SEND_CONTRACT) && !b.cancelledAt && (
+        <span className="flex items-center gap-3">
+          <label className="flex items-center gap-1.5 text-xs text-fg-muted">
+            <input type="checkbox" checked={withRep} onChange={(e) => setWithRep(e.target.checked)} className="size-3.5 accent-[var(--primary)]" /> Rep signs too
+          </label>
+          <Button size="sm" variant="outline" disabled={send.isPending} onClick={() => send.mutate()}>
+            Send for e-signature
+          </Button>
+        </span>
+      )}
+      <Link href={`/payments?view=all&bookingId=${b.id}`} className="ml-auto font-medium text-primary-text hover:underline">
+        Payments →
+      </Link>
+    </div>
   );
 }
 

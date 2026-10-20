@@ -9,6 +9,11 @@ export const SET_AVAILABILITY: StaffRole[] = ['SALES', 'TALENT_MANAGER'];
 export const BUILD_QUOTES: StaffRole[] = ['SALES', 'TALENT_MANAGER', 'ACCOUNTS'];
 export const SEE_PAYOUT: StaffRole[] = ['TALENT_MANAGER', 'ACCOUNTS'];
 export const SEE_FINANCE: StaffRole[] = ['ACCOUNTS'];
+/** Money screens: collections for everyone who works bookings; payouts for talent managers and finance; only finance records. */
+export const SEE_PAYMENTS: StaffRole[] = ['SALES', 'TALENT_MANAGER', 'OPS', 'ACCOUNTS'];
+export const RECORD_MONEY: StaffRole[] = ['ACCOUNTS'];
+export const SEND_CONTRACT: StaffRole[] = ['SALES', 'OPS'];
+
 /** Catalogue edits (talent, photos, rate cards, reps, blackouts). */
 export const EDIT_CATALOGUE: StaffRole[] = ['TALENT_MANAGER'];
 export const ROLE_LABELS: Record<StaffRole, string> = { SUPER_ADMIN: 'Super admin', SALES: 'Sales', TALENT_MANAGER: 'Talent manager', OPS: 'Ops', ACCOUNTS: 'Accounts' };

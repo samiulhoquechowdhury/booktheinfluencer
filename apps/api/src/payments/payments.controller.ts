@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Headers, HttpCode, Inject, Param, Post, Req, type RawBodyRequest } from '@nestjs/common';
+import { Body, Controller, Get, Headers, HttpCode, Inject, Param, Post, Query, Req, type RawBodyRequest } from '@nestjs/common';
 import type { Request } from 'express';
-import { ContractSendSchema, ContractVoidSchema, ManualPaymentSchema, type ManualPayment } from '@repo/schemas';
+import { ContractSendSchema, ContractVoidSchema, ManualPaymentSchema, MilestoneQuerySchema, type ManualPayment, type MilestoneQuery } from '@repo/schemas';
 import type { z } from 'zod';
 import { CurrentUser, Public, Roles } from '../auth/decorators';
 import type { AuthUserRef } from '../auth/guards';
@@ -22,6 +22,11 @@ export class AdminPaymentsController {
   @Get('bookings/:id/payments')
   async list(@Param('id') id: string) {
     return { data: await this.payments.forBooking(id) };
+  }
+
+  @Get('milestones')
+  async milestones(@Query(new ZodPipe(MilestoneQuerySchema)) q: MilestoneQuery) {
+    return this.payments.listMilestones(q);
   }
 
   @Post('milestones/:id/payments')

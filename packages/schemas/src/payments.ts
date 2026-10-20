@@ -16,3 +16,13 @@ export type ManualPayment = z.infer<typeof ManualPaymentSchema>;
 /** Send the contract for e-signature (CON-2). */
 export const ContractSendSchema = z.object({ includeRep: z.boolean().default(false) });
 export const ContractVoidSchema = z.object({ reason: z.string().trim().min(3).max(500) });
+
+/** Staff collections list (design.md /payments). `due` = unpaid (overdue ones first by date), `overdue` = unpaid and past due. */
+export const MilestoneQuerySchema = z.object({
+  page: z.coerce.number().int().positive().default(1),
+  pageSize: z.coerce.number().int().positive().max(100).default(25),
+  view: z.enum(['due', 'overdue', 'paid', 'all']).default('due'),
+  bookingId: z.string().min(1).max(40).optional(),
+  q: z.string().trim().min(1).max(80).optional(),
+});
+export type MilestoneQuery = z.infer<typeof MilestoneQuerySchema>;

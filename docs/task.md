@@ -22,7 +22,7 @@
 ### M0.2 Design
 - [ ] T-010 Design tokens + component library in Figma (`design.md` §3–4)
 - [ ] T-011 Customer screens: home, listing, profile, enquiry, booking detail (mobile + desktop)
-- [~] T-012 Admin screens: pipeline, lead workspace, quote builder, talent edit, dashboard  — _`apps/admin`: staff sign-in (password + authenticator), overview, pipeline board/table, lead workspace done; quote builder and talents (profile, photos, rate cards, reps + verification, blackouts) done; payments/payouts, settings, audit next_
+- [~] T-012 Admin screens: pipeline, lead workspace, quote builder, talent edit, dashboard  — _`apps/admin`: staff sign-in (password + authenticator), overview, pipeline board/table, lead workspace done; quote builder, talents, payments (collections + record payment), payouts (schedule/adjust/pay) and contract send done; settings, audit next_
 - [ ] T-013 Clickable prototype; 5 user tests (2 corporate, 2 planners, 1 private)
 
 ---

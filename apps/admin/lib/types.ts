@@ -146,3 +146,34 @@ export type RateCard = { id: string; eventType: string | null; minimumRupees: nu
 export type Rep = { id: string; name: string; agencyName: string | null; phone: string; email: string | null; verification: 'PENDING' | 'VERIFIED' | 'REJECTED'; hasLogin: boolean; talents: { id: string; stageName: string }[] };
 export type BlackoutRow = { id: string; date: string; note: string | null };
 export type Category = { id: string; slug: string; name: string; sortOrder: number; talentCount?: number };
+
+export type MilestoneRow = {
+  id: string;
+  label: string;
+  isAdvance: boolean;
+  amountPaise: string;
+  dueDate: string;
+  status: 'PENDING' | 'LINK_SENT' | 'PAID' | 'OVERDUE' | 'REFUNDED' | 'CANCELLED';
+  overdue: boolean;
+  paidAt: string | null;
+  receiptNo: string | null;
+  linkSent: boolean;
+  booking: { id: string; ref: string; talent: string };
+  lead: { id: string; ref: string; customer: string | null };
+};
+export type PayoutRow = {
+  id: string;
+  bookingId: string;
+  bookingRef: string;
+  leadRef: string;
+  talent: { slug: string; name: string };
+  eventDate: string;
+  amountPaise: string;
+  contractedPaise: string | null;
+  status: 'PENDING' | 'SCHEDULED' | 'PAID' | 'ON_HOLD';
+  scheduledFor: string | null;
+  paidAt: string | null;
+  reference: string | null;
+  note: string | null;
+};
+export type ContractRow = { id: string; status: 'DRAFT' | 'SENT' | 'PARTIALLY_SIGNED' | 'SIGNED' | 'VOID'; sentAt: string | null; signedAt: string | null; hasDocument: boolean; providerRef: string | null };

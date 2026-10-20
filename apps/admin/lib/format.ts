@@ -10,3 +10,14 @@ const dateFmt = new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'short
 const dateTimeFmt = new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Kolkata' });
 export const day = (iso: string) => dateFmt.format(new Date(iso.length === 10 ? `${iso}T00:00:00+05:30` : iso));
 export const when = (iso: string) => dateTimeFmt.format(new Date(iso));
+
+/** "1234.5" → 123450n exactly (no floats for money, rules.md §0.3). null if not a valid amount. */
+export function parseRupees(s: string): bigint | null {
+  const m = /^(\d{1,12})(?:\.(\d{1,2}))?$/.exec(s.trim().replace(/,/g, ''));
+  return m ? BigInt(m[1]!) * 100n + BigInt((m[2] ?? '').padEnd(2, '0')) : null;
+}
+/** 123450n → "1234.50" for an input field. */
+export const rupeesInput = (paise: string | bigint) => {
+  const p = BigInt(paise);
+  return `${p / 100n}.${(p % 100n).toString().padStart(2, '0')}`;
+};
