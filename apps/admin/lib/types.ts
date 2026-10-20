@@ -108,3 +108,41 @@ export type BookingQuotes = {
   marginFloorBps?: number;
   quotes: QuoteView[];
 };
+
+/** Admin catalogue (apps/api admin-catalog.service `toAdminTalent` etc.). Money in whole rupees. */
+export type AdminMedia = { id: string; key: string; alt: string; width: number | null; height: number | null; credit: string | null; isCover: boolean; sortOrder: number };
+export type AdminTalent = {
+  id: string;
+  slug: string;
+  stageName: string;
+  tagline: string;
+  bio: string;
+  baseCity: string;
+  travelsTo: string[];
+  travelsPanIndia: boolean;
+  languages: string[];
+  eventTypes: string[];
+  tags: string[];
+  tier: 'STANDARD' | 'PREMIUM';
+  status: 'DRAFT' | 'PUBLISHED' | 'HIDDEN';
+  featured: boolean;
+  blackoutSelfEdit: boolean;
+  representationType: string;
+  feeBand: { minRupees: number; maxRupees: number } | null;
+  showreelUrl: string | null;
+  riderSummary: string | null;
+  pastEvents: { title: string; city: string; year: number }[];
+  faqs: { q: string; a: string }[];
+  followers: { platform: 'instagram' | 'youtube'; count: number }[];
+  categories: string[];
+  media: AdminMedia[];
+  reps: { id: string; name: string; agencyName: string | null; verification: 'PENDING' | 'VERIFIED' | 'REJECTED' }[];
+  hasLogin: boolean;
+  counts: { blackouts: number; rateCards: number; bookings: number };
+  createdAt: string;
+  updatedAt: string;
+};
+export type RateCard = { id: string; eventType: string | null; minimumRupees: number; sellingRupees: number; commissionBps: number; notes: string | null };
+export type Rep = { id: string; name: string; agencyName: string | null; phone: string; email: string | null; verification: 'PENDING' | 'VERIFIED' | 'REJECTED'; hasLogin: boolean; talents: { id: string; stageName: string }[] };
+export type BlackoutRow = { id: string; date: string; note: string | null };
+export type Category = { id: string; slug: string; name: string; sortOrder: number; talentCount?: number };

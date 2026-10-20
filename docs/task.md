@@ -22,7 +22,7 @@
 ### M0.2 Design
 - [ ] T-010 Design tokens + component library in Figma (`design.md` §3–4)
 - [ ] T-011 Customer screens: home, listing, profile, enquiry, booking detail (mobile + desktop)
-- [~] T-012 Admin screens: pipeline, lead workspace, quote builder, talent edit, dashboard  — _`apps/admin`: staff sign-in (password + authenticator), overview, pipeline board/table, lead workspace done; quote builder done; talents, payments/payouts, settings, audit next_
+- [~] T-012 Admin screens: pipeline, lead workspace, quote builder, talent edit, dashboard  — _`apps/admin`: staff sign-in (password + authenticator), overview, pipeline board/table, lead workspace done; quote builder and talents (profile, photos, rate cards, reps + verification, blackouts) done; payments/payouts, settings, audit next_
 - [ ] T-013 Clickable prototype; 5 user tests (2 corporate, 2 planners, 1 private)
 
 ---
@@ -53,9 +53,9 @@
 
 ### M1.3 Talent catalogue (week 3–5) — CAT, ADM
 - [x] T-140 Categories CRUD (admin) (0.5d)  — _API `/v1/admin/categories`; can't delete one in use_
-- [~] T-141 Talent CRUD API + admin form (profile, categories, tags, languages, cities, tier, status, representation) (2d)  — _API done (drafts, publish check, hide); form waits for `apps/admin`_
+- [x] T-141 Talent CRUD API + admin form (profile, categories, tags, languages, cities, tier, status, representation) (2d)  — _admin `/talents`, `/talents/new`, `/talents/:id` (profile tab; publish / hide / draft)_
 - [~] T-142 Media upload via presigned URLs, ordering, cover image (1.5d)  — _register/order/cover/remove done; presigned upload waits for the storage vendor (S3/R2)_
-- [~] T-143 Rate cards (internal) UI + API (1d)  — _API done (staff read, TM/SA write, audited); UI waits for `apps/admin`_
+- [x] T-143 Rate cards (internal) UI + API (1d)  — _admin talent “Rate cards” tab_
 - [~] T-144 Representatives CRUD, link to talents, KYC upload, verification status (1.5d)  — _CRUD, linking, verification done; KYC upload waits for storage_
 - [x] T-145 Blackout dates (admin) (0.5d)  — _API `/v1/admin/talents/:id/blackouts`_
 - [ ] T-146 Public catalogue API: list, filters, full-text search, pagination (2d)

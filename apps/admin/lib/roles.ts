@@ -9,6 +9,8 @@ export const SET_AVAILABILITY: StaffRole[] = ['SALES', 'TALENT_MANAGER'];
 export const BUILD_QUOTES: StaffRole[] = ['SALES', 'TALENT_MANAGER', 'ACCOUNTS'];
 export const SEE_PAYOUT: StaffRole[] = ['TALENT_MANAGER', 'ACCOUNTS'];
 export const SEE_FINANCE: StaffRole[] = ['ACCOUNTS'];
+/** Catalogue edits (talent, photos, rate cards, reps, blackouts). */
+export const EDIT_CATALOGUE: StaffRole[] = ['TALENT_MANAGER'];
 export const ROLE_LABELS: Record<StaffRole, string> = { SUPER_ADMIN: 'Super admin', SALES: 'Sales', TALENT_MANAGER: 'Talent manager', OPS: 'Ops', ACCOUNTS: 'Accounts' };
 
 /** Staff-facing stage names (the customer copy lives in @repo/utils STAGE_LABELS). */
