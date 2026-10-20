@@ -36,10 +36,20 @@ export function FieldShell({ id, label, error, hint, valid, prefix, children, cl
           error ? 'border-danger motion-safe:animate-shake' : 'border-border hover:border-border-strong',
         )}
       >
-        {prefix && (
-          <span className="pointer-events-none absolute top-[1.625rem] left-3.5 text-[0.9375rem] text-fg-muted">{prefix}</span>
-        )}
         {children}
+        {prefix && (
+          // After the input so `peer-*` can see it: shown only once the label has floated up (focus or a value),
+          // on the same line box as the typed text, so it never sits on top of the label.
+          <span
+            aria-hidden
+            className={cn(
+              'pointer-events-none absolute top-0 left-3.5 pt-6 pb-2 text-[0.9375rem] leading-normal text-fg-muted opacity-0 transition-opacity duration-(--duration-base)',
+              'peer-focus:opacity-100 peer-[:not(:placeholder-shown)]:opacity-100',
+            )}
+          >
+            {prefix}
+          </span>
+        )}
         <label
           htmlFor={id}
           className={cn(
@@ -91,7 +101,7 @@ export function FieldShell({ id, label, error, hint, valid, prefix, children, cl
 }
 
 const inputBase =
-  'peer block w-full appearance-none rounded-lg bg-transparent px-3.5 pt-6 pb-2 text-[0.9375rem] text-fg outline-none placeholder:text-transparent';
+  'peer block w-full appearance-none rounded-lg bg-transparent px-3.5 pt-6 pb-2 text-[0.9375rem] leading-normal text-fg outline-none placeholder:text-transparent';
 
 type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'prefix'> & {
   label: string;
@@ -116,7 +126,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         placeholder=" "
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? `${id}-error` : hint ? `${id}-hint` : undefined}
-        className={cn(inputBase, prefix && 'pl-8', valid && 'pr-10', className)}
+        className={cn(inputBase, prefix && 'pl-12', valid && 'pr-10', className)}
         {...props}
       />
     </FieldShell>
