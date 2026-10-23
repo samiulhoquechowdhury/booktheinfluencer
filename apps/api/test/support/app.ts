@@ -22,6 +22,7 @@ export const testEnv = loadEnv({
   JWT_ACCESS_SECRET: 'test-access-secret-0123456789abcdefghijklmnop',
   AUTH_SECRET: 'test-auth-secret-0123456789abcdefghijklmnopqr',
   SMS_PROVIDER: 'console',
+  OTP_ACCEPT_ANY: 'false', // the dev .env may turn the demo bypass on
   MFA_ENCRYPTION_KEY: Buffer.alloc(32, 7).toString('base64'),
   PAYMENT_WEBHOOK_SECRET: 'test-payment-webhook-secret-0123456789abc',
   ESIGN_WEBHOOK_SECRET: 'test-esign-webhook-secret-0123456789abcdef',

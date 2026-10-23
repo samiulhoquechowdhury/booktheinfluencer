@@ -34,6 +34,7 @@ Managed Postgres keeps its own point-in-time backups. These scripts give an inde
 
 ## Production settings to check before launch
 
+- **Demo OTP bypass:** `OTP_ACCEPT_ANY` (any 6-digit code signs in) is on for local demos only. Set it to `false` or remove it, and delete the bypass in `otp.service.ts` before launch. The API refuses to start with it in production.
 - API: `NODE_ENV=production` refuses the dev-only adapters (console SMS, fake gateway, fake e-sign) and requires `SUPPORT_PHONE`. Set `CORS_ORIGINS`, `INVITE_BASE_URL` (website `/invite`), `STAFF_INVITE_BASE_URL` (admin `/invite`), distinct 32+ character secrets, `MFA_ENCRYPTION_KEY` (32 bytes, base64).
 - Web: `NEXT_PUBLIC_API_BASE=/api/v1`, `API_URL`, `NEXT_PUBLIC_SITE_URL`.
 - Admin: `API_URL`, `NEXT_PUBLIC_WEB_URL`, optionally `ADMIN_IP_ALLOWLIST`.

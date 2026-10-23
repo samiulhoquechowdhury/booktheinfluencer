@@ -24,6 +24,8 @@ const EnvSchema = z.object({
   STAFF_INVITE_BASE_URL: z.url().default('http://localhost:3001/invite'),
   /** SMS adapter for OTPs. `console` logs codes instead of sending them (development/test only). */
   SMS_PROVIDER: z.enum(['console']).default('console'),
+  /** DEMO ONLY (development): accept any 6-digit OTP so testers can sign in without the console code. Refused in production; remove before launch. */
+  OTP_ACCEPT_ANY: z.enum(['true', 'false']).default('false').transform((v) => v === 'true'),
   /** Payment gateway adapter. `fake` = local test gateway (development/test only) until the vendor is chosen. */
   PAYMENT_PROVIDER: z.enum(['fake']).default('fake'),
   /** HMAC-SHA256 key the gateway signs webhooks with. */
@@ -42,6 +44,7 @@ const EnvSchema = z.object({
   SUPPORT_PHONE: z.string().regex(/^\+91[6-9]\d{9}$/, 'E.164 Indian mobile, e.g. +919876543210').optional(),
 })
   .refine((e) => e.NODE_ENV !== 'production' || e.SMS_PROVIDER !== 'console', { path: ['SMS_PROVIDER'], message: 'Configure a real SMS provider in production' })
+  .refine((e) => e.NODE_ENV !== 'production' || !e.OTP_ACCEPT_ANY, { path: ['OTP_ACCEPT_ANY'], message: 'Demo OTP bypass must be off in production' })
   .refine((e) => e.NODE_ENV !== 'production' || e.PAYMENT_PROVIDER !== 'fake', { path: ['PAYMENT_PROVIDER'], message: 'Configure a real payment gateway in production' })
   .refine((e) => e.NODE_ENV !== 'production' || e.ESIGN_PROVIDER !== 'fake', { path: ['ESIGN_PROVIDER'], message: 'Configure a real e-sign provider in production' })
   .refine((e) => e.PAYMENT_WEBHOOK_SECRET !== e.ESIGN_WEBHOOK_SECRET, { path: ['ESIGN_WEBHOOK_SECRET'], message: 'Must differ from PAYMENT_WEBHOOK_SECRET' })

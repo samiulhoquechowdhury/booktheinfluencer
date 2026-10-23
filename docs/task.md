@@ -22,7 +22,7 @@
 ### M0.2 Design
 - [ ] T-010 Design tokens + component library in Figma (`design.md` §3–4)
 - [ ] T-011 Customer screens: home, listing, profile, enquiry, booking detail (mobile + desktop)
-- [~] T-012 Admin screens: pipeline, lead workspace, quote builder, talent edit, dashboard  — _`apps/admin`: staff sign-in (password + authenticator), overview, pipeline board/table, lead workspace done; quote builder, talents, payments, payouts, contract send, settings (users & roles, invites, categories) and audit log done_
+- [x] T-012 Admin screens: pipeline, lead workspace, quote builder, talent edit, dashboard  — _`apps/admin`: staff sign-in (password + authenticator), overview, pipeline board/table, lead workspace done; quote builder, talents, payments, payouts, contract send, settings (users & roles, invites, categories) and audit log done_
 - [ ] T-013 Clickable prototype; 5 user tests (2 corporate, 2 planners, 1 private)
 
 ---
@@ -58,18 +58,18 @@
 - [x] T-143 Rate cards (internal) UI + API (1d)  — _admin talent “Rate cards” tab_
 - [~] T-144 Representatives CRUD, link to talents, KYC upload, verification status (1.5d)  — _CRUD, linking, verification done; KYC upload waits for storage_
 - [x] T-145 Blackout dates (admin) (0.5d)  — _API `/v1/admin/talents/:id/blackouts`_
-- [ ] T-146 Public catalogue API: list, filters, full-text search, pagination (2d)
+- [x] T-146 Public catalogue API: list, filters, full-text search, pagination (2d)
 - [x] T-147 Serializer tests: public talent DTO has no rate card fields (0.5d)  — _mock + NestJS: strict-schema parse and leak checks on every catalogue route_
-- [~] T-148 Web: listing page with filters (desktop rail, mobile sheet) (2d)  — _UI done on mock API (`apps/web`); API part pending_
-- [~] T-149 Web: talent profile page with sticky CTA, fee band, disclaimer (2d)  — _UI done on mock API (`apps/web`); API part pending_
-- [~] T-150 Web: home page (1.5d)  — _UI done on mock API (`apps/web`); API part pending_
-- [~] T-151 Web: SEO city/category landing pages, metadata, JSON-LD, sitemap (1.5d)  — _UI done on mock API (`apps/web`); API part pending_
-- [~] T-152 Favourites (0.5d)  — _UI done on mock API (`apps/web`); API part pending_
+- [x] T-148 Web: listing page with filters (desktop rail, mobile sheet) (2d)  — _UI done; runs on the real API (`NEXT_PUBLIC_API_BASE=/api/v1`)_
+- [x] T-149 Web: talent profile page with sticky CTA, fee band, disclaimer (2d)  — _UI done; runs on the real API (`NEXT_PUBLIC_API_BASE=/api/v1`)_
+- [x] T-150 Web: home page (1.5d)  — _UI done; runs on the real API (`NEXT_PUBLIC_API_BASE=/api/v1`)_
+- [x] T-151 Web: SEO city/category landing pages, metadata, JSON-LD, sitemap (1.5d)  — _UI done; runs on the real API (`NEXT_PUBLIC_API_BASE=/api/v1`)_
+- [x] T-152 Favourites (0.5d)  — _UI done; runs on the real API (`NEXT_PUBLIC_API_BASE=/api/v1`)_
 - [ ] T-153 CSV bulk import of talents (SHOULD) (1d)
 
 ### M1.4 Enquiry & pipeline (week 5–7) — ENQ, PIPE, AVL
 - [~] T-160 Enquiry API: create lead + draft bookings, ref number, Turnstile (1.5d)  — _`POST /v1/enquiries` done (OTP-verified, signs the customer in, TB-/BK- refs from Postgres sequences, 5/hour/IP); Turnstile waits for keys_
-- [~] T-161 Web: enquiry stepper with OTP, success page (2d)  — _UI done on mock API (`apps/web`); API part pending_
+- [x] T-161 Web: enquiry stepper with OTP, success page (2d)  — _UI done; runs on the real API (`NEXT_PUBLIC_API_BASE=/api/v1`)_
 - [ ] T-162 Acknowledgement notifications (worker + templates) (1d)
 - [x] T-163 Admin: pipeline Kanban + table views, filters (2.5d)  — _API done: `GET /v1/admin/leads` (stage/owner/city/category/date/q filters) and `/v1/admin/pipeline/board`; admin board + table done_
 - [x] T-164 Stage transition endpoint using state machine; lost reason; activity log (1d)
@@ -84,7 +84,7 @@
 - [x] T-182 Approval rule (below minimum / margin floor) + approval action (1d)  — _floor `QUOTE_MARGIN_FLOOR_BPS` (placeholder 10% until the client decides)_
 - [ ] T-183 Quote PDF render in worker (1d)
 - [~] T-184 Send quote: email/WA with secure link (0.5d)  — _send action + lead → QUOTE_SENT done; delivery waits for the worker and email/WhatsApp vendor_
-- [~] T-185 Web: quote view, accept (IP + timestamp), request changes, expiry (1.5d)  — _UI done on mock; API done (`/v1/me/bookings`, `…/quotes/:id/decision`); web switch to the API pending_
+- [x] T-185 Web: quote view, accept (IP + timestamp), request changes, expiry (1.5d)  — _runs on the real API_
 - [x] T-186 Serializer tests: customer quote DTO has no internal cost (0.5d)  — _API e2e parses the strict `CustomerBookingSchema` and checks for leaked fields_
 
 ### M1.6 Contracts & payments (week 8–10) — CON, PAY

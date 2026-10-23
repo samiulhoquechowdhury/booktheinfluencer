@@ -78,9 +78,11 @@ export class OtpService {
     if (!challenge) throw invalid();
     if (challenge.attempts >= OTP_MAX_ATTEMPTS) throw new DomainError('OTP_TOO_MANY_ATTEMPTS', 'Too many wrong codes. Request a new one.', 429);
 
+    // DEMO ONLY: OTP_ACCEPT_ANY lets any 6-digit code through (env refuses it in production).
+    const demo = this.env.OTP_ACCEPT_ANY && /^\d{6}$/.test(code);
     const expected = Buffer.from(challenge.codeHash, 'hex');
     const given = this.hash(phone, code);
-    if (expected.length !== given.length || !timingSafeEqual(expected, given)) {
+    if (!demo && (expected.length !== given.length || !timingSafeEqual(expected, given))) {
       await this.prisma.otpChallenge.update({ where: { id: challenge.id }, data: { attempts: { increment: 1 } } });
       throw invalid();
     }

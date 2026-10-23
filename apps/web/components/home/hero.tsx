@@ -15,14 +15,17 @@ import { cn } from '@repo/ui/lib/cn';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-/** Fan layout, left → right. The outer pair is hidden on phones so three cards stay large. */
+/** Fan layout, left → right. Phones show the middle three, small screens five, large screens all seven. */
 const FAN = [
-  { rot: -10, y: '22%', cls: 'hidden w-[19%] sm:block', z: 'z-10' },
-  { rot: -5, y: '9%', cls: 'w-[31%] sm:w-[21%]', z: 'z-20' },
-  { rot: 0, y: '0%', cls: 'w-[38%] sm:w-[25%]', z: 'z-30' },
-  { rot: 5, y: '9%', cls: 'w-[31%] sm:w-[21%]', z: 'z-20' },
-  { rot: 10, y: '22%', cls: 'hidden w-[19%] sm:block', z: 'z-10' },
+  { rot: -14, y: '34%', cls: 'hidden lg:block lg:w-[14%]', z: 'z-0' },
+  { rot: -10, y: '22%', cls: 'hidden w-[19%] sm:block lg:w-[16.5%]', z: 'z-10' },
+  { rot: -5, y: '9%', cls: 'w-[31%] sm:w-[21%] lg:w-[18.5%]', z: 'z-20' },
+  { rot: 0, y: '0%', cls: 'w-[38%] sm:w-[25%] lg:w-[21%]', z: 'z-30' },
+  { rot: 5, y: '9%', cls: 'w-[31%] sm:w-[21%] lg:w-[18.5%]', z: 'z-20' },
+  { rot: 10, y: '22%', cls: 'hidden w-[19%] sm:block lg:w-[16.5%]', z: 'z-10' },
+  { rot: 14, y: '34%', cls: 'hidden lg:block lg:w-[14%]', z: 'z-0' },
 ] as const;
+const MID = (FAN.length - 1) / 2;
 
 const CHECKS = ['Managed end to end', 'Itemised quotes', 'Secure payments'];
 
@@ -79,7 +82,7 @@ export function Hero({ mosaic, banners }: { mosaic: PublicTalent[]; banners: Cat
 
       {/* Talent fan */}
       {cards.length > 0 && (
-        <div className="relative mx-auto mt-12 flex max-w-5xl items-start justify-center px-2 pb-[3%] md:mt-16">
+        <div className="relative mx-auto mt-12 flex max-w-5xl items-start lg:max-w-6xl justify-center px-2 pb-[3%] md:mt-16">
           {cards.map((t, i) => {
             const f = FAN[i]!;
             const img = t.images[0]!;
@@ -90,7 +93,7 @@ export function Hero({ mosaic, banners }: { mosaic: PublicTalent[]; banners: Cat
                 style={{ rotate: f.rot, y: f.y }}
                 initial={reduce ? false : { opacity: 0, y: '45%' }}
                 animate={{ opacity: 1, y: f.y }}
-                transition={{ duration: 1, ease: EASE, delay: 0.55 + Math.abs(i - 2) * 0.1 }}
+                transition={{ duration: 1, ease: EASE, delay: 0.55 + Math.abs(i - MID) * 0.1 }}
               >
                 <Link
                   href={`/t/${t.slug}`}
@@ -101,10 +104,10 @@ export function Hero({ mosaic, banners }: { mosaic: PublicTalent[]; banners: Cat
                       src={img.src}
                       alt={img.alt}
                       fill
-                      priority={i === 2}
+                      priority={i === MID}
                       placeholder={img.blurDataURL ? 'blur' : 'empty'}
                       blurDataURL={img.blurDataURL}
-                      sizes="(min-width: 1024px) 260px, (min-width: 640px) 25vw, 38vw"
+                      sizes="(min-width: 1024px) 250px, (min-width: 640px) 25vw, 38vw"
                       className="object-cover transition-transform duration-[900ms] ease-(--ease-out-expo) group-hover:scale-105"
                     />
                     <span aria-hidden className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/75 to-transparent" />
