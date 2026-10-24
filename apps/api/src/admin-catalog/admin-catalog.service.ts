@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import type { Prisma } from '@repo/db';
-import type { AdminTalentQuery, TalentInput, TalentUpdate } from '@repo/schemas';
+import type { AdminTalentQuery, TalentInput, TalentReview, TalentUpdate } from '@repo/schemas';
 import type { z } from 'zod';
 import type { BlackoutInputSchema, MediaInputSchema, RateCardInputSchema, RepInputSchema, RepUpdateSchema, RepVerificationSchema } from '@repo/schemas';
 import { AuditService } from '../audit/audit.service';
@@ -53,6 +53,8 @@ function toAdminTalent(t: AdminTalentRow) {
     media: t.media.map((m) => ({ id: m.id, key: m.key, alt: m.alt, width: m.width, height: m.height, credit: m.credit, isCover: m.isCover, sortOrder: m.sortOrder })),
     reps: t.reps.map((r) => ({ id: r.rep.id, name: r.rep.name, agencyName: r.rep.agencyName, verification: r.rep.verification })),
     hasLogin: Boolean(t.userId),
+    submittedAt: t.submittedAt?.toISOString() ?? null,
+    reviewNote: t.reviewNote,
     counts: { blackouts: t._count.blackouts, rateCards: t._count.rateCards, bookings: t._count.bookings },
     createdAt: t.createdAt.toISOString(),
     updatedAt: t.updatedAt.toISOString(),
@@ -114,7 +116,8 @@ export class AdminCatalogService {
 
   async listTalents(q: AdminTalentQuery) {
     const where: Prisma.TalentWhereInput = {
-      status: q.status,
+      status: q.review === 'pending' ? 'DRAFT' : q.status,
+      submittedAt: q.review === 'pending' ? { not: null } : undefined,
       categories: q.category ? { some: { category: { slug: q.category } } } : undefined,
       stageName: q.q ? { contains: q.q, mode: 'insensitive' } : undefined,
     };
@@ -208,6 +211,20 @@ export class AdminCatalogService {
       if (status === 'PUBLISHED') this.assertPublishable(t);
       const after = await tx.talent.update({ where: { id }, data: { status }, include: ADMIN_INCLUDE });
       await this.audit.record({ actorId: actor.id, action: 'talent.status', entity: 'talent', entityId: id, before: { status: t.status }, after: { status }, ip }, tx);
+      return toAdminTalent(after);
+    });
+  }
+
+  /** Self-onboarding review: approve = publish (same checks as publishing); changes = back to the talent with a note. */
+  async review(id: string, input: TalentReview, actor: AuthUserRef, ip?: string) {
+    return this.prisma.$transaction(async (tx) => {
+      const t = await tx.talent.findUnique({ where: { id }, include: ADMIN_INCLUDE });
+      if (!t) throw new NotFoundError('Talent', id);
+      if (!t.submittedAt) throw new DomainError('NOT_IN_REVIEW', 'This profile isn’t waiting for review.', 409);
+      if (input.decision === 'approve') this.assertPublishable(t);
+      const data = input.decision === 'approve' ? { status: 'PUBLISHED' as const, submittedAt: null, reviewNote: null } : { submittedAt: null, reviewNote: input.note };
+      const after = await tx.talent.update({ where: { id }, data, include: ADMIN_INCLUDE });
+      await this.audit.record({ actorId: actor.id, action: `talent.review.${input.decision}`, entity: 'talent', entityId: id, before: { status: t.status }, after: { status: after.status, note: input.decision === 'changes' ? input.note : undefined }, ip }, tx);
       return toAdminTalent(after);
     });
   }

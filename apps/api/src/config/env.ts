@@ -26,6 +26,8 @@ const EnvSchema = z.object({
   SMS_PROVIDER: z.enum(['console']).default('console'),
   /** DEMO ONLY (development): accept any 6-digit OTP so testers can sign in without the console code. Refused in production; remove before launch. */
   OTP_ACCEPT_ANY: z.enum(['true', 'false']).default('false').transform((v) => v === 'true'),
+  /** Where uploaded talent photos are stored (served at /v1/media/:file). Use a mounted volume or bucket sync in production. */
+  MEDIA_DIR: z.string().min(1).default('uploads/media'),
   /** Payment gateway adapter. `fake` = local test gateway (development/test only) until the vendor is chosen. */
   PAYMENT_PROVIDER: z.enum(['fake']).default('fake'),
   /** HMAC-SHA256 key the gateway signs webhooks with. */

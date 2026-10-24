@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Dialog } from 'radix-ui';
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { ArrowRight, CalendarDays, Check, Clock, MapPin, ShieldCheck, Sparkles, X } from 'lucide-react';
 import type { PublicTalent } from '@repo/schemas';
 import { DatePicker } from '@repo/ui/date-picker';
@@ -17,27 +17,29 @@ import { useMediaQuery, useScrollLock } from '@/lib/motion';
 import { QUOTE_INCLUDES, enquireHref } from './booking-card';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+const OPEN_EVENT = 'booking-panel:open';
+
+/** Opens the booking panel from anywhere on the profile page (hero and sidebar buttons). */
+export const openBookingPanel = () => window.dispatchEvent(new Event(OPEN_EVENT));
 
 /**
- * Floating booking dock for talent profiles (all screen sizes). Shows who you're booking and a
- * primary action that opens the booking panel: bottom sheet on phones, centred panel on larger
- * screens. The panel collects date, event type and city, then hands off to the enquiry flow
- * with those prefilled. Hides while scrolling down, returns on scroll up.
+ * Floating booking dock for talent profiles (all screen sizes), always pinned to the bottom of the
+ * screen. Shows who you're booking and a primary action that opens the booking panel: bottom sheet
+ * on phones, centred panel on larger screens. The panel collects date, event type and city, then
+ * hands off to the enquiry flow with those prefilled.
  */
 export function BookingDock({ talent }: { talent: PublicTalent }) {
   const reduce = useReducedMotion();
-  const { scrollY } = useScroll();
-  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const cta = ctaLabelForTier(talent.tier);
   const cover = talent.images[0]!;
   const fee = formatFeeBand(talent.feeBand).range;
 
-  useMotionValueEvent(scrollY, 'change', (y) => {
-    const prev = scrollY.getPrevious() ?? 0;
-    if (y > prev + 4 && y > 500) setHidden(true);
-    else if (y < prev - 4) setHidden(false);
-  });
+  useEffect(() => {
+    const show = () => setOpen(true);
+    window.addEventListener(OPEN_EVENT, show);
+    return () => window.removeEventListener(OPEN_EVENT, show);
+  }, []);
 
   return (
     <>
@@ -45,7 +47,7 @@ export function BookingDock({ talent }: { talent: PublicTalent }) {
         className="fixed inset-x-3 bottom-3 z-40 mx-auto max-w-2xl sm:bottom-5"
         style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
         initial={reduce ? false : { y: '160%' }}
-        animate={{ y: hidden && !open && !reduce ? '160%' : '0%' }}
+        animate={{ y: '0%' }}
         transition={{ duration: 0.5, ease: EASE }}
       >
         <div className="liquid-glass relative flex items-center gap-3 rounded-full p-2 pl-2">

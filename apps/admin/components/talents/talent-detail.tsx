@@ -92,6 +92,7 @@ function Loaded({ t }: { t: AdminTalent }) {
           )
         }
       />
+      {(t.submittedAt || t.reviewNote) && <ReviewPanel t={t} editable={editable} onDone={setTalent} />}
       <Tabs
         value={tab}
         onValueChange={setTab}
@@ -450,5 +451,76 @@ function Blackouts({ talentId, editable }: { talentId: string; editable: boolean
         </form>
       )}
     </div>
+  );
+}
+
+/** Self-onboarded profile review: approve (publishes it) or send it back to the talent with a note. */
+function ReviewPanel({ t, editable, onDone }: { t: AdminTalent; editable: boolean; onDone: (t: AdminTalent) => void }) {
+  const [note, setNote] = useState('');
+  const [asking, setAsking] = useState(false);
+  const review = useMutation({
+    mutationFn: (body: { decision: 'approve' } | { decision: 'changes'; note: string }) => api.post<AdminTalent>(`/admin/talents/${t.id}/review`, body),
+    onSuccess: (next, body) => {
+      onDone(next);
+      setAsking(false);
+      setNote('');
+      toast.success(body.decision === 'approve' ? 'Approved — the profile is live on the website' : 'Sent back to the talent');
+    },
+    onError: (e) => toast.error(errorText(e)),
+  });
+
+  if (!t.submittedAt) {
+    return (
+      <Card className="mb-6 border-border">
+        <p className="text-sm font-semibold">Changes requested from the talent</p>
+        <p className="mt-1 text-sm text-fg-muted">“{t.reviewNote}”</p>
+        <p className="mt-2 text-xs text-fg-subtle">The talent sees this note in their portal. The profile comes back here when they resubmit.</p>
+      </Card>
+    );
+  }
+  return (
+    <Card className="mb-6 border-warning/40 bg-warning/5">
+      <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+        <div>
+          <p className="font-semibold">Waiting for your review</p>
+          <p className="mt-1 text-sm text-fg-muted">
+            The talent submitted this profile on {day(t.submittedAt)}. Check the details, photos and categories below, then approve to publish it or send it back with what to change.
+          </p>
+          {t.reviewNote && <p className="mt-2 text-xs text-fg-subtle">Earlier note: “{t.reviewNote}”</p>}
+        </div>
+        {editable && !asking && (
+          <div className="flex shrink-0 gap-2">
+            <Button size="sm" disabled={review.isPending} onClick={() => review.mutate({ decision: 'approve' })}>
+              {review.isPending ? <Loader2 className="animate-spin" aria-label="Saving" /> : 'Approve and publish'}
+            </Button>
+            <Button size="sm" variant="outline" disabled={review.isPending} onClick={() => setAsking(true)}>
+              Request changes
+            </Button>
+          </div>
+        )}
+      </div>
+      {editable && asking && (
+        <form
+          className="mt-4 grid gap-3"
+          onSubmit={(e) => {
+            e.preventDefault();
+            review.mutate({ decision: 'changes', note: note.trim() });
+          }}
+        >
+          <label className="grid gap-1.5 text-sm">
+            <span className="font-medium">What should the talent change?</span>
+            <textarea rows={3} value={note} onChange={(e) => setNote(e.target.value)} placeholder="e.g. Add a brighter stage photo as the cover, and mention the events you’ve played." className="rounded-lg border border-border bg-surface px-3 py-2 outline-none focus:border-primary-text" />
+          </label>
+          <div className="flex gap-2">
+            <Button size="sm" type="submit" disabled={review.isPending || note.trim().length < 10}>
+              {review.isPending ? <Loader2 className="animate-spin" aria-label="Sending" /> : 'Send to talent'}
+            </Button>
+            <Button size="sm" type="button" variant="ghost" onClick={() => setAsking(false)}>
+              Cancel
+            </Button>
+          </div>
+        </form>
+      )}
+    </Card>
   );
 }

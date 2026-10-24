@@ -157,7 +157,9 @@ model RefreshToken {
   expiresAt  DateTime
   revokedAt  DateTime?
   replacedBy String?
-  /** How the session was opened: 'mfa' (staff password + authenticator) or 'otp' (phone code). Only 'mfa' sessions carry staff roles. */
+  /**
+   * How the session was opened: 'mfa' (staff password + authenticator) or 'otp' (phone code). Only 'mfa' sessions carry staff roles.
+   */
   authMethod String    @default("otp")
   createdAt  DateTime  @default(now())
   user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -251,6 +253,8 @@ model Talent {
   followers          Json                     @default("[]") // [{ platform, count }] — public, sourced figures only
   userId             String?                  @unique // talent login
   blackoutSelfEdit   Boolean                  @default(false) // TAL-3: talent may edit own blackout dates
+  submittedAt        DateTime? // self-onboarding: sent for staff review (null = still editing)
+  reviewNote         String? // self-onboarding: what staff asked the talent to change
   searchVector       Unsupported("tsvector")?
   createdAt          DateTime                 @default(now())
   updatedAt          DateTime                 @updatedAt

@@ -38,7 +38,7 @@ export function BookingDetail({ bookingRef }: { bookingRef: string }) {
   }
   if (q.isError || !q.data) {
     const nf = q.error instanceof ApiError && q.error.status === 404;
-    return <EmptyState art={nf ? 'search' : 'error'} title={nf ? 'Booking not found' : 'We couldn’t load this booking'} description={q.error instanceof ApiError ? q.error.message : undefined} action={nf ? <Button asChild><Link href="/account">Back to bookings</Link></Button> : <Button onClick={() => void q.refetch()}>Try again</Button>} />;
+    return <EmptyState art={nf ? 'search' : 'error'} title={nf ? 'Booking not found' : 'We couldn’t load this booking'} description={q.error instanceof ApiError ? q.error.message : undefined} action={nf ? <Button asChild><Link href="/account/bookings">Back to bookings</Link></Button> : <Button onClick={() => void q.refetch()}>Try again</Button>} />;
   }
   const b = q.data;
   const quoteAccepted = b.quotes.some((x) => x.status === 'ACCEPTED');
@@ -47,7 +47,7 @@ export function BookingDetail({ bookingRef }: { bookingRef: string }) {
 
   return (
     <div className="pb-10">
-      <Link href="/account" className="mb-6 inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"><ArrowLeft className="size-4" aria-hidden /> All bookings</Link>
+      <Link href="/account/bookings" className="mb-6 inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"><ArrowLeft className="size-4" aria-hidden /> All bookings</Link>
 
       <header className="flex flex-col gap-6 border-b border-border pb-8 md:flex-row md:items-end">
         <div className="relative aspect-[4/5] w-24 shrink-0 overflow-hidden rounded-xl md:w-32">
@@ -63,7 +63,7 @@ export function BookingDetail({ bookingRef }: { bookingRef: string }) {
         <AvailabilityPill status={b.availability} className="self-start md:self-end" />
       </header>
 
-      <div className="mt-10 grid gap-10 lg:grid-cols-[300px_1fr] xl:gap-16">
+      <div className="mt-10 grid gap-10 xl:grid-cols-[280px_1fr] xl:gap-12">
         <aside className="space-y-8">
           <section aria-labelledby="progress-title">
             <h2 id="progress-title" className="eyebrow mb-5">Progress</h2>

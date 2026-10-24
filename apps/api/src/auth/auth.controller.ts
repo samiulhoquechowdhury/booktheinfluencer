@@ -59,7 +59,7 @@ export class AuthController {
   @Post('otp/verify')
   @HttpCode(200)
   async verifyOtp(@Body(new ZodPipe(OtpVerifySchema)) body: OtpVerify, @Res({ passthrough: true }) res: Response) {
-    const user = await this.otp.verify(toE164(body.phone), body.code, body.name);
+    const user = await this.otp.verify(toE164(body.phone), body.code, body.name, body.as);
     return this.session(res, user, await this.tokens.issueRefresh(user.id));
   }
 

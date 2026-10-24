@@ -17,6 +17,8 @@ import {
   type AdminTalentQuery,
   type TalentInput,
   type TalentUpdate,
+  TalentReviewSchema,
+  type TalentReview,
 } from '@repo/schemas';
 import type { z } from 'zod';
 import { CurrentUser, Roles } from '../auth/decorators';
@@ -87,6 +89,13 @@ export class AdminCatalogController {
   @Edit()
   async status(@Param('id') id: string, @Body(new ZodPipe(TalentStatusSchema)) b: z.infer<typeof TalentStatusSchema>, @CurrentUser() u: AuthUserRef, @Req() req: Request) {
     return { data: await this.svc.setStatus(id, b.status, u, req.ip) };
+  }
+
+  @Post('talents/:id/review')
+  @Edit()
+  @HttpCode(200)
+  async review(@Param('id') id: string, @Body(new ZodPipe(TalentReviewSchema)) b: TalentReview, @CurrentUser() u: AuthUserRef, @Req() req: Request) {
+    return { data: await this.svc.review(id, b, u, req.ip) };
   }
 
   // Media (T-142)

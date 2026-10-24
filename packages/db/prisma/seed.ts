@@ -159,6 +159,10 @@ async function main() {
     talentIds.push(created.id);
   }
 
+  // Demo talent login for the talent portal: Kopil Bora signs in with +91 90000 00002.
+  const kopil = await prisma.talent.findUniqueOrThrow({ where: { slug: 'kopil-bora' } });
+  await prisma.user.create({ data: { name: 'Kopil Bora', phone: '+919000000002', roles: ['TALENT'], talent: { connect: { id: kopil.id } } } });
+
   // ── One lead per stage ──
   const fee = 250000; // ₹2.5L talent fee in the demo quotes
   for (const [i, stage] of STAGES.entries()) {

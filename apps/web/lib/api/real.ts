@@ -68,8 +68,8 @@ export async function sessionFor(token: string | undefined): Promise<Session> {
 export async function requestCode(phone: string, ip?: string) {
   const r = await callApi('POST', '/auth/otp/send', { body: { phone }, ip });
   if (r.status >= 400) return r;
-  const d = unwrapEnvelope(r.json) as { resendInSeconds: number };
-  const devHint = process.env.NODE_ENV === 'production' ? undefined : 'Development: the code is printed in the API console.';
+  const d = unwrapEnvelope(r.json) as { resendInSeconds: number; demoAnyCode?: true };
+  const devHint = d.demoAnyCode ? 'Demo mode: enter any 6-digit code.' : process.env.NODE_ENV === 'production' ? undefined : 'Development: the code is printed in the API console.';
   return { ...r, json: { data: { sent: true, resendInSeconds: d.resendInSeconds, ...(devHint ? { devHint } : {}) } } };
 }
 

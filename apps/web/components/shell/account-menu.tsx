@@ -95,7 +95,7 @@ export function AccountMenu() {
               <span className="grid size-11 place-items-center rounded-full bg-brand-gradient text-sm font-bold text-primary-fg">{initials}</span>
               <span className="min-w-0">
                 <span className="block truncate font-semibold">{session.name}</span>
-                <span className="block text-xs text-fg-muted">{session.role === 'TALENT' ? 'Talent · Nahid Afrin' : 'Customer account'}</span>
+                <span className="block text-xs text-fg-muted">{session.role === 'TALENT' ? 'Talent account' : 'Customer account'}</span>
               </span>
             </div>
           </div>
@@ -115,7 +115,7 @@ export function AccountMenu() {
               </>
             ) : (
               <DropdownMenu.Item asChild className={itemCls}>
-                <Link href="/talent-portal"><Row icon={<Mic2 />} title="My portal" hint="Bookings, payouts, blackout dates" /></Link>
+                <Link href="/talent-portal"><Row icon={<Mic2 />} title="Talent portal" hint="Shows, payouts, blocked dates" /></Link>
               </DropdownMenu.Item>
             )}
           </DropdownMenu.Group>

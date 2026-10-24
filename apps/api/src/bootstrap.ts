@@ -12,6 +12,8 @@ export async function createApp(env: Env, root: DynamicModule = AppModule.forRoo
   const app = await NestFactory.create<NestExpressApplication>(root, { bufferLogs: true, rawBody: true }); // rawBody: webhook signatures
   app.useLogger(app.get(Logger));
   app.setGlobalPrefix('v1');
+  // Talent photo uploads arrive as JSON data URLs (resized in the browser), so allow larger bodies.
+  app.useBodyParser('json', { limit: '4mb' });
   app.use(helmet());
   // Strict CORS: only the web and admin origins, with cookies for the refresh token (trd §10).
   app.enableCors({ origin: env.CORS_ORIGINS, credentials: true });

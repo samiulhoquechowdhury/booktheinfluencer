@@ -3,6 +3,8 @@
 import { Dialog } from 'radix-ui';
 import { AnimatePresence, motion } from 'motion/react';
 import { Building2, Mic2, ShieldCheck, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { cn } from '@repo/ui/lib/cn';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import type { SessionRole } from '@repo/schemas';
@@ -15,8 +17,12 @@ import { useScrollLock } from '@/lib/motion';
 /**
  * Sign-in. Real API: phone + one-time code. Mock mode: a demo account picker (memory.md decisions).
  */
-export function LoginDialog({ open, onOpenChange, next }: { open: boolean; onOpenChange: (v: boolean) => void; next?: string }) {
+export function LoginDialog({ open, onOpenChange, next, defaultAs = 'customer' }: { open: boolean; onOpenChange: (v: boolean) => void; next?: string; defaultAs?: 'customer' | 'talent' }) {
   const setSession = useSetSession();
+  const [as, setAs] = useState(defaultAs);
+  useEffect(() => {
+    if (open) setAs(defaultAs);
+  }, [open, defaultAs]);
   const router = useRouter();
   useScrollLock(open);
 
@@ -60,12 +66,39 @@ export function LoginDialog({ open, onOpenChange, next }: { open: boolean; onOpe
                 </Dialog.Close>
                 {REAL_API ? (
                   <>
-                <p className="eyebrow">Sign in</p>
-                <Dialog.Title className="mt-2 font-display text-3xl font-extrabold tracking-tight">Welcome back</Dialog.Title>
+                <Dialog.Title className="font-display text-3xl font-extrabold tracking-tight">Sign in</Dialog.Title>
                 <Dialog.Description className="mt-2 text-sm text-fg-muted">
-                  We’ll text a one-time code to your mobile. New here? Your account is created when you sign in. Talent: use the number on your invite.
+                  {as === 'customer'
+                    ? 'We’ll text a one-time code to your mobile. New here? Your account is created when you sign in.'
+                    : 'Use the mobile number on your invite. Talent and managers get access through an invite from our team.'}
                 </Dialog.Description>
-                <OtpSignIn onSignedIn={signedIn} />
+                <div role="radiogroup" aria-label="I am" className="mt-6 grid grid-cols-2 gap-1 rounded-2xl border border-border bg-surface p-1">
+                  {[
+                    { v: 'customer' as const, icon: Building2, label: 'Customer', hint: 'I’m booking talent' },
+                    { v: 'talent' as const, icon: Mic2, label: 'Talent', hint: 'Artist or manager' },
+                  ].map((o) => (
+                    <button
+                      key={o.v}
+                      type="button"
+                      role="radio"
+                      aria-checked={as === o.v}
+                      onClick={() => setAs(o.v)}
+                      className={cn('flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-left transition-colors', as === o.v ? 'bg-bg-elevated shadow-card ring-1 ring-border-strong' : 'text-fg-muted hover:text-fg')}
+                    >
+                      <span className={cn('grid size-8 shrink-0 place-items-center rounded-lg', as === o.v ? 'bg-brand-gradient text-primary-fg' : 'bg-surface-2')}>
+                        <o.icon className="size-4" aria-hidden />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block truncate text-sm font-semibold">{o.label}</span>
+                        <span className="hidden truncate text-xs text-fg-muted sm:block">{o.hint}</span>
+                      </span>
+                    </button>
+                  ))}
+                </div>
+                <OtpSignIn key={as} as={as} onSignedIn={signedIn} />
+                <p className="mt-5 flex items-center gap-2 text-xs text-fg-subtle">
+                  <ShieldCheck className="size-3.5 shrink-0" aria-hidden /> We never share your number. Codes expire after 5 minutes.
+                </p>
                   </>
                 ) : (
                   <>

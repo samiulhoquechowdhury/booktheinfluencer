@@ -15,8 +15,7 @@ import {
   type Enquiry,
   type QuoteDecision,
   type SessionRole,
-  type TalentQuery,
-} from '@repo/schemas';
+  type TalentQuery, OnboardingSchema, type OnboardingPhotoUpload, type OnboardingProfileInput } from '@repo/schemas';
 import type { Transport } from './transport';
 
 /**
@@ -43,7 +42,7 @@ export function createApi(t: Transport) {
       set: (role: SessionRole) => send(SessionSchema, 'POST', '/session', { role }),
       /** Real API: phone OTP sign-in (customers, and talent with an accepted invite). */
       requestCode: (phone: string) => send(z.object({ sent: z.boolean(), resendInSeconds: z.number(), devHint: z.string().optional() }), 'POST', '/session/otp', { phone }),
-      verify: (phone: string, code: string, name?: string) => send(SessionSchema, 'POST', '/session/verify', { phone, code, ...(name ? { name } : {}) }),
+      verify: (phone: string, code: string, name?: string, as?: 'customer' | 'talent') => send(SessionSchema, 'POST', '/session/verify', { phone, code, ...(name ? { name } : {}), ...(as ? { as } : {}) }),
       logout: () => send(SessionSchema, 'POST', '/session/logout'),
     },
     favourites: {
@@ -78,6 +77,15 @@ export function createApi(t: Transport) {
       blackouts: () => get(z.array(BlackoutSchema), '/portal/blackouts'),
       setBlackout: (date: string, on: boolean, reason?: string) =>
         send(z.array(BlackoutSchema), on ? 'PUT' : 'DELETE', `/portal/blackouts/${date}`, on ? { reason: reason ?? null } : undefined),
+      /** Talent self-onboarding (real API only). */
+      onboarding: {
+        get: () => get(OnboardingSchema, '/portal/onboarding'),
+        save: (profile: OnboardingProfileInput) => send(OnboardingSchema, 'PUT', '/portal/onboarding', profile),
+        addPhoto: (photo: OnboardingPhotoUpload) => send(OnboardingSchema, 'POST', '/portal/onboarding/photos', photo),
+        removePhoto: (id: string) => send(OnboardingSchema, 'DELETE', `/portal/onboarding/photos/${id}`),
+        cover: (id: string) => send(OnboardingSchema, 'PUT', `/portal/onboarding/photos/${id}/cover`, {}),
+        submit: () => send(OnboardingSchema, 'POST', '/portal/onboarding/submit', {}),
+      },
     },
   };
 }

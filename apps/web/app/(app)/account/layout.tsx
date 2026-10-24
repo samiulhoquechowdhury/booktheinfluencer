@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { getSessionApi } from '@/lib/api/server';
 import { SignInRequired } from '@/components/account/sign-in-required';
-import { AccountNav } from '@/components/account/account-nav';
+import { CustomerShell } from '@/components/account/customer-shell';
 
 export const metadata: Metadata = { title: 'Your account', robots: { index: false } };
 
@@ -12,8 +12,7 @@ export default async function AccountLayout({ children }: { children: ReactNode 
   if (role !== 'CUSTOMER') return <SignInRequired area="customer" next="/account" />;
   return (
     <div className="shell">
-      <AccountNav />
-      {children}
+      <CustomerShell>{children}</CustomerShell>
     </div>
   );
 }

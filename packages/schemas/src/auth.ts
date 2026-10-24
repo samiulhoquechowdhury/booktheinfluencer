@@ -7,10 +7,12 @@ export const OtpVerifySchema = z.object({
   code: z.string().trim().regex(/^\d{6}$/, 'Enter the 6-digit code'),
   /** Optional on first sign-in; used to name the new account (AUTH-4). */
   name: z.string().trim().min(2).max(80).optional(),
+  /** `talent`: sign in to an existing talent / representative account only; never creates a customer account. */
+  as: z.enum(['customer', 'talent']).optional(),
 });
 export type OtpVerify = z.infer<typeof OtpVerifySchema>;
 
-export const OtpSentSchema = z.object({ expiresInSeconds: z.number().int(), resendInSeconds: z.number().int() });
+export const OtpSentSchema = z.object({ expiresInSeconds: z.number().int(), resendInSeconds: z.number().int(), demoAnyCode: z.literal(true).optional() });
 export type OtpSent = z.infer<typeof OtpSentSchema>;
 
 export const STAFF_ROLES = ['SUPER_ADMIN', 'SALES', 'TALENT_MANAGER', 'OPS', 'ACCOUNTS'] as const;

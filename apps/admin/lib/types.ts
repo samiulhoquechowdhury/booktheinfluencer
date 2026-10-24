@@ -138,6 +138,10 @@ export type AdminTalent = {
   media: AdminMedia[];
   reps: { id: string; name: string; agencyName: string | null; verification: 'PENDING' | 'VERIFIED' | 'REJECTED' }[];
   hasLogin: boolean;
+  /** Self-onboarded profile waiting for staff review (null = not submitted). */
+  submittedAt: string | null;
+  /** Last note staff sent back to the talent. */
+  reviewNote: string | null;
   counts: { blackouts: number; rateCards: number; bookings: number };
   createdAt: string;
   updatedAt: string;

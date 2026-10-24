@@ -31,6 +31,10 @@ import { ESIGN_PROVIDER, FakeESign } from './contracts/esign';
 import { FakeGateway, PAYMENT_GATEWAY } from './payments/gateway';
 import { AdminPaymentsController, CustomerPaymentsController, WebhooksController } from './payments/payments.controller';
 import { PaymentsService } from './payments/payments.service';
+import { MediaController } from './media/media.controller';
+import { MediaStorage } from './media/media.storage';
+import { OnboardingController } from './portal/onboarding.controller';
+import { OnboardingService } from './portal/onboarding.service';
 import { PortalController } from './portal/portal.controller';
 import { PortalService } from './portal/portal.service';
 import { AnalyticsService } from './settlement/analytics.service';
@@ -75,7 +79,7 @@ export class AppModule {
         PrismaModule,
         AuthModule,
       ],
-      controllers: [HealthController, CatalogController, UsersController, InvitesController, AdminInvitesController, AdminUsersController, AdminAuditController, AdminCatalogController, EnquiriesController, PipelineController, AdminQuotesController, CustomerBookingsController, AdminPaymentsController, CustomerPaymentsController, WebhooksController, PortalController, FavouritesController, ContactController, AdminPayoutsController, AdminAnalyticsController],
+      controllers: [HealthController, CatalogController, UsersController, InvitesController, AdminInvitesController, AdminUsersController, AdminAuditController, AdminCatalogController, EnquiriesController, PipelineController, AdminQuotesController, CustomerBookingsController, AdminPaymentsController, CustomerPaymentsController, WebhooksController, OnboardingController, PortalController, MediaController, FavouritesController, ContactController, AdminPayoutsController, AdminAnalyticsController],
       providers: [
         { provide: APP_FILTER, useClass: GlobalErrorFilter },
         { provide: APP_INTERCEPTOR, useClass: AuditInterceptor },
@@ -91,6 +95,8 @@ export class AppModule {
         PaymentsService,
         ContractsService,
         PortalService,
+        OnboardingService,
+        MediaStorage,
         PayoutsService,
         AnalyticsService,
         // Only the fake adapters exist until vendors are chosen (memory.md open questions); env validation refuses them in production.

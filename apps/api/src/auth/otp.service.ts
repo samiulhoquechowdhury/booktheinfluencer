@@ -51,7 +51,9 @@ export class OtpService {
     const byIp = ip ? recent.filter((r) => r.ip === ip) : [];
 
     const latest = byPhone.at(-1);
-    if (latest && now - latest.createdAt.getTime() < OTP_RESEND_SECONDS * 1000) {
+    // DEMO ONLY: OTP_ACCEPT_ANY skips the send limits so testers on one network aren't blocked.
+    if (this.env.OTP_ACCEPT_ANY) byPhone.length = byIp.length = 0;
+    if (!this.env.OTP_ACCEPT_ANY && latest && now - latest.createdAt.getTime() < OTP_RESEND_SECONDS * 1000) {
       throw new RateLimitedError(OTP_RESEND_SECONDS - Math.floor((now - latest.createdAt.getTime()) / 1000));
     }
     for (const list of [byPhone, byIp]) {
@@ -66,7 +68,8 @@ export class OtpService {
       data: { phone, ip, codeHash: this.hash(phone, code).toString('hex'), expiresAt: new Date(now + OTP_TTL_SECONDS * 1000) },
     });
     await this.sms.sendOtp(phone, code);
-    return { expiresInSeconds: OTP_TTL_SECONDS, resendInSeconds: OTP_RESEND_SECONDS };
+    // DEMO ONLY: tell the client any code works, so the sign-in screen can say so.
+    return { expiresInSeconds: OTP_TTL_SECONDS, resendInSeconds: OTP_RESEND_SECONDS, ...(this.env.OTP_ACCEPT_ANY ? { demoAnyCode: true } : {}) };
   }
 
   /** Check and consume the latest code for this phone (no account changes). */
@@ -92,11 +95,18 @@ export class OtpService {
     if (count !== 1) throw invalid();
   }
 
-  /** Check the code; on success return the (possibly new) customer user. */
-  async verify(phone: string, code: string, name?: string) {
+  /** Check the code; on success return the user (a new customer account on first customer sign-in). */
+  async verify(phone: string, code: string, name?: string, as: 'customer' | 'talent' = 'customer') {
     await this.checkCode(phone, code);
     const existing = await this.prisma.user.findUnique({ where: { phone } });
     if (existing?.deletedAt) throw new ForbiddenError('This account has been closed. Contact support to restore it.');
+    // Talent sign-in: a new number starts a talent application (self-onboarding, reviewed by staff
+    // before anything goes live); an existing account gains the talent role.
+    if (as === 'talent') {
+      if (!existing) return this.prisma.user.create({ data: { phone, name: name ?? null, roles: ['TALENT'] } });
+      if (!existing.roles.some((r) => r === 'TALENT' || r === 'REP')) return this.prisma.user.update({ where: { id: existing.id }, data: { roles: { push: 'TALENT' } } });
+      return existing;
+    }
     if (existing) {
       if (!existing.name && name) return this.prisma.user.update({ where: { id: existing.id }, data: { name } });
       return existing;

@@ -12,4 +12,5 @@ export const qk = {
   portalBookings: ['portal', 'bookings'] as const,
   payouts: ['portal', 'payouts'] as const,
   blackouts: ['portal', 'blackouts'] as const,
+  onboarding: ['portal', 'onboarding'] as const,
 };

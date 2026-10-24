@@ -6,6 +6,10 @@ const config: NextConfig = {
   reactStrictMode: true,
   transpilePackages: ['@repo/ui', '@repo/schemas', '@repo/utils'],
   experimental: { optimizePackageImports: ['lucide-react', 'radix-ui'] },
+  // Talent photos uploaded through onboarding are stored by the API; serve them from this origin.
+  async rewrites() {
+    return process.env.API_URL ? [{ source: '/media/:file', destination: `${process.env.API_URL.replace(/\/$/, '')}/v1/media/:file` }] : [];
+  },
   async headers() {
     return [
       {

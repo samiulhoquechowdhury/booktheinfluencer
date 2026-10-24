@@ -2,7 +2,7 @@
 
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
-import type { Blackout, PublicTalent, QuoteDecision, Session, SessionRole, TalentPage, TalentQuery } from '@repo/schemas';
+import type { Blackout, Onboarding, PublicTalent, QuoteDecision, Session, SessionRole, TalentPage, TalentQuery } from '@repo/schemas';
 import { api, ApiError } from './client';
 import { qk } from './keys';
 import { REAL_API } from './constants';
@@ -30,7 +30,7 @@ export const useRequestCode = () => useMutation({ mutationFn: (phone: string) =>
 export function useVerifyCode() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: ({ phone, code, name }: { phone: string; code: string; name?: string }) => api.session.verify(phone, code, name),
+    mutationFn: ({ phone, code, name, as }: { phone: string; code: string; name?: string; as?: 'customer' | 'talent' }) => api.session.verify(phone, code, name, as),
     onSuccess: (s) => {
       qc.setQueryData(qk.session, s);
       qc.removeQueries({ queryKey: ['me'] });
@@ -131,4 +131,11 @@ export function useToggleBlackout() {
     },
     onSuccess: (data) => qc.setQueryData(qk.blackouts, data),
   });
+}
+
+/** Talent self-onboarding: the application, and mutations that return the updated application. */
+export const useOnboarding = () => useQuery({ queryKey: qk.onboarding, queryFn: api.portal.onboarding.get, retry: false });
+export function useOnboardingAction<A>(fn: (arg: A) => Promise<Onboarding>) {
+  const qc = useQueryClient();
+  return useMutation({ mutationFn: fn, onSuccess: (o) => qc.setQueryData(qk.onboarding, o) });
 }

@@ -28,6 +28,7 @@ export function TalentList() {
   const pathname = usePathname();
   const sp = useSearchParams();
   const status = sp.get('status') ?? undefined;
+  const review = sp.get('review') === 'pending' ? 'pending' : undefined;
   const category = sp.get('category') ?? undefined;
   const page = Math.max(1, Number(sp.get('page')) || 1);
   const [q, setQ] = useState(sp.get('q') ?? '');
@@ -49,10 +50,11 @@ export function TalentList() {
   }, [q]);
 
   const list = useQuery({
-    queryKey: ['talents', status, category, sp.get('q'), page],
-    queryFn: () => api.get<Page<AdminTalent>>('/admin/talents', { status, category, q: sp.get('q'), page, pageSize: 25 }),
+    queryKey: ['talents', status, review, category, sp.get('q'), page],
+    queryFn: () => api.get<Page<AdminTalent>>('/admin/talents', { status, review, category, q: sp.get('q'), page, pageSize: 25 }),
     placeholderData: keepPreviousData,
   });
+  const pending = useQuery({ queryKey: ['talents', 'pending-count'], queryFn: () => api.get<Page<AdminTalent>>('/admin/talents', { review: 'pending', pageSize: 1 }) });
   const pages = list.data ? Math.max(1, Math.ceil(list.data.total / list.data.pageSize)) : 1;
 
   return (
@@ -68,6 +70,15 @@ export function TalentList() {
         }
       />
       <div className="mb-5 flex flex-wrap items-center gap-3">
+        <button
+          type="button"
+          aria-pressed={Boolean(review)}
+          onClick={() => set({ review: review ? undefined : 'pending', status: undefined })}
+          className={`flex h-11 items-center gap-2 rounded-lg border px-3 text-sm font-medium ${review ? 'border-primary-text bg-surface-2 text-fg' : 'border-border text-fg-muted hover:text-fg'}`}
+        >
+          Waiting for review
+          <span className={`tnum rounded-full px-2 py-0.5 text-xs font-semibold ${pending.data?.total ? 'bg-warning/15 text-warning' : 'bg-surface-2'}`}>{pending.data?.total ?? '…'}</span>
+        </button>
         <label className="relative w-full sm:w-72">
           <span className="sr-only">Search by name</span>
           <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-fg-subtle" aria-hidden />
@@ -119,7 +130,11 @@ export function TalentList() {
                       <td className={`tnum px-4 py-3 ${t.media.length < 4 ? 'text-warning' : ''}`}>{t.media.length}</td>
                       <td className="tnum px-4 py-3">{t.counts.rateCards}</td>
                       <td className="px-4 py-3">
-                        <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${STATUS_TONE[t.status]}`}>{STATUS_LABEL[t.status]}</span>
+                        {t.submittedAt ? (
+                          <span className="rounded-full bg-warning/15 px-2 py-0.5 text-xs font-medium text-warning">Waiting for review</span>
+                        ) : (
+                          <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${STATUS_TONE[t.status]}`}>{STATUS_LABEL[t.status]}</span>
+                        )}
                       </td>
                     </tr>
                   );

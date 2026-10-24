@@ -76,6 +76,21 @@ describe('phone OTP sign-in (AUTH-1, AUTH-4)', () => {
     expect(row.consumedAt).not.toBeNull();
   });
 
+  it('talent sign-in with a new number starts a talent application; an existing talent keeps their account', async () => {
+    const phone = newPhone();
+    await http().post('/v1/auth/otp/send').set('X-Forwarded-For', ip()).send({ phone }).expect(202);
+    const fresh = await http().post('/v1/auth/otp/verify').send({ phone, code: sms.lastCode(`+91${phone}`), as: 'talent' }).expect(200);
+    expect(fresh.body.data.user.roles).toEqual(['TALENT']);
+    // No profile yet: the portal sends them to onboarding.
+    await http().get('/v1/portal').set('Authorization', `Bearer ${fresh.body.data.accessToken}`).expect(403);
+    expect((await http().get('/v1/portal/onboarding').set('Authorization', `Bearer ${fresh.body.data.accessToken}`).expect(200)).body.data).toMatchObject({ status: 'NOT_STARTED', profile: null });
+
+    await prisma.otpChallenge.deleteMany({ where: { phone: `+91${phone}` } }); // skip the 30 s resend wait
+    await http().post('/v1/auth/otp/send').set('X-Forwarded-For', ip()).send({ phone }).expect(202);
+    const again = await http().post('/v1/auth/otp/verify').send({ phone, code: sms.lastCode(`+91${phone}`), as: 'talent' }).expect(200);
+    expect(again.body.data.user.id).toBe(fresh.body.data.user.id);
+  });
+
   it('sets the refresh token as an httpOnly, SameSite=Strict cookie scoped to /v1/auth', async () => {
     const { res } = await signIn();
     const raw = ([] as string[]).concat(res.headers['set-cookie'] ?? []).find((c) => c.startsWith('tp_refresh='))!;

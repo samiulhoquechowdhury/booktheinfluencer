@@ -1,3 +1,5 @@
+import os from 'node:os';
+import path from 'node:path';
 import { type DynamicModule, Module, type Type } from '@nestjs/common';
 import type { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from '../../src/app.module';
@@ -22,6 +24,7 @@ export const testEnv = loadEnv({
   JWT_ACCESS_SECRET: 'test-access-secret-0123456789abcdefghijklmnop',
   AUTH_SECRET: 'test-auth-secret-0123456789abcdefghijklmnopqr',
   SMS_PROVIDER: 'console',
+  MEDIA_DIR: path.join(os.tmpdir(), 'talent-test-media'),
   OTP_ACCEPT_ANY: 'false', // the dev .env may turn the demo bypass on
   MFA_ENCRYPTION_KEY: Buffer.alloc(32, 7).toString('base64'),
   PAYMENT_WEBHOOK_SECRET: 'test-payment-webhook-secret-0123456789abc',

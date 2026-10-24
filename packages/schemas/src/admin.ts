@@ -72,10 +72,19 @@ export const AdminTalentQuerySchema = z.object({
   page: z.coerce.number().int().positive().default(1),
   pageSize: z.coerce.number().int().positive().max(100).default(25),
   status: z.enum(['DRAFT', 'PUBLISHED', 'HIDDEN']).optional(),
+  /** Only self-onboarded profiles waiting for review. */
+  review: z.literal('pending').optional(),
   category: CategorySlugSchema.optional(),
   q: z.string().trim().max(80).optional(),
 });
 export type AdminTalentQuery = z.infer<typeof AdminTalentQuerySchema>;
+
+/** Staff decision on a self-onboarded profile: publish it, or send it back with a note. */
+export const TalentReviewSchema = z.discriminatedUnion('decision', [
+  z.object({ decision: z.literal('approve') }),
+  z.object({ decision: z.literal('changes'), note: z.string().trim().min(10, 'Tell the talent what to change (10+ characters)').max(1000) }),
+]);
+export type TalentReview = z.infer<typeof TalentReviewSchema>;
 
 /** T-142: register an already-stored image (presigned upload comes with the storage vendor). */
 export const MediaInputSchema = z.object({

@@ -13,6 +13,10 @@ const config: NextConfig = {
     imageSizes: [64, 96, 128, 160, 240, 320],
   },
   experimental: { optimizePackageImports: ['lucide-react', 'motion', 'radix-ui'] },
+  // Talent photos uploaded through onboarding are stored by the API; serve them from this origin.
+  async rewrites() {
+    return process.env.API_URL ? [{ source: '/media/:file', destination: `${process.env.API_URL.replace(/\/$/, '')}/v1/media/:file` }] : [];
+  },
   async headers() {
     return [
       {

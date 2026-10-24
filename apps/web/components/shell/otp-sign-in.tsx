@@ -10,13 +10,14 @@ import { OtpInput } from '@repo/ui/otp-input';
 import { ApiError } from '@/lib/api/client';
 import { useRequestCode, useVerifyCode } from '@/lib/api/hooks';
 
-/** Phone + one-time code sign-in (AUTH-1). New numbers get a customer account; talent use the number on their invite. */
-export function OtpSignIn({ onSignedIn }: { onSignedIn: (s: Session) => void }) {
+/** Phone + one-time code sign-in (AUTH-1). Customers: new numbers get an account. Talent: only the number on their invite works. */
+export function OtpSignIn({ onSignedIn, as = 'customer' }: { onSignedIn: (s: Session) => void; as?: 'customer' | 'talent' }) {
   const [phone, setPhone] = useState('');
   const [code, setCode] = useState('');
   const [sentTo, setSentTo] = useState<string | null>(null);
   const [resendIn, setResendIn] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const [hint, setHint] = useState<string | undefined>();
   const requestCode = useRequestCode();
   const verify = useVerifyCode();
 
@@ -35,6 +36,7 @@ export function OtpSignIn({ onSignedIn }: { onSignedIn: (s: Session) => void }) 
         setSentTo(parsed.data);
         setResendIn(r.resendInSeconds);
         setCode('');
+        setHint(r.devHint);
         toast.success('Code sent', { description: r.devHint });
       },
       onError: (e) => setError(e instanceof ApiError ? e.message : 'Couldn’t send the code. Try again.'),
@@ -44,7 +46,7 @@ export function OtpSignIn({ onSignedIn }: { onSignedIn: (s: Session) => void }) 
   const submit = () => {
     if (!sentTo || !/^\d{6}$/.test(code)) return setError('Enter the 6-digit code');
     setError(null);
-    verify.mutate({ phone: sentTo, code }, { onSuccess: onSignedIn, onError: (e) => setError(e instanceof ApiError ? e.message : 'Couldn’t sign in. Try again.') });
+    verify.mutate({ phone: sentTo, code, as }, { onSuccess: onSignedIn, onError: (e) => setError(e instanceof ApiError ? e.message : 'Couldn’t sign in. Try again.') });
   };
 
   return (
@@ -60,6 +62,7 @@ export function OtpSignIn({ onSignedIn }: { onSignedIn: (s: Session) => void }) 
       {sentTo && (
         <div className="rounded-xl border border-border bg-surface p-4">
           <p className="mb-3 text-sm text-fg-muted">Enter the 6-digit code sent to ••••{sentTo.slice(-4)}.</p>
+          {hint && <p className="mb-3 rounded-lg bg-gold-soft px-3 py-2 text-xs font-semibold text-gold-text">{hint}</p>}
           <OtpInput value={code} onChange={setCode} error={Boolean(error)} />
         </div>
       )}

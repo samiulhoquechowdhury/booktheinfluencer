@@ -30,7 +30,7 @@ export function BlackoutCalendar({ bookings, editable }: { bookings: TalentBooki
   const upcoming = blackouts.filter((b) => b.date >= todayIST());
 
   return (
-    <div className="grid gap-8 xl:grid-cols-[1fr_320px]">
+    <div className="grid gap-8 2xl:grid-cols-[1fr_300px]">
       <div className="overflow-x-auto rounded-2xl border border-border bg-surface p-4 sm:p-6">
         <Calendar
           mode="multiple"
